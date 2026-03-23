@@ -44,6 +44,5 @@ playwright/
 
 # Env / secrets
 .env
-.env.*
 *.key
 *.pem

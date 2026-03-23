@@ -15,6 +15,12 @@ python main.py
 
 Genera: datos mock + 7 charts + PDF ejecutivo en `output/`.
 
+### Credenciales privadas (DiDi)
+
+1. Copia el archivo `.env.example` a `.env` (ya está en `.gitignore`).
+2. Completa `DIDI_EMAIL`, `DIDI_PASSWORD`, `DIDI_PHONE` y `DIDI_PHONE_COUNTRY` (prefijo, por defecto `+54`). Si necesitás forzar otro feed, agrega `DIDI_BASE_URL`.
+3. El scraper carga esas variables automáticamente antes de iniciar Playwright, así tus datos sensibles nunca se guardan en el repositorio.
+
 ---
 
 ## Estructura
@@ -134,10 +140,11 @@ python analysis/generate_report_pdf.py
 - Misma logica de extraccion de texto que Rappi
 
 ### DiDi Food
-- Requiere emulacion mobile (iPhone viewport 390x844)
-- DiDi no requiere login en mobile (documentado)
-- Prueba multiples URLs (`didifood.com/mx`, `food.didiglobal.com/mx`, etc.)
-- Deteccion de domain parking / login wall
+- Emulación mobile iPhone (390x844) para evitar el gate de escritorio.
+- Login obligatorio: usa `DIDI_EMAIL`/`DIDI_PASSWORD` o `DIDI_PHONE` y setea automáticamente `DIDI_PHONE_COUNTRY` antes de enviar el OTP.
+- Acepta términos y cambia el país del teléfono igual que en el flujo manual del usuario.
+- Permite configurar `DIDI_BASE_URL` por `.env` y valida que no sea un dominio estacionado.
+- Maneja address picker, búsqueda de "McDonald's" y fallback a stores destacados cuando DiDi no devuelve resultados directos.
 
 ---
 

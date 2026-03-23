@@ -25,12 +25,32 @@ FLUJO POR PLATAFORMA:
 """
 
 from __future__ import annotations
-import asyncio, csv, json, logging, random, re, sys, io
+import asyncio, csv, json, logging, random, re, sys, io, os
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
 from playwright.async_api import async_playwright, Browser, BrowserContext, Page
+
+
+def _load_local_env(path: Path = Path(".env")):
+    if not path.exists():
+        return
+    try:
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = value
+    except Exception as exc:
+        logging.getLogger("ci").warning(f"No se pudo cargar .env: {exc}")
+
+
+_load_local_env()
 
 # ── Logging UTF-8 (fix Windows cp1252) ───────────────────────────────────────
 Path("logs").mkdir(exist_ok=True)
@@ -481,6 +501,7 @@ async def iphone_ctx(browser):
         device_scale_factor=3,
         is_mobile=True,
         has_touch=True,
+        ignore_https_errors=True,
     )
 
 # ── Helper: find and interact with an input ──────────────────────────────────
@@ -981,33 +1002,459 @@ class UberEatsScraper:
 
 class DiDiFoodScraper:
     """
-    DiDi Food requires mobile emulation — the desktop site forces login.
-    We use iPhone UA + mobile viewport to bypass the login wall.
-    Flow: home → address → search → store → extract text.
+    DiDi solo deja navegar si se emula un móvil, se elige ciudad, se pulsa
+    "Entra al sitio" y (cuando aparece) se completa el login. Esta clase se
+    encarga de automatizar todo ese flujo antes de extraer texto como en las
+    otras plataformas.
     """
-    PLATFORM = "didifood"
 
-    # DiDi Food Mexico URLs to try (they change domains sometimes)
+    PLATFORM = "didifood"
     ENTRY_URLS = [
-        "https://www.didifood.com/mx",
-        "https://food.didiglobal.com/mx",
+        os.environ.get("DIDI_BASE_URL", "https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D"),
+        "https://www.didi-food.com/es-MX/food/feed/",
         "https://web.didiglobal.com/mx/food/",
+        "https://www.didifood.com/mx",
+        "https://m.didiglobal.com/mx/food/",
     ]
+    CITY_MAP = {
+        "Ciudad de Mexico": "Ciudad de México",
+        "Guadalajara": "Guadalajara",
+        "Monterrey": "Monterrey",
+    }
+    ENTER_KEYWORDS = [
+        "entra al sitio",
+        "entra",
+        "ver restaurantes",
+        "entrar",
+    ]
+    LOGIN_TRIGGER_KEYWORDS = [
+        "iniciar sesión",
+        "iniciar sesion",
+        "mi perfil",
+        "mi cuenta",
+        "entrar",
+        "acceso",
+    ]
+    TERMS_KEYWORDS = [
+        "acepto",
+        "aceptar",
+        "términos",
+        "terminos",
+        "privacidad",
+    ]
+    ADDRESS_INPUTS = [
+        'input[placeholder*="direcci" i]',
+        'input[placeholder*="ingresa" i]',
+        'input[placeholder*="domicilio" i]',
+        'input[id*="address" i]',
+        'input[data-testid*="address" i]',
+        'input[name*="address" i]',
+        'textarea[placeholder*="direcci" i]',
+        'input[type="text"]:not([hidden])',
+    ]
+    ADDRESS_TRIGGER_KEYWORDS = [
+        "ingresa tu direccion",
+        "ingresa tu dirección",
+        "agrega tu direccion",
+        "cambiar direccion",
+        "agregar direccion",
+        "poner direccion",
+    ]
+    SEARCH_INPUTS = [
+        'input[placeholder*="tacos" i]',
+        'input[placeholder*="buscar" i]',
+        'input[placeholder*="¿" i]',
+        'input[type="search"]',
+    ]
+    STORE_CARD_SELS = [
+        'a:has-text("McDonald")',
+        'a:has-text("Mc Donald")',
+        '[class*="restaurant" i]:has-text("Mc")',
+        '[role="link"]:has-text("Mc")',
+    ]
+    LOGIN_EMAIL_SELS = [
+        'input[type="email"]',
+        'input[name*="correo" i]',
+        'input[placeholder*="correo" i]',
+    ]
+    LOGIN_PASS_SELS = [
+        'input[type="password"]',
+        'input[name*="contra" i]',
+        'input[placeholder*="contraseña" i]',
+    ]
+    LOGIN_PHONE_SELS = [
+        'input[type="tel"]',
+        'input[name*="tel" i]',
+        'input[name*="phone" i]',
+        'input[placeholder*="tel" i]',
+        'input[placeholder*="cel" i]',
+    ]
+    LOGIN_BUTTON_SELS = [
+        'button:has-text("Iniciar sesión")',
+        'button:has-text("entrar")',
+        'button:has-text("continuar")',
+        '[data-testid*="login-submit"]',
+    ]
+    LOGIN_TRIGGER_SELS = [
+        '[data-testid*="header-login"]',
+        '[aria-label*="Iniciar sesión" i]',
+        'button:has-text("Iniciar sesión")',
+        'a:has-text("Iniciar sesión")',
+        'span:has-text("Iniciar sesión")',
+    ]
+    OTP_INPUT_SELS = [
+        'input[placeholder*="código" i]',
+        'input[placeholder*="codigo" i]',
+        'input[maxlength="6"]',
+        'input[type="tel"]',
+    ]
+    OTP_TEXT_MARKERS = [
+        "código de verificación",
+        "codigo de verificacion",
+        "ingresa el código",
+        "ingresa el codigo",
+    ]
+
+    def __init__(self):
+        self.email = os.environ.get("DIDI_EMAIL")
+        self.password = os.environ.get("DIDI_PASSWORD")
+        self.phone = os.environ.get("DIDI_PHONE")
+        code = os.environ.get("DIDI_PHONE_COUNTRY", "+54")
+        if code and not code.strip().startswith("+"):
+            code = f"+{code.strip()}"
+        self.phone_country = code
+
+    async def _switch_to_latest_page(self, page: Page) -> Page:
+        try:
+            pages = page.context.pages
+            if pages and pages[-1] is not page:
+                new_page = pages[-1]
+                await new_page.wait_for_load_state("domcontentloaded")
+                log.info("  [DiDi] switched to latest popup page")
+                return new_page
+        except Exception:
+            pass
+        return page
+
+    async def _detect_otp_prompt(self, page: Page) -> bool:
+        for sel in self.OTP_INPUT_SELS:
+            try:
+                if await page.locator(sel).count() > 0:
+                    log.warning("  [DiDi] OTP input detected")
+                    return True
+            except Exception:
+                continue
+        try:
+            body = (await page.inner_text("body")).lower()
+            if any(marker in body for marker in self.OTP_TEXT_MARKERS):
+                log.warning("  [DiDi] OTP text detected")
+                return True
+        except Exception:
+            pass
+        return False
+
+    async def _select_city(self, page: Page, city_name: str) -> bool:
+        if not city_name:
+            return False
+        try:
+            await page.evaluate("() => window.scrollTo(0, document.body.scrollHeight)")
+            await delay(1, 2)
+        except Exception:
+            pass
+        clicked = await self._click_by_keywords(page, [city_name])
+        if clicked:
+            log.info(f"  [DiDi] selected city: {city_name}")
+            await delay(2, 3)
+        return clicked
+
+    async def _ensure_logged_in(self, page: Page) -> Page:
+        for attempt in range(3):
+            trigger_clicked = await self._click_by_keywords(page, self.LOGIN_TRIGGER_KEYWORDS)
+            if not trigger_clicked:
+                trigger_clicked = await self._trigger_login_flow(page)
+            if trigger_clicked:
+                await delay(2, 3)
+                page = await self._switch_to_latest_page(page)
+            form_filled = await self._handle_login_if_present(page)
+            if form_filled:
+                if await self._detect_otp_prompt(page):
+                    raise RuntimeError("DiDi requiere un código de verificación (OTP)")
+                await delay(2, 3)
+                page = await self._switch_to_latest_page(page)
+                return page
+            if not trigger_clicked:
+                await delay(1, 2)
+        return page
+
+    async def _click_by_keywords(self, page: Page, keywords) -> bool:
+        try:
+            return await page.evaluate(
+                """
+                (texts) => {
+                    const norm = (s) => (s || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+                    const nodes = Array.from(document.querySelectorAll('button,a,div,span'));
+                    for (const keyword of texts) {
+                        const target = norm(keyword);
+                        if (!target) continue;
+                        for (const node of nodes) {
+                            if (!node || !node.isConnected || node.offsetParent === null) continue;
+                            const content = norm(node.innerText || node.textContent || '');
+                            if (!content) continue;
+                            if (content.includes(target)) {
+                                node.scrollIntoView({behavior:'auto', block:'center'});
+                                node.click();
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+                """,
+                keywords,
+            )
+        except Exception:
+            return False
+
+    async def _handle_login_if_present(self, page: Page) -> bool:
+        email_present = False
+        for sel in self.LOGIN_EMAIL_SELS:
+            try:
+                if await page.locator(sel).count() > 0:
+                    email_present = True
+                    break
+            except Exception:
+                continue
+
+        phone_present = False
+        for sel in self.LOGIN_PHONE_SELS:
+            try:
+                if await page.locator(sel).count() > 0:
+                    phone_present = True
+                    break
+            except Exception:
+                continue
+
+        filled = False
+        needs_terms = False
+        if email_present:
+            if not (self.email and self.password):
+                log.warning("  [DiDi] login requiere DIDI_EMAIL y DIDI_PASSWORD (define variables de entorno)")
+                return False
+            email_ok = await find_and_fill_input(page, self.LOGIN_EMAIL_SELS, self.email, use_keyboard=False)
+            pass_ok = await find_and_fill_input(page, self.LOGIN_PASS_SELS, self.password, use_keyboard=False)
+            filled = email_ok and pass_ok
+        elif phone_present:
+            if not self.phone:
+                log.warning("  [DiDi] login requiere DIDI_PHONE (define variables de entorno)")
+                return False
+            await self._set_phone_country(page)
+            filled = await find_and_fill_input(page, self.LOGIN_PHONE_SELS, self.phone, use_keyboard=False)
+            needs_terms = True
+        else:
+            return False
+
+        if not filled:
+            log.warning("  [DiDi] no se pudo completar el formulario de login")
+            return False
+
+        if needs_terms:
+            terms_ok = await self._accept_terms(page)
+            if not terms_ok:
+                log.warning("  [DiDi] no se pudo aceptar Términos y Condiciones")
+                return False
+
+        for sel in self.LOGIN_BUTTON_SELS:
+            try:
+                btn = page.locator(sel).first
+                if await btn.count() > 0:
+                    await btn.click()
+                    log.info("  [DiDi] submitted login form")
+                    await delay(2, 4)
+                    return True
+            except Exception:
+                continue
+        return False
+
+    async def _set_phone_country(self, page: Page) -> bool:
+        if not self.phone_country:
+            return False
+        target = self.phone_country.strip()
+        opened = False
+        try:
+            opened = await page.evaluate(
+                """
+                () => {
+                    const nodes = Array.from(document.querySelectorAll('button, div, span'));
+                    for (const node of nodes) {
+                        const text = (node.innerText || node.textContent || '').trim();
+                        if (/^\+\d+$/.test(text)) {
+                            node.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                """
+            )
+        except Exception:
+            opened = False
+        if not opened:
+            log.warning("  [DiDi] no se pudo abrir el selector de código telefónico")
+            return False
+        await delay(0.8, 1.2)
+        picked = False
+        try:
+            picked = await page.evaluate(
+                """
+                (target) => {
+                    const nodes = Array.from(document.querySelectorAll('li, button, div, span'));
+                    for (const node of nodes) {
+                        const text = (node.innerText || node.textContent || '').trim();
+                        if (!text) continue;
+                        if (text.startsWith(target)) {
+                            node.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                """,
+                target,
+            )
+        except Exception:
+            picked = False
+        if picked:
+            log.info(f"  [DiDi] código telefónico seleccionado: {target}")
+        else:
+            log.warning(f"  [DiDi] no se encontró el código {target}")
+        return picked
+
+    async def _accept_terms(self, page: Page) -> bool:
+        checkbox_sels = ['input[type="checkbox"]', '[role="checkbox"]']
+        for sel in checkbox_sels:
+            try:
+                box = page.locator(sel).first
+                if await box.count() == 0:
+                    continue
+                try:
+                    await box.check(force=True)
+                except Exception:
+                    await box.click(force=True)
+                log.info("  [DiDi] checkbox de términos marcado")
+                await delay(0.3, 0.6)
+                return True
+            except Exception:
+                continue
+        if await self._click_by_keywords(page, self.TERMS_KEYWORDS):
+            log.info("  [DiDi] términos aceptados via keyword")
+            await delay(0.3, 0.6)
+            return True
+        return False
+
+    async def _trigger_login_flow(self, page: Page):
+        for attempt in range(3):
+            for sel in self.LOGIN_TRIGGER_SELS:
+                try:
+                    el = page.locator(sel).first
+                    if await el.count() > 0:
+                        await el.click()
+                        log.info(f"  [DiDi] clicked login trigger: {sel}")
+                        await delay(1, 2)
+                        return True
+                except Exception:
+                    continue
+            await asyncio.sleep(0.5)
+        return False
+
+    async def _set_address(self, page: Page, address: str) -> bool:
+        for _ in range(3):
+            await self._click_by_keywords(page, self.ADDRESS_TRIGGER_KEYWORDS)
+            await delay(1, 2)
+            typed = await find_and_fill_input(page, self.ADDRESS_INPUTS, address, use_keyboard=True)
+            if typed:
+                await delay(2, 3)
+                await click_first_suggestion(page)
+                await delay(2, 4)
+                return True
+            await self._handle_login_if_present(page)
+            try:
+                inputs = await page.evaluate(
+                    """() => Array.from(document.querySelectorAll('input')).map(i => ({
+                        placeholder: i.placeholder || '',
+                        name: i.name || '',
+                        type: i.type || '',
+                        testid: i.getAttribute('data-testid') || ''
+                    })).slice(0, 5)"""
+                )
+                log.info(f"  [DiDi] visible inputs snapshot: {inputs}")
+            except Exception:
+                pass
+            await delay(1, 2)
+        return False
+
+    async def _search_and_open_store(self, page: Page, r: PlatformResult) -> bool:
+        typed = await find_and_fill_input(page, self.SEARCH_INPUTS, "McDonalds", use_keyboard=True)
+        if not typed:
+            return False
+        try:
+            await page.keyboard.press("Enter")
+        except Exception:
+            pass
+        await delay(3, 5)
+
+        for attempt in range(4):
+            for sel in self.STORE_CARD_SELS:
+                try:
+                    cards = await page.locator(sel).all()
+                except Exception:
+                    continue
+                for card in cards:
+                    try:
+                        text = (await card.inner_text()).strip()
+                    except Exception:
+                        continue
+                    if "mcdonald" not in text.lower() or not valid_mcdo(text):
+                        continue
+
+                    r.restaurant_name = text[:60]
+                    r.rating = r.rating or extract_rating(text)
+                    r.eta_min = r.eta_min or extract_eta(text)
+                    r.delivery_fee = r.delivery_fee or extract_delivery_fee(text)
+                    r.promo_general_pct = r.promo_general_pct or extract_promo(text)
+
+                    href = ""
+                    try:
+                        href = await card.get_attribute("href") or ""
+                    except Exception:
+                        pass
+                    try:
+                        if href:
+                            if href.startswith("http"):
+                                await page.goto(href, wait_until="domcontentloaded", timeout=30000)
+                            else:
+                                await page.goto(f"https://web.didiglobal.com{href}", wait_until="domcontentloaded", timeout=30000)
+                        else:
+                            await card.click()
+                        await delay(3, 4)
+                        return True
+                    except Exception as e:
+                        log.warning(f"  [DiDi] failed to open store card: {e}")
+                        continue
+            await delay(1, 2)
+        # Fallback: click any element containing McDonald's text via keywords
+        if await self._click_by_keywords(page, ["McDonald's", "McDonalds", "Mc Donald's", "Mc Donald"]):
+            await delay(3, 4)
+            return True
+        return False
 
     async def scrape(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> PlatformResult:
         r = PlatformResult(platform=self.PLATFORM)
         try:
-            # ── 1. Try to load DiDi Food ──────────────────────────────────
             loaded = False
             for url in self.ENTRY_URLS:
                 try:
-                    await page.goto(url, wait_until="domcontentloaded", timeout=20000)
-                    await delay(2, 4)
-                    content = await page.content()
-                    # Check for domain parking / redirect
-                    if any(x in content.lower() for x in ["available domain", "broker", "for sale", "domain for sale"]):
-                        log.warning(f"  [DiDi] domain parking detected at {url}")
-                        continue
+                    await page.goto(url, wait_until="domcontentloaded", timeout=25000)
+                    await delay(2, 3)
                     loaded = True
                     log.info(f"  [DiDi] loaded: {url}")
                     break
@@ -1017,143 +1464,100 @@ class DiDiFoodScraper:
 
             if not loaded:
                 r.status = "error"
-                r.error_detail = "Could not load any DiDi Food URL"
+                r.error_detail = "No fue posible abrir DiDi Food"
                 return r
 
-            # ── 2. Handle the landing page flow ───────────────────────────
-            # On the landing page, need to select city first
-            city_name = {
-                "Ciudad de Mexico": "Ciudad de México",
-                "Guadalajara": "Guadalajara",
-                "Monterrey": "Monterrey",
-            }.get(addr["city"], "Ciudad de México")
-
-            # Try to select city
-            for sel in [
-                f'a:has-text("{city_name}")',
-                f'button:has-text("{city_name}")',
-                f'text="{city_name}"',
-            ]:
-                try:
-                    el = page.locator(sel).first
-                    if await el.count() > 0:
-                        await el.click()
-                        log.info(f"  [DiDi] selected city: {city_name}")
-                        await delay(2, 3)
-                        break
-                except Exception:
-                    continue
-
-            # Click "Entra" or "Ver restaurantes" button
-            for sel in [
-                'button:has-text("Entra")',
-                'a:has-text("Entra")',
-                'a:has-text("entra al sitio")',
-                'button:has-text("Ver restaurantes")',
-                'a:has-text("Ver restaurantes")',
-            ]:
-                try:
-                    el = page.locator(sel).first
-                    if await el.count() > 0:
-                        await el.click()
-                        await delay(2, 4)
-                        log.info(f"  [DiDi] clicked enter button")
-                        break
-                except Exception:
-                    continue
-
-            # ── 3. Set address ────────────────────────────────────────────
-            addr_sels = [
-                'input[placeholder*="direcci" i]',
-                'input[placeholder*="Ingresa" i]',
-                'input[placeholder*="domicilio" i]',
-                'input[type="text"]:not([hidden])',
-            ]
-
-            addr_ok = await find_and_fill_input(page, addr_sels, addr["address"], use_keyboard=True)
-            if addr_ok:
-                await delay(2, 3)
-                await click_first_suggestion(page)
-                await delay(2, 4)
-            else:
-                log.warning("  [DiDi] address input not found")
-
-            # ── 4. Check for login wall ───────────────────────────────────
-            page_text = await page.evaluate("() => document.body.innerText")
-            if any(x in page_text.lower() for x in ["iniciar sesión", "iniciar sesion", "registr", "inicia sesión"]):
+            try:
+                page = await self._ensure_logged_in(page)
+            except RuntimeError as otp_err:
                 r.status = "error"
-                r.error_detail = "Login required - DiDi Food desktop requires authentication"
-                log.warning("  [DiDi] login wall detected")
-                if take_shots:
-                    r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "login_wall", sdir)
+                r.error_detail = str(otp_err)
+                log.warning(f"  [DiDi] {otp_err}")
                 return r
 
-            # ── 5. Search for McDonald's ──────────────────────────────────
-            search_sels = [
-                'input[placeholder*="Buscar" i]',
-                'input[placeholder*="buscar" i]',
-                'input[type="search"]',
-                'input[placeholder*="restaurant" i]',
-            ]
+            try:
+                await page.goto(self.ENTRY_URLS[0], wait_until="domcontentloaded", timeout=25000)
+                await delay(2, 3)
+            except Exception as e:
+                log.warning(f"  [DiDi] failed to reload entry after login: {e}")
 
-            typed = await find_and_fill_input(page, search_sels, "McDonalds", use_keyboard=True)
-            if typed:
-                await page.keyboard.press("Enter")
-                await delay(3, 5)
-            else:
-                log.warning("  [DiDi] search input not found")
+            city_name = self.CITY_MAP.get(addr["city"], "Ciudad de México")
+            await self._select_city(page, city_name)
+
+            await self._handle_login_if_present(page)
+
+            if await self._click_by_keywords(page, self.ENTER_KEYWORDS):
+                log.info("  [DiDi] clicked enter/landing button")
+                await delay(2, 3)
+
+            await self._handle_login_if_present(page)
+
+            try:
+                ctx_pages = page.context.pages
+                if ctx_pages and ctx_pages[-1] is not page:
+                    page = ctx_pages[-1]
+                    await page.wait_for_load_state("domcontentloaded")
+                    log.info("  [DiDi] switched to popup landing page")
+            except Exception:
+                pass
+
+            try:
+                log.info(f"  [DiDi] url after landing: {page.url}")
+            except Exception:
+                pass
+
+            if not await self._set_address(page, addr["address"]):
+                r.status = "error"
+                r.error_detail = "No se pudo ingresar la dirección en DiDi"
+                log.warning("  [DiDi] address input not found")
+                return r
+
+            await self._handle_login_if_present(page)
 
             if take_shots:
-                r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "search", sdir)
+                r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "home", sdir)
 
-            # ── 6. Find and enter McDonalds store ─────────────────────────
-            store_ok = False
-
-            # Try clickable cards/links containing "mcdonald"
-            card_sels = [
-                'a:has-text("McDonald")',
-                'a:has-text("Mc Donald")',
-                '[class*="restaurant" i]:has-text("McDonald")',
-                '[class*="RestaurantCard" i]:has-text("McDonald")',
-                '[class*="store" i]:has-text("McDonald")',
-            ]
-            for sel in card_sels:
-                try:
-                    cards = await page.locator(sel).all()
-                    for card in cards:
-                        text = (await card.inner_text()).strip()
-                        if "mcdonald" in text.lower() and valid_mcdo(text):
-                            await card.click()
-                            r.restaurant_name = text[:60]
-                            store_ok = True
-                            log.info(f"  [DiDi] store: {r.restaurant_name[:40]}")
-                            await delay(3, 5)
-                            break
-                except Exception:
-                    continue
-                if store_ok:
-                    break
-
-            if not store_ok:
+            if not await self._search_and_open_store(page, r):
                 r.status = "partial_no_store"
                 log.warning("  [DiDi] no McDonalds store found")
                 return r
 
+            await self._handle_login_if_present(page)
+
             r.restaurant_available = True
+            if not r.restaurant_name.strip():
+                try:
+                    heading = await page.locator("h1").first.inner_text(timeout=3000)
+                    if heading:
+                        r.restaurant_name = heading.strip()[:60]
+                except Exception:
+                    try:
+                        title_text = await page.title()
+                        if title_text:
+                            r.restaurant_name = title_text.split("|")[0].strip()[:60]
+                    except Exception:
+                        pass
             if take_shots:
                 r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "store", sdir)
 
-            # ── 7. Scroll and extract ─────────────────────────────────────
             await delay(2, 3)
-            await ensure_full_scroll(page, pause=0.7, max_scrolls=20)
+            full_text = await scroll_and_collect_text(page, pause=0.7, max_scrolls=30)
 
-            full_text = await page.evaluate("() => document.body.innerText")
+            try:
+                dump_path = sdir / f"{addr['id']}_didifood_text_dump.txt"
+                dump_path.write_text(full_text, encoding="utf-8")
+            except Exception:
+                pass
+
+            ft_lower = full_text.lower()
+            for kw in ["home office", "big mac", "hamburguesa doble", "coca-cola", "coca cola"]:
+                log.info(f"  [DiDi] keyword '{kw}' found: {kw in ft_lower}")
 
             r.products = extract_products_from_text(full_text)
-            r.delivery_fee = extract_delivery_fee(full_text)
-            r.eta_min = extract_eta(full_text)
-            r.promo_general_pct = extract_promo(full_text)
-            r.rating = extract_rating(full_text)
+            r.delivery_fee = r.delivery_fee or extract_delivery_fee(full_text)
+            r.eta_min = r.eta_min or extract_eta(full_text)
+            r.promo_general_pct = r.promo_general_pct or extract_promo(full_text)
+            r.rating = r.rating or extract_rating(full_text)
 
             log.info(f"  [DiDi] products={len(r.products)} fee={r.delivery_fee} eta={r.eta_min} promo={r.promo_general_pct}%")
 
