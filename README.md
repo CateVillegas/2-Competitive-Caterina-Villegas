@@ -20,6 +20,22 @@ python analysis/generate_report_pdf.py
 
 Genera: charts PNG, `output/kpis.json`, `output/top_insights.json` y `output/Competitive_Intelligence_Rappi_MX.pdf` basados **exclusivamente** en `data/competitive_data_with_didi.csv`.
 
+### Regenerar el PDF oficial paso a paso
+
+1. (Opcional) Limpia `output/` si querés confirmar que todo sale de cero. Ejemplos:
+	- PowerShell: `Remove-Item -Recurse -Force output`
+	- CMD: `rmdir /s /q output`
+2. Desde la raíz del repo corre:
+	```bash
+	python analysis/generate_analysis.py --source data/competitive_data_with_didi.csv
+	```
+	Esto recalcula KPIs, insights y 14 charts, dejando `output/kpis.json` y `output/top_insights.json` apuntando al CSV oficial (el log muestra la ruta cargada).
+3. Finalmente renderiza el PDF leyendo esos payloads:
+	```bash
+	python analysis/generate_report_pdf.py
+	```
+	El archivo final queda en `output/Competitive_Intelligence_Rappi_MX.pdf` y en la portada verás “Fuente: data/competitive_data_with_didi.csv` para validar la procedencia.
+
 ### Credenciales privadas (DiDi Food)
 
 1. Copia el archivo `.env.example` a `.env` (ya esta en `.gitignore`).
