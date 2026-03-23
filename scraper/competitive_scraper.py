@@ -300,12 +300,12 @@ def extract_products_from_text(full_text: str) -> list:
             if any(a in ll for a in pdef["anti"]):
                 continue
 
-            # Forward-only window: current line + 4 lines after (5 total).
+            # Forward-only window: current line + 3 lines after (4 total).
             # DO NOT look backward — prices before the product name belong to
             # the PREVIOUS product in the grid layout.
-            # 5 lines covers: name → description → -XX% → $price → next_name
+            # 4 lines covers: name → description → $price → maybe discount
             # Keep it tight to avoid capturing prices from the NEXT product.
-            window = " ".join(lines[i:i+5])
+            window = " ".join(lines[i:i+4])
             prices = []
             # First pass: look for explicit $ prices
             for m in re.finditer(r'\$\s*([\d,]+\.?\d*)', window):
@@ -385,13 +385,16 @@ def extract_products_from_text(full_text: str) -> list:
 def extract_delivery_fee(text: str) -> Optional[float]:
     """Busca el delivery fee en el texto de la pagina."""
     # Check for free delivery first
-    if re.search(r"env[iío]o?\s+gratis|gratis\s+env[iío]o?|delivery\s+gratis|env[iío]o?\s*\$\s*0", text, re.IGNORECASE):
+    if re.search(r"env[iío]o?\s+gratis|gratis\s+env[iío]o?|delivery\s+gratis|env[iío]o?\s*(?:\$|MXN)\s*0(?:\b|\.00)", text, re.IGNORECASE):
+        return 0.0
+    # "Costo de envío a MXN0" (Uber Eats format)
+    if re.search(r"(?:costo de env[iío]o?|env[iío]o?)\s+a?\s*MXN\s*0(?:\b|\.)", text, re.IGNORECASE):
         return 0.0
     patterns = [
-        r"(?:env[iío]o?|delivery fee?|costo de env[iío]o?)[:\s]*\$?\s*([\d,]+\.?\d*)",
+        r"(?:env[iío]o?|delivery fee?|costo de env[iío]o?)[:\s]*(?:\$|MXN)\s*([\d,]+\.?\d*)",
         r"\$\s*([\d]+)\s*(?:de env[iío]o?|delivery)",
-        r"env[iío]o?\s+\$\s*([\d,]+\.?\d*)",
-        r"(?:costo de env[iío]o?|delivery)[:\s]+\$?\s*([\d,]+\.?\d*)",
+        r"env[iío]o?\s+(?:\$|MXN)\s*([\d,]+\.?\d*)",
+        r"(?:costo de env[iío]o?|delivery)[:\s]+(?:\$|MXN)\s*([\d,]+\.?\d*)",
     ]
     for p in patterns:
         m = re.search(p, text, re.IGNORECASE)
@@ -901,6 +904,25 @@ class UberEatsScraper:
             await page.goto(store_url, wait_until="domcontentloaded", timeout=35000)
             await delay(2, 3)
             r.restaurant_available = True
+
+            # Fix empty restaurant_name: extract from store page heading
+            if not r.restaurant_name.strip():
+                try:
+                    heading = await page.locator("h1").first.inner_text(timeout=3000)
+                    if heading and heading.strip():
+                        r.restaurant_name = heading.strip()[:60]
+                        log.info(f"  [Uber] restaurant name from h1: {r.restaurant_name}")
+                except Exception:
+                    # Fallback: extract from page text
+                    try:
+                        title_text = await page.title()
+                        if title_text:
+                            # Uber Eats titles are like "McDonald's (Plaza Galerías) | Uber Eats"
+                            name_part = title_text.split("|")[0].strip()
+                            if name_part:
+                                r.restaurant_name = name_part[:60]
+                    except Exception:
+                        pass
 
             if take_shots:
                 r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "store", sdir)

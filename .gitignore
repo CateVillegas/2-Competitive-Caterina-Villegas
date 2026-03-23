@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scraper output (regenerable, pesado)
+screenshots/
+data/competitive_data_2*.json
+data/competitive_data_2*.csv
+logs/
+
+# Analysis output (regenerable)
+output/chart*.png
+output/kpis.json
+output/Competitive_Intelligence_Rappi_MX.pdf
+
+# Keep mock data (lightweight, needed for demo)
+!data/competitive_data_mock.json
+!data/competitive_data_mock.csv
+
+# Playwright browsers
+playwright/
+
+# Env / secrets
+.env
+.env.*
+*.key
+*.pem
