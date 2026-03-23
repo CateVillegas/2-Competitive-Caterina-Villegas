@@ -30,6 +30,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+from urllib.parse import quote_plus, urlparse, parse_qsl, urlencode, urlunparse
 from playwright.async_api import async_playwright, Browser, BrowserContext, Page
 
 
@@ -66,6 +67,7 @@ if _custom_storage:
     DIDI_STORAGE_PATH.parent.mkdir(parents=True, exist_ok=True)
 else:
     DIDI_STORAGE_PATH = Path("sessions/didi_state.json")
+    DIDI_STORAGE_PATH.parent.mkdir(parents=True, exist_ok=True)
     if LEGACY_DIDI_STORAGE_PATH.exists() and not DIDI_STORAGE_PATH.exists():
         try:
             LEGACY_DIDI_STORAGE_PATH.rename(DIDI_STORAGE_PATH)
@@ -149,7 +151,9 @@ class PlatformResult:
             for p in self.products
             if (p.price_discounted or p.price_original) is not None
         ]
-        if prices:
+        # Use cart subtotal if already set (e.g. from DiDi's cart view),
+        # otherwise compute from individual product prices
+        if not self.subtotal and prices:
             self.subtotal = round(sum(prices), 2)
         if self.subtotal:
             rate = SERVICE_FEE.get(platform, 0.10)
@@ -1074,8 +1078,14 @@ class DiDiFoodScraper:
     """
 
     PLATFORM = "didifood"
+    _DEFAULT_DIDI_HOME = os.environ.get("DIDI_BASE_URL", "https://www.didi-food.com/es-MX/")
+    _LEGACY_FEED_URL = os.environ.get(
+        "DIDI_FEED_URL",
+        "https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D",
+    )
     ENTRY_URLS = [
-        os.environ.get("DIDI_BASE_URL", "https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D"),
+        _LEGACY_FEED_URL,
+        _DEFAULT_DIDI_HOME,
         "https://www.didi-food.com/es-MX/food/feed/",
         "https://web.didiglobal.com/mx/food/",
         "https://www.didifood.com/mx",
@@ -1130,13 +1140,18 @@ class DiDiFoodScraper:
         '[data-testid*="address-header" i]',
         '[data-testid*="address-selector" i]',
         '[data-testid*="location" i]',
+        '[data-testid*="header-location" i]',
+        '[data-testid*="delivery-address" i]',
         '[aria-label*="dirección" i]',
         '[aria-label*="direccion" i]',
         'button:has-text("Ingresa tu dirección")',
         'button:has-text("Ingresa tu direccion")',
         'button:has-text("Agregar dirección")',
         'button:has-text("Agregar direccion")',
+        'button:has-text("Selecciona una dirección")',
+        'button:has-text("Selecciona una direccion")',
         'div:has-text("Ingresa tu dirección")',
+        'header button[role="button"]:has-text("Dirección")',
     ]
     SEARCH_INPUTS = [
         'input[placeholder*="tacos" i]',
@@ -1150,6 +1165,10 @@ class DiDiFoodScraper:
         'input[placeholder*="qu" i]',
         'input[type="search"]',
         'input[role="searchbox"]',
+        'input[id*="search" i]',
+        'input[name*="search" i]',
+        'input[data-testid*="search" i]',
+        'input[data-qa*="search" i]',
         'input[aria-label*="buscar" i]',
         'input[aria-label*="search" i]',
     ]
@@ -1260,32 +1279,123 @@ class DiDiFoodScraper:
         return False
 
     async def _focus_search_input(self, page: Page) -> bool:
+        """Focus the search input on DiDi mobile.
+        On the feed page, there's usually a search icon (magnifying glass) or a
+        placeholder bar at the top. Tapping it opens the actual search input."""
+        page = await self._switch_to_latest_page(page)
+        # First, try tapping the search icon/bar at the top of the feed
+        search_trigger_sels = [
+            '[data-testid*="search" i]',
+            '[class*="search" i]:not(input)',
+            '[aria-label*="buscar" i]',
+            '[aria-label*="search" i]',
+            'svg[class*="search" i]',
+        ]
+        for sel in search_trigger_sels:
+            try:
+                el = page.locator(sel).first
+                if await el.count() > 0:
+                    try:
+                        await el.tap()
+                    except Exception:
+                        await el.click(force=True)
+                    await asyncio.sleep(0.8)
+                    log.info(f"  [DiDi] tapped search trigger: {sel}")
+                    page = await self._switch_to_latest_page(page)
+                    break
+            except Exception:
+                continue
+
+        # Try tapping the search bar/placeholder via JS (looks for elements with search-related text)
+        try:
+            tapped = await page.evaluate("""
+                () => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+                    // Look for a div/span that acts as search placeholder
+                    const candidates = Array.from(document.querySelectorAll('div, span, button, a'));
+                    for (const el of candidates) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const text = norm(el.innerText || el.textContent || el.getAttribute('placeholder') || '');
+                        const rect = el.getBoundingClientRect();
+                        if (rect.width < 100 || rect.height < 20 || rect.height > 60) continue;
+                        // Must be near top of page
+                        if (rect.top > 200) continue;
+                        if (text.includes('buscar') || text.includes('busca') || text.includes('restaurante')
+                            || text.includes('comida') || text.includes('tacos') || text.includes('hamburguesa')
+                            || text.includes('que se te antoja')) {
+                            el.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            """)
+            if tapped:
+                log.info("  [DiDi] tapped search placeholder bar")
+                await asyncio.sleep(0.8)
+                page = await self._switch_to_latest_page(page)
+        except Exception:
+            pass
+
+        # Now try to find and focus the actual search input
         selectors = [
-            '[data-testid*="search"] input',
-            'form[role="search"] input',
-            'div[class*="search" i] input',
             'input[placeholder*="buscar" i]',
             'input[placeholder*="restaurante" i]',
             'input[placeholder*="restaurantes o comida" i]',
+            'input[placeholder*="tacos" i]',
+            'input[placeholder*="comida" i]',
+            '[data-testid*="search"] input',
+            'form[role="search"] input',
+            'div[class*="search" i] input',
+            'input[type="search"]',
+            'input[role="searchbox"]',
+            'input[id*="search" i]',
+            'input[name*="search" i]',
+            'input[data-testid*="search" i]',
+            'input[data-qa*="search" i]',
+            '[role="search"] input',
         ]
         for sel in selectors:
             try:
                 el = page.locator(sel).first
                 if await el.count() > 0:
-                    await el.click(force=True)
+                    try:
+                        await el.wait_for(state="visible", timeout=1500)
+                    except Exception:
+                        pass
+                    try:
+                        await el.tap()
+                    except Exception:
+                        await el.click(force=True)
                     await asyncio.sleep(0.2)
+                    log.info(f"  [DiDi] focused search input: {sel}")
                     return True
             except Exception:
                 continue
+
         try:
             return await page.evaluate(
                 """
                 () => {
-                    const el = document.querySelector('input[placeholder*="Buscar" i]');
-                    if (el) {
-                        el.focus();
-                        el.click();
-                        return true;
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const inputs = Array.from(document.querySelectorAll('input, textarea, [contenteditable="true"]'));
+                    for (const el of inputs) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const ph = norm(el.placeholder || '');
+                        const aria = norm(el.getAttribute('aria-label') || '');
+                        const role = norm(el.getAttribute('role') || '');
+                        const cls = norm(el.className || '');
+                        if (ph.includes('buscar') || ph.includes('comida') || ph.includes('restaurante')
+                            || ph.includes('tacos') || ph.includes('hamburguesa')
+                            || aria.includes('buscar') || role.includes('search') || cls.includes('search')) {
+                            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                                el.focus();
+                                el.click();
+                            } else if (el.isContentEditable) {
+                                el.focus();
+                            }
+                            return true;
+                        }
                     }
                     return false;
                 }
@@ -1351,7 +1461,11 @@ class DiDiFoodScraper:
         return False
 
     async def _persist_session(self, context: BrowserContext):
-        if not self.session_dirty or not self.storage_path:
+        if not self.storage_path:
+            return
+        # Si la sesión ya está guardada y no hubo cambios, evitamos escribir innecesariamente,
+        # pero aseguramos que el JSON exista en disco al menos una vez.
+        if not self.session_dirty and self.storage_path.exists():
             return
         try:
             await context.storage_state(path=str(self.storage_path))
@@ -1359,6 +1473,58 @@ class DiDiFoodScraper:
             log.info(f"  [DiDi] sesión guardada en {self.storage_path}")
         except Exception as exc:
             log.warning(f"  [DiDi] no se pudo guardar la sesión: {exc}")
+
+    async def _session_already_active(self, page: Page) -> bool:
+        """Detecta si el usuario ya está logueado usando la storage_state actual."""
+        avatar_selectors = [
+            '[data-testid*="avatar" i]',
+            '[data-testid*="profile" i]',
+            '[aria-label*="perfil" i]',
+            '[aria-label*="cuenta" i]',
+            '[class*="avatar" i]'
+        ]
+        for sel in avatar_selectors:
+            try:
+                if await page.locator(sel).first.count() > 0:
+                    log.info("  [DiDi] avatar/perfil detectado — sesión ya activa")
+                    return True
+            except Exception:
+                continue
+
+        try:
+            login_present = await page.evaluate(
+                """
+                (keywords) => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const nodes = Array.from(document.querySelectorAll('button, a, div, span'));
+                    const targets = keywords.map(norm);
+                    for (const node of nodes) {
+                        if (!node || !node.isConnected || node.offsetParent === null) continue;
+                        const text = norm(node.innerText || node.textContent || '');
+                        if (!text) continue;
+                        if (targets.some(t => text.includes(t))) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                """,
+                self.LOGIN_TRIGGER_KEYWORDS + ["iniciar sesion", "inicia sesion", "entrar"],
+            )
+            if login_present:
+                return False
+        except Exception:
+            pass
+
+        try:
+            body = (await page.evaluate("() => document.body.innerText") or "").lower()
+            if any(token in body for token in ["cerrar sesión", "cerrar sesion", "mis pedidos", "mi cuenta"]):
+                log.info("  [DiDi] elementos de cuenta detectados en el body — reusamos sesión")
+                return True
+        except Exception:
+            pass
+
+        return False
 
     async def _handle_login_and_persist(self, page: Page) -> bool:
         handled = await self._handle_login_if_present(page)
@@ -1413,6 +1579,14 @@ class DiDiFoodScraper:
         5. Click 'Siguiente' button
         6. WAIT for user to manually enter OTP code (SMS verification)
         """
+        if self.storage_path.exists():
+            try:
+                await page.wait_for_load_state("domcontentloaded")
+            except Exception:
+                pass
+            if await self._session_already_active(page):
+                await self._persist_session(page.context)
+                return await self._switch_to_latest_page(page)
         for attempt in range(3):
             trigger_clicked = await self._click_by_keywords(page, self.LOGIN_TRIGGER_KEYWORDS)
             if not trigger_clicked:
@@ -1526,24 +1700,85 @@ class DiDiFoodScraper:
                 log.info("  [DiDi] terminos y condiciones aceptados")
             await delay(0.3, 0.5)
 
-        # Click 'Siguiente' / submit button
+        # Click 'Siguiente' / submit button — use tap for mobile emulation
         siguiente_sels = [
             'button:has-text("Siguiente")',
             'button:has-text("siguiente")',
+            'button:has-text("SIGUIENTE")',
+            'button:has-text("Enviar")',
+            'button:has-text("Enviar código")',
+            '[type="submit"]',
         ] + self.LOGIN_BUTTON_SELS
         for sel in siguiente_sels:
             try:
                 btn = page.locator(sel).first
                 if await btn.count() > 0:
-                    await btn.click()
+                    clicked = False
+                    # Try tap first (mobile), then progressively stronger fallbacks
+                    try:
+                        await btn.tap()
+                        clicked = True
+                    except Exception:
+                        clicked = False
+                    if not clicked:
+                        try:
+                            await btn.click(force=True)
+                            clicked = True
+                        except Exception:
+                            clicked = False
+                    if not clicked:
+                        try:
+                            await btn.evaluate("(node) => node.click()")
+                            clicked = True
+                        except Exception:
+                            clicked = False
+                    if not clicked:
+                        continue
                     self.session_dirty = True
-                    log.info(f"  [DiDi] clicked submit/siguiente button: {sel}")
-                    await delay(2, 4)
+                    log.info(f"  [DiDi] tapped submit/siguiente button: {sel}")
+                    await delay(3, 5)
                     return True
             except Exception:
                 continue
 
-        # Fallback: click by keyword
+        # Fallback: find Siguiente button via JS and tap by coordinates
+        try:
+            btn_coords = await page.evaluate(
+                """
+                () => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+                    const targets = ['siguiente', 'enviar', 'continuar', 'enviar codigo'];
+                    const nodes = Array.from(document.querySelectorAll('button, [role="button"], a, div, span'));
+                    for (const node of nodes) {
+                        if (!node.isConnected || node.offsetParent === null) continue;
+                        const text = norm(node.innerText || node.textContent || '');
+                        if (!text) continue;
+                        for (const t of targets) {
+                            if (text.includes(t)) {
+                                const rect = node.getBoundingClientRect();
+                                if (rect.width > 40 && rect.height > 20) {
+                                    return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+                                }
+                            }
+                        }
+                    }
+                    return null;
+                }
+                """
+            )
+            if btn_coords:
+                try:
+                    await page.touchscreen.tap(btn_coords["x"], btn_coords["y"])
+                except Exception:
+                    await page.mouse.click(btn_coords["x"], btn_coords["y"])
+                self.session_dirty = True
+                log.info(f"  [DiDi] tapped siguiente via coordinates ({btn_coords['x']:.0f}, {btn_coords['y']:.0f})")
+                await delay(2, 4)
+                return True
+        except Exception:
+            pass
+
+        # Last resort: keyword click
         if await self._click_by_keywords(page, ["Siguiente", "siguiente", "Continuar", "continuar"]):
             self.session_dirty = True
             log.info("  [DiDi] clicked siguiente via keyword")
@@ -1644,26 +1879,65 @@ class DiDiFoodScraper:
             return False
 
     async def _click_terms_circle(self, page: Page) -> bool:
+        """Find and tap the circular terms checkbox on DiDi mobile login.
+        Looks for a small clickable element (the circle) near the terms text,
+        or taps just to the left of the terms text as fallback."""
         try:
             coords = await page.evaluate(
                 """
                 (keywords) => {
-                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-                    const matches = (text = '') => {
-                        const normalized = norm(text);
-                        return keywords.some(k => normalized.includes(norm(k)));
-                    };
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+                    const matches = (text = '') => keywords.some(k => norm(text).includes(norm(k)));
 
-                    const candidates = Array.from(document.querySelectorAll('label, div, span'));
-                    for (const node of candidates) {
-                        if (!matches(node.innerText || node.textContent || '')) continue;
-                        const target = node.querySelector('span, i, div') || node;
-                        if (!(target instanceof HTMLElement)) continue;
-                        const rect = target.getBoundingClientRect();
+                    // Find the terms text container
+                    const allEls = Array.from(document.querySelectorAll('label, div, span, p, a'));
+                    let termsEl = null;
+                    let termsRect = null;
+                    for (const el of allEls) {
+                        const text = (el.innerText || el.textContent || '').trim();
+                        if (!matches(text)) continue;
+                        const rect = el.getBoundingClientRect();
                         if (!rect || rect.width === 0 || rect.height === 0) continue;
-                        return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+                        // Prefer smaller/more specific elements
+                        if (!termsEl || rect.width < termsRect.width) {
+                            termsEl = el;
+                            termsRect = rect;
+                        }
                     }
-                    return null;
+                    if (!termsEl) return null;
+
+                    // Strategy 1: Look for a small square/circular element (10-40px)
+                    // in the same row as the terms text (the checkbox circle)
+                    const searchIn = [
+                        ...Array.from(termsEl.parentElement?.children || []),
+                        ...Array.from(termsEl.parentElement?.parentElement?.children || []),
+                        ...Array.from(termsEl.querySelectorAll('*')),
+                        ...Array.from(termsEl.parentElement?.querySelectorAll('*') || []),
+                    ];
+                    const seen = new Set();
+                    for (const el of searchIn) {
+                        if (seen.has(el) || el === termsEl) continue;
+                        seen.add(el);
+                        const rect = el.getBoundingClientRect();
+                        if (!rect || rect.width === 0 || rect.height === 0) continue;
+                        const isSmallSquare = rect.width >= 10 && rect.width <= 40
+                                           && rect.height >= 10 && rect.height <= 40;
+                        if (!isSmallSquare) continue;
+                        // Must be vertically aligned with terms text
+                        const vCenter = rect.top + rect.height / 2;
+                        const tVCenter = termsRect.top + termsRect.height / 2;
+                        if (Math.abs(vCenter - tVCenter) < 25) {
+                            return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+                        }
+                    }
+
+                    // Strategy 2: Click just to the left of the terms text (where circle usually is)
+                    if (termsRect.left > 20) {
+                        return { x: termsRect.left - 15, y: termsRect.top + termsRect.height / 2 };
+                    }
+
+                    // Strategy 3: Click the terms text element itself (some UIs toggle on text tap)
+                    return { x: termsRect.left + 10, y: termsRect.top + termsRect.height / 2 };
                 }
                 """,
                 self.TERMS_KEYWORDS + ["Acepto"],
@@ -1672,9 +1946,15 @@ class DiDiFoodScraper:
             coords = None
 
         if coords:
+            # Use touchscreen tap for mobile emulation (DiDi requires mobile)
             try:
-                await page.mouse.move(coords["x"], coords["y"])
-                await asyncio.sleep(0.05)
+                await page.touchscreen.tap(coords["x"], coords["y"])
+                log.info(f"  [DiDi] tapped terms circle at ({coords['x']:.0f}, {coords['y']:.0f})")
+                return True
+            except Exception:
+                pass
+            # Fallback to mouse click
+            try:
                 await page.mouse.click(coords["x"], coords["y"])
                 return True
             except Exception:
@@ -1684,6 +1964,8 @@ class DiDiFoodScraper:
     async def _accept_terms(self, page: Page) -> bool:
         if await self._is_terms_checked(page):
             return True
+
+        # Strategy 1: Standard checkbox selectors with tap (mobile)
         checkbox_sels = ['input[type="checkbox"]', '[role="checkbox"]']
         for sel in checkbox_sels:
             try:
@@ -1691,34 +1973,69 @@ class DiDiFoodScraper:
                 if await box.count() == 0:
                     continue
                 try:
+                    await box.tap()
+                    await delay(0.3, 0.5)
+                    if await self._is_terms_checked(page):
+                        log.info("  [DiDi] checkbox de términos marcado (tap)")
+                        return True
+                except Exception:
+                    pass
+                try:
                     await box.check(force=True)
                     await delay(0.2, 0.4)
                     if await self._is_terms_checked(page):
                         log.info("  [DiDi] checkbox de términos marcado (Playwright check)")
                         return True
                 except Exception:
-                    try:
-                        await box.click(force=True)
-                        await delay(0.2, 0.4)
-                        if await self._is_terms_checked(page):
-                            log.info("  [DiDi] checkbox de términos marcado (click force)")
-                            return True
-                    except Exception:
-                        continue
+                    pass
+                try:
+                    await box.click(force=True)
+                    await delay(0.2, 0.4)
+                    if await self._is_terms_checked(page):
+                        log.info("  [DiDi] checkbox de términos marcado (click force)")
+                        return True
+                except Exception:
+                    continue
             except Exception:
                 continue
 
-        if await self._click_terms_circle(page):
-            await delay(0.3, 0.5)
-            if await self._is_terms_checked(page):
-                log.info("  [DiDi] términos aceptados con click directo al círculo")
-                return True
+        # Strategy 2: Find and tap the circular element near terms text
+        for attempt in range(3):
+            if await self._click_terms_circle(page):
+                await delay(0.4, 0.6)
+                if await self._is_terms_checked(page):
+                    log.info("  [DiDi] términos aceptados con tap al círculo")
+                    return True
+            await asyncio.sleep(0.3)
 
+        # Strategy 3: Tap any element with terms text (some UIs toggle on text tap)
+        terms_locators = [
+            page.locator('text=/[Aa]cepto/'),
+            page.locator('text=/[Tt][eé]rminos/'),
+            page.locator('label:has-text("Acepto")'),
+            page.locator('span:has-text("Acepto")'),
+        ]
+        for loc in terms_locators:
+            try:
+                if await loc.count() > 0:
+                    await loc.first.tap()
+                    await delay(0.3, 0.5)
+                    if await self._is_terms_checked(page):
+                        log.info("  [DiDi] términos aceptados via tap en texto")
+                        return True
+            except Exception:
+                continue
+
+        # Strategy 4: JS keyword click (last resort)
         if await self._click_by_keywords(page, self.TERMS_KEYWORDS + ["Acepto"]):
             await delay(0.2, 0.4)
             if await self._is_terms_checked(page):
                 log.info("  [DiDi] términos aceptados via keyword click")
                 return True
+
+        # Even if we can't confirm it's checked, try proceeding —
+        # the Siguiente button might work anyway
+        log.warning("  [DiDi] no se pudo confirmar checkbox de términos")
         return False
 
     async def _trigger_login_flow(self, page: Page):
@@ -1736,11 +2053,58 @@ class DiDiFoodScraper:
             await asyncio.sleep(0.5)
         return False
 
-    async def _open_address_modal(self, page: Page) -> bool:
+    async def _address_form_visible(self, page: Page) -> bool:
+        """Detect if the central address form is already open/visible."""
+        for sel in self.ADDRESS_INPUTS:
+            try:
+                loc = page.locator(sel).first
+                if await loc.count() == 0:
+                    continue
+                try:
+                    await loc.wait_for(state="visible", timeout=1000)
+                except Exception:
+                    pass
+                try:
+                    if await loc.is_disabled():
+                        continue
+                except Exception:
+                    pass
+                log.info(f"  [DiDi] address input already visible via {sel}")
+                return True
+            except Exception:
+                continue
+
+        try:
+            central = page.locator('text=/Ingresa tu direcci[oó]n/i').first
+            if await central.count() > 0 and await central.is_visible():
+                log.info("  [DiDi] central address prompt detected")
+                return True
+        except Exception:
+            pass
+
+        try:
+            popup_pattern = re.compile(r"selecciona una direcci[oó]n", re.IGNORECASE)
+            popup_selectors = [
+                page.locator('[role="dialog"]').filter(has_text=popup_pattern),
+                page.locator('h5-dialog').filter(has_text=popup_pattern),
+                page.locator('.h5-dialog_content').filter(has_text=popup_pattern),
+            ]
+            for popup in popup_selectors:
+                popup = popup.first
+                if await popup.count() > 0:
+                    log.info("  [DiDi] 'Selecciona una dirección' popup visible")
+                    return True
+        except Exception:
+            pass
+        return False
+
+    async def _open_address_modal(self, page: Page, addr: Optional[dict] = None) -> bool:
         try:
             await page.evaluate("window.scrollTo(0, 0)")
         except Exception:
             pass
+        if await self._address_form_visible(page):
+            return True
         for sel in self.ADDRESS_HEADER_SELS:
             try:
                 el = page.locator(sel).first
@@ -1748,54 +2112,252 @@ class DiDiFoodScraper:
                     continue
                 await el.click(force=True)
                 await delay(0.5, 0.8)
-                return True
+                if await self._address_form_visible(page):
+                    return True
             except Exception:
                 continue
-        if await self._click_by_keywords(page, self.ADDRESS_TRIGGER_KEYWORDS):
+        dynamic_keywords = list(self.ADDRESS_TRIGGER_KEYWORDS)
+        if addr:
+            for token in (addr.get("zone"), addr.get("city")):
+                if token:
+                    dynamic_keywords.append(token)
+        if await self._click_by_keywords(page, dynamic_keywords):
             await delay(0.5, 0.8)
-            return True
+            if await self._address_form_visible(page):
+                return True
+        # JS fallback: find any header element near the top that contains a location chip text
+        try:
+            tokens = [t.lower() for t in dynamic_keywords if isinstance(t, str)]
+            opened = await page.evaluate(
+                """
+                (keywords) => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const toks = keywords.filter(Boolean).map(norm);
+                    const candidates = Array.from(document.querySelectorAll('header *, [role="banner"] *, button, div, span'));
+                    for (const el of candidates) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const rect = el.getBoundingClientRect();
+                        if (!rect || rect.top > 220) continue; // only near top bar
+                        const text = norm(el.innerText || el.textContent || '');
+                        if (!text) continue;
+                        if (toks.some(t => text.includes(t))) {
+                            el.click();
+                            return true;
+                        }
+                        if (text.includes('direccion') || text.includes('dirección') || text.includes('ubicacion') || text.includes('ubicación')) {
+                            el.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                """,
+                tokens,
+            )
+            if opened:
+                await delay(0.5, 0.8)
+                if await self._address_form_visible(page):
+                    return True
+        except Exception:
+            pass
         return False
 
     async def _click_keyword_store(self, page: Page) -> bool:
+        """Fallback: find any McDonald's element and click it via JS to bypass sticky headers."""
         try:
-            candidates = page.locator("text=/McDonald/i")
-            count = await candidates.count()
-        except Exception:
-            return False
-        for idx in range(count):
-            node = candidates.nth(idx)
-            try:
-                text = (await node.inner_text()).strip()
-            except Exception:
-                continue
-            if not valid_mcdo(text):
-                continue
-            try:
-                await node.scroll_into_view_if_needed()
-            except Exception:
-                pass
-            try:
-                await node.click()
+            clicked = await page.evaluate("""
+                () => {
+                    const norm = (s = '') => s
+                        .normalize('NFD')
+                        .replace(/[\\u0300-\\u036f]/g, '')
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, '');
+                    const blacklist = ['uber', 'rappi', 'menu', 'inicio', 'sesion', 'login'];
+                    const candidates = Array.from(document.querySelectorAll('a, div, span, [role="link"], [role="button"]'));
+                    for (const el of candidates) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const text = norm(el.innerText || el.textContent || '');
+                        if (!text.includes('mcdonald')) continue;
+                        if (blacklist.some(b => text.includes(b))) continue;
+                        const rect = el.getBoundingClientRect();
+                        if (rect.width < 40 || rect.height < 20) continue;
+                        el.scrollIntoView({behavior: 'auto', block: 'center'});
+                        el.click();
+                        return true;
+                    }
+                    return false;
+                }
+            """)
+            if clicked:
                 await delay(3, 4)
+                return True
+        except Exception:
+            pass
+        return False
+
+    async def _focus_address_input(self, page: Page) -> bool:
+        popup_text = re.compile(r"(selecciona una direcci[oó]n|ingresa tu direcci[oó]n|direccion de entrega)", re.IGNORECASE)
+        popup_candidates = [
+            page.locator('[role="dialog"]').filter(has_text=popup_text),
+            page.locator('h5-dialog').filter(has_text=popup_text),
+            page.locator('.h5-dialog_content').filter(has_text=popup_text),
+        ]
+        modal_input_selectors = [
+            'input[placeholder*="direcci" i]',
+            'input[placeholder*="entrega" i]',
+            'input[placeholder*="domicilio" i]',
+            'input[type="search"]',
+            'textarea[placeholder*="direcci" i]',
+            '[contenteditable="true"]',
+        ]
+        for modal in popup_candidates:
+            modal = modal.first
+            try:
+                if await modal.count() == 0:
+                    continue
+                try:
+                    await modal.wait_for(state="visible", timeout=1500)
+                except Exception:
+                    pass
+                try:
+                    trigger = modal.locator('button, [role="button"]').filter(
+                        has_text=re.compile(r"buscar direcci[oó]n", re.IGNORECASE)
+                    ).first
+                    if await trigger.count() > 0:
+                        await trigger.click()
+                        await asyncio.sleep(0.3)
+                        log.info("  [DiDi] clicked 'Buscar dirección' inside popup")
+                except Exception:
+                    pass
+                for inner_sel in modal_input_selectors:
+                    try:
+                        inner = modal.locator(inner_sel).first
+                        if await inner.count() == 0:
+                            continue
+                        try:
+                            await inner.wait_for(state="visible", timeout=1200)
+                        except Exception:
+                            pass
+                        try:
+                            await inner.tap()
+                        except Exception:
+                            try:
+                                await inner.click(force=True)
+                            except Exception:
+                                continue
+                        await asyncio.sleep(0.2)
+                        log.info("  [DiDi] address input focused inside popup container")
+                        return True
+                    except Exception:
+                        continue
+            except Exception:
+                continue
+
+        selectors = list(self.ADDRESS_INPUTS) + ['input[placeholder*="entrega" i]']
+        for sel in selectors:
+            try:
+                el = page.locator(sel).first
+                if await el.count() == 0:
+                    continue
+                try:
+                    await el.wait_for(state="visible", timeout=1200)
+                except Exception:
+                    pass
+                try:
+                    await el.tap()
+                except Exception:
+                    try:
+                        await el.click(force=True)
+                    except Exception:
+                        continue
+                await asyncio.sleep(0.2)
+                log.info(f"  [DiDi] address input focused via {sel}")
                 return True
             except Exception:
                 continue
+        try:
+            tapped = await page.evaluate(
+                """
+                () => {
+                    const nodes = Array.from(document.querySelectorAll('div, span, button'));
+                    for (const el of nodes) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const text = (el.innerText || el.textContent || '').toLowerCase();
+                        if (text.includes('ingresar direccion') || text.includes('ingresa tu direccion')
+                            || text.includes('direccion de entrega') || text.includes('buscar direccion')) {
+                            el.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                """
+            )
+            if tapped:
+                await asyncio.sleep(0.2)
+                log.info("  [DiDi] tapped placeholder text to focus address input")
+                return True
+        except Exception:
+            pass
         return False
 
-    async def _set_address(self, page: Page, addr: dict) -> bool:
+    async def _fill_address_input_js(self, page: Page, address: str) -> bool:
+        try:
+            filled = await page.evaluate(
+                """
+                (value) => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const inputs = Array.from(document.querySelectorAll('input, textarea, [contenteditable="true"]'));
+                    for (const el of inputs) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const hint = norm(el.placeholder || '') + ' ' + norm(el.getAttribute('aria-label') || '') + ' ' + norm(el.className || '');
+                        if (!(hint.includes('direccion') || hint.includes('entrega') || hint.includes('domicilio'))) continue;
+                        if (el.matches('[contenteditable="true"]')) {
+                            el.innerText = value;
+                        } else {
+                            el.value = value;
+                        }
+                        for (const evt of ['input','change','keyup']) {
+                            el.dispatchEvent(new Event(evt, { bubbles: true }));
+                        }
+                        el.focus();
+                        return true;
+                    }
+                    return false;
+                }
+                """,
+                address,
+            )
+            if filled:
+                await asyncio.sleep(0.3)
+                log.info("  [DiDi] address input populated via JS fallback")
+                return True
+        except Exception:
+            pass
+        return False
+
+    async def _set_address(self, page: Page, addr: dict, force_modal: bool = False) -> bool:
         target = addr.get("address")
         if not target:
             return False
-        # Si la URL ya trae la dirección seteada, validamos antes de abrir el modal
-        if await self._wait_for_address_confirmation(page, addr):
-            log.info("  [DiDi] dirección del entry-point ya activa")
-            return True
+        # Cuando se fuerza, abrimos el modal sí o sí para asegurar el cambio explícito.
+        if not force_modal:
+            if await self._wait_for_address_confirmation(page, addr):
+                log.info("  [DiDi] dirección del entry-point ya activa")
+                return True
+        else:
+            log.info("  [DiDi] forzando reapertura del modal de dirección")
         for attempt in range(4):
-            opened = await self._open_address_modal(page)
+            opened = await self._open_address_modal(page, addr)
             if not opened:
                 await delay(0.8, 1.0)
                 continue
+            await self._focus_address_input(page)
             typed = await find_and_fill_input(page, self.ADDRESS_INPUTS, target, use_keyboard=True)
+            if not typed:
+                typed = await self._fill_address_input_js(page, target)
+            if not typed:
+                typed = await self._insert_text_with_keyboard(page, target, context_label="address input")
             if not typed:
                 await self._handle_login_and_persist(page)
                 await delay(0.8, 1.2)
@@ -1809,32 +2371,137 @@ class DiDiFoodScraper:
             log.warning("  [DiDi] la dirección no apareció en el header, reintentamos")
         return False
 
+    async def _set_search_value_via_js(self, page: Page, query: str) -> bool:
+        try:
+            return await page.evaluate(
+                """
+                (value) => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const candidates = Array.from(document.querySelectorAll('input, textarea, [contenteditable="true"]'));
+                    for (const el of candidates) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const ph = norm(el.placeholder || '');
+                        const aria = norm(el.getAttribute('aria-label') || '');
+                        const role = norm(el.getAttribute('role') || '');
+                        const cls = norm(el.className || '');
+                        const name = norm(el.getAttribute('name') || '');
+                        const id = norm(el.id || '');
+                        const looksSearch = ph.includes('buscar') || ph.includes('restaurante') || ph.includes('comida')
+                            || aria.includes('buscar') || aria.includes('search') || role.includes('search')
+                            || cls.includes('search') || name.includes('search') || id.includes('search');
+                        if (!looksSearch) continue;
+                        if (el.matches('[contenteditable="true"]')) {
+                            el.innerText = value;
+                        } else {
+                            el.value = value;
+                        }
+                        const events = ['input','change','keyup'];
+                        for (const evt of events) {
+                            el.dispatchEvent(new Event(evt, { bubbles: true }));
+                        }
+                        el.focus();
+                        try { el.setSelectionRange(value.length, value.length); } catch (err) {}
+                        return true;
+                    }
+                    return false;
+                }
+                """,
+                query,
+            )
+        except Exception:
+            return False
+
+    async def _insert_text_with_keyboard(self, page: Page, text: str, context_label: str = "input") -> bool:
+        try:
+            await page.keyboard.insert_text(text)
+            await asyncio.sleep(0.3)
+            log.info(f"  [DiDi] keyboard insert_text fallback used for {context_label}")
+            return True
+        except Exception:
+            return False
+
+    async def _open_search_results_direct(self, page: Page, query: str, addr: Optional[dict] = None) -> bool:
+        raw_query = (query or "").strip()
+        if not raw_query:
+            return False
+        slug = quote_plus(raw_query)
+
+        try:
+            current_url = page.url or ""
+        except Exception:
+            current_url = ""
+
+        sources = [current_url] + self.ENTRY_URLS
+        candidates: list[str] = []
+
+        for src in sources:
+            if not src:
+                continue
+            try:
+                parsed = urlparse(src)
+            except ValueError:
+                continue
+            if not parsed.scheme or not parsed.netloc:
+                continue
+
+            # Preserve existing query params (pl carries full address context)
+            query_pairs = parse_qsl(parsed.query, keep_blank_values=True)
+            query_dict: dict[str, list[str]] = {}
+            for key, value in query_pairs:
+                query_dict.setdefault(key, []).append(value)
+            query_dict.pop("keyword", None)
+            query_dict.pop("searchId", None)
+            query_dict["keyword"] = [raw_query]
+
+            path = parsed.path or ""
+            if "/food/feed" in path:
+                path = path.replace("/food/feed", "/food/search")
+            elif "/food/search" not in path:
+                path = "/food/search/"
+
+            new_query = urlencode(query_dict, doseq=True)
+            candidate = urlunparse(parsed._replace(path=path, query=new_query, params=""))
+            candidates.append(candidate)
+
+        base = self._DEFAULT_DIDI_HOME.rstrip("/")
+        fallback_urls = [
+            f"{base}/food/search/?keyword={slug}",
+            f"{base}/food/search/?keyword={slug}&from=home",
+            f"{base}/food/search/{slug}",
+        ]
+        candidates.extend(fallback_urls)
+
+        ordered = []
+        seen = set()
+        for url in candidates:
+            if not url or url in seen:
+                continue
+            seen.add(url)
+            ordered.append(url)
+
+        for url in ordered:
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=25000)
+                await delay(1.2, 2.2)
+                current = (page.url or "").lower()
+                if "search" not in current:
+                    continue
+                if addr:
+                    await self._wait_for_address_confirmation(page, addr)
+                log.info(f"  [DiDi] opened search results directly via {url}")
+                return True
+            except Exception as exc:
+                log.warning(f"  [DiDi] direct search URL failed {url}: {exc}")
+                continue
+        return False
+
     async def _type_search_query(self, page: Page, query: str) -> tuple[bool, bool]:
-        await self._focus_search_input(page)
+        focused = await self._focus_search_input(page)
         typed = await find_and_fill_input(page, self.SEARCH_INPUTS, query, use_keyboard=True)
         if not typed:
-            try:
-                typed = await page.evaluate(
-                    """
-                    (value) => {
-                        const inputs = Array.from(document.querySelectorAll('input, textarea'));
-                        for (const input of inputs) {
-                            if (!input.isConnected || input.offsetParent === null) continue;
-                            const placeholder = (input.placeholder || '').toLowerCase();
-                            if (!placeholder.includes('buscar') && !placeholder.includes('comida') && !placeholder.includes('restaurante')) continue;
-                            input.focus();
-                            input.value = value;
-                            input.dispatchEvent(new Event('input', { bubbles: true }));
-                            input.dispatchEvent(new Event('change', { bubbles: true }));
-                            return true;
-                        }
-                        return false;
-                    }
-                    """,
-                    query,
-                )
-            except Exception:
-                typed = False
+            typed = await self._set_search_value_via_js(page, query)
+        if not typed and focused:
+            typed = await self._insert_text_with_keyboard(page, query, context_label="search")
 
         if typed:
             log.info("  [DiDi] query 'McDonalds' escrita en el buscador")
@@ -1849,82 +2516,200 @@ class DiDiFoodScraper:
         log.warning("  [DiDi] no se pudo interactuar con el buscador de DiDi")
         return False, False
 
-    async def _search_and_open_store(self, page: Page, r: PlatformResult) -> bool:
-        success, needs_enter = await self._type_search_query(page, "McDonalds")
-        if not success:
-            return False
-        if needs_enter:
-            try:
-                await page.keyboard.press("Enter")
-            except Exception:
-                pass
-            await delay(3, 5)
-        else:
-            await delay(2, 3)
-
-        try:
-            await page.wait_for_timeout(500)
-        except Exception:
-            pass
-
-        # Capture search results text for promo hook ("Hasta X% dto.")
-        try:
-            search_text = await page.evaluate("() => document.body.innerText")
-            # Extract promo from search listing (e.g. "Hasta 40% dto.")
-            promo_m = re.search(r'[Hh]asta\s+(\d+)\s*%\s*(?:dto|desc)', search_text)
-            if promo_m:
-                r.promo_general_pct = float(promo_m.group(1))
-                log.info(f"  [DiDi] promo from search: {r.promo_general_pct}%")
-        except Exception:
-            pass
-
-        for attempt in range(4):
-            for sel in self.STORE_CARD_SELS:
+    async def _wait_for_search_results(self, page: Page, timeout_ms: int = 8000) -> None:
+        loop = asyncio.get_running_loop()
+        deadline = loop.time() + (timeout_ms / 1000)
+        selectors = [
+            '.shop-item',
+            '[data-testid*="shop" i]',
+            'a[href*="/store"]',
+            'div:has-text("McDonald")',
+            'div:has-text("No encontramos")',
+        ]
+        while loop.time() < deadline:
+            for sel in selectors:
                 try:
-                    cards = await page.locator(sel).all()
+                    loc = page.locator(sel).first
+                    if await loc.count() > 0:
+                        return
                 except Exception:
                     continue
-                for card in cards:
-                    try:
-                        text = (await card.inner_text()).strip()
-                    except Exception:
-                        continue
-                    if "mcdonald" not in text.lower() or not valid_mcdo(text):
-                        continue
+            await asyncio.sleep(0.4)
 
-                    r.restaurant_name = text[:60]
-                    r.rating = r.rating or extract_rating(text)
-                    r.eta_min = r.eta_min or extract_eta(text)
-                    r.delivery_fee = r.delivery_fee or extract_delivery_fee(text)
-                    # Review count from card text, e.g. "4.2(10000+)"
-                    r.review_count = r.review_count or extract_review_count(text)
-                    # Promo from card if not already captured
+    async def _dump_search_debug(self, page: Page, addr: Optional[dict], stage: str) -> None:
+        try:
+            debug_dir = Path("logs/didi_debug")
+            debug_dir.mkdir(parents=True, exist_ok=True)
+            addr_id = (addr or {}).get("id", "addr")
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            html_path = debug_dir / f"{addr_id}_{stage}_{ts}.html"
+            html_path.write_text(await page.content(), encoding="utf-8")
+            png_path = debug_dir / f"{addr_id}_{stage}_{ts}.png"
+            await page.screenshot(path=str(png_path), full_page=True)
+            log.info(f"  [DiDi] search debug dump guardado: {html_path.name}")
+        except Exception as exc:
+            log.warning(f"  [DiDi] no se pudo guardar debug search: {exc}")
+
+    async def _open_store_from_current_results(self, page: Page, r: PlatformResult) -> bool:
+        # Find McDonald's card and open it — use JS click to bypass sticky header
+        for attempt in range(4):
+            try:
+                result = await page.evaluate("""
+                    () => {
+                        const norm = (s = '') => s
+                            .normalize('NFD')
+                            .replace(/[\\u0300-\\u036f]/g, '')
+                            .toLowerCase()
+                            .replace(/[^a-z0-9]+/g, '');
+                        // Look for shop-item cards or links containing McDonald
+                        const candidates = Array.from(document.querySelectorAll(
+                            '.shop-item, a[href*="store"], a[href*="restaurant"], [data-id], div[class*="card"]'
+                        ));
+                        // Also check all anchors and divs
+                        candidates.push(...Array.from(document.querySelectorAll('a, div')));
+                        const seen = new Set();
+                        for (const el of candidates) {
+                            if (seen.has(el)) continue;
+                            seen.add(el);
+                            if (!el.isConnected || el.offsetParent === null) continue;
+                            const text = norm(el.innerText || el.textContent || '');
+                            if (!text.includes('mcdonald')) continue;
+                            // Skip if it's a tiny element (just text node) — we want the card container
+                            const rect = el.getBoundingClientRect();
+                            if (rect.width < 50 || rect.height < 30) continue;
+                            const token = `ci-mc-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+                            el.setAttribute('data-ci-mc-card', token);
+                            // Check for href first (best way to navigate)
+                            const href = el.getAttribute('href') || el.querySelector('a')?.getAttribute('href') || '';
+                            // Extract card info
+                            return {
+                                text: (el.innerText || '').substring(0, 200),
+                                href: href,
+                                x: rect.left + rect.width / 2,
+                                y: rect.top + rect.height / 2,
+                                token,
+                            };
+                        }
+                        return null;
+                    }
+                """)
+                if result:
+                    card_text = result.get("text", "")
+                    log.info(f"  [DiDi] found McDonald's card: {card_text[:80]}")
+
+                    # Extract info from card
+                    r.restaurant_name = card_text[:60]
+                    r.rating = r.rating or extract_rating(card_text)
+                    r.eta_min = r.eta_min or extract_eta(card_text)
+                    r.delivery_fee = r.delivery_fee or extract_delivery_fee(card_text)
+                    r.review_count = r.review_count or extract_review_count(card_text)
                     if not r.promo_general_pct:
-                        r.promo_general_pct = extract_promo(text)
+                        r.promo_general_pct = extract_promo(card_text)
 
-                    href = ""
-                    try:
-                        href = await card.get_attribute("href") or ""
-                    except Exception:
-                        pass
-                    try:
-                        if href:
-                            if href.startswith("http"):
-                                await page.goto(href, wait_until="domcontentloaded", timeout=30000)
-                            else:
-                                base = page.url.split("/food/")[0] if "/food/" in page.url else "https://www.didi-food.com"
-                                await page.goto(f"{base}{href}", wait_until="domcontentloaded", timeout=30000)
+                    href = result.get("href", "")
+                    if href:
+                        # Navigate directly via href — most reliable
+                        if href.startswith("http"):
+                            await page.goto(href, wait_until="domcontentloaded", timeout=30000)
                         else:
-                            await card.click()
+                            base = page.url.split("/food/")[0] if "/food/" in page.url else "https://www.didi-food.com"
+                            await page.goto(f"{base}{href}", wait_until="domcontentloaded", timeout=30000)
                         await delay(3, 4)
                         return True
-                    except Exception as e:
-                        log.warning(f"  [DiDi] failed to open store card: {e}")
-                        continue
+                    else:
+                        # No href — first try clicking the tagged card directly to bypass sticky headers
+                        token = result.get("token")
+                        clicked = False
+                        if token:
+                            try:
+                                clicked = await page.evaluate(
+                                    """
+                                    (token) => {
+                                        const sel = `[data-ci-mc-card="${token}"]`;
+                                        const el = document.querySelector(sel);
+                                        if (el) {
+                                            el.scrollIntoView({behavior: 'auto', block: 'center'});
+                                            el.click();
+                                            return true;
+                                        }
+                                        return false;
+                                    }
+                                    """,
+                                    token,
+                                )
+                            except Exception:
+                                clicked = False
+                        if not clicked:
+                            # Fall back to clicking by screen coordinates (with sticky header risk)
+                            clicked = await page.evaluate("""
+                                (coords) => {
+                                    const el = document.elementFromPoint(coords.x, coords.y);
+                                    if (el) {
+                                        let target = el;
+                                        for (let i = 0; i < 5; i++) {
+                                            if (target.tagName === 'A' || target.onclick || target.getAttribute('data-id')) {
+                                                target.click();
+                                                return true;
+                                            }
+                                            target = target.parentElement;
+                                            if (!target) break;
+                                        }
+                                        el.click();
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                            """, {"x": result["x"], "y": result["y"]})
+                        if clicked:
+                            await delay(3, 4)
+                            return True
+            except Exception as e:
+                log.warning(f"  [DiDi] store search attempt {attempt+1} failed: {e}")
+
             await delay(1, 2)
-        # Fallback: click any McDonald's element that passes the blacklist
+
+        # Fallback: click any McDonald's element via JS
         if await self._click_keyword_store(page):
             return True
+        return False
+
+    async def _search_and_open_store(self, page: Page, r: PlatformResult, addr: Optional[dict] = None) -> bool:
+        success, needs_enter = await self._type_search_query(page, "McDonalds")
+        if success:
+            if needs_enter:
+                try:
+                    await page.keyboard.press("Enter")
+                except Exception:
+                    pass
+                await delay(3, 5)
+
+            await self._wait_for_search_results(page)
+            # Capture search results text for promo hook ("Hasta X% dto.")
+            try:
+                search_text = await page.evaluate("() => document.body.innerText")
+                promo_m = re.search(r'[Hh]asta\s+(\d+)\s*%\s*(?:dto|desc)', search_text)
+                if promo_m:
+                    r.promo_general_pct = float(promo_m.group(1))
+                    log.info(f"  [DiDi] promo from search: {r.promo_general_pct}%")
+            except Exception:
+                pass
+
+            if await self._open_store_from_current_results(page, r):
+                return True
+
+            log.warning("  [DiDi] búsqueda manual no arrojó tarjetas de McDonald's")
+            await self._dump_search_debug(page, addr, "search_ui")
+
+        # Manual search failed or couldn't type — try direct search URL
+        if await self._open_search_results_direct(page, "McDonalds", addr):
+            await self._wait_for_search_results(page)
+            if await self._open_store_from_current_results(page, r):
+                return True
+            log.warning("  [DiDi] búsqueda directa tampoco encontró McDonald's")
+            await self._dump_search_debug(page, addr, "search_direct")
+        else:
+            log.warning("  [DiDi] no se pudo abrir la búsqueda directa de McDonald's")
+
         return False
 
     async def _click_category_tabs_and_collect(self, page: Page) -> str:
@@ -1998,7 +2783,10 @@ class DiDiFoodScraper:
             clicked = False
             if tab["mode"] == "coords":
                 try:
-                    await page.mouse.click(tab["x"], tab["y"])
+                    try:
+                        await page.touchscreen.tap(tab["x"], tab["y"])
+                    except Exception:
+                        await page.mouse.click(tab["x"], tab["y"])
                     clicked = True
                 except Exception as e:
                     log.warning(f"  [DiDi] failed to click tab '{label}': {e}")
@@ -2030,16 +2818,126 @@ class DiDiFoodScraper:
 
         return "\n".join(all_text_parts)
 
+    async def _add_products_to_cart(self, page: Page, products: list) -> float | None:
+        """After finding products, add them to cart and tap 'Ver carrito'
+        to capture the real subtotal from DiDi's cart view."""
+        if not products:
+            return None
+
+        # Scroll back to top to find product cards
+        try:
+            await page.evaluate("window.scrollTo(0, 0)")
+            await asyncio.sleep(0.5)
+        except Exception:
+            pass
+
+        added = 0
+        for prod in products:
+            prod_name_lower = prod.name.lower()
+            # Find "Agregar" or "+" button near the product
+            try:
+                btn_coords = await page.evaluate("""
+                    (prodName) => {
+                        const norm = (s = '') => s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase();
+                        const target = norm(prodName);
+                        const els = Array.from(document.querySelectorAll('div, span, h3, h4, p'));
+                        for (const el of els) {
+                            if (!el.isConnected || el.offsetParent === null) continue;
+                            const text = norm(el.innerText || el.textContent || '');
+                            if (!text.includes(target)) continue;
+                            let container = el.parentElement;
+                            for (let i = 0; i < 5 && container; i++) {
+                                const btns = container.querySelectorAll('button, [role="button"], div[class*="add" i], span[class*="add" i]');
+                                for (const btn of btns) {
+                                    const btnText = norm(btn.innerText || btn.textContent || '');
+                                    if (btnText.includes('agregar') || btnText === '+' || btnText.includes('anadir')
+                                        || btnText.includes('añadir')) {
+                                        const rect = btn.getBoundingClientRect();
+                                        if (rect.width > 0 && rect.height > 0) {
+                                            return { x: rect.left + rect.width/2, y: rect.top + rect.height/2 };
+                                        }
+                                    }
+                                }
+                                container = container.parentElement;
+                            }
+                            break;
+                        }
+                        return null;
+                    }
+                """, prod_name_lower)
+                if btn_coords:
+                    try:
+                        await page.touchscreen.tap(btn_coords["x"], btn_coords["y"])
+                    except Exception:
+                        await page.mouse.click(btn_coords["x"], btn_coords["y"])
+                    added += 1
+                    log.info(f"  [DiDi] added to cart: {prod.name}")
+                    await asyncio.sleep(1)
+            except Exception:
+                continue
+
+        if added == 0:
+            log.info("  [DiDi] no products added to cart — skipping cart view")
+            return None
+
+        await asyncio.sleep(1)
+
+        # Tap "Ver carrito" button at bottom
+        cart_keywords = ["ver carrito", "ver pedido", "ir al carrito"]
+        cart_tapped = False
+        for kw in cart_keywords:
+            try:
+                loc = page.locator(f'text=/{kw}/i').first
+                if await loc.count() > 0:
+                    try:
+                        await loc.tap()
+                    except Exception:
+                        await loc.click(force=True)
+                    cart_tapped = True
+                    log.info(f"  [DiDi] tapped '{kw}'")
+                    break
+            except Exception:
+                continue
+
+        if not cart_tapped:
+            cart_tapped = await self._click_by_keywords(page, cart_keywords)
+
+        if not cart_tapped:
+            log.info("  [DiDi] no 'Ver carrito' button found")
+            return None
+
+        await asyncio.sleep(2)
+
+        # Extract subtotal from cart view
+        try:
+            cart_text = await page.evaluate("() => document.body.innerText")
+            subtotal_m = re.search(r'[Ss]ubtotal\s*\$?\s*([\d,]+(?:\.\d{1,2})?)', cart_text)
+            if subtotal_m:
+                val = float(subtotal_m.group(1).replace(",", ""))
+                log.info(f"  [DiDi] cart subtotal: ${val}")
+                return val
+            total_m = re.search(r'[Tt]otal\s*\$?\s*([\d,]+(?:\.\d{1,2})?)', cart_text)
+            if total_m:
+                val = float(total_m.group(1).replace(",", ""))
+                log.info(f"  [DiDi] cart total: ${val}")
+                return val
+        except Exception:
+            pass
+
+        return None
+
     async def scrape(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> PlatformResult:
         """DiDi Food scraping flow:
         1. Load entry URL (with address pre-encoded in pl= param)
         2. Login: phone + terms + Siguiente
         3. WAIT for user to enter OTP code manually (SMS verification)
         4. After OTP: user lands on restaurant feed
-        5. Search for McDonald's in the search bar (top of page)
-        6. From search results: capture promo hook, rating, review count
-        7. Click on McDonald's restaurant
-        8. Inside restaurant: capture ETA, delivery fee, prices via tab navigation
+        5. Set address in top bar (if not already set by URL)
+        6. Tap search icon → search for McDonald's
+        7. From search results: capture promo hook, rating, review count
+        8. Click on McDonald's restaurant
+        9. Inside restaurant: capture ETA, delivery fee, prices via tab navigation
+        10. Add products to cart → tap 'Ver carrito' → capture subtotal
         """
         r = PlatformResult(platform=self.PLATFORM)
         try:
@@ -2099,16 +2997,19 @@ class DiDiFoodScraper:
             # Try setting address — but the entry URL already has it encoded
             # in the pl= param, so if we can't confirm it via UI that's OK.
             # Do NOT abort here — just log and continue to search.
-            addr_set = await self._set_address(page, addr)
+            addr_set = await self._set_address(page, addr, force_modal=True)
             if not addr_set:
-                log.info("  [DiDi] no se confirmo direccion en UI — continuamos (la URL ya la tiene)")
+                r.status = "error"
+                r.error_detail = "No se pudo cambiar la dirección en DiDi"
+                log.warning("  [DiDi] no se pudo confirmar la dirección — abortamos")
+                return r
 
             if take_shots:
                 r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "feed", sdir)
 
             # ── 4. Search for McDonald's in the search bar ──
             # Do NOT scroll the feed — go straight to search
-            if not await self._search_and_open_store(page, r):
+            if not await self._search_and_open_store(page, r, addr):
                 r.status = "partial_no_store"
                 log.warning("  [DiDi] no McDonalds store found")
                 return r
@@ -2153,6 +3054,16 @@ class DiDiFoodScraper:
             r.review_count = r.review_count or extract_review_count(full_text)
 
             log.info(f"  [DiDi] products={len(r.products)} fee={r.delivery_fee} eta={r.eta_min} promo={r.promo_general_pct}%")
+
+            # ── 10. Add to cart and capture subtotal ──
+            if r.products:
+                try:
+                    cart_subtotal = await self._add_products_to_cart(page, r.products)
+                    if cart_subtotal and cart_subtotal > 0:
+                        r.subtotal = cart_subtotal
+                        log.info(f"  [DiDi] using cart subtotal: ${cart_subtotal}")
+                except Exception as e:
+                    log.warning(f"  [DiDi] cart flow failed: {e}")
 
             r.compute_financials(self.PLATFORM)
             r.status = "success" if len(r.products) > 0 else "partial"
