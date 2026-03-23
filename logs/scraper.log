@@ -465,3 +465,103 @@ Done: 1 addresses | 2 successful platform scrapes
 2026-03-22 21:10:35,755 [INFO] 
 Done: 1 addresses | 2 successful platform scrapes
 2026-03-22 21:10:35,755 [INFO] Output: data\competitive_data_20260322_210840.json
+2026-03-22 21:25:30,212 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 21:25:39,128 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 21:25:42,429 [INFO]   suggestion selected via keyboard
+2026-03-22 21:25:50,032 [INFO]   typed into input[data-qa="input"]
+2026-03-22 21:25:53,891 [INFO]   [Rappi] search results found
+2026-03-22 21:25:54,121 [INFO]   screenshot: MX_CDMX_01_rappi_search_212553.png
+2026-03-22 21:25:54,170 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 21:26:00,944 [INFO]   screenshot: MX_CDMX_01_rappi_store_212600.png
+2026-03-22 21:26:00,955 [INFO]   scroll: internal container found = True
+2026-03-22 21:26:13,942 [INFO]   scroll: done after scrolling, 427 lines captured
+2026-03-22 21:26:13,946 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (13769 chars)
+2026-03-22 21:26:13,947 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 21:26:13,948 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 21:26:13,948 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 21:26:13,948 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 21:26:13,948 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 21:26:13,950 [INFO]   product FOUND: Combo Big Mac mediano orig=99.0 disc=56.43 %=43.0
+2026-03-22 21:26:13,950 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 21:26:13,951 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 21:26:13,957 [INFO]   [Rappi] products=3 fee=0.0 eta=29 promo=51.0%
+2026-03-22 21:26:14,171 [INFO]   screenshot: MX_CDMX_01_rappi_final_212613.png
+2026-03-22 21:26:14,351 [INFO]   OK       [rappi     ] eta=29m fee=0.0 products=3 total=198.47
+2026-03-22 21:26:25,215 [INFO]   typed into #location-typeahead-home-input
+2026-03-22 21:26:28,785 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-22 21:26:28,785 [INFO]   [Uber] address set
+2026-03-22 21:26:31,894 [INFO]   [Uber] navigating to search URL
+2026-03-22 21:26:56,690 [WARNING]   [Uber] no store links in search results
+2026-03-22 21:26:57,063 [INFO]   screenshot: MX_CDMX_01_ubereats_search_212656.png
+2026-03-22 21:26:57,106 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-22 21:27:06,150 [INFO]   [Uber] restaurant name from h1: McDonald's (Plaza Galerías)
+2026-03-22 21:27:07,041 [INFO]   screenshot: MX_CDMX_01_ubereats_store_212706.png
+2026-03-22 21:27:07,075 [INFO]   scroll: internal container found = True
+2026-03-22 21:27:22,300 [INFO]   scroll: done after scrolling, 550 lines captured
+2026-03-22 21:27:22,304 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (14609 chars)
+2026-03-22 21:27:22,304 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-22 21:27:22,304 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-22 21:27:22,305 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-22 21:27:22,305 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-22 21:27:22,305 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-22 21:27:22,306 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-22 21:27:22,308 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 21:27:22,309 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 21:27:22,315 [INFO]   [Uber] products=3 fee=0.0 eta=17 promo=44.0%
+2026-03-22 21:27:22,604 [INFO]   screenshot: MX_CDMX_01_ubereats_final_212722.png
+2026-03-22 21:27:22,685 [INFO]   OK       [ubereats  ] eta=17m fee=0.0 products=3 total=256.45
+2026-03-22 21:27:27,439 [INFO] CSV: data\competitive_data_20260322_212529.csv (2 rows)
+2026-03-22 21:27:27,439 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-22 21:27:27,439 [INFO] Output: data\competitive_data_20260322_212529.json
+2026-03-22 21:36:22,223 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 21:36:31,941 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 21:36:35,095 [INFO]   suggestion selected via keyboard
+2026-03-22 21:36:42,151 [INFO]   typed into input[data-qa="input"]
+2026-03-22 21:36:45,825 [INFO]   [Rappi] search results found
+2026-03-22 21:36:46,112 [INFO]   screenshot: MX_CDMX_01_rappi_search_213645.png
+2026-03-22 21:36:46,159 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 21:36:51,791 [INFO]   screenshot: MX_CDMX_01_rappi_store_213651.png
+2026-03-22 21:36:51,812 [INFO]   scroll: internal container found = True
+2026-03-22 21:37:04,846 [INFO]   scroll: done after scrolling, 427 lines captured
+2026-03-22 21:37:04,850 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (13769 chars)
+2026-03-22 21:37:04,850 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 21:37:04,851 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 21:37:04,851 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 21:37:04,851 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 21:37:04,851 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 21:37:04,853 [INFO]   product FOUND: Combo Big Mac mediano orig=173.68 disc=99.0 %=43.0
+2026-03-22 21:37:04,853 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 21:37:04,854 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 21:37:04,860 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 21:37:05,028 [INFO]   screenshot: MX_CDMX_01_rappi_final_213704.png
+2026-03-22 21:37:05,200 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=245.3
+2026-03-22 21:37:16,508 [INFO]   typed into #location-typeahead-home-input
+2026-03-22 21:37:19,085 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-22 21:37:19,085 [INFO]   [Uber] address set
+2026-03-22 21:37:23,192 [INFO]   [Uber] navigating to search URL
+2026-03-22 21:37:45,533 [WARNING]   [Uber] no store links in search results
+2026-03-22 21:37:45,894 [INFO]   screenshot: MX_CDMX_01_ubereats_search_213745.png
+2026-03-22 21:37:45,925 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-22 21:37:54,704 [INFO]   [Uber] restaurant name from h1: McDonald's (Plaza Galerías)
+2026-03-22 21:37:55,550 [INFO]   screenshot: MX_CDMX_01_ubereats_store_213754.png
+2026-03-22 21:37:55,590 [INFO]   scroll: internal container found = True
+2026-03-22 21:38:10,153 [INFO]   scroll: done after scrolling, 522 lines captured
+2026-03-22 21:38:10,156 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (14263 chars)
+2026-03-22 21:38:10,156 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-22 21:38:10,157 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-22 21:38:10,157 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-22 21:38:10,157 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-22 21:38:10,157 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-22 21:38:10,158 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-22 21:38:10,158 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 21:38:10,159 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 21:38:10,164 [INFO]   [Uber] products=3 fee=0.0 eta=18 promo=44.0%
+2026-03-22 21:38:10,360 [INFO]   screenshot: MX_CDMX_01_ubereats_final_213810.png
+2026-03-22 21:38:10,486 [INFO]   OK       [ubereats  ] eta=18m fee=0.0 products=3 total=256.45
+2026-03-22 21:38:14,300 [INFO] CSV: data\competitive_data_20260322_213621.csv (2 rows)
+2026-03-22 21:38:14,300 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-22 21:38:14,300 [INFO] Output: data\competitive_data_20260322_213621.json

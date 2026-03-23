@@ -97,6 +97,7 @@ class PlatformResult:
     restaurant_name: str = ""
     restaurant_available: bool = False
     rating: Optional[float] = None
+    review_count: Optional[int] = None
     eta_min: Optional[int] = None
     delivery_fee: Optional[float] = None
     promo_general_pct: Optional[float] = None
@@ -348,25 +349,15 @@ def extract_products_from_text(full_text: str) -> list:
                 if prod.price_original > 0:
                     prod.discount_pct = round((1 - prod.price_discounted / prod.price_original) * 100, 1)
             elif len(prices) == 1 and disc_in_window:
-                # One price + discount % → figure out if price is original or discounted.
-                # In Rappi/UberEats card layout: name → desc → -XX% → $original_price
-                # So if the % appears BEFORE the price in the text, the price is ORIGINAL.
+                # One price + discount %:
+                # In food delivery apps, when only ONE price is visible alongside
+                # a -XX% badge, it's always the DISCOUNTED price (what the user pays).
+                # The original (struck-through) price often doesn't appear in innerText.
+                # So: shown price = discounted, original = price / (1 - disc/100).
                 p = prices[0]
-                pct_text = f"{int(disc_in_window)}%"
-                price_text = f"{p:.0f}" if p == int(p) else f"{p:.2f}"
-                pct_pos = window.find(pct_text)
-                price_pos = window.find(price_text)
-
-                if pct_pos >= 0 and price_pos >= 0 and pct_pos < price_pos:
-                    # % before price → price is original (struck-through)
-                    prod.price_original = p
-                    prod.price_discounted = round(p * (1 - disc_in_window / 100), 2)
-                    prod.discount_pct = disc_in_window
-                else:
-                    # price before % → price is discounted
-                    prod.price_original = round(p / (1 - disc_in_window / 100), 2)
-                    prod.price_discounted = p
-                    prod.discount_pct = disc_in_window
+                prod.price_discounted = p
+                prod.price_original = round(p / (1 - disc_in_window / 100), 2)
+                prod.discount_pct = disc_in_window
             else:
                 # Just one price, no discount info
                 prod.price_original = prices[0]
@@ -431,6 +422,22 @@ def extract_promo(text: str) -> Optional[float]:
         if 5 <= v <= 80:
             pcts.append(v)
     return max(pcts) if pcts else None
+
+def extract_review_count(text: str) -> Optional[int]:
+    """Extract the number of reviews/ratings from page text."""
+    patterns = [
+        r"([\d.,]+)\+?\s*(?:calificaciones|calificaci[oó]n|rese[nñ]as|ratings|opiniones)",
+        r"\(([\d.,]+)\+?\)",
+    ]
+    for p in patterns:
+        m = re.search(p, text, re.IGNORECASE)
+        if m:
+            raw = m.group(1).replace(",", "").replace(".", "")
+            try:
+                return int(raw)
+            except ValueError:
+                continue
+    return None
 
 def extract_rating(text: str) -> Optional[float]:
     patterns = [
@@ -775,6 +782,7 @@ class RappiScraper:
             r.eta_min = extract_eta(full_text)
             r.promo_general_pct = extract_promo(full_text)
             r.rating = extract_rating(full_text)
+            r.review_count = extract_review_count(full_text)
 
             log.info(f"  [Rappi] products={len(r.products)} fee={r.delivery_fee} eta={r.eta_min} promo={r.promo_general_pct}%")
 
