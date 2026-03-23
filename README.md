@@ -10,10 +10,15 @@ Sistema automatizado que recolecta precios, fees, ETAs y promociones de **Rappi,
 ```bash
 pip install -r requirements.txt
 playwright install chromium
-python main.py
+
+# Recalcula KPIs/insights con el dataset oficial
+python analysis/generate_analysis.py --source data/competitive_data_with_didi.csv
+
+# Renderiza el PDF ejecutivo con esos datos
+python analysis/generate_report_pdf.py
 ```
 
-Genera: datos mock + 7 charts + PDF ejecutivo en `output/`.
+Genera: charts PNG, `output/kpis.json`, `output/top_insights.json` y `output/Competitive_Intelligence_Rappi_MX.pdf` basados **exclusivamente** en `data/competitive_data_with_didi.csv`.
 
 ### Credenciales privadas (DiDi Food)
 
@@ -29,7 +34,9 @@ Genera: datos mock + 7 charts + PDF ejecutivo en `output/`.
 ```
 ci_rappi/
 ├── main.py                          # Punto de entrada unificado
-├── dashboard.py                     # Dashboard interactivo (Streamlit)
+├── dashboard.py                     # Dashboard histórico (Streamlit)
+├── dashboard/
+│   └── ci_dashboard.html            # Dashboard narrativo (HTML + Chart.js)
 ├── scraper/
 │   ├── competitive_scraper.py       # Scraper real (Playwright)
 │   └── generate_mock_data.py        # Plan B — datos mock calibrados
@@ -74,7 +81,7 @@ ci_rappi/
 | Top 5 Insights accionables | Generados dinamicamente desde datos |
 | 3+ visualizaciones | 7 charts (precios, operacional, descuentos, promos, geografia, engagement, radar) |
 | PDF ejecutivo | `output/Competitive_Intelligence_Rappi_MX.pdf` |
-| Dashboard interactivo | `streamlit run dashboard.py` |
+| Dashboard interactivo | `dashboard/ci_dashboard.html` (ver sección “Dashboard narrativo”) |
 
 ---
 
@@ -93,11 +100,14 @@ python main.py --real
 # Solo regenerar analisis (sobre datos existentes)
 python main.py --analysis-only
 
-# Analisis con datos mock (forzado)
-python analysis/generate_analysis.py --mock
+# Analisis replicable del entregable (CSV oficial)
+python analysis/generate_analysis.py --source data/competitive_data_with_didi.csv
 
-# Dashboard interactivo
-streamlit run dashboard.py
+# PDF con los payloads anteriores
+python analysis/generate_report_pdf.py
+
+# Dashboard narrativo (HTML)
+python -m http.server 9000  # luego abrir /dashboard/ci_dashboard.html
 
 # Modulos individuales
 python scraper/generate_mock_data.py
@@ -154,19 +164,20 @@ python analysis/generate_report_pdf.py
 
 ---
 
-## Dashboard (Streamlit)
+## Dashboard narrativo (HTML + Chart.js)
 
-```bash
-streamlit run dashboard.py
-```
+1. Inicia un servidor local desde la raiz del repo:
+	```bash
+	python -m http.server 9000
+	```
+2. Abre `http://localhost:9000/dashboard/ci_dashboard.html` en tu navegador.
+3. En la pantalla inicial, haz clic en **“Seleccionar CSV”** y carga `data/competitive_data_with_didi.csv` (es el dataset oficial del entregable).
+4. El dashboard detecta dinámicamente ciudades, zonas, plataformas y genera las 10 visualizaciones con interpretaciones escritas para cada métrica.
 
-Funcionalidades:
-- Selector de dataset (real vs mock)
-- Filtros interactivos: plataformas, ciudades, tipo de zona
-- 6 tabs: Precios, Promos, Engagement (reviews), Operacional, Costos, Geografia
-- Radar chart interactivo (Plotly)
-- Tabla de datos crudos + descarga CSV
-- Se adapta automaticamente a las plataformas con datos
+Tips:
+- Si regeneras el CSV, vuelve a cargarlo (el dashboard no hace polling).
+- El botón **Reload dataset** limpia filtros y te permite cargar otro archivo sin refrescar el navegador.
+- El header muestra la ruta del archivo para validar que estás analizando `data/competitive_data_with_didi.csv`.
 
 ---
 

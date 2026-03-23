@@ -1,0 +1,1808 @@
+[
+  {
+    "scraped_at": "2026-03-23T15:05:31.414686",
+    "address_id": "MX_CDMX_01",
+    "city": "Ciudad de Mexico",
+    "zone": "Polanco",
+    "zone_type": "Wealthy",
+    "address": "Presidente Masaryk 111, Polanco, Miguel Hidalgo, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 13,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 237.0,
+      "service_fee_estimated": 23.7,
+      "total_estimated": 260.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_01_rappi_final_150614.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Plaza Galerías)",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 15000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 159.0,
+          "discount_pct": 15.9
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 313.0,
+      "service_fee_estimated": 46.95,
+      "total_estimated": 359.95,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_01_ubereats_final_150719.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:07:30.241906",
+    "address_id": "MX_CDMX_02",
+    "city": "Ciudad de Mexico",
+    "zone": "Condesa",
+    "zone_type": "Wealthy",
+    "address": "Tamaulipas 66, Hipodromo Condesa, Cuauhtemoc, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 13,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_02_rappi_final_150813.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Sears Insurgentes",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 20000,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 109.0,
+          "discount_pct": 42.3
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 263.0,
+      "service_fee_estimated": 39.45,
+      "total_estimated": 302.45,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_02_ubereats_final_150914.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:09:24.966792",
+    "address_id": "MX_CDMX_03",
+    "city": "Ciudad de Mexico",
+    "zone": "Roma Norte",
+    "zone_type": "Wealthy",
+    "address": "Orizaba 101, Roma Norte, Cuauhtemoc, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 30,
+      "eta_min": 13,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_03_rappi_final_151009.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Sears Insurgentes",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 20000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 109.0,
+          "discount_pct": 42.3
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 263.0,
+      "service_fee_estimated": 39.45,
+      "total_estimated": 302.45,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_03_ubereats_final_151109.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:11:18.343502",
+    "address_id": "MX_CDMX_04",
+    "city": "Ciudad de Mexico",
+    "zone": "Santa Fe",
+    "zone_type": "Wealthy",
+    "address": "Av. Santa Fe 170, Santa Fe, Alvaro Obregon, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 20,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 189.23,
+          "price_discounted": 123.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 381.0,
+      "service_fee_estimated": 38.1,
+      "total_estimated": 419.1,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_04_rappi_final_151159.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Samara",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 10000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 194.0,
+          "price_discounted": 115.0,
+          "discount_pct": 40.7
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 269.0,
+      "service_fee_estimated": 40.35,
+      "total_estimated": 309.35,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_04_ubereats_final_151304.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:13:14.678247",
+    "address_id": "MX_CDMX_05",
+    "city": "Ciudad de Mexico",
+    "zone": "Del Valle",
+    "zone_type": "Wealthy",
+    "address": "Insurgentes Sur 649, Del Valle Norte, Benito Juarez, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 25,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 189.23,
+          "price_discounted": 123.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 381.0,
+      "service_fee_estimated": 38.1,
+      "total_estimated": 419.1,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_05_rappi_final_151400.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Patriotismo",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 15000,
+      "eta_min": 15,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 48.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 190.0,
+          "price_discounted": 99.0,
+          "discount_pct": 47.9
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": 109.0,
+          "discount_pct": 45.2
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 267.0,
+      "service_fee_estimated": 40.05,
+      "total_estimated": 307.05,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_05_ubereats_final_151503.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:15:12.550051",
+    "address_id": "MX_CDMX_06",
+    "city": "Ciudad de Mexico",
+    "zone": "Iztapalapa",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Ermita Iztapalapa 4001, Iztapalapa, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_06_rappi_final_151555.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Ermita Las Torres",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 15000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 69.0,
+          "discount_pct": 63.5
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 223.0,
+      "service_fee_estimated": 33.45,
+      "total_estimated": 256.45,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_06_ubereats_final_151700.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:17:07.118856",
+    "address_id": "MX_CDMX_07",
+    "city": "Ciudad de Mexico",
+    "zone": "Ecatepec",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Central 205, Ciudad Azteca, Ecatepec, Estado de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": null,
+      "review_count": 45,
+      "eta_min": 20,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 55.0,
+      "service_fee_estimated": 5.5,
+      "total_estimated": 60.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_07_rappi_final_151747.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Aragon",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 4000,
+      "eta_min": 29,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 159.0,
+          "discount_pct": 15.9
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 313.0,
+      "service_fee_estimated": 46.95,
+      "total_estimated": 359.95,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_07_ubereats_final_151858.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:19:06.875395",
+    "address_id": "MX_CDMX_08",
+    "city": "Ciudad de Mexico",
+    "zone": "Tepito",
+    "zone_type": "Non Wealthy",
+    "address": "Peralvillo 45, Morelos, Cuauhtemoc, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 13,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_08_rappi_final_151949.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Palma",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 10000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 149.0,
+          "price_discounted": 69.0,
+          "discount_pct": 53.7
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 223.0,
+      "service_fee_estimated": 33.45,
+      "total_estimated": 256.45,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_08_ubereats_final_152052.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:21:03.607023",
+    "address_id": "MX_CDMX_09",
+    "city": "Ciudad de Mexico",
+    "zone": "Tlalpan",
+    "zone_type": "Non Wealthy",
+    "address": "Insurgentes Sur 4111, La Joya, Tlalpan, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.5,
+      "review_count": 50,
+      "eta_min": 25,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_09_rappi_final_152144.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Gran Sur",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 15000,
+      "eta_min": 18,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 99.0,
+          "discount_pct": 43.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 139.0,
+          "discount_pct": 26.5
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 293.0,
+      "service_fee_estimated": 43.95,
+      "total_estimated": 336.95,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_09_ubereats_final_152246.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:22:57.337694",
+    "address_id": "MX_GDL_01",
+    "city": "Guadalajara",
+    "zone": "Providencia",
+    "zone_type": "Wealthy",
+    "address": "Av. Providencia 2400, Providencia, Guadalajara, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 4.1,
+      "review_count": 30,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 50.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 50.0,
+      "service_fee_estimated": 5.0,
+      "total_estimated": 55.0,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_01_rappi_final_152339.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Midtown",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 4000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 175.0,
+          "price_discounted": 70.0,
+          "discount_pct": 60.0
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_01_ubereats_final_152438.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:24:48.670425",
+    "address_id": "MX_GDL_02",
+    "city": "Guadalajara",
+    "zone": "Chapalita",
+    "zone_type": "Wealthy",
+    "address": "Av. Guadalupe 1023, Chapalita, Guadalajara, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 47.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 7.0,
+      "total_estimated": 77.0,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_02_rappi_final_152531.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's La Gran Plaza",
+      "restaurant_available": true,
+      "rating": 4.7,
+      "review_count": 3000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_02_ubereats_final_152639.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:26:48.558165",
+    "address_id": "MX_GDL_03",
+    "city": "Guadalajara",
+    "zone": "Zapopan",
+    "zone_type": "Wealthy",
+    "address": "Av. Hidalgo 151, Centro, Zapopan, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 47.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 7.0,
+      "total_estimated": 77.0,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_03_rappi_final_152735.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Patria",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 7000,
+      "eta_min": 15,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_03_ubereats_final_152839.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:28:49.084962",
+    "address_id": "MX_GDL_04",
+    "city": "Guadalajara",
+    "zone": "Andares",
+    "zone_type": "Wealthy",
+    "address": "Blvd. Puerta de Hierro 4965, Puerta de Hierro, Zapopan, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 47.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 7.0,
+      "total_estimated": 77.0,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_04_rappi_final_152936.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Patria",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 7000,
+      "eta_min": 16,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_04_ubereats_final_153039.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:30:49.968013",
+    "address_id": "MX_GDL_05",
+    "city": "Guadalajara",
+    "zone": "Oblatos",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Oblatos 3456, Oblatos, Guadalajara, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "partial",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": null,
+      "review_count": null,
+      "eta_min": null,
+      "delivery_fee": null,
+      "promo_general_pct": null,
+      "products": [],
+      "subtotal": null,
+      "service_fee_estimated": null,
+      "total_estimated": null,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_05_rappi_final_153121.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Independencia",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 10000,
+      "eta_min": 18,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_05_ubereats_final_153232.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:32:41.576002",
+    "address_id": "MX_GDL_06",
+    "city": "Guadalajara",
+    "zone": "Las Juntas",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Las Torres 2000, Las Juntas, San Pedro Tlaquepaque, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 15,
+      "eta_min": 13,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 47.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 7.0,
+      "total_estimated": 77.0,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_06_rappi_final_153358.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Plaza Forum Tlaquepaque",
+      "restaurant_available": true,
+      "rating": 4.7,
+      "review_count": 3000,
+      "eta_min": 48,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_06_ubereats_final_153501.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:35:10.369081",
+    "address_id": "MX_GDL_07",
+    "city": "Guadalajara",
+    "zone": "Tonala",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Tonala 456, Centro, Tonala, Jalisco",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_07_rappi_final_153553.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Avenida Río Nilo",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 10000,
+      "eta_min": 17,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 70.0,
+      "service_fee_estimated": 10.5,
+      "total_estimated": 80.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_07_ubereats_final_153703.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:37:11.127549",
+    "address_id": "MX_MTY_01",
+    "city": "Monterrey",
+    "zone": "San Pedro",
+    "zone_type": "Wealthy",
+    "address": "Av. Vasconcelos 500, San Pedro Garza Garcia, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 175,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 203.08,
+          "price_discounted": 132.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": null,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 65.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 197.0,
+      "service_fee_estimated": 19.7,
+      "total_estimated": 216.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_01_rappi_final_153754.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Gomez Morin",
+      "restaurant_available": true,
+      "rating": 4.3,
+      "review_count": 9000,
+      "eta_min": 11,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 51.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 204.0,
+          "price_discounted": 99.0,
+          "discount_pct": 51.5
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 129.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 65.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 293.0,
+      "service_fee_estimated": 43.95,
+      "total_estimated": 336.95,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_01_ubereats_final_153859.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:39:07.682665",
+    "address_id": "MX_MTY_02",
+    "city": "Monterrey",
+    "zone": "Valle",
+    "zone_type": "Wealthy",
+    "address": "Av. del Valle 100, Del Valle, San Pedro Garza Garcia, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 175,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 203.08,
+          "price_discounted": 132.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": null,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 65.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 197.0,
+      "service_fee_estimated": 19.7,
+      "total_estimated": 216.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_02_rappi_final_153949.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Gomez Morin",
+      "restaurant_available": true,
+      "rating": 4.3,
+      "review_count": 9000,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 51.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 204.0,
+          "price_discounted": 99.0,
+          "discount_pct": 51.5
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 129.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 65.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 293.0,
+      "service_fee_estimated": 43.95,
+      "total_estimated": 336.95,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_02_ubereats_final_154056.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:41:03.880829",
+    "address_id": "MX_MTY_03",
+    "city": "Monterrey",
+    "zone": "Cumbres",
+    "zone_type": "Wealthy",
+    "address": "Av. Via Cumbres 1000, Cumbres, Monterrey, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.6,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 189.23,
+          "price_discounted": 123.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 381.0,
+      "service_fee_estimated": 38.1,
+      "total_estimated": 419.1,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_03_rappi_final_154145.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "partial_no_store",
+      "restaurant_name": "",
+      "restaurant_available": false,
+      "rating": null,
+      "review_count": null,
+      "eta_min": null,
+      "delivery_fee": null,
+      "promo_general_pct": null,
+      "products": [],
+      "subtotal": null,
+      "service_fee_estimated": null,
+      "total_estimated": null,
+      "screenshot_path": "",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:42:29.171195",
+    "address_id": "MX_MTY_04",
+    "city": "Monterrey",
+    "zone": "Tecnologico",
+    "zone_type": "Wealthy",
+    "address": "Av. Eugenio Garza Sada 2501, Tecnologico, Monterrey, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.4,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 193.85,
+          "price_discounted": 126.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": null,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 185.0,
+      "service_fee_estimated": 18.5,
+      "total_estimated": 203.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_04_rappi_final_154313.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Garza Sada",
+      "restaurant_available": true,
+      "rating": 4.3,
+      "review_count": 15000,
+      "eta_min": 13,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 49.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 194.0,
+          "price_discounted": 99.0,
+          "discount_pct": 49.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": null,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 158.0,
+      "service_fee_estimated": 23.7,
+      "total_estimated": 181.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_04_ubereats_final_154418.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:44:28.172349",
+    "address_id": "MX_MTY_05",
+    "city": "Monterrey",
+    "zone": "Centrito",
+    "zone_type": "Wealthy",
+    "address": "Alfonso Reyes 2020, Contry, Monterrey, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.2,
+      "review_count": 45,
+      "eta_min": 34,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 237.0,
+      "service_fee_estimated": 23.7,
+      "total_estimated": 260.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_05_rappi_final_154509.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Garza Sada",
+      "restaurant_available": true,
+      "rating": 4.3,
+      "review_count": 15000,
+      "eta_min": 10,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 49.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 194.0,
+          "price_discounted": 99.0,
+          "discount_pct": 49.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": null,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 158.0,
+      "service_fee_estimated": 23.7,
+      "total_estimated": 181.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_05_ubereats_final_154615.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:46:24.287406",
+    "address_id": "MX_MTY_06",
+    "city": "Monterrey",
+    "zone": "Independencia",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Independencia 1500, Independencia, Monterrey, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.4,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 193.85,
+          "price_discounted": 126.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": null,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 185.0,
+      "service_fee_estimated": 18.5,
+      "total_estimated": 203.5,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_06_rappi_final_154708.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's Hidalgo",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 10000,
+      "eta_min": 16,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 135.0,
+          "price_discounted": 69.0,
+          "discount_pct": 48.9
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 124.0,
+      "service_fee_estimated": 18.6,
+      "total_estimated": 142.6,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_06_ubereats_final_154809.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:48:19.526851",
+    "address_id": "MX_MTY_07",
+    "city": "Monterrey",
+    "zone": "Apodaca",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Apodaca 300, Centro, Apodaca, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.4,
+      "review_count": 150,
+      "eta_min": 29,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 189.23,
+          "price_discounted": 123.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 381.0,
+      "service_fee_estimated": 38.1,
+      "total_estimated": 419.1,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_07_rappi_final_154900.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Plaza Citadina)",
+      "restaurant_available": true,
+      "rating": 4.4,
+      "review_count": 1000,
+      "eta_min": 24,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 80.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 190.0,
+          "price_discounted": 99.0,
+          "discount_pct": 47.9
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 200.0,
+          "price_discounted": 109.0,
+          "discount_pct": 45.5
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 267.0,
+      "service_fee_estimated": 40.05,
+      "total_estimated": 307.05,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_07_ubereats_final_155003.png",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:50:10.915150",
+    "address_id": "MX_MTY_08",
+    "city": "Monterrey",
+    "zone": "Escobedo",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Aztlan 200, Buenavista, General Escobedo, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 12,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.85,
+          "price_discounted": 113.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 357.0,
+      "service_fee_estimated": 35.7,
+      "total_estimated": 392.7,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_08_rappi_final_155051.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "partial_no_store",
+      "restaurant_name": "",
+      "restaurant_available": false,
+      "rating": null,
+      "review_count": null,
+      "eta_min": null,
+      "delivery_fee": null,
+      "promo_general_pct": null,
+      "products": [],
+      "subtotal": null,
+      "service_fee_estimated": null,
+      "total_estimated": null,
+      "screenshot_path": "",
+      "error_detail": ""
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T15:51:34.925941",
+    "address_id": "MX_MTY_09",
+    "city": "Monterrey",
+    "zone": "Guadalupe",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Benito Juarez 450, Centro, Guadalupe, Nuevo Leon",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 45,
+      "eta_min": 19,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 189.23,
+          "price_discounted": 123.0,
+          "discount_pct": 35.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 381.0,
+      "service_fee_estimated": 38.1,
+      "total_estimated": 419.1,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_09_rappi_final_155221.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's La Pastora",
+      "restaurant_available": true,
+      "rating": 4.3,
+      "review_count": 10000,
+      "eta_min": 20,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 48.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 190.0,
+          "price_discounted": 99.0,
+          "discount_pct": 47.9
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 199.0,
+          "price_discounted": 129.0,
+          "discount_pct": 35.2
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 59.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 287.0,
+      "service_fee_estimated": 43.05,
+      "total_estimated": 330.05,
+      "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_09_ubereats_final_155322.png",
+      "error_detail": ""
+    }
+  }
+]
