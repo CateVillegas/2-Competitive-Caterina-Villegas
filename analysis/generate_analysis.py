@@ -689,6 +689,7 @@ def compute_kpis(df, plats):
             "coke_disc_avg": sub["coke_disc"].mean(),
             "coke_disc_pct_avg": sub["coke_disc_pct"].mean(),
             "avg_discount_depth": avg_disc_depth,
+            "combo_disc_zone_pct": sub["combo_disc_pct"].notna().mean() * 100,
             "total_avg": sub["total_estimated"].mean(),
             "service_fee_pct": SERVICE_FEE_RATES.get(p, 10),
         }

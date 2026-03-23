@@ -15,11 +15,12 @@ python main.py
 
 Genera: datos mock + 7 charts + PDF ejecutivo en `output/`.
 
-### Credenciales privadas (DiDi)
+### Credenciales privadas (DiDi Food)
 
-1. Copia el archivo `.env.example` a `.env` (ya está en `.gitignore`).
-2. Completa `DIDI_EMAIL`, `DIDI_PASSWORD`, `DIDI_PHONE` y `DIDI_PHONE_COUNTRY` (prefijo, por defecto `+54`). Si necesitás forzar otro feed, agrega `DIDI_BASE_URL`.
-3. El scraper carga esas variables automáticamente antes de iniciar Playwright, así tus datos sensibles nunca se guardan en el repositorio.
+1. Copia el archivo `.env.example` a `.env` (ya esta en `.gitignore`).
+2. Completa `DIDI_PHONE` y `DIDI_PHONE_COUNTRY` (prefijo, por defecto `+54`).
+3. **Importante**: DiDi Food requiere verificacion por SMS en cada sesion. Al ejecutar el scraper con `--visible`, el navegador se pausara en la pantalla de codigo de verificacion y esperara hasta 2 minutos a que ingreses el codigo manualmente. Este paso no se puede automatizar.
+4. El scraper carga las variables de `.env` automaticamente antes de iniciar Playwright.
 
 ---
 
@@ -54,7 +55,7 @@ ci_rappi/
 |---|---|
 | Rappi scraper | Funcional |
 | Uber Eats scraper | Funcional |
-| DiDi Food scraper | Estructurado (requiere mobile emulation + VPN MX) |
+| DiDi Food scraper | Funcional (requiere login manual con OTP por SMS) |
 | Precio de 3 productos comparables | Combo Big Mac, HDQ, Coca-Cola mediana |
 | Delivery fee | Capturado por plataforma |
 | Service fee estimado | Rappi 10%, Uber Eats 15%, DiDi 8% |
@@ -71,7 +72,7 @@ ci_rappi/
 |---|---|
 | Analisis comparativo estructurado | 7 dimensiones analizadas |
 | Top 5 Insights accionables | Generados dinamicamente desde datos |
-| 3+ visualizaciones | 7 charts (delivery fee, ETA, precios, fees, promos, geo, radar) |
+| 3+ visualizaciones | 7 charts (precios, operacional, descuentos, promos, geografia, engagement, radar) |
 | PDF ejecutivo | `output/Competitive_Intelligence_Rappi_MX.pdf` |
 | Dashboard interactivo | `streamlit run dashboard.py` |
 
@@ -120,6 +121,7 @@ python analysis/generate_report_pdf.py
 | `total_estimated` | Costo total al usuario |
 | `eta_min` | Tiempo de entrega estimado (minutos) |
 | `rating` | Calificacion del restaurante |
+| `review_count` | Cantidad de resenas/calificaciones del restaurante |
 
 ---
 
@@ -140,11 +142,15 @@ python analysis/generate_report_pdf.py
 - Misma logica de extraccion de texto que Rappi
 
 ### DiDi Food
-- Emulación mobile iPhone (390x844) para evitar el gate de escritorio.
-- Login obligatorio: usa `DIDI_EMAIL`/`DIDI_PASSWORD` o `DIDI_PHONE` y setea automáticamente `DIDI_PHONE_COUNTRY` antes de enviar el OTP.
-- Acepta términos y cambia el país del teléfono igual que en el flujo manual del usuario.
-- Permite configurar `DIDI_BASE_URL` por `.env` y valida que no sea un dominio estacionado.
-- Maneja address picker, búsqueda de "McDonald's" y fallback a stores destacados cuando DiDi no devuelve resultados directos.
+- Emulacion mobile iPhone (390x844) — DiDi requiere user-agent mobile
+- **Login obligatorio con verificacion SMS**: el scraper ingresa el telefono, acepta terminos y condiciones, y hace click en "Siguiente". Luego **espera hasta 2 minutos** a que el usuario ingrese manualmente el codigo OTP que llega por SMS. Este paso no se puede automatizar.
+- Configurable via `.env`: `DIDI_PHONE`, `DIDI_PHONE_COUNTRY` (+54 por defecto)
+- Entry URL con direccion pre-cargada via parametro `pl=` (Base64)
+- Busca McDonald's en la barra de busqueda (icono de lupa en la parte superior del feed)
+- Captura promo hook ("Hasta X% dto.") desde los resultados de busqueda antes de entrar al restaurante
+- Dentro del restaurante, navega las pestanas de categorias (Mc para Todos, A la Carta, Bebidas) para encontrar todos los productos
+- Extrae rating y review count del formato "4.2(10000+)"
+- Debe ejecutarse con `--visible` para poder ingresar el codigo OTP
 
 ---
 
@@ -157,7 +163,7 @@ streamlit run dashboard.py
 Funcionalidades:
 - Selector de dataset (real vs mock)
 - Filtros interactivos: plataformas, ciudades, tipo de zona
-- 5 tabs: Precios, Delivery & ETA, Fees & Total, Promos, Geografia
+- 6 tabs: Precios, Promos, Engagement (reviews), Operacional, Costos, Geografia
 - Radar chart interactivo (Plotly)
 - Tabla de datos crudos + descarga CSV
 - Se adapta automaticamente a las plataformas con datos
@@ -184,7 +190,7 @@ openpyxl>=3.1        # Excel export
 - Rate limiting: 2-8s aleatorios entre requests
 - User-agents reales (sin fingerprints de automatizacion)
 - Anti-webdriver detection (oculta `navigator.webdriver`)
-- Solo datos publicos visibles sin autenticacion
+- Solo datos publicos visibles (DiDi requiere autenticacion pero los datos son publicos)
 - Para produccion: validar con Legal antes de automatizar
 
 ---
@@ -193,6 +199,7 @@ openpyxl>=3.1        # Excel export
 
 1. **Snapshot temporal** — precios y ETAs varian por hora/dia
 2. **Service fee estimado** — no siempre visible antes del checkout
-3. **DiDi Food DNS** — solo resuelve desde IPs mexicanas (geofencing)
-4. **Uber Eats Cloudflare** — requiere proxy residencial para uso intensivo
-5. **Descuentos Rappi** — aparecen inconsistentemente en la pagina (depende de la sesion)
+3. **DiDi Food requiere sesion activa** — necesitas tener una cuenta de DiDi Food con numero de telefono verificado. Cada vez que se ejecuta el scraper, DiDi pide verificacion por SMS (codigo OTP) que debe ingresarse manualmente en el navegador. No hay forma de automatizar este paso. El scraper debe ejecutarse con `--visible` para DiDi.
+4. **DiDi Food DNS** — solo resuelve desde IPs mexicanas (geofencing)
+5. **Uber Eats Cloudflare** — requiere proxy residencial para uso intensivo
+6. **Descuentos Rappi** — aparecen inconsistentemente en la pagina (depende de la sesion)

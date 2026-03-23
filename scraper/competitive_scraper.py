@@ -444,17 +444,27 @@ def extract_promo(text: str) -> Optional[float]:
     return max(pcts) if pcts else None
 
 def extract_review_count(text: str) -> Optional[int]:
-    """Extract the number of reviews/ratings from page text."""
+    """Extract the number of reviews/ratings from page text.
+    Formats:
+      - Rappi/Uber: "15,000+ calificaciones", "1500 calificaciones"
+      - DiDi: "4.2(10000+)" — rating followed by review count in parens
+      - Generic: "(3000+)" near rating context
+    """
     patterns = [
         r"([\d.,]+)\+?\s*(?:calificaciones|calificaci[oó]n|rese[nñ]as|ratings|opiniones)",
-        r"\(([\d.,]+)\+?\)",
+        # DiDi: rating(count+) e.g. "4.2(10000+)"
+        r"\d\.\d\s*\(\s*([\d.,]+)\+?\s*\)",
+        # Generic: parenthesized large number with + (likely review count)
+        r"\(\s*([\d.,]{3,})\+?\s*\)",
     ]
     for p in patterns:
         m = re.search(p, text, re.IGNORECASE)
         if m:
             raw = m.group(1).replace(",", "").replace(".", "")
             try:
-                return int(raw)
+                val = int(raw)
+                if val >= 5:  # filter out tiny numbers that are likely not review counts
+                    return val
             except ValueError:
                 continue
     return None
@@ -610,7 +620,9 @@ class RappiScraper:
     SEARCH_INPUT_SELS = [
         'input[placeholder*="Comida" i]',
         'input[placeholder*="restaurantes" i]',
-        'input[placeholder*="Buscar" i]',
+        'input[placeholder*="¿" i]',
+        'input[placeholder*="busca" i]',
+        'input[placeholder*="comer" i]',
         'input[data-qa="input"]',
         'input[type="search"]',
         'input[role="searchbox"]',
@@ -1062,9 +1074,14 @@ class DiDiFoodScraper:
     ]
     SEARCH_INPUTS = [
         'input[placeholder*="tacos" i]',
+        'input[placeholder*="hamburguesa" i]',
         'input[placeholder*="buscar" i]',
+        'input[placeholder*="busca" i]',
         'input[placeholder*="¿" i]',
+        'input[placeholder*="Qu" i]',
         'input[type="search"]',
+        'input[aria-label*="buscar" i]',
+        'input[aria-label*="search" i]',
     ]
     STORE_CARD_SELS = [
         'a:has-text("McDonald")',
@@ -1167,7 +1184,39 @@ class DiDiFoodScraper:
             await delay(2, 3)
         return clicked
 
+    async def _wait_for_otp(self, page: Page, timeout_seconds=120) -> bool:
+        """Wait for the user to manually enter the OTP verification code.
+        DiDi sends an SMS code on every login — this step cannot be automated.
+        The scraper pauses here and polls until the OTP screen disappears."""
+        log.info("  [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***")
+        log.info(f"  [DiDi] Esperando hasta {timeout_seconds}s para que ingreses el codigo...")
+
+        for i in range(timeout_seconds // 3):
+            await asyncio.sleep(3)
+            # Check if we moved past the OTP screen
+            if not await self._detect_otp_prompt(page):
+                log.info("  [DiDi] OTP completado, continuando...")
+                return True
+            # Check if a new page opened (redirect after OTP)
+            page = await self._switch_to_latest_page(page)
+            if not await self._detect_otp_prompt(page):
+                log.info("  [DiDi] OTP completado (nueva pagina), continuando...")
+                return True
+            if i % 10 == 0 and i > 0:
+                log.info(f"  [DiDi] Aun esperando OTP... ({i*3}s)")
+
+        log.warning("  [DiDi] Timeout esperando OTP")
+        return False
+
     async def _ensure_logged_in(self, page: Page) -> Page:
+        """Login flow for DiDi Food:
+        1. Click login trigger
+        2. Set country code (+54)
+        3. Enter phone number
+        4. Check terms & conditions checkbox
+        5. Click 'Siguiente' button
+        6. WAIT for user to manually enter OTP code (SMS verification)
+        """
         for attempt in range(3):
             trigger_clicked = await self._click_by_keywords(page, self.LOGIN_TRIGGER_KEYWORDS)
             if not trigger_clicked:
@@ -1177,8 +1226,12 @@ class DiDiFoodScraper:
                 page = await self._switch_to_latest_page(page)
             form_filled = await self._handle_login_if_present(page)
             if form_filled:
+                # Check if OTP screen appeared — wait for user to enter code
                 if await self._detect_otp_prompt(page):
-                    raise RuntimeError("DiDi requiere un código de verificación (OTP)")
+                    otp_ok = await self._wait_for_otp(page, timeout_seconds=120)
+                    if not otp_ok:
+                        raise RuntimeError("Timeout esperando codigo OTP manual")
+                    page = await self._switch_to_latest_page(page)
                 await delay(2, 3)
                 page = await self._switch_to_latest_page(page)
                 return page
@@ -1216,6 +1269,13 @@ class DiDiFoodScraper:
             return False
 
     async def _handle_login_if_present(self, page: Page) -> bool:
+        """Handles DiDi login form:
+        1. Detect phone input (primary flow)
+        2. Set country code to +54
+        3. Enter phone number
+        4. Check the terms & conditions checkbox/circle
+        5. Click 'Siguiente' (next) button
+        """
         email_present = False
         for sel in self.LOGIN_EMAIL_SELS:
             try:
@@ -1248,7 +1308,8 @@ class DiDiFoodScraper:
                 log.warning("  [DiDi] login requiere DIDI_PHONE (define variables de entorno)")
                 return False
             await self._set_phone_country(page)
-            filled = await find_and_fill_input(page, self.LOGIN_PHONE_SELS, self.phone, use_keyboard=False)
+            await delay(0.5, 1)
+            filled = await find_and_fill_input(page, self.LOGIN_PHONE_SELS, self.phone, use_keyboard=True)
             needs_terms = True
         else:
             return False
@@ -1257,22 +1318,39 @@ class DiDiFoodScraper:
             log.warning("  [DiDi] no se pudo completar el formulario de login")
             return False
 
+        # Accept terms & conditions checkbox (required before clicking Siguiente)
         if needs_terms:
+            await delay(0.5, 1)
             terms_ok = await self._accept_terms(page)
             if not terms_ok:
-                log.warning("  [DiDi] no se pudo aceptar Términos y Condiciones")
-                return False
+                log.warning("  [DiDi] no se pudo aceptar Terminos y Condiciones, intentando de todas formas...")
+            else:
+                log.info("  [DiDi] terminos y condiciones aceptados")
+            await delay(0.3, 0.5)
 
-        for sel in self.LOGIN_BUTTON_SELS:
+        # Click 'Siguiente' / submit button
+        siguiente_sels = [
+            'button:has-text("Siguiente")',
+            'button:has-text("siguiente")',
+        ] + self.LOGIN_BUTTON_SELS
+        for sel in siguiente_sels:
             try:
                 btn = page.locator(sel).first
                 if await btn.count() > 0:
                     await btn.click()
-                    log.info("  [DiDi] submitted login form")
+                    log.info(f"  [DiDi] clicked submit/siguiente button: {sel}")
                     await delay(2, 4)
                     return True
             except Exception:
                 continue
+
+        # Fallback: click by keyword
+        if await self._click_by_keywords(page, ["Siguiente", "siguiente", "Continuar", "continuar"]):
+            log.info("  [DiDi] clicked siguiente via keyword")
+            await delay(2, 4)
+            return True
+
+        log.warning("  [DiDi] no se encontro boton Siguiente")
         return False
 
     async def _set_phone_country(self, page: Page) -> bool:
@@ -1329,7 +1407,83 @@ class DiDiFoodScraper:
             log.warning(f"  [DiDi] no se encontró el código {target}")
         return picked
 
+    async def _is_terms_checked(self, page: Page) -> bool:
+        try:
+            return await page.evaluate(
+                """
+                (keywords) => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/\u0300-\u036f/g, '').toLowerCase();
+                    const matches = (text = '') => {
+                        const normalized = norm(text);
+                        return keywords.some(k => normalized.includes(norm(k)));
+                    };
+
+                    const nodes = Array.from(document.querySelectorAll('input[type="checkbox"], [role="checkbox"]'));
+                    for (const node of nodes) {
+                        const label = node.closest('label');
+                        const context = [node.getAttribute('aria-label') || '', label?.innerText || '', node.parentElement?.innerText || ''].join(' ');
+                        if (!matches(context)) continue;
+                        const isChecked = node.matches('[role="checkbox"]')
+                            ? (node.getAttribute('aria-checked') === 'true')
+                            : !!node.checked;
+                        if (isChecked) return true;
+                    }
+
+                    const toggles = Array.from(document.querySelectorAll('[aria-checked]'));
+                    for (const toggle of toggles) {
+                        const context = [toggle.innerText || '', toggle.parentElement?.innerText || ''].join(' ');
+                        if (!matches(context)) continue;
+                        if (toggle.getAttribute('aria-checked') === 'true') return true;
+                    }
+                    return false;
+                }
+                """,
+                self.TERMS_KEYWORDS + ["Acepto"],
+            )
+        except Exception:
+            return False
+
+    async def _click_terms_circle(self, page: Page) -> bool:
+        try:
+            coords = await page.evaluate(
+                """
+                (keywords) => {
+                    const norm = (s = '') => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const matches = (text = '') => {
+                        const normalized = norm(text);
+                        return keywords.some(k => normalized.includes(norm(k)));
+                    };
+
+                    const candidates = Array.from(document.querySelectorAll('label, div, span'));
+                    for (const node of candidates) {
+                        if (!matches(node.innerText || node.textContent || '')) continue;
+                        const target = node.querySelector('span, i, div') || node;
+                        if (!(target instanceof HTMLElement)) continue;
+                        const rect = target.getBoundingClientRect();
+                        if (!rect || rect.width === 0 || rect.height === 0) continue;
+                        return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+                    }
+                    return null;
+                }
+                """,
+                self.TERMS_KEYWORDS + ["Acepto"],
+            )
+        except Exception:
+            coords = None
+
+        if coords:
+            try:
+                await page.mouse.move(coords["x"], coords["y"])
+                await asyncio.sleep(0.05)
+                await page.mouse.click(coords["x"], coords["y"])
+                return True
+            except Exception:
+                return False
+        return False
+
     async def _accept_terms(self, page: Page) -> bool:
+        if await self._is_terms_checked(page):
+            return True
         checkbox_sels = ['input[type="checkbox"]', '[role="checkbox"]']
         for sel in checkbox_sels:
             try:
@@ -1338,17 +1492,33 @@ class DiDiFoodScraper:
                     continue
                 try:
                     await box.check(force=True)
+                    await delay(0.2, 0.4)
+                    if await self._is_terms_checked(page):
+                        log.info("  [DiDi] checkbox de términos marcado (Playwright check)")
+                        return True
                 except Exception:
-                    await box.click(force=True)
-                log.info("  [DiDi] checkbox de términos marcado")
-                await delay(0.3, 0.6)
-                return True
+                    try:
+                        await box.click(force=True)
+                        await delay(0.2, 0.4)
+                        if await self._is_terms_checked(page):
+                            log.info("  [DiDi] checkbox de términos marcado (click force)")
+                            return True
+                    except Exception:
+                        continue
             except Exception:
                 continue
-        if await self._click_by_keywords(page, self.TERMS_KEYWORDS):
-            log.info("  [DiDi] términos aceptados via keyword")
-            await delay(0.3, 0.6)
-            return True
+
+        if await self._click_terms_circle(page):
+            await delay(0.3, 0.5)
+            if await self._is_terms_checked(page):
+                log.info("  [DiDi] términos aceptados con click directo al círculo")
+                return True
+
+        if await self._click_by_keywords(page, self.TERMS_KEYWORDS + ["Acepto"]):
+            await delay(0.2, 0.4)
+            if await self._is_terms_checked(page):
+                log.info("  [DiDi] términos aceptados via keyword click")
+                return True
         return False
 
     async def _trigger_login_flow(self, page: Page):
@@ -1392,15 +1562,88 @@ class DiDiFoodScraper:
             await delay(1, 2)
         return False
 
-    async def _search_and_open_store(self, page: Page, r: PlatformResult) -> bool:
-        typed = await find_and_fill_input(page, self.SEARCH_INPUTS, "McDonalds", use_keyboard=True)
+    async def _type_search_query(self, page: Page, query: str) -> bool:
+        """Find the search bar and type the query.
+        DiDi has a search icon/bar at the top of the feed. Sometimes the input
+        is hidden until you click the search area first."""
+
+        # Try clicking the search area/icon first to reveal the input
+        search_trigger_sels = [
+            '[class*="search" i]:not(input)',
+            '[aria-label*="buscar" i]',
+            '[aria-label*="search" i]',
+            'svg[class*="search" i]',
+        ]
+        for sel in search_trigger_sels:
+            try:
+                el = page.locator(sel).first
+                if await el.count() > 0:
+                    await el.click(force=True)
+                    await asyncio.sleep(0.8)
+                    log.info(f"  [DiDi] clicked search trigger: {sel}")
+                    break
+            except Exception:
+                continue
+
+        # Now try the actual search inputs
+        typed = await find_and_fill_input(page, self.SEARCH_INPUTS, query, use_keyboard=True)
+        if typed:
+            return True
+
+        # JS fallback: find any text input that looks like a search bar
+        try:
+            typed = await page.evaluate(
+                """
+                (value) => {
+                    const inputs = Array.from(document.querySelectorAll('input, textarea'));
+                    for (const input of inputs) {
+                        const placeholder = (input.placeholder || '').toLowerCase();
+                        if (!input.isConnected || input.offsetParent === null) continue;
+                        if (!placeholder.includes('buscar') && !placeholder.includes('busca')
+                            && !placeholder.includes('tacos') && !placeholder.includes('hamburguesa')
+                            && !placeholder.includes('comida') && !placeholder.includes('comer')
+                            && input.type !== 'search') continue;
+                        input.focus();
+                        input.value = value;
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                        input.dispatchEvent(new Event('change', { bubbles: true }));
+                        return true;
+                    }
+                    return false;
+                }
+                """,
+                query,
+            )
+        except Exception:
+            typed = False
         if not typed:
+            log.warning("  [DiDi] no se encontro el buscador para escribir McDonalds")
+        return typed
+
+    async def _search_and_open_store(self, page: Page, r: PlatformResult) -> bool:
+        if not await self._type_search_query(page, "McDonalds"):
             return False
         try:
             await page.keyboard.press("Enter")
         except Exception:
             pass
         await delay(3, 5)
+
+        try:
+            await page.wait_for_timeout(500)
+        except Exception:
+            pass
+
+        # Capture search results text for promo hook ("Hasta X% dto.")
+        try:
+            search_text = await page.evaluate("() => document.body.innerText")
+            # Extract promo from search listing (e.g. "Hasta 40% dto.")
+            promo_m = re.search(r'[Hh]asta\s+(\d+)\s*%\s*(?:dto|desc)', search_text)
+            if promo_m:
+                r.promo_general_pct = float(promo_m.group(1))
+                log.info(f"  [DiDi] promo from search: {r.promo_general_pct}%")
+        except Exception:
+            pass
 
         for attempt in range(4):
             for sel in self.STORE_CARD_SELS:
@@ -1420,7 +1663,11 @@ class DiDiFoodScraper:
                     r.rating = r.rating or extract_rating(text)
                     r.eta_min = r.eta_min or extract_eta(text)
                     r.delivery_fee = r.delivery_fee or extract_delivery_fee(text)
-                    r.promo_general_pct = r.promo_general_pct or extract_promo(text)
+                    # Review count from card text, e.g. "4.2(10000+)"
+                    r.review_count = r.review_count or extract_review_count(text)
+                    # Promo from card if not already captured
+                    if not r.promo_general_pct:
+                        r.promo_general_pct = extract_promo(text)
 
                     href = ""
                     try:
@@ -1432,7 +1679,8 @@ class DiDiFoodScraper:
                             if href.startswith("http"):
                                 await page.goto(href, wait_until="domcontentloaded", timeout=30000)
                             else:
-                                await page.goto(f"https://web.didiglobal.com{href}", wait_until="domcontentloaded", timeout=30000)
+                                base = page.url.split("/food/")[0] if "/food/" in page.url else "https://www.didi-food.com"
+                                await page.goto(f"{base}{href}", wait_until="domcontentloaded", timeout=30000)
                         else:
                             await card.click()
                         await delay(3, 4)
@@ -1447,9 +1695,98 @@ class DiDiFoodScraper:
             return True
         return False
 
+    async def _click_category_tabs_and_collect(self, page: Page) -> str:
+        """Click through category tabs on DiDi restaurant page to load all products.
+        DiDi organizes products in tabs (Mc para Todos, A la Carta Comida, Bebidas, etc.)
+        Each tab lazy-loads its content, so we need to click each one and collect text."""
+
+        all_text_parts = []
+
+        # First, collect the header area (rating, ETA, delivery, review count)
+        try:
+            header_text = await page.evaluate("() => document.body.innerText")
+            all_text_parts.append(header_text)
+        except Exception:
+            pass
+
+        # Find category tabs — they are usually horizontal scrollable buttons/tabs
+        tab_texts_to_click = []
+
+        # Strategy: find all visible tab-like elements and collect their text
+        try:
+            tab_info = await page.evaluate("""
+                () => {
+                    // Look for a horizontal row of clickable elements near the top
+                    const candidates = Array.from(document.querySelectorAll(
+                        'button, [role="tab"], [class*="tab" i], [class*="category" i] > *, [class*="Category" i] > *'
+                    ));
+                    const tabs = [];
+                    for (const el of candidates) {
+                        if (!el.isConnected || el.offsetParent === null) continue;
+                        const rect = el.getBoundingClientRect();
+                        // Tabs are usually small, horizontally arranged, near top of content
+                        if (rect.width < 20 || rect.height < 20 || rect.height > 80) continue;
+                        const text = (el.innerText || el.textContent || '').trim();
+                        if (!text || text.length > 40) continue;
+                        tabs.push({text: text, x: rect.left + rect.width/2, y: rect.top + rect.height/2});
+                    }
+                    // Deduplicate by text
+                    const seen = new Set();
+                    return tabs.filter(t => {
+                        if (seen.has(t.text)) return false;
+                        seen.add(t.text);
+                        return true;
+                    });
+                }
+            """)
+            if tab_info:
+                log.info(f"  [DiDi] found {len(tab_info)} category tabs: {[t['text'] for t in tab_info]}")
+                tab_texts_to_click = tab_info
+        except Exception as e:
+            log.warning(f"  [DiDi] tab detection failed: {e}")
+
+        if not tab_texts_to_click:
+            # Fallback: just scroll and collect
+            log.info("  [DiDi] no tabs found, scrolling entire page")
+            full_text = await scroll_and_collect_text(page, pause=0.7, max_scrolls=30)
+            return full_text
+
+        # Click each tab and collect text from that section
+        for tab in tab_texts_to_click:
+            try:
+                await page.mouse.click(tab["x"], tab["y"])
+                await asyncio.sleep(1.5)
+                # Scroll down within the tab content to load lazy items
+                for _ in range(5):
+                    await page.evaluate("window.scrollBy(0, window.innerHeight * 0.7)")
+                    await asyncio.sleep(0.5)
+                # Collect text
+                tab_text = await page.evaluate("() => document.body.innerText")
+                all_text_parts.append(tab_text)
+                log.info(f"  [DiDi] collected text from tab '{tab['text']}' ({len(tab_text)} chars)")
+                # Scroll back to top for next tab click
+                await page.evaluate("window.scrollTo(0, 0)")
+                await asyncio.sleep(0.3)
+            except Exception as e:
+                log.warning(f"  [DiDi] failed to click tab '{tab['text']}': {e}")
+
+        # Combine all collected text (don't deduplicate — same prices can appear)
+        return "\n".join(all_text_parts)
+
     async def scrape(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> PlatformResult:
+        """DiDi Food scraping flow:
+        1. Load entry URL (with address pre-encoded in pl= param)
+        2. Login: phone + terms + Siguiente
+        3. WAIT for user to enter OTP code manually (SMS verification)
+        4. After OTP: user lands on restaurant feed
+        5. Search for McDonald's in the search bar (top of page)
+        6. From search results: capture promo hook, rating, review count
+        7. Click on McDonald's restaurant
+        8. Inside restaurant: capture ETA, delivery fee, prices via tab navigation
+        """
         r = PlatformResult(platform=self.PLATFORM)
         try:
+            # ── 1. Load entry URL ──
             loaded = False
             for url in self.ENTRY_URLS:
                 try:
@@ -1467,6 +1804,7 @@ class DiDiFoodScraper:
                 r.error_detail = "No fue posible abrir DiDi Food"
                 return r
 
+            # ── 2. Login (phone + terms + Siguiente + manual OTP) ──
             try:
                 page = await self._ensure_logged_in(page)
             except RuntimeError as otp_err:
@@ -1475,22 +1813,17 @@ class DiDiFoodScraper:
                 log.warning(f"  [DiDi] {otp_err}")
                 return r
 
+            # ── 3. After login, navigate to feed with address ──
             try:
                 await page.goto(self.ENTRY_URLS[0], wait_until="domcontentloaded", timeout=25000)
                 await delay(2, 3)
             except Exception as e:
                 log.warning(f"  [DiDi] failed to reload entry after login: {e}")
 
-            city_name = self.CITY_MAP.get(addr["city"], "Ciudad de México")
-            await self._select_city(page, city_name)
-
-            await self._handle_login_if_present(page)
-
+            # Handle any remaining popups/overlays
             if await self._click_by_keywords(page, self.ENTER_KEYWORDS):
                 log.info("  [DiDi] clicked enter/landing button")
                 await delay(2, 3)
-
-            await self._handle_login_if_present(page)
 
             try:
                 ctx_pages = page.context.pages
@@ -1506,23 +1839,21 @@ class DiDiFoodScraper:
             except Exception:
                 pass
 
-            if not await self._set_address(page, addr["address"]):
-                r.status = "error"
-                r.error_detail = "No se pudo ingresar la dirección en DiDi"
-                log.warning("  [DiDi] address input not found")
-                return r
-
-            await self._handle_login_if_present(page)
+            # Try setting address if the feed doesn't already have one from URL
+            # The entry URL has address encoded, so this may not be needed
+            addr_set = await self._set_address(page, addr["address"])
+            if not addr_set:
+                log.info("  [DiDi] address input not found — may already be set from URL")
 
             if take_shots:
-                r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "home", sdir)
+                r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "feed", sdir)
 
+            # ── 4. Search for McDonald's in the search bar ──
+            # Do NOT scroll the feed — go straight to search
             if not await self._search_and_open_store(page, r):
                 r.status = "partial_no_store"
                 log.warning("  [DiDi] no McDonalds store found")
                 return r
-
-            await self._handle_login_if_present(page)
 
             r.restaurant_available = True
             if not r.restaurant_name.strip():
@@ -1541,7 +1872,10 @@ class DiDiFoodScraper:
                 r.screenshot_path = await shot(page, addr["id"], self.PLATFORM, "store", sdir)
 
             await delay(2, 3)
-            full_text = await scroll_and_collect_text(page, pause=0.7, max_scrolls=30)
+
+            # DiDi organizes products in category tabs — click through each
+            # to load all products before extracting text
+            full_text = await self._click_category_tabs_and_collect(page)
 
             try:
                 dump_path = sdir / f"{addr['id']}_didifood_text_dump.txt"
@@ -1558,6 +1892,7 @@ class DiDiFoodScraper:
             r.eta_min = r.eta_min or extract_eta(full_text)
             r.promo_general_pct = r.promo_general_pct or extract_promo(full_text)
             r.rating = r.rating or extract_rating(full_text)
+            r.review_count = r.review_count or extract_review_count(full_text)
 
             log.info(f"  [DiDi] products={len(r.products)} fee={r.delivery_fee} eta={r.eta_min} promo={r.promo_general_pct}%")
 

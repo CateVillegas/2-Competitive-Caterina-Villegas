@@ -709,3 +709,181 @@ playwright._impl._errors.TargetClosedError: Target page, context or browser has 
 2026-03-22 23:13:00,078 [INFO] 
 Done: 1 addresses | 0 successful platform scrapes
 2026-03-22 23:13:00,078 [INFO] Output: data\competitive_data_20260322_231158.json
+2026-03-22 23:13:32,476 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 23:13:36,900 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-22 23:13:43,069 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:13:43,834 [INFO]   typed into input[type="tel"]
+2026-03-22 23:13:43,877 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:13:47,950 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:13:48,666 [INFO]   typed into input[type="tel"]
+2026-03-22 23:13:48,692 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:13:54,114 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-22 23:14:13,592 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 23:14:17,710 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-22 23:14:21,481 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:14:22,215 [INFO]   typed into input[type="tel"]
+2026-03-22 23:14:22,265 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:14:25,776 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:14:26,525 [INFO]   typed into input[type="tel"]
+2026-03-22 23:14:26,554 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:14:30,395 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:14:31,178 [INFO]   typed into input[type="tel"]
+2026-03-22 23:14:31,233 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:14:37,654 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:14:38,369 [INFO]   typed into input[type="tel"]
+2026-03-22 23:14:38,387 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:14:40,116 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:14:40,868 [INFO]   typed into input[type="tel"]
+2026-03-22 23:14:40,927 [INFO]   [DiDi] términos aceptados vía fallback JS
+2026-03-22 23:14:41,231 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D#_callbackType=login?hash_passport_login
+2026-03-22 23:15:05,552 [WARNING]   [DiDi] address input not found
+2026-03-22 23:15:05,574 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 23:15:08,581 [INFO] CSV: data\competitive_data_20260322_231412.csv (1 rows)
+2026-03-22 23:15:08,582 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-22 23:15:08,582 [INFO] Output: data\competitive_data_20260322_231412.json
+2026-03-22 23:18:58,053 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 23:19:02,630 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-22 23:19:09,468 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:19:10,168 [INFO]   typed into input[type="tel"]
+2026-03-22 23:19:11,092 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:19:14,449 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:19:15,193 [INFO]   typed into input[type="tel"]
+2026-03-22 23:19:16,162 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:19:21,903 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:19:22,638 [INFO]   typed into input[type="tel"]
+2026-03-22 23:19:23,492 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:19:24,494 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:19:25,221 [INFO]   typed into input[type="tel"]
+2026-03-22 23:19:25,246 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D#_callbackType=login?hash_passport_login
+2026-03-22 23:20:01,208 [INFO]   typed into input[type="text"]:not([hidden])
+2026-03-22 23:20:04,031 [INFO]   suggestion selected via keyboard
+2026-03-22 23:20:07,452 [INFO]   screenshot: MX_CDMX_01_didifood_home_232006.png
+2026-03-22 23:20:38,629 [INFO]   typed into input[placeholder*="buscar" i]
+2026-03-22 23:20:54,180 [INFO]   screenshot: MX_CDMX_01_didifood_store_232053.png
+2026-03-22 23:20:56,328 [INFO]   scroll: internal container found = False
+2026-03-22 23:21:17,841 [INFO]   scroll: done after scrolling, 686 lines captured
+2026-03-22 23:21:17,848 [INFO]   [DiDi] keyword 'home office' found: False
+2026-03-22 23:21:17,849 [INFO]   [DiDi] keyword 'big mac' found: False
+2026-03-22 23:21:17,850 [INFO]   [DiDi] keyword 'hamburguesa doble' found: False
+2026-03-22 23:21:17,850 [INFO]   [DiDi] keyword 'coca-cola' found: False
+2026-03-22 23:21:17,851 [INFO]   [DiDi] keyword 'coca cola' found: False
+2026-03-22 23:21:17,853 [INFO]   product not found in text: Combo Big Mac mediano
+2026-03-22 23:21:17,855 [INFO]   product not found in text: Hamburguesa doble con queso
+2026-03-22 23:21:17,856 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-22 23:21:17,871 [INFO]   [DiDi] products=0 fee=None eta=36 promo=70.0%
+2026-03-22 23:21:18,139 [INFO]   screenshot: MX_CDMX_01_didifood_final_232117.png
+2026-03-22 23:21:18,184 [INFO]   PARTIAL  [didifood  ] eta=36m fee=None products=0 total=None
+2026-03-22 23:21:20,855 [INFO] CSV: data\competitive_data_20260322_231857.csv (1 rows)
+2026-03-22 23:21:20,856 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-22 23:21:20,856 [INFO] Output: data\competitive_data_20260322_231857.json
+2026-03-22 23:34:43,977 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 23:34:49,335 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-22 23:34:56,009 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:34:56,681 [INFO]   typed into input[type="tel"]
+2026-03-22 23:34:57,383 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:35:00,554 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:35:01,268 [INFO]   typed into input[type="tel"]
+2026-03-22 23:35:01,850 [INFO]   [DiDi] términos aceptados con click directo al círculo
+2026-03-22 23:35:07,999 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:35:08,687 [INFO]   typed into input[type="tel"]
+2026-03-22 23:35:09,526 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:35:10,467 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:35:11,166 [INFO]   typed into input[type="tel"]
+2026-03-22 23:35:11,189 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D#_callbackType=login?hash_passport_login
+2026-03-22 23:35:46,736 [INFO]   typed into input[type="text"]:not([hidden])
+2026-03-22 23:35:49,327 [INFO]   suggestion selected via keyboard
+2026-03-22 23:35:51,831 [INFO]   screenshot: MX_CDMX_01_didifood_home_233551.png
+2026-03-22 23:36:23,142 [INFO]   typed into input[placeholder*="buscar" i]
+2026-03-22 23:44:37,602 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 23:44:42,880 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-22 23:44:46,212 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:44:46,956 [INFO]   typed into input[type="tel"]
+2026-03-22 23:44:47,926 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:44:51,900 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:44:52,662 [INFO]   typed into input[type="tel"]
+2026-03-22 23:44:53,440 [INFO]   [DiDi] términos aceptados via keyword click
+2026-03-22 23:44:57,138 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:44:57,897 [INFO]   typed into input[type="tel"]
+2026-03-22 23:44:58,649 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:45:04,474 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:45:05,198 [INFO]   typed into input[type="tel"]
+2026-03-22 23:45:06,116 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:45:07,321 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-22 23:45:08,048 [INFO]   typed into input[type="tel"]
+2026-03-22 23:45:08,988 [WARNING]   [DiDi] no se pudo aceptar Términos y Condiciones
+2026-03-22 23:45:08,989 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D#_callbackType=login?hash_passport_login
+2026-03-22 23:45:44,904 [INFO]   typed into input[type="text"]:not([hidden])
+2026-03-22 23:45:47,566 [INFO]   suggestion selected via keyboard
+2026-03-22 23:45:50,581 [INFO]   screenshot: MX_CDMX_01_didifood_home_234549.png
+2026-03-22 23:46:21,876 [INFO]   typed into input[placeholder*="buscar" i]
+2026-03-22 23:46:39,820 [INFO]   screenshot: MX_CDMX_01_didifood_store_234639.png
+2026-03-22 23:46:41,900 [INFO]   [DiDi] found 4 category tabs: ['Recomendados', 'Todas las categorías', 'Filtros', 'Más']
+2026-03-22 23:46:46,045 [INFO]   [DiDi] collected text from tab 'Recomendados' (3306 chars)
+2026-03-22 23:46:50,510 [INFO]   [DiDi] collected text from tab 'Todas las categorías' (4673 chars)
+2026-03-22 23:46:54,941 [INFO]   [DiDi] collected text from tab 'Filtros' (4673 chars)
+2026-03-22 23:46:59,387 [INFO]   [DiDi] collected text from tab 'Más' (4673 chars)
+2026-03-22 23:46:59,710 [INFO]   [DiDi] keyword 'home office' found: False
+2026-03-22 23:46:59,711 [INFO]   [DiDi] keyword 'big mac' found: False
+2026-03-22 23:46:59,712 [INFO]   [DiDi] keyword 'hamburguesa doble' found: False
+2026-03-22 23:46:59,712 [INFO]   [DiDi] keyword 'coca-cola' found: False
+2026-03-22 23:46:59,713 [INFO]   [DiDi] keyword 'coca cola' found: False
+2026-03-22 23:46:59,717 [INFO]   product not found in text: Combo Big Mac mediano
+2026-03-22 23:46:59,720 [INFO]   product not found in text: Hamburguesa doble con queso
+2026-03-22 23:46:59,723 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-22 23:46:59,766 [INFO]   [DiDi] products=0 fee=None eta=25 promo=71.0%
+2026-03-22 23:47:00,299 [INFO]   screenshot: MX_CDMX_01_didifood_final_234659.png
+2026-03-22 23:47:00,405 [INFO]   PARTIAL  [didifood  ] eta=25m fee=None products=0 total=None
+2026-03-22 23:47:03,549 [INFO] CSV: data\competitive_data_20260322_234435.csv (1 rows)
+2026-03-22 23:47:03,550 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-22 23:47:03,551 [INFO] Output: data\competitive_data_20260322_234435.json
+2026-03-23 00:13:54,255 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 00:13:59,562 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:14:06,897 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 00:14:08,899 [INFO]   typed into input[type="tel"]
+2026-03-23 00:14:10,548 [WARNING]   [DiDi] no se pudo aceptar Terminos y Condiciones, intentando de todas formas...
+2026-03-23 00:14:10,976 [INFO]   [DiDi] clicked siguiente via keyword
+2026-03-23 00:14:13,269 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:13,270 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 00:14:13,270 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 00:14:16,291 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:16,305 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:19,349 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:19,379 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:22,414 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:22,437 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:14:25,506 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 00:14:31,432 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:15:07,156 [INFO]   typed into input[type="text"]:not([hidden])
+2026-03-23 00:15:09,825 [INFO]   suggestion selected via keyboard
+2026-03-23 00:15:13,697 [INFO]   screenshot: MX_CDMX_01_didifood_feed_001513.png
+2026-03-23 00:15:44,830 [INFO]   typed into input[placeholder*="buscar" i]
+2026-03-23 00:16:01,906 [INFO]   screenshot: MX_CDMX_01_didifood_store_001601.png
+2026-03-23 00:16:04,486 [INFO]   [DiDi] found 4 category tabs: ['Recomendados', 'Todas las categorías', 'Filtros', 'Más']
+2026-03-23 00:16:08,640 [INFO]   [DiDi] collected text from tab 'Recomendados' (3206 chars)
+2026-03-23 00:16:13,062 [INFO]   [DiDi] collected text from tab 'Todas las categorías' (4533 chars)
+2026-03-23 00:16:17,505 [INFO]   [DiDi] collected text from tab 'Filtros' (4533 chars)
+2026-03-23 00:16:21,926 [INFO]   [DiDi] collected text from tab 'Más' (4533 chars)
+2026-03-23 00:16:22,250 [INFO]   [DiDi] keyword 'home office' found: False
+2026-03-23 00:16:22,251 [INFO]   [DiDi] keyword 'big mac' found: False
+2026-03-23 00:16:22,252 [INFO]   [DiDi] keyword 'hamburguesa doble' found: False
+2026-03-23 00:16:22,253 [INFO]   [DiDi] keyword 'coca-cola' found: False
+2026-03-23 00:16:22,253 [INFO]   [DiDi] keyword 'coca cola' found: False
+2026-03-23 00:16:22,256 [INFO]   product not found in text: Combo Big Mac mediano
+2026-03-23 00:16:22,258 [INFO]   product not found in text: Hamburguesa doble con queso
+2026-03-23 00:16:22,262 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-23 00:16:22,291 [INFO]   [DiDi] products=0 fee=None eta=20 promo=70.0%
+2026-03-23 00:16:22,979 [INFO]   screenshot: MX_CDMX_01_didifood_final_001622.png
+2026-03-23 00:16:23,025 [INFO]   PARTIAL  [didifood  ] eta=20m fee=None products=0 total=None
+2026-03-23 00:16:27,109 [INFO] CSV: data\competitive_data_20260323_001352.csv (1 rows)
+2026-03-23 00:16:27,109 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-23 00:16:27,109 [INFO] Output: data\competitive_data_20260323_001352.json
