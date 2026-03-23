@@ -18,9 +18,9 @@ Genera: datos mock + 7 charts + PDF ejecutivo en `output/`.
 ### Credenciales privadas (DiDi Food)
 
 1. Copia el archivo `.env.example` a `.env` (ya esta en `.gitignore`).
-2. Completa `DIDI_PHONE` y `DIDI_PHONE_COUNTRY` (prefijo, por defecto `+54`).
-3. **Importante**: DiDi Food requiere verificacion por SMS en cada sesion. Al ejecutar el scraper con `--visible`, el navegador se pausara en la pantalla de codigo de verificacion y esperara hasta 2 minutos a que ingreses el codigo manualmente. Este paso no se puede automatizar.
-4. El scraper carga las variables de `.env` automaticamente antes de iniciar Playwright.
+2. Completa `DIDI_EMAIL`/`DIDI_PASSWORD` **o** `DIDI_PHONE` + `DIDI_PHONE_COUNTRY` (prefijo por defecto `+54`). Opcional: `DIDI_BASE_URL` para forzar otro feed.
+3. La primera vez deberas ingresar el codigo OTP (SMS) manualmente en el navegador. Luego de un login exitoso, el scraper guarda la sesion en `sessions/didi_state.json` y la reutiliza en corridas futuras. Borra ese archivo si queres forzar un login nuevo.
+4. El scraper carga las variables de `.env` y la sesion persistida automaticamente antes de iniciar Playwright.
 
 ---
 

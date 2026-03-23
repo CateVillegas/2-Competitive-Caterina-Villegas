@@ -887,3 +887,161 @@ Done: 1 addresses | 0 successful platform scrapes
 2026-03-23 00:16:27,109 [INFO] 
 Done: 1 addresses | 0 successful platform scrapes
 2026-03-23 00:16:27,109 [INFO] Output: data\competitive_data_20260323_001352.json
+2026-03-23 00:37:56,346 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 00:38:00,807 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:38:07,504 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 00:38:09,606 [INFO]   typed into input[type="tel"]
+2026-03-23 00:38:11,166 [WARNING]   [DiDi] no se pudo aceptar Terminos y Condiciones, intentando de todas formas...
+2026-03-23 00:38:11,700 [INFO]   [DiDi] clicked siguiente via keyword
+2026-03-23 00:38:15,451 [INFO]   [DiDi] sesión guardada en storage\didi_state.json
+2026-03-23 00:38:15,474 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:15,475 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 00:38:15,475 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 00:38:18,503 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:18,517 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:21,554 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:21,576 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:24,612 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:24,631 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:27,658 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:27,680 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:30,707 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:30,722 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:38:33,784 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 00:38:39,323 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D#
+2026-03-23 00:39:16,147 [INFO]   typed into input[type="text"]:not([hidden])
+2026-03-23 00:39:19,455 [INFO]   suggestion selected via keyboard
+2026-03-23 00:39:30,246 [WARNING]   [DiDi] no pude confirmar la dirección en pantalla (continuamos)
+2026-03-23 00:39:30,895 [INFO]   screenshot: MX_CDMX_01_didifood_feed_003930.png
+2026-03-23 00:40:02,334 [INFO]   typed into input[placeholder*="restaurante" i]
+2026-03-23 00:40:02,335 [INFO]   [DiDi] query 'McDonalds' escrita en el buscador
+2026-03-23 00:40:12,148 [INFO]   screenshot: MX_CDMX_01_didifood_store_004011.png
+2026-03-23 00:40:15,079 [INFO]   [DiDi] found 1 category tabs: ['Agregar']
+2026-03-23 00:40:19,275 [INFO]   [DiDi] collected text from tab 'Agregar' (5823 chars)
+2026-03-23 00:40:19,594 [INFO]   [DiDi] keyword 'home office' found: False
+2026-03-23 00:40:19,595 [INFO]   [DiDi] keyword 'big mac' found: True
+2026-03-23 00:40:19,595 [INFO]   [DiDi] keyword 'hamburguesa doble' found: False
+2026-03-23 00:40:19,596 [INFO]   [DiDi] keyword 'coca-cola' found: True
+2026-03-23 00:40:19,596 [INFO]   [DiDi] keyword 'coca cola' found: True
+2026-03-23 00:40:19,601 [INFO]   product not found in text: Combo Big Mac mediano
+2026-03-23 00:40:19,603 [INFO]   product not found in text: Hamburguesa doble con queso
+2026-03-23 00:40:19,605 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 00:40:19,610 [INFO]   [DiDi] products=1 fee=0.0 eta=21 promo=54.0%
+2026-03-23 00:40:19,988 [INFO]   screenshot: MX_CDMX_01_didifood_final_004019.png
+2026-03-23 00:40:20,054 [INFO]   OK       [didifood  ] eta=21m fee=0.0 products=1 total=59.4
+2026-03-23 00:40:23,223 [INFO] CSV: data\competitive_data_20260323_003754.csv (1 rows)
+2026-03-23 00:40:23,224 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-23 00:40:23,224 [INFO] Output: data\competitive_data_20260323_003754.json
+2026-03-23 00:47:33,264 [INFO]   [DiDi] cargando sesión persistida desde storage\didi_state.json
+2026-03-23 00:47:34,792 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 00:47:39,368 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:47:42,912 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 00:47:45,101 [INFO]   typed into input[type="tel"]
+2026-03-23 00:47:46,831 [WARNING]   [DiDi] no se pudo aceptar Terminos y Condiciones, intentando de todas formas...
+2026-03-23 00:47:47,371 [INFO]   [DiDi] clicked siguiente via keyword
+2026-03-23 00:47:49,936 [INFO]   [DiDi] sesión guardada en storage\didi_state.json
+2026-03-23 00:47:49,960 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:47:49,961 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 00:47:49,962 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 00:47:52,998 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:47:53,016 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:47:56,049 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:47:56,068 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:47:59,106 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:47:59,136 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:48:02,222 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 00:48:08,803 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:48:12,862 [WARNING]   [DiDi] no pude establecer la dirección, abortamos
+2026-03-23 00:48:12,891 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-23 00:48:16,614 [INFO] CSV: data\competitive_data_20260323_004733.csv (1 rows)
+2026-03-23 00:48:16,614 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-23 00:48:16,614 [INFO] Output: data\competitive_data_20260323_004733.json
+2026-03-23 00:48:55,216 [INFO]   [DiDi] cargando sesión persistida desde storage\didi_state.json
+2026-03-23 00:48:56,675 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 00:49:01,680 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:49:08,567 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 00:49:10,700 [INFO]   typed into input[type="tel"]
+2026-03-23 00:49:12,278 [WARNING]   [DiDi] no se pudo aceptar Terminos y Condiciones, intentando de todas formas...
+2026-03-23 00:49:12,797 [INFO]   [DiDi] clicked siguiente via keyword
+2026-03-23 00:49:15,295 [INFO]   [DiDi] sesión guardada en storage\didi_state.json
+2026-03-23 00:49:15,314 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:49:15,314 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 00:49:15,314 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 00:49:18,347 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:49:18,377 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:49:21,414 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:49:21,440 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:49:24,493 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 00:49:29,597 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:49:37,637 [WARNING]   [DiDi] no pude confirmar la dirección en pantalla (continuamos)
+2026-03-23 00:49:41,629 [WARNING]   [DiDi] no pude establecer la dirección, abortamos
+2026-03-23 00:49:41,671 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-23 00:49:44,427 [INFO] CSV: data\competitive_data_20260323_004855.csv (1 rows)
+2026-03-23 00:49:44,427 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-23 00:49:44,428 [INFO] Output: data\competitive_data_20260323_004855.json
+2026-03-23 00:52:52,023 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 00:52:53,521 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 00:52:57,979 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:53:01,330 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 00:53:03,305 [INFO]   typed into input[type="tel"]
+2026-03-23 00:53:04,932 [WARNING]   [DiDi] no se pudo aceptar Terminos y Condiciones, intentando de todas formas...
+2026-03-23 00:53:05,468 [INFO]   [DiDi] clicked siguiente via keyword
+2026-03-23 00:53:08,171 [INFO]   [DiDi] sesión guardada en sessions\didi_state.json
+2026-03-23 00:53:08,200 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:53:08,201 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 00:53:08,201 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 00:53:11,237 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:53:11,256 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:53:14,290 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:53:14,318 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:53:17,392 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 00:53:23,275 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:53:31,312 [WARNING]   [DiDi] no pude confirmar la dirección en pantalla (continuamos)
+2026-03-23 00:53:35,360 [WARNING]   [DiDi] no pude establecer la dirección, abortamos
+2026-03-23 00:53:35,409 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-23 00:53:39,493 [INFO] CSV: data\competitive_data_20260323_005252.csv (1 rows)
+2026-03-23 00:53:39,493 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-23 00:53:39,494 [INFO] Output: data\competitive_data_20260323_005252.json
+2026-03-23 00:58:15,548 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 00:58:16,991 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 00:58:21,353 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 00:58:28,393 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 00:58:30,300 [INFO]   typed into input[type="tel"]
+2026-03-23 00:58:31,164 [INFO]   [DiDi] terminos y condiciones aceptados
+2026-03-23 00:58:31,548 [INFO]   [DiDi] clicked siguiente via keyword
+2026-03-23 00:58:33,687 [INFO]   [DiDi] sesión guardada en sessions\didi_state.json
+2026-03-23 00:58:33,706 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:33,708 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 00:58:33,709 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 00:58:36,738 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:36,756 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:39,782 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:39,802 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:42,834 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:42,855 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:45,888 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:45,908 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:48,941 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:48,958 [WARNING]   [DiDi] OTP input detected
+2026-03-23 00:58:52,050 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 00:58:58,193 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D#
+2026-03-23 00:59:04,234 [INFO]   [DiDi] feed con restaurantes visible — direccion ya esta seteada
+2026-03-23 00:59:04,235 [INFO]   [DiDi] dirección del entry-point ya activa
+2026-03-23 00:59:04,623 [INFO]   screenshot: MX_CDMX_01_didifood_feed_005904.png
+2026-03-23 00:59:35,883 [INFO]   typed into input[placeholder*="restaurante" i]
+2026-03-23 00:59:35,883 [INFO]   [DiDi] query 'McDonalds' escrita en el buscador
+2026-03-23 00:59:47,538 [WARNING]   [DiDi] no McDonalds store found
+2026-03-23 00:59:47,571 [INFO]   partial_no_store [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-23 00:59:51,129 [INFO] CSV: data\competitive_data_20260323_005815.csv (1 rows)
+2026-03-23 00:59:51,129 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-23 00:59:51,129 [INFO] Output: data\competitive_data_20260323_005815.json
