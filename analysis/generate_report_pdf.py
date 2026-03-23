@@ -132,6 +132,15 @@ def fmt_rating(v):
         return "N/D"
     return f"{v:.1f}"
 
+def fmt_reviews(v):
+    """Format review count with thousands separator."""
+    if v is None or (isinstance(v, float) and v != v):
+        return "N/D"
+    v = int(v)
+    if v >= 1000:
+        return f"{v:,}".replace(",", ".")
+    return str(v)
+
 
 def load_kpis():
     """Load KPIs from output/kpis.json or return empty dict."""
@@ -143,7 +152,7 @@ def load_kpis():
 
 
 def build_kpi_table(kpis, plats):
-    """Build dynamic KPI table from computed data."""
+    """Build strategic KPI table focused on pricing, promos, and engagement."""
     def val(plat, key):
         if plat not in kpis:
             return "N/D"
@@ -151,20 +160,20 @@ def build_kpi_table(kpis, plats):
         return v
 
     rows = [["Metrica"] + [PL.get(p, p) for p in plats]]
-    rows.append(["Delivery fee promedio (MXN)"] + [fmt_price(val(p, "delivery_fee_avg")) for p in plats])
-    rows.append(["Delivery fee Wealthy (MXN)"] + [fmt_price(val(p, "delivery_fee_wealthy")) for p in plats])
-    rows.append(["Delivery fee Non-Wealthy (MXN)"] + [fmt_price(val(p, "delivery_fee_non_wealthy")) for p in plats])
-    rows.append(["ETA promedio (min)"] + [fmt_num(val(p, "eta_avg")) for p in plats])
-    rows.append(["Service fee estimado"] + [fmt_pct(val(p, "service_fee_pct")) for p in plats])
-    rows.append(["Promo general restaurante"] + [fmt_pct(val(p, "promo_avg")) for p in plats])
-    rows.append(["Combo Big Mac (precio base)"] + [fmt_price(val(p, "combo_orig_avg")) for p in plats])
-    rows.append(["Total all-in promedio"] + [fmt_price(val(p, "total_avg")) for p in plats])
-    rows.append(["Rating McDonald's"] + [fmt_rating(val(p, "rating_avg")) for p in plats])
+    rows.append(["Review count promedio"]            + [fmt_reviews(val(p, "review_count_avg")) for p in plats])
+    rows.append(["Combo Big Mac (precio base)"]      + [fmt_price(val(p, "combo_orig_avg")) for p in plats])
+    rows.append(["Combo Big Mac (descuento prom.)"]  + [fmt_pct(val(p, "combo_disc_pct_avg")) for p in plats])
+    rows.append(["% zonas con descuento en Combo"]   + [fmt_pct(val(p, "combo_disc_zone_pct")) for p in plats])
+    rows.append(["Promo general restaurante (hook %)"] + [fmt_pct(val(p, "promo_avg")) for p in plats])
+    rows.append(["ETA promedio (min)"]               + [fmt_num(val(p, "eta_avg")) for p in plats])
+    rows.append(["Rating McDonald's"]                + [fmt_rating(val(p, "rating_avg")) for p in plats])
+    rows.append(["Service fee %"]                    + [fmt_pct(val(p, "service_fee_pct")) for p in plats])
+    rows.append(["Total all-in promedio"]            + [fmt_price(val(p, "total_avg")) for p in plats])
     return rows
 
 
 def generate_insights(kpis, plats):
-    """Generate dynamic insights based on actual KPIs."""
+    """Generate 5 strategic insights for Strategy/Pricing team."""
     insights = []
 
     # Helper to get a value safely
@@ -174,111 +183,152 @@ def generate_insights(kpis, plats):
         v = kpis[plat].get(key)
         return v if v is not None else default
 
-    # Insight 1: Delivery fee comparison
-    if "rappi" in plats and "ubereats" in plats:
-        r_fee = g("rappi", "delivery_fee_avg")
-        u_fee = g("ubereats", "delivery_fee_avg")
-        if u_fee > 0:
-            gap = (r_fee / u_fee - 1) * 100
+    # ---- Insight 1: Market Engagement (review count as proxy) ----
+    review_counts = {p: g(p, "review_count_avg") for p in plats}
+    if "ubereats" in plats and "rappi" in plats:
+        u_rev = review_counts.get("ubereats", 0)
+        r_rev = review_counts.get("rappi", 0)
+        d_rev = review_counts.get("didifood", 0)
+        if r_rev > 0:
+            ratio = u_rev / r_rev
         else:
-            gap = 0
-        if gap > 5:
-            finding = (f"Rappi cobra en promedio ${r_fee:.0f} MXN de delivery fee vs "
-                       f"${u_fee:.0f} MXN de Uber Eats — un {gap:.0f}% mas caro.")
-            rec = ("Implementar pricing dinamico de delivery fee por zona. "
-                   "Subsidiar fee en zonas perifericas con mayor potencial de crecimiento.")
-        elif gap < -5:
-            finding = (f"Rappi cobra en promedio ${r_fee:.0f} MXN de delivery fee vs "
-                       f"${u_fee:.0f} MXN de Uber Eats — un {abs(gap):.0f}% mas barato.")
-            rec = "Mantener la ventaja competitiva en delivery fee como diferenciador."
+            ratio = 0
+
+        if ratio > 1:
+            finding = (f"Uber Eats acumula ~{u_rev:,.0f} reviews promedio por restaurante vs "
+                       f"~{r_rev:,.0f} de Rappi — una relacion de {ratio:.0f}x. "
+                       f"DiDi Food muestra ~{d_rev:,.0f} reviews.")
         else:
-            finding = (f"Rappi y Uber Eats tienen delivery fees similares: "
-                       f"${r_fee:.0f} vs ${u_fee:.0f} MXN.")
-            rec = "El delivery fee no es un diferenciador — enfocar en velocidad y promos."
+            finding = (f"Rappi acumula ~{r_rev:,.0f} reviews promedio por restaurante vs "
+                       f"~{u_rev:,.0f} de Uber Eats. DiDi Food muestra ~{d_rev:,.0f} reviews.")
 
         insights.append({
             "n": "01",
-            "title": f"Delivery Fee: Rappi ${r_fee:.0f} vs Uber Eats ${u_fee:.0f}",
+            "title": "Market Engagement: review count como proxy de volumen",
             "finding": finding,
-            "impacto": ("El delivery fee es una de las primeras cosas que ve el usuario. "
-                        "Un fee mas alto puede reducir conversion en el momento de checkout."),
-            "rec": rec,
-            "color": RAPPI_RED,
+            "impacto": ("El numero de reviews es un indicador indirecto de volumen de pedidos "
+                        "y engagement de la base de usuarios. Una brecha de magnitud sugiere que "
+                        "la competencia tiene mayor penetracion o mayor frecuencia de uso en "
+                        "este vertical (QSR)."),
+            "rec": ("Implementar campanas de incentivo de reviews (cupones post-pedido). "
+                    "Evaluar si la brecha de engagement refleja menor share en QSR o menor "
+                    "habito de resena en la base Rappi. Cruzar con datos internos de GMV."),
+            "color": UBER_GRN,
         })
 
-    # Insight 2: ETA comparison
-    etas = {p: g(p, "eta_avg") for p in plats}
-    fastest = min(plats, key=lambda p: etas[p]) if plats else None
-    if fastest and len(plats) >= 2:
-        others = [p for p in plats if p != fastest]
-        avg_others = sum(etas[p] for p in others) / len(others) if others else 0
-        gap_min = avg_others - etas[fastest]
+    # ---- Insight 2: Promotional Aggressiveness ----
+    promos = {p: g(p, "promo_avg") for p in plats}
+    combo_disc = {p: g(p, "combo_disc_pct_avg") for p in plats}
+    active_promos = {p: v for p, v in promos.items() if v > 0}
+    if len(active_promos) >= 2:
+        most_aggressive = max(active_promos, key=active_promos.get)
+        least_aggressive = min(active_promos, key=active_promos.get)
         insights.append({
             "n": "02",
-            "title": f"ETA: {PL[fastest]} es el mas rapido ({etas[fastest]:.0f} min promedio)",
-            "finding": (f"{PL[fastest]} muestra ETA promedio de {etas[fastest]:.0f} min vs "
-                        f"{avg_others:.0f} min promedio de la competencia. "
-                        f"Diferencia de {gap_min:.0f} minutos."),
-            "impacto": ("El ETA es el segundo factor de eleccion de plataforma despues del precio. "
-                        "Una diferencia de minutos es perceptible y afecta la conversion."),
-            "rec": ("Investigar si el gap es de densidad de repartidores o de algoritmo de routing. "
-                    "Si es densidad: aumentar incentivos de oferta en horas pico."),
-            "color": ACCENT,
+            "title": (f"Agresividad Promocional: {PL[most_aggressive]} lidera, "
+                      f"{PL[least_aggressive]} mas conservador"),
+            "finding": (f"{PL[most_aggressive]} muestra descuentos hook de {promos[most_aggressive]:.0f}% "
+                        f"en promedio, mientras que {PL[least_aggressive]} ofrece {promos[least_aggressive]:.0f}%. "
+                        f"En descuentos directos al Combo Big Mac: "
+                        f"{PL.get(most_aggressive, most_aggressive)} aplica {combo_disc.get(most_aggressive, 0):.0f}% "
+                        f"vs {combo_disc.get(least_aggressive, 0):.0f}% de {PL.get(least_aggressive, least_aggressive)}."),
+            "impacto": ("El descuento visible antes de entrar al restaurante (hook %) es el "
+                        "principal driver de click-through en el feed. Una plataforma que aparece "
+                        "menos atractiva pierde conversion en el top-of-funnel. El que subsidia "
+                        "mas agresivamente esta comprando share a costa de margen."),
+            "rec": ("Evaluar ROI de igualar la agresividad del lider en horarios de alta competencia "
+                    "(12-14h, 19-21h). Considerar promos visibles pero de menor costo (ej. 2x1 en "
+                    "productos de bajo margen) en lugar de descuentos directos. Monitorear si DiDi "
+                    "esta quemando caja para ganar share o si tiene acuerdos con restaurantes."),
+            "color": DIDI_ORG,
         })
 
-    # Insight 3: Price comparison
+    # ---- Insight 3: Price Parity ----
     combos = {p: g(p, "combo_orig_avg") for p in plats if g(p, "combo_orig_avg") > 0}
     if len(combos) >= 2:
         min_p, max_p = min(combos.values()), max(combos.values())
         diff_pct = (max_p / min_p - 1) * 100 if min_p > 0 else 0
         insights.append({
             "n": "03",
-            "title": f"Precios de producto comparables entre plataformas (~{diff_pct:.0f}% variacion)",
-            "finding": (f"El Combo Big Mac mediano cuesta entre ${min_p:.0f} y ${max_p:.0f} MXN "
-                        f"segun la plataforma. La guerra NO es en precio de producto."),
-            "impacto": ("El diferenciador real esta en la combinacion de fees + promos + velocidad. "
-                        "Los descuentos por producto son el unico vector de diferenciacion."),
-            "rec": ("Enfocar la propuesta de valor en fees + velocidad, no en precio de producto. "
-                    "Usar los descuentos por producto como tactica de conversion en horarios de baja demanda."),
-            "color": UBER_GRN,
+            "title": f"Paridad de Precios: variacion de solo ~{diff_pct:.0f}% entre plataformas",
+            "finding": (f"El Combo Big Mac mediano oscila entre ${min_p:.0f} y ${max_p:.0f} MXN "
+                        f"segun la plataforma — una variacion de ~{diff_pct:.0f}%. Los precios base "
+                        f"de producto son esencialmente equivalentes porque McDonald's controla su "
+                        f"pricing cross-platform. La guerra NO se libra en el precio de producto."),
+            "impacto": ("Si los precios base son paritarios, el diferenciador real para el usuario "
+                        "es la combinacion de: (1) descuentos/promos visibles, (2) fees totales "
+                        "(service fee + delivery fee), y (3) velocidad de entrega. La estrategia "
+                        "de pricing debe enfocarse en estos vectores, no en negociar precios con "
+                        "el restaurante."),
+            "rec": ("Comunicar al equipo de pricing que la palanca no esta en el precio de menu. "
+                    "Enfocar la propuesta de valor en: total all-in mas bajo, promos agresivas en "
+                    "momentos clave, y velocidad. Usar la paridad de precios como argumento "
+                    "comercial con restaurantes ('no les pedimos bajar precio, nosotros subsidiamos')."),
+            "color": ACCENT,
         })
 
-    # Insight 4: Fee structure / total
-    totals = {p: g(p, "total_avg") for p in plats if g(p, "total_avg") > 0}
-    if len(totals) >= 2:
-        cheapest = min(totals, key=totals.get)
-        most_exp = max(totals, key=totals.get)
+    # ---- Insight 4: Geographic Strategy ----
+    geo_insights = []
+    for p in plats:
+        total_w = g(p, "total_wealthy")
+        total_nw = g(p, "total_non_wealthy")
+        if total_w > 0 and total_nw > 0:
+            geo_insights.append((p, total_w, total_nw))
+
+    if len(geo_insights) >= 2:
+        details = []
+        for p, tw, tnw in geo_insights:
+            diff = tnw - tw
+            details.append(f"{PL[p]}: ${tw:.0f} (wealthy) vs ${tnw:.0f} (non-wealthy), delta ${diff:+.0f}")
+        detail_str = ". ".join(details) + "."
+
         insights.append({
             "n": "04",
-            "title": f"Costo total all-in: {PL[cheapest]} es el mas economico (${totals[cheapest]:.0f})",
-            "finding": (f"{PL[cheapest]} tiene el menor costo total estimado (${totals[cheapest]:.0f} MXN) "
-                        f"vs {PL[most_exp]} (${totals[most_exp]:.0f} MXN). "
-                        f"La diferencia es de ${totals[most_exp]-totals[cheapest]:.0f} MXN."),
-            "impacto": ("El costo total all-in es lo que realmente paga el usuario. "
-                        "La percepcion de 'caro' vs 'barato' depende de esta suma final."),
-            "rec": ("Evaluar ajustar la estructura de fees para competir en costo total. "
-                    "El impacto en margen puede compensarse con mayor volumen."),
-            "color": DIDI_ORG,
+            "title": "Estrategia Geografica: variabilidad de precios wealthy vs non-wealthy",
+            "finding": (f"El costo total all-in varia segun zona socioeconomica. {detail_str} "
+                        f"Esto refleja diferencias en delivery fee y cobertura promocional "
+                        f"por zona, no en precio de producto."),
+            "impacto": ("Las zonas non-wealthy representan mayor volumen potencial pero menor "
+                        "ticket promedio. La estructura de fees actual puede estar penalizando "
+                        "la penetracion en zonas de alto crecimiento. Un competidor que subsidie "
+                        "fees en estas zonas puede capturar share de forma desproporcionada."),
+            "rec": ("Implementar pricing geografico diferenciado: reducir delivery fee en zonas "
+                    "non-wealthy con alto potencial de crecimiento. Cruzar con datos internos "
+                    "de densidad de repartidores y costo real de entrega por zona. Monitorear "
+                    "si la competencia aplica subsidios diferenciados por zona."),
+            "color": RAPPI_RED,
         })
 
-    # Insight 5: Promotions
-    promos = {p: g(p, "promo_avg") for p in plats if g(p, "promo_avg") > 0}
-    if len(promos) >= 2:
-        most_aggressive = max(promos, key=promos.get)
-        least_aggressive = min(promos, key=promos.get)
+    # ---- Insight 5: Operational (ETA + Rating) ----
+    etas = {p: g(p, "eta_avg") for p in plats if g(p, "eta_avg") > 0}
+    ratings = {p: g(p, "rating_avg") for p in plats if g(p, "rating_avg") > 0}
+    if len(etas) >= 2 and len(ratings) >= 2:
+        fastest = min(etas, key=etas.get)
+        slowest = max(etas, key=etas.get)
+        best_rated = max(ratings, key=ratings.get)
+        eta_gap = etas[slowest] - etas[fastest]
+
+        eta_details = ", ".join(f"{PL[p]}: {etas[p]:.0f} min" for p in plats if p in etas)
+        rating_details = ", ".join(f"{PL[p]}: {ratings[p]:.1f}" for p in plats if p in ratings)
+
         insights.append({
             "n": "05",
-            "title": (f"Promos: {PL[most_aggressive]} es el mas agresivo "
-                      f"({promos[most_aggressive]:.0f}% vs {promos[least_aggressive]:.0f}% de {PL[least_aggressive]})"),
-            "finding": (f"{PL[most_aggressive]} muestra descuentos de hasta {promos[most_aggressive]:.0f}% "
-                        f"en promedio, mientras que {PL[least_aggressive]} muestra {promos[least_aggressive]:.0f}%. "),
-            "impacto": ("El 'hook' inicial (% descuento visible antes de entrar al restaurante) "
-                        "influye directamente en la tasa de click. Aparecer menos atractivo "
-                        "puede reducir la conversion."),
-            "rec": ("Aumentar la agresividad promocional en el top-of-funnel. "
-                    "Implementar promos visibles en horario 12-14hs cuando la competencia "
-                    "por pedidos de almuerzo es maxima."),
-            "color": RAPPI_RED,
+            "title": f"Operacional: {PL[fastest]} lidera en ETA, {PL[best_rated]} en Rating",
+            "finding": (f"ETAs promedio: {eta_details}. "
+                        f"Ratings: {rating_details}. "
+                        f"La diferencia maxima de ETA es de {eta_gap:.0f} minutos entre "
+                        f"{PL[fastest]} y {PL[slowest]}."),
+            "impacto": ("ETA es el segundo factor de decision despues del precio total. "
+                        "Una diferencia de varios minutos es perceptible y afecta la "
+                        "conversion, especialmente en horarios de alta demanda. El rating "
+                        "refleja la experiencia acumulada del usuario y afecta la percepcion "
+                        "de calidad de la plataforma."),
+            "rec": ("Investigar si el gap de ETA es por densidad de repartidores o algoritmo "
+                    "de routing. Si Rappi no lidera en ETA: aumentar incentivos de oferta en "
+                    "horas pico y optimizar batching. Monitorear rating como leading indicator "
+                    "de churn — una caida de 0.1 puntos puede correlacionar con perdida de "
+                    "usuarios recurrentes."),
+            "color": ACCENT,
         })
 
     return insights
@@ -309,16 +359,18 @@ def build_pdf():
     plat_names = ", ".join(PL.get(p, p) for p in plats)
     story.append(Paragraph(
         f"Este informe analiza la posicion competitiva de Rappi frente a {plat_names} "
-        f"en Mexico. El analisis compara precios de productos de referencia en McDonald's, "
-        f"estructura de fees, tiempos de entrega, estrategia promocional y variabilidad geografica. "
-        f"Los datos fueron recolectados mediante scraping automatizado con Playwright.",
+        f"en Mexico, con foco en posicionamiento de precios, estrategia promocional, "
+        f"variabilidad geografica y engagement de mercado (review count como proxy de "
+        f"volumen). El analisis compara McDonald's como restaurante de referencia en "
+        f"las 3 plataformas. Los datos fueron recolectados mediante scraping automatizado "
+        f"con Playwright.",
         s["body"]
     ))
     story.append(Spacer(1, 0.4*cm))
 
     # KPI table
     kpi_rows = build_kpi_table(kpis, plats)
-    col_widths = [6.5*cm] + [max(3.0, 10.5/len(plats))*cm for _ in plats]
+    col_widths = [7.5*cm] + [max(3.0, 9.5/len(plats))*cm for _ in plats]
     kpi_table = Table(kpi_rows, colWidths=col_widths)
 
     plat_bg = {"rappi": colors.HexColor("#FFF0ED"), "ubereats": colors.HexColor("#EDF9F2"),
@@ -343,7 +395,7 @@ def build_pdf():
     story.append(PageBreak())
 
     # -- Top 5 Insights --
-    story.append(Paragraph("Top 5 Insights Accionables", s["h1"]))
+    story.append(Paragraph("Top 5 Insights Estrategicos", s["h1"]))
     story.append(HRFlowable(width="100%", thickness=1, color=RAPPI_RED, spaceAfter=10))
 
     insights = generate_insights(kpis, plats)
@@ -387,12 +439,12 @@ def build_pdf():
     story.append(HRFlowable(width="100%", thickness=1, color=RAPPI_RED, spaceAfter=8))
 
     charts = [
-        ("output/chart1_delivery_fee.png",   "Fig. 1 -- Delivery Fee por zona"),
-        ("output/chart2_eta_rating.png",     "Fig. 2 -- ETA y Rating"),
-        ("output/chart3_product_prices.png", "Fig. 3 -- Precios de producto"),
-        ("output/chart4_fee_structure.png",  "Fig. 4 -- Estructura de fees"),
-        ("output/chart5_promotions.png",     "Fig. 5 -- Estrategia promocional"),
-        ("output/chart6_geo_heatmap.png",    "Fig. 6 -- Variabilidad geografica"),
+        ("output/chart1_delivery_fee.png",   "Fig. 1 -- Posicionamiento de precios"),
+        ("output/chart2_eta_rating.png",     "Fig. 2 -- Operacional (ETA, Rating, Engagement)"),
+        ("output/chart3_product_prices.png", "Fig. 3 -- Profundidad de descuentos"),
+        ("output/chart4_fee_structure.png",  "Fig. 4 -- Estrategia Promocional"),
+        ("output/chart5_promotions.png",     "Fig. 5 -- Competitividad Geografica"),
+        ("output/chart6_geo_heatmap.png",    "Fig. 6 -- Engagement de mercado"),
         ("output/chart7_radar.png",          "Fig. 7 -- Posicionamiento multidimensional"),
     ]
 
@@ -421,9 +473,10 @@ def build_pdf():
 
     story.append(Paragraph("<b>Limitaciones conocidas:</b>", s["h2"]))
     for item in [
-        "Los datos representan un snapshot temporal — precios y ETAs varian por hora y dia",
-        "Service fee no siempre visible antes del checkout — se usa tasa modal conocida",
+        "Los datos representan un snapshot temporal -- precios y ETAs varian por hora y dia",
+        "Service fee no siempre visible antes del checkout -- se usa tasa modal conocida",
         "DiDi Food tiene menor cobertura que Rappi y Uber Eats en zonas perifericas",
+        "Review count puede variar segun la ventana de tiempo que muestra cada plataforma",
         "Para produccion: usar proxies residenciales para Uber Eats (Cloudflare activo)",
     ]:
         story.append(Paragraph(f"  {item}", s["bullet"]))
@@ -432,8 +485,9 @@ def build_pdf():
     for item in [
         "Automatizar scraping diario (cron job / GitHub Actions) para tracking temporal",
         "Expandir a verticales: retail y farmacia",
-        "Integrar datos internos de Rappi (GMV por zona, churn rate)",
+        "Integrar datos internos de Rappi (GMV por zona, churn rate) para cruzar con review counts",
         "Implementar alertas automaticas cuando competidor lance promo > 30%",
+        "Segmentar analisis por horario (almuerzo vs cena) para detectar patrones promocionales",
     ]:
         story.append(Paragraph(f"  {item}", s["bullet"]))
 

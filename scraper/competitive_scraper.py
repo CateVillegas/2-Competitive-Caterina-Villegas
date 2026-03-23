@@ -959,6 +959,7 @@ class UberEatsScraper:
             r.eta_min = extract_eta(full_text)
             r.promo_general_pct = extract_promo(full_text)
             r.rating = extract_rating(full_text)
+            r.review_count = extract_review_count(full_text)
 
             log.info(f"  [Uber] products={len(r.products)} fee={r.delivery_fee} eta={r.eta_min} promo={r.promo_general_pct}%")
 
@@ -1176,7 +1177,8 @@ def _to_dict(r: PlatformResult) -> dict:
     return {
         "platform": r.platform, "status": r.status,
         "restaurant_name": r.restaurant_name, "restaurant_available": r.restaurant_available,
-        "rating": r.rating, "eta_min": r.eta_min, "delivery_fee": r.delivery_fee,
+        "rating": r.rating, "review_count": r.review_count,
+        "eta_min": r.eta_min, "delivery_fee": r.delivery_fee,
         "promo_general_pct": r.promo_general_pct,
         "products": [{"name":p.name,"price_original":p.price_original,
                       "price_discounted":p.price_discounted,"discount_pct":p.discount_pct}

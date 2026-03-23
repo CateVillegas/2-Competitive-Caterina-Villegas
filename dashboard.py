@@ -1,5 +1,5 @@
 """
-Dashboard Interactivo — Competitive Intelligence Rappi Mexico
+Dashboard Interactivo -- Competitive Intelligence Rappi Mexico
 ==============================================================
 Uso: streamlit run dashboard.py
 
@@ -9,6 +9,7 @@ Carga el JSON mas reciente de data/ y presenta metricas comparativas.
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -17,7 +18,7 @@ import streamlit as st
 # -- Config ---
 st.set_page_config(
     page_title="CI Rappi Mexico",
-    page_icon="🛵",
+    page_icon=":truck:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -57,6 +58,7 @@ def load_data(path: str) -> pd.DataFrame:
                 "rating":            p.get("rating"),
                 "eta_min":           p.get("eta_min"),
                 "delivery_fee":      p.get("delivery_fee"),
+                "review_count":      p.get("review_count"),
                 "promo_general_pct": p.get("promo_general_pct"),
                 "combo_orig":        combo.get("price_original"),
                 "combo_disc":        combo.get("price_discounted"),
@@ -73,11 +75,12 @@ def load_data(path: str) -> pd.DataFrame:
             })
 
     df = pd.DataFrame(rows)
-    num_cols = ["rating","eta_min","delivery_fee","promo_general_pct",
-                "combo_orig","combo_disc","combo_disc_pct",
-                "hdq_orig","hdq_disc","hdq_disc_pct",
-                "coke_orig","coke_disc","coke_disc_pct",
-                "subtotal","service_fee_est","total_estimated"]
+    num_cols = ["rating", "eta_min", "delivery_fee", "review_count",
+                "promo_general_pct",
+                "combo_orig", "combo_disc", "combo_disc_pct",
+                "hdq_orig", "hdq_disc", "hdq_disc_pct",
+                "coke_orig", "coke_disc", "coke_disc_pct",
+                "subtotal", "service_fee_est", "total_estimated"]
     for c in num_cols:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
@@ -140,7 +143,7 @@ st.sidebar.metric("Registros", len(df))
 color_map = {PLATFORM_NAMES[p]: PLATFORM_COLORS[p] for p in selected_plats}
 
 # -- Header ---
-st.title("Competitive Intelligence — Rappi Mexico")
+st.title("Competitive Intelligence -- Rappi Mexico")
 st.caption(f"Dataset: {selected_file.name} | {df['address_id'].nunique()} direcciones | "
            f"{len(selected_plats)} plataformas")
 
@@ -152,27 +155,27 @@ for col, plat in zip(kpi_cols, selected_plats):
     with col:
         st.markdown(f"**{PLATFORM_NAMES[plat]}**")
         c1, c2 = st.columns(2)
-        fee = sub["delivery_fee"].mean()
+        reviews = sub["review_count"].mean()
         eta = sub["eta_min"].mean()
         rating = sub["rating"].mean()
         total = sub["total_estimated"].mean()
         promo = sub["promo_general_pct"].mean()
 
-        c1.metric("Delivery Fee", f"${fee:.0f}" if pd.notna(fee) else "N/D")
+        c1.metric("Reviews", f"{reviews:,.0f}" if pd.notna(reviews) else "N/D")
         c2.metric("ETA", f"{eta:.0f} min" if pd.notna(eta) else "N/D")
-        c1.metric("Rating", f"{rating:.1f} ★" if pd.notna(rating) else "N/D")
+        c1.metric("Rating", f"{rating:.1f}" if pd.notna(rating) else "N/D")
         c2.metric("Promo max", f"{promo:.0f}%" if pd.notna(promo) else "N/D")
         st.metric("Total estimado", f"${total:.0f}" if pd.notna(total) else "N/D")
 
 st.markdown("---")
 
 # -- Charts ---
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "Precios", "Delivery & ETA", "Fees & Total", "Promos", "Geografia"
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "Precios", "Promos", "Engagement", "Operacional", "Costos", "Geografia"
 ])
 
 
-# -- Tab 1: Prices ---
+# -- Tab 1: Precios ---
 with tab1:
     st.subheader("Comparativa de precios de producto")
 
@@ -219,93 +222,8 @@ with tab1:
     st.dataframe(pd.DataFrame(price_table), use_container_width=True, hide_index=True)
 
 
-# -- Tab 2: Delivery & ETA ---
+# -- Tab 2: Promos ---
 with tab2:
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.subheader("ETA promedio por plataforma")
-        eta_data = df.groupby("platform_name")["eta_min"].mean().reset_index()
-        eta_data.columns = ["Plataforma", "ETA (min)"]
-        fig = px.bar(eta_data, x="Plataforma", y="ETA (min)",
-                     color="Plataforma", color_discrete_map=color_map,
-                     title="Tiempo estimado de entrega")
-        fig.add_hline(y=30, line_dash="dash", line_color="red",
-                      annotation_text="SLA 30 min")
-        fig.update_layout(showlegend=False, height=400)
-        st.plotly_chart(fig, use_container_width=True)
-
-    with col2:
-        st.subheader("Rating promedio")
-        rat_data = df.groupby("platform_name")["rating"].mean().reset_index()
-        rat_data.columns = ["Plataforma", "Rating"]
-        fig = px.bar(rat_data, x="Plataforma", y="Rating",
-                     color="Plataforma", color_discrete_map=color_map,
-                     title="Rating de McDonald's")
-        fig.update_layout(showlegend=False, height=400)
-        fig.update_yaxes(range=[3.0, 5.0])
-        st.plotly_chart(fig, use_container_width=True)
-
-    # ETA by city if multiple cities
-    if df["city"].nunique() > 1:
-        st.subheader("ETA por ciudad")
-        eta_city = df.groupby(["city", "platform_name"])["eta_min"].mean().reset_index()
-        eta_city.columns = ["Ciudad", "Plataforma", "ETA (min)"]
-        fig = px.bar(eta_city, x="Ciudad", y="ETA (min)", color="Plataforma",
-                     barmode="group", color_discrete_map=color_map)
-        fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
-
-
-# -- Tab 3: Fees & Total ---
-with tab3:
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.subheader("Delivery Fee")
-        fee_data = df.groupby("platform_name")["delivery_fee"].mean().reset_index()
-        fee_data.columns = ["Plataforma", "Fee (MXN)"]
-        fig = px.bar(fee_data, x="Plataforma", y="Fee (MXN)",
-                     color="Plataforma", color_discrete_map=color_map,
-                     title="Delivery Fee promedio")
-        fig.update_layout(showlegend=False, height=350)
-        st.plotly_chart(fig, use_container_width=True)
-
-    with col2:
-        st.subheader("Service Fee %")
-        svc_data = pd.DataFrame([
-            {"Plataforma": PLATFORM_NAMES[p], "Service Fee %": SERVICE_FEES.get(p, 10)}
-            for p in selected_plats
-        ])
-        fig = px.bar(svc_data, x="Plataforma", y="Service Fee %",
-                     color="Plataforma", color_discrete_map=color_map,
-                     title="Service Fee estimado")
-        fig.update_layout(showlegend=False, height=350)
-        st.plotly_chart(fig, use_container_width=True)
-
-    with col3:
-        st.subheader("Total All-in")
-        total_data = df.groupby("platform_name")["total_estimated"].mean().reset_index()
-        total_data.columns = ["Plataforma", "Total (MXN)"]
-        fig = px.bar(total_data, x="Plataforma", y="Total (MXN)",
-                     color="Plataforma", color_discrete_map=color_map,
-                     title="Costo total estimado")
-        fig.update_layout(showlegend=False, height=350)
-        st.plotly_chart(fig, use_container_width=True)
-
-    # Fee by zone type
-    if df["zone_type"].nunique() > 1:
-        st.subheader("Delivery Fee por tipo de zona")
-        fee_zone = df.groupby(["zone_type", "platform_name"])["delivery_fee"].mean().reset_index()
-        fee_zone.columns = ["Tipo de zona", "Plataforma", "Fee (MXN)"]
-        fig = px.bar(fee_zone, x="Tipo de zona", y="Fee (MXN)", color="Plataforma",
-                     barmode="group", color_discrete_map=color_map)
-        fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
-
-
-# -- Tab 4: Promos ---
-with tab4:
     col1, col2 = st.columns(2)
 
     with col1:
@@ -342,26 +260,126 @@ with tab4:
         st.plotly_chart(fig, use_container_width=True)
 
 
-# -- Tab 5: Geography ---
-with tab5:
-    if df["zone"].nunique() > 1:
-        st.subheader("Delivery Fee por zona")
-        geo_data = df.groupby(["zone", "zone_type", "platform_name"])["delivery_fee"].mean().reset_index()
-        geo_data.columns = ["Zona", "Tipo", "Plataforma", "Fee (MXN)"]
-        fig = px.bar(geo_data, x="Fee (MXN)", y="Zona", color="Plataforma",
+# -- Tab 3: Engagement ---
+with tab3:
+    st.subheader("Review Count por plataforma")
+    rev_plat = df.groupby("platform_name")["review_count"].mean().reset_index()
+    rev_plat.columns = ["Plataforma", "Reviews (promedio)"]
+    fig = px.bar(rev_plat, x="Plataforma", y="Reviews (promedio)",
+                 color="Plataforma", color_discrete_map=color_map,
+                 title="Promedio de reviews por plataforma")
+    fig.update_layout(showlegend=False, height=400)
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Reviews by city
+    if df["city"].nunique() > 1:
+        st.subheader("Reviews por ciudad")
+        rev_city = df.groupby(["city", "platform_name"])["review_count"].mean().reset_index()
+        rev_city.columns = ["Ciudad", "Plataforma", "Reviews (promedio)"]
+        fig = px.bar(rev_city, x="Ciudad", y="Reviews (promedio)", color="Plataforma",
                      barmode="group", color_discrete_map=color_map,
-                     orientation="h", title="Delivery Fee por zona y plataforma")
-        fig.update_layout(height=max(400, len(df["zone"].unique()) * 35))
-        fig.update_yaxes(categoryorder="total ascending")
+                     title="Reviews promedio por ciudad y plataforma")
+        fig.update_layout(height=400)
         st.plotly_chart(fig, use_container_width=True)
 
-        # Total by zone
-        st.subheader("Total estimado por zona")
+    # Reviews by zone type
+    if df["zone_type"].nunique() > 1:
+        st.subheader("Reviews por tipo de zona")
+        rev_zone = df.groupby(["zone_type", "platform_name"])["review_count"].mean().reset_index()
+        rev_zone.columns = ["Tipo de zona", "Plataforma", "Reviews (promedio)"]
+        fig = px.bar(rev_zone, x="Tipo de zona", y="Reviews (promedio)", color="Plataforma",
+                     barmode="group", color_discrete_map=color_map,
+                     title="Reviews promedio por tipo de zona y plataforma")
+        fig.update_layout(height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+
+# -- Tab 4: Operacional (ETA + Rating) ---
+with tab4:
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("ETA promedio por plataforma")
+        eta_data = df.groupby("platform_name")["eta_min"].mean().reset_index()
+        eta_data.columns = ["Plataforma", "ETA (min)"]
+        fig = px.bar(eta_data, x="Plataforma", y="ETA (min)",
+                     color="Plataforma", color_discrete_map=color_map,
+                     title="Tiempo estimado de entrega")
+        fig.add_hline(y=30, line_dash="dash", line_color="red",
+                      annotation_text="SLA 30 min")
+        fig.update_layout(showlegend=False, height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+        st.subheader("Rating promedio")
+        rat_data = df.groupby("platform_name")["rating"].mean().reset_index()
+        rat_data.columns = ["Plataforma", "Rating"]
+        fig = px.bar(rat_data, x="Plataforma", y="Rating",
+                     color="Plataforma", color_discrete_map=color_map,
+                     title="Rating de McDonald's")
+        fig.update_layout(showlegend=False, height=400)
+        fig.update_yaxes(range=[3.0, 5.0])
+        st.plotly_chart(fig, use_container_width=True)
+
+    # ETA by city if multiple cities
+    if df["city"].nunique() > 1:
+        st.subheader("ETA por ciudad")
+        eta_city = df.groupby(["city", "platform_name"])["eta_min"].mean().reset_index()
+        eta_city.columns = ["Ciudad", "Plataforma", "ETA (min)"]
+        fig = px.bar(eta_city, x="Ciudad", y="ETA (min)", color="Plataforma",
+                     barmode="group", color_discrete_map=color_map)
+        fig.update_layout(height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+
+# -- Tab 5: Costos (Service Fee + Total) ---
+with tab5:
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Service Fee %")
+        svc_data = pd.DataFrame([
+            {"Plataforma": PLATFORM_NAMES[p], "Service Fee %": SERVICE_FEES.get(p, 10)}
+            for p in selected_plats
+        ])
+        fig = px.bar(svc_data, x="Plataforma", y="Service Fee %",
+                     color="Plataforma", color_discrete_map=color_map,
+                     title="Service Fee estimado")
+        fig.update_layout(showlegend=False, height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+        st.subheader("Total All-in")
+        total_data = df.groupby("platform_name")["total_estimated"].mean().reset_index()
+        total_data.columns = ["Plataforma", "Total (MXN)"]
+        fig = px.bar(total_data, x="Plataforma", y="Total (MXN)",
+                     color="Plataforma", color_discrete_map=color_map,
+                     title="Costo total estimado")
+        fig.update_layout(showlegend=False, height=400)
+        st.plotly_chart(fig, use_container_width=True)
+
+
+# -- Tab 6: Geografia ---
+with tab6:
+    if df["zone"].nunique() > 1:
+        # Total price by zone (replaces delivery fee by zone)
+        st.subheader("Precio total por zona")
         total_zone = df.groupby(["zone", "zone_type", "platform_name"])["total_estimated"].mean().reset_index()
         total_zone.columns = ["Zona", "Tipo", "Plataforma", "Total (MXN)"]
         fig = px.bar(total_zone, x="Total (MXN)", y="Zona", color="Plataforma",
                      barmode="group", color_discrete_map=color_map,
-                     orientation="h", title="Costo total por zona")
+                     orientation="h", title="Precio total por zona y plataforma")
+        fig.update_layout(height=max(400, len(df["zone"].unique()) * 35))
+        fig.update_yaxes(categoryorder="total ascending")
+        st.plotly_chart(fig, use_container_width=True)
+
+        # Promo % by zone
+        st.subheader("Promo % por zona")
+        promo_zone = df.groupby(["zone", "zone_type", "platform_name"])["promo_general_pct"].mean().reset_index()
+        promo_zone.columns = ["Zona", "Tipo", "Plataforma", "Promo %"]
+        fig = px.bar(promo_zone, x="Promo %", y="Zona", color="Plataforma",
+                     barmode="group", color_discrete_map=color_map,
+                     orientation="h", title="Promo % por zona y plataforma")
         fig.update_layout(height=max(400, len(df["zone"].unique()) * 35))
         fig.update_yaxes(categoryorder="total ascending")
         st.plotly_chart(fig, use_container_width=True)
@@ -371,27 +389,28 @@ with tab5:
     # Radar chart
     if len(selected_plats) >= 2:
         st.subheader("Posicionamiento multidimensional")
-        cats = ["Delivery Fee", "ETA", "Service Fee", "Precio Combo", "Promo %"]
+        cats = ["ETA", "Service Fee", "Precio Combo", "Promo %", "Reviews"]
 
         fig = go.Figure()
         raw_vals = {}
         for p in selected_plats:
             sub = df[df["platform"] == p]
-            fee = sub["delivery_fee"].mean()
             eta = sub["eta_min"].mean()
             svc = SERVICE_FEES.get(p, 10)
             combo = sub["combo_orig"].mean()
             promo = 100 - (sub["promo_general_pct"].mean() if sub["promo_general_pct"].notna().any() else 0)
+            # Reviews: inverted so high review count = low value (closer to center = better)
+            rev = sub["review_count"].mean()
+            rev_inv = (1.0 / rev) * 1000 if pd.notna(rev) and rev > 0 else 0
             raw_vals[p] = [
-                fee if pd.notna(fee) else 0,
                 eta if pd.notna(eta) else 0,
                 svc,
                 combo if pd.notna(combo) else 0,
                 promo,
+                rev_inv,
             ]
 
         # Normalize 0-1
-        import numpy as np
         arr = np.array([raw_vals[p] for p in selected_plats])
         mn, mx = arr.min(0), arr.max(0)
         denom = np.where(mx - mn == 0, 1, mx - mn)

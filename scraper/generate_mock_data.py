@@ -186,12 +186,17 @@ def gen_platform(platform, zone_type):
     service_fee = round(subtotal * m["service_fee_rate"], 2)
     total = round(subtotal + fee + service_fee, 2)
 
+    # Review count — clamp to positive
+    rc = m["review_count"]
+    review_count = max(10, int(np.random.normal(rc["mean"], rc["std"])))
+
     return {
         "platform":               platform,
         "status":                 "success",
         "restaurant_name":        random.choice(RESTAURANT_NAMES[platform]),
         "restaurant_available":   True,
         "rating":                 rating,
+        "review_count":           review_count,
         "eta_min":                eta,
         "delivery_fee":           fee,
         "promo_general_pct":      promo_pct,
@@ -245,6 +250,7 @@ def generate():
                 "restaurant_available":         p["restaurant_available"],
                 "rating":                       p["rating"],
                 "eta_min":                      p["eta_min"],
+                "review_count":                 p["review_count"],
                 "delivery_fee_mxn":             p["delivery_fee"],
                 "promo_general_pct":            p["promo_general_pct"],
                 "combo_bigmac_price_original":  combo.get("price_original"),
