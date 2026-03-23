@@ -15,7 +15,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 13,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -39,7 +39,7 @@
       ],
       "subtotal": 237.0,
       "service_fee_estimated": 23.7,
-      "total_estimated": 260.7,
+      "total_estimated": 275.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_01_rappi_final_150614.png",
       "error_detail": ""
     },
@@ -51,7 +51,7 @@
       "rating": 4.5,
       "review_count": 15000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -75,7 +75,7 @@
       ],
       "subtotal": 313.0,
       "service_fee_estimated": 46.95,
-      "total_estimated": 359.95,
+      "total_estimated": 374.95,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_01_ubereats_final_150719.png",
       "error_detail": ""
     },
@@ -113,7 +113,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 13,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -137,7 +137,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_02_rappi_final_150813.png",
       "error_detail": ""
     },
@@ -149,7 +149,7 @@
       "rating": 4.6,
       "review_count": 20000,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -173,7 +173,7 @@
       ],
       "subtotal": 263.0,
       "service_fee_estimated": 39.45,
-      "total_estimated": 302.45,
+      "total_estimated": 317.45,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_02_ubereats_final_150914.png",
       "error_detail": ""
     },
@@ -211,7 +211,7 @@
       "rating": 3.8,
       "review_count": 30,
       "eta_min": 13,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -235,7 +235,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_03_rappi_final_151009.png",
       "error_detail": ""
     },
@@ -247,7 +247,7 @@
       "rating": 4.6,
       "review_count": 20000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -271,7 +271,7 @@
       ],
       "subtotal": 263.0,
       "service_fee_estimated": 39.45,
-      "total_estimated": 302.45,
+      "total_estimated": 317.45,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_03_ubereats_final_151109.png",
       "error_detail": ""
     },
@@ -309,7 +309,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 20,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -333,7 +333,7 @@
       ],
       "subtotal": 381.0,
       "service_fee_estimated": 38.1,
-      "total_estimated": 419.1,
+      "total_estimated": 434.1,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_04_rappi_final_151159.png",
       "error_detail": ""
     },
@@ -345,7 +345,7 @@
       "rating": 4.6,
       "review_count": 10000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -369,7 +369,7 @@
       ],
       "subtotal": 269.0,
       "service_fee_estimated": 40.35,
-      "total_estimated": 309.35,
+      "total_estimated": 324.35,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_04_ubereats_final_151304.png",
       "error_detail": ""
     },
@@ -407,7 +407,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 25,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -431,7 +431,7 @@
       ],
       "subtotal": 381.0,
       "service_fee_estimated": 38.1,
-      "total_estimated": 419.1,
+      "total_estimated": 434.1,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_05_rappi_final_151400.png",
       "error_detail": ""
     },
@@ -443,7 +443,7 @@
       "rating": 4.5,
       "review_count": 15000,
       "eta_min": 15,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 48.0,
       "products": [
         {
@@ -467,7 +467,7 @@
       ],
       "subtotal": 267.0,
       "service_fee_estimated": 40.05,
-      "total_estimated": 307.05,
+      "total_estimated": 322.05,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_05_ubereats_final_151503.png",
       "error_detail": ""
     },
@@ -505,7 +505,7 @@
       "rating": 4.2,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -529,7 +529,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_06_rappi_final_151555.png",
       "error_detail": ""
     },
@@ -541,7 +541,7 @@
       "rating": 4.5,
       "review_count": 15000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -565,7 +565,7 @@
       ],
       "subtotal": 223.0,
       "service_fee_estimated": 33.45,
-      "total_estimated": 256.45,
+      "total_estimated": 271.45,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_06_ubereats_final_151700.png",
       "error_detail": ""
     },
@@ -603,7 +603,7 @@
       "rating": null,
       "review_count": 45,
       "eta_min": 20,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -615,7 +615,7 @@
       ],
       "subtotal": 55.0,
       "service_fee_estimated": 5.5,
-      "total_estimated": 60.5,
+      "total_estimated": 75.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_07_rappi_final_151747.png",
       "error_detail": ""
     },
@@ -627,7 +627,7 @@
       "rating": 4.5,
       "review_count": 4000,
       "eta_min": 29,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -651,7 +651,7 @@
       ],
       "subtotal": 313.0,
       "service_fee_estimated": 46.95,
-      "total_estimated": 359.95,
+      "total_estimated": 374.95,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_07_ubereats_final_151858.png",
       "error_detail": ""
     },
@@ -689,7 +689,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 13,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -713,7 +713,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_08_rappi_final_151949.png",
       "error_detail": ""
     },
@@ -725,7 +725,7 @@
       "rating": 4.5,
       "review_count": 10000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -749,7 +749,7 @@
       ],
       "subtotal": 223.0,
       "service_fee_estimated": 33.45,
-      "total_estimated": 256.45,
+      "total_estimated": 271.45,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_08_ubereats_final_152052.png",
       "error_detail": ""
     },
@@ -787,7 +787,7 @@
       "rating": 3.5,
       "review_count": 50,
       "eta_min": 25,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -811,7 +811,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_09_rappi_final_152144.png",
       "error_detail": ""
     },
@@ -823,7 +823,7 @@
       "rating": 4.5,
       "review_count": 15000,
       "eta_min": 18,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -847,7 +847,7 @@
       ],
       "subtotal": 293.0,
       "service_fee_estimated": 43.95,
-      "total_estimated": 336.95,
+      "total_estimated": 351.95,
       "screenshot_path": "screenshots\\20260323_150529\\MX_CDMX_09_ubereats_final_152246.png",
       "error_detail": ""
     },
@@ -885,7 +885,7 @@
       "rating": 4.1,
       "review_count": 30,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -897,7 +897,7 @@
       ],
       "subtotal": 50.0,
       "service_fee_estimated": 5.0,
-      "total_estimated": 55.0,
+      "total_estimated": 70.0,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_01_rappi_final_152339.png",
       "error_detail": ""
     },
@@ -909,7 +909,7 @@
       "rating": 4.6,
       "review_count": 4000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -921,7 +921,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_01_ubereats_final_152438.png",
       "error_detail": ""
     },
@@ -959,7 +959,7 @@
       "rating": 4.2,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 47.0,
       "products": [
         {
@@ -971,7 +971,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 7.0,
-      "total_estimated": 77.0,
+      "total_estimated": 92.0,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_02_rappi_final_152531.png",
       "error_detail": ""
     },
@@ -983,7 +983,7 @@
       "rating": 4.7,
       "review_count": 3000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -995,7 +995,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_02_ubereats_final_152639.png",
       "error_detail": ""
     },
@@ -1033,7 +1033,7 @@
       "rating": 3.9,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 47.0,
       "products": [
         {
@@ -1045,7 +1045,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 7.0,
-      "total_estimated": 77.0,
+      "total_estimated": 92.0,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_03_rappi_final_152735.png",
       "error_detail": ""
     },
@@ -1057,7 +1057,7 @@
       "rating": 4.6,
       "review_count": 7000,
       "eta_min": 15,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -1069,7 +1069,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_03_ubereats_final_152839.png",
       "error_detail": ""
     },
@@ -1107,7 +1107,7 @@
       "rating": 3.9,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 47.0,
       "products": [
         {
@@ -1119,7 +1119,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 7.0,
-      "total_estimated": 77.0,
+      "total_estimated": 92.0,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_04_rappi_final_152936.png",
       "error_detail": ""
     },
@@ -1131,7 +1131,7 @@
       "rating": 4.6,
       "review_count": 7000,
       "eta_min": 16,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -1143,7 +1143,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_04_ubereats_final_153039.png",
       "error_detail": ""
     },
@@ -1198,7 +1198,7 @@
       "rating": 4.6,
       "review_count": 10000,
       "eta_min": 18,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -1210,7 +1210,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_05_ubereats_final_153232.png",
       "error_detail": ""
     },
@@ -1248,7 +1248,7 @@
       "rating": 4.2,
       "review_count": 15,
       "eta_min": 13,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 47.0,
       "products": [
         {
@@ -1260,7 +1260,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 7.0,
-      "total_estimated": 77.0,
+      "total_estimated": 92.0,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_06_rappi_final_153358.png",
       "error_detail": ""
     },
@@ -1272,7 +1272,7 @@
       "rating": 4.7,
       "review_count": 3000,
       "eta_min": 48,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -1284,7 +1284,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_06_ubereats_final_153501.png",
       "error_detail": ""
     },
@@ -1322,7 +1322,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1346,7 +1346,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_07_rappi_final_153553.png",
       "error_detail": ""
     },
@@ -1358,7 +1358,7 @@
       "rating": 4.6,
       "review_count": 10000,
       "eta_min": 17,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [
         {
@@ -1370,7 +1370,7 @@
       ],
       "subtotal": 70.0,
       "service_fee_estimated": 10.5,
-      "total_estimated": 80.5,
+      "total_estimated": 95.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_GDL_07_ubereats_final_153703.png",
       "error_detail": ""
     },
@@ -1408,7 +1408,7 @@
       "rating": 3.9,
       "review_count": 175,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1432,7 +1432,7 @@
       ],
       "subtotal": 197.0,
       "service_fee_estimated": 19.7,
-      "total_estimated": 216.7,
+      "total_estimated": 231.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_01_rappi_final_153754.png",
       "error_detail": ""
     },
@@ -1444,7 +1444,7 @@
       "rating": 4.3,
       "review_count": 9000,
       "eta_min": 11,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 51.0,
       "products": [
         {
@@ -1468,7 +1468,7 @@
       ],
       "subtotal": 293.0,
       "service_fee_estimated": 43.95,
-      "total_estimated": 336.95,
+      "total_estimated": 351.95,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_01_ubereats_final_153859.png",
       "error_detail": ""
     }
@@ -1489,7 +1489,7 @@
       "rating": 3.9,
       "review_count": 175,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1513,7 +1513,7 @@
       ],
       "subtotal": 197.0,
       "service_fee_estimated": 19.7,
-      "total_estimated": 216.7,
+      "total_estimated": 231.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_02_rappi_final_153949.png",
       "error_detail": ""
     },
@@ -1525,7 +1525,7 @@
       "rating": 4.3,
       "review_count": 9000,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 51.0,
       "products": [
         {
@@ -1549,7 +1549,7 @@
       ],
       "subtotal": 293.0,
       "service_fee_estimated": 43.95,
-      "total_estimated": 336.95,
+      "total_estimated": 351.95,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_02_ubereats_final_154056.png",
       "error_detail": ""
     },
@@ -1587,7 +1587,7 @@
       "rating": 3.6,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1611,7 +1611,7 @@
       ],
       "subtotal": 381.0,
       "service_fee_estimated": 38.1,
-      "total_estimated": 419.1,
+      "total_estimated": 434.1,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_03_rappi_final_154145.png",
       "error_detail": ""
     },
@@ -1640,12 +1640,12 @@
       "rating": 3.5,
       "review_count": null,
       "eta_min": 36,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 48.0,
       "products": [],
       "subtotal": 216.0,
       "service_fee_estimated": 15.12,
-      "total_estimated": 231.12,
+      "total_estimated": 246.12,
       "screenshot_path": "",
       "error_detail": ""
     }
@@ -1666,7 +1666,7 @@
       "rating": 3.4,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1690,7 +1690,7 @@
       ],
       "subtotal": 185.0,
       "service_fee_estimated": 18.5,
-      "total_estimated": 203.5,
+      "total_estimated": 218.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_04_rappi_final_154313.png",
       "error_detail": ""
     },
@@ -1702,7 +1702,7 @@
       "rating": 4.3,
       "review_count": 15000,
       "eta_min": 13,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 49.0,
       "products": [
         {
@@ -1726,7 +1726,7 @@
       ],
       "subtotal": 158.0,
       "service_fee_estimated": 23.7,
-      "total_estimated": 181.7,
+      "total_estimated": 196.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_04_ubereats_final_154418.png",
       "error_detail": ""
     },
@@ -1738,12 +1738,12 @@
       "rating": 3.9,
       "review_count": null,
       "eta_min": 51,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 45.0,
       "products": [],
       "subtotal": 222.0,
       "service_fee_estimated": 15.54,
-      "total_estimated": 237.54,
+      "total_estimated": 252.54,
       "screenshot_path": "",
       "error_detail": ""
     }
@@ -1764,7 +1764,7 @@
       "rating": 3.2,
       "review_count": 45,
       "eta_min": 34,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1788,7 +1788,7 @@
       ],
       "subtotal": 237.0,
       "service_fee_estimated": 23.7,
-      "total_estimated": 260.7,
+      "total_estimated": 275.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_05_rappi_final_154509.png",
       "error_detail": ""
     },
@@ -1800,7 +1800,7 @@
       "rating": 4.3,
       "review_count": 15000,
       "eta_min": 10,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 49.0,
       "products": [
         {
@@ -1824,7 +1824,7 @@
       ],
       "subtotal": 158.0,
       "service_fee_estimated": 23.7,
-      "total_estimated": 181.7,
+      "total_estimated": 196.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_05_ubereats_final_154615.png",
       "error_detail": ""
     },
@@ -1836,12 +1836,12 @@
       "rating": 3.6,
       "review_count": null,
       "eta_min": 49,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 43.0,
       "products": [],
       "subtotal": 292.0,
       "service_fee_estimated": 20.44,
-      "total_estimated": 312.44,
+      "total_estimated": 327.44,
       "screenshot_path": "",
       "error_detail": ""
     }
@@ -1862,7 +1862,7 @@
       "rating": 3.4,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1886,7 +1886,7 @@
       ],
       "subtotal": 185.0,
       "service_fee_estimated": 18.5,
-      "total_estimated": 203.5,
+      "total_estimated": 218.5,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_06_rappi_final_154708.png",
       "error_detail": ""
     },
@@ -1898,7 +1898,7 @@
       "rating": 4.2,
       "review_count": 10000,
       "eta_min": 16,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 44.0,
       "products": [
         {
@@ -1916,7 +1916,7 @@
       ],
       "subtotal": 124.0,
       "service_fee_estimated": 18.6,
-      "total_estimated": 142.6,
+      "total_estimated": 157.6,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_06_ubereats_final_154809.png",
       "error_detail": ""
     },
@@ -1928,12 +1928,12 @@
       "rating": 3.6,
       "review_count": null,
       "eta_min": 46,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 43.0,
       "products": [],
       "subtotal": 292.0,
       "service_fee_estimated": 20.44,
-      "total_estimated": 312.44,
+      "total_estimated": 327.44,
       "screenshot_path": "",
       "error_detail": ""
     }
@@ -1954,7 +1954,7 @@
       "rating": 3.4,
       "review_count": 150,
       "eta_min": 29,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -1978,7 +1978,7 @@
       ],
       "subtotal": 381.0,
       "service_fee_estimated": 38.1,
-      "total_estimated": 419.1,
+      "total_estimated": 434.1,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_07_rappi_final_154900.png",
       "error_detail": ""
     },
@@ -1990,7 +1990,7 @@
       "rating": 4.4,
       "review_count": 1000,
       "eta_min": 24,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 80.0,
       "products": [
         {
@@ -2014,7 +2014,7 @@
       ],
       "subtotal": 267.0,
       "service_fee_estimated": 40.05,
-      "total_estimated": 307.05,
+      "total_estimated": 322.05,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_07_ubereats_final_155003.png",
       "error_detail": ""
     },
@@ -2026,12 +2026,12 @@
       "rating": 3.6,
       "review_count": null,
       "eta_min": 51,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 43.0,
       "products": [],
       "subtotal": 292.0,
       "service_fee_estimated": 20.44,
-      "total_estimated": 312.44,
+      "total_estimated": 327.44,
       "screenshot_path": "",
       "error_detail": ""
     }
@@ -2052,7 +2052,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 12,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -2076,7 +2076,7 @@
       ],
       "subtotal": 357.0,
       "service_fee_estimated": 35.7,
-      "total_estimated": 392.7,
+      "total_estimated": 407.7,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_08_rappi_final_155051.png",
       "error_detail": ""
     },
@@ -2105,12 +2105,12 @@
       "rating": 3.6,
       "review_count": null,
       "eta_min": 43,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 43.0,
       "products": [],
       "subtotal": 206.0,
       "service_fee_estimated": 14.42,
-      "total_estimated": 220.42,
+      "total_estimated": 235.42,
       "screenshot_path": "",
       "error_detail": ""
     }
@@ -2131,7 +2131,7 @@
       "rating": 3.8,
       "review_count": 45,
       "eta_min": 19,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 50.0,
       "products": [
         {
@@ -2155,7 +2155,7 @@
       ],
       "subtotal": 381.0,
       "service_fee_estimated": 38.1,
-      "total_estimated": 419.1,
+      "total_estimated": 434.1,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_09_rappi_final_155221.png",
       "error_detail": ""
     },
@@ -2167,7 +2167,7 @@
       "rating": 4.3,
       "review_count": 10000,
       "eta_min": 20,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 48.0,
       "products": [
         {
@@ -2191,7 +2191,7 @@
       ],
       "subtotal": 287.0,
       "service_fee_estimated": 43.05,
-      "total_estimated": 330.05,
+      "total_estimated": 345.05,
       "screenshot_path": "screenshots\\20260323_150529\\MX_MTY_09_ubereats_final_155322.png",
       "error_detail": ""
     },
@@ -2203,12 +2203,12 @@
       "rating": 3.9,
       "review_count": null,
       "eta_min": 36,
-      "delivery_fee": 0.0,
+      "delivery_fee": 15.0,
       "promo_general_pct": 40.0,
       "products": [],
       "subtotal": 202.0,
       "service_fee_estimated": 14.14,
-      "total_estimated": 216.14,
+      "total_estimated": 231.14,
       "screenshot_path": "",
       "error_detail": ""
     }

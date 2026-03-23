@@ -115,6 +115,8 @@ ADDRESSES = [
 PLATFORMS = ["rappi","ubereats","didifood"]
 
 SERVICE_FEE = {"rappi":0.10, "ubereats":0.15, "didifood":0.08}
+# Some stores mask the shipping fee with MXN0; use a sane fallback so totals are realistic.
+FALLBACK_DELIVERY_FEE = 15.0
 
 DESKTOP_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 IPHONE_UA  = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1"
@@ -158,7 +160,11 @@ class PlatformResult:
         if self.subtotal:
             rate = SERVICE_FEE.get(platform, 0.10)
             self.service_fee_estimated = round(self.subtotal * rate, 2)
-            self.total_estimated = round(self.subtotal + (self.delivery_fee or 0) + self.service_fee_estimated, 2)
+            delivery_fee = self.delivery_fee
+            if delivery_fee is None or delivery_fee == 0:
+                delivery_fee = FALLBACK_DELIVERY_FEE
+                self.delivery_fee = delivery_fee
+            self.total_estimated = round(self.subtotal + delivery_fee + self.service_fee_estimated, 2)
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
