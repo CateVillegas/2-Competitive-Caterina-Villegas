@@ -1,0 +1,46 @@
+[
+  {
+    "scraped_at": "2026-03-22T20:28:17.060384",
+    "address_id": "MX_CDMX_01",
+    "city": "Ciudad de Mexico",
+    "zone": "Polanco",
+    "zone_type": "Wealthy",
+    "address": "Presidente Masaryk 111, Polanco, Miguel Hidalgo, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "eta_min": 19,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 51.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 328.0,
+          "price_discounted": 169.0,
+          "discount_pct": 48.5
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 158.0,
+          "price_discounted": 119.0,
+          "discount_pct": 24.7
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 21.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 309.0,
+      "service_fee_estimated": 30.9,
+      "total_estimated": 339.9,
+      "screenshot_path": "screenshots\\20260322_202815\\MX_CDMX_01_rappi_final_202902.png",
+      "error_detail": ""
+    }
+  }
+]

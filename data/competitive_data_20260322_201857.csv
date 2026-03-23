@@ -1,0 +1,4 @@
+scraped_at,address_id,city,zone,zone_type,platform,status,restaurant_available,rating,eta_min,delivery_fee_mxn,promo_general_pct,bm_price_orig,bm_price_disc,bm_disc_pct,hdq_price_orig,hdq_price_disc,hdq_disc_pct,cc_price_orig,cc_price_disc,cc_disc_pct,subtotal_mxn,service_fee_mxn,total_estimated_mxn,error
+2026-03-22T20:18:59.073116,MX_CDMX_01,Ciudad de Mexico,Polanco,Wealthy,rappi,success,True,3.9,19,0.0,51.0,328.0,199.0,39.3,158.0,119.0,24.7,55.0,,,373.0,37.3,410.3,
+2026-03-22T20:18:59.073116,MX_CDMX_01,Ciudad de Mexico,Polanco,Wealthy,ubereats,success,True,4.5,10,,44.0,174.0,159.0,8.6,189.0,109.0,42.3,55.0,,,323.0,48.45,371.45,
+2026-03-22T20:18:59.073116,MX_CDMX_01,Ciudad de Mexico,Polanco,Wealthy,didifood,error,False,,,,,,,,,,,,,,,,,Could not load any DiDi Food URL

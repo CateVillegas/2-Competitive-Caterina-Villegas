@@ -1,0 +1,97 @@
+[
+  {
+    "scraped_at": "2026-03-22T20:18:59.073116",
+    "address_id": "MX_CDMX_01",
+    "city": "Ciudad de Mexico",
+    "zone": "Polanco",
+    "zone_type": "Wealthy",
+    "address": "Presidente Masaryk 111, Polanco, Miguel Hidalgo, Ciudad de Mexico",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "eta_min": 19,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 51.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 328.0,
+          "price_discounted": 199.0,
+          "discount_pct": 39.3
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 158.0,
+          "price_discounted": 119.0,
+          "discount_pct": 24.7
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 373.0,
+      "service_fee_estimated": 37.3,
+      "total_estimated": 410.3,
+      "screenshot_path": "screenshots\\20260322_201857\\MX_CDMX_01_rappi_final_201944.png",
+      "error_detail": ""
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "eta_min": 10,
+      "delivery_fee": null,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.0,
+          "price_discounted": 159.0,
+          "discount_pct": 8.6
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 189.0,
+          "price_discounted": 109.0,
+          "discount_pct": 42.3
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.0,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 323.0,
+      "service_fee_estimated": 48.45,
+      "total_estimated": 371.45,
+      "screenshot_path": "screenshots\\20260322_201857\\MX_CDMX_01_ubereats_final_202053.png",
+      "error_detail": ""
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "error",
+      "restaurant_name": "",
+      "restaurant_available": false,
+      "rating": null,
+      "eta_min": null,
+      "delivery_fee": null,
+      "promo_general_pct": null,
+      "products": [],
+      "subtotal": null,
+      "service_fee_estimated": null,
+      "total_estimated": null,
+      "screenshot_path": "",
+      "error_detail": "Could not load any DiDi Food URL"
+    }
+  }
+]

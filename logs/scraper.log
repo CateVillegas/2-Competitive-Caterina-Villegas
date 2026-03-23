@@ -1,0 +1,417 @@
+2026-03-22 16:10:05,542 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 16:10:43,651 [WARNING] [Rappi] MX_CDMX_01 TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*=\"Comi
+2026-03-22 16:10:43,767 [INFO]   FAIL     [rappi     ] eta=Nonem fee=None products=0 total=None
+2026-03-22 16:10:58,377 [INFO]   [Uber] address set
+2026-03-22 16:11:12,894 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-22 16:11:22,382 [INFO]   screenshot: MX_CDMX_01_ubereats_store_161120.png
+2026-03-22 16:11:22,419 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-22 16:11:22,423 [INFO]   [Uber] products=2 fee=None eta=10 promo=43.0%
+2026-03-22 16:11:22,839 [INFO]   screenshot: MX_CDMX_01_ubereats_final_161122.png
+2026-03-22 16:11:22,988 [INFO]   OK       [ubereats  ] eta=10m fee=None products=2 total=382.95
+2026-03-22 16:11:38,383 [INFO]   screenshot: MX_CDMX_01_didifood_search_161138.png
+2026-03-22 16:11:46,884 [INFO]   partial_no_store [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 16:11:50,453 [INFO] CSV: data\competitive_data_20260322_161003.csv (3 rows)
+2026-03-22 16:11:50,453 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 16:11:50,453 [INFO] Output: data\competitive_data_20260322_161003.json
+2026-03-22 19:25:36,854 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 19:25:46,759 [INFO]   [Rappi] address selected via keyboard
+2026-03-22 19:26:24,862 [WARNING] [Rappi] MX_CDMX_01 TimeoutError: Locator.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[data-qa=\"input\"]"
+2026-03-22 19:26:25,060 [INFO]   FAIL     [rappi     ] eta=Nonem fee=None products=0 total=None
+2026-03-22 19:26:42,343 [INFO]   [Uber] address set
+2026-03-22 19:27:22,923 [WARNING]   [Uber] no store links found
+2026-03-22 19:27:23,030 [INFO]   partial_no_store [ubereats  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 19:28:15,396 [WARNING] [DiDi] MX_CDMX_01 TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("ul li:first-child").firs
+2026-03-22 19:28:15,522 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 19:28:18,609 [INFO] CSV: data\competitive_data_20260322_192533.csv (3 rows)
+2026-03-22 19:28:18,611 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-22 19:28:18,614 [INFO] Output: data\competitive_data_20260322_192533.json
+2026-03-22 19:34:59,221 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 19:35:06,784 [INFO]   [Rappi] address selected via keyboard
+2026-03-22 19:35:44,286 [WARNING]   [Rappi] failed to type/search for McDonalds on selector input[data-qa="input"]
+2026-03-22 19:35:49,220 [INFO]   screenshot: MX_CDMX_01_rappi_search_193547.png
+2026-03-22 19:50:48,978 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 19:50:56,143 [INFO]   [Rappi] address selected via keyboard
+2026-03-22 19:51:23,657 [INFO]   [Rappi] searched McDonalds (link visible)
+2026-03-22 19:51:27,470 [INFO]   screenshot: MX_CDMX_01_rappi_search_195127.png
+2026-03-22 19:51:29,760 [INFO]   [Rappi] store: Mc Donald's
+2026-03-22 19:51:33,840 [INFO]   screenshot: MX_CDMX_01_rappi_store_195133.png
+2026-03-22 19:51:46,978 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 19:51:47,175 [INFO]   screenshot: MX_CDMX_01_rappi_final_195146.png
+2026-03-22 19:51:47,272 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=410.3
+2026-03-22 19:52:04,202 [INFO]   [Uber] address set
+2026-03-22 19:52:35,114 [WARNING]   [Uber] no store links found
+2026-03-22 19:52:35,180 [INFO]   partial_no_store [ubereats  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 19:52:51,482 [INFO]   screenshot: MX_CDMX_01_didifood_search_195251.png
+2026-03-22 19:52:58,666 [INFO]   partial_no_store [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 19:53:02,918 [INFO] CSV: data\competitive_data_20260322_195047.csv (3 rows)
+2026-03-22 19:53:02,918 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 19:53:02,919 [INFO] Output: data\competitive_data_20260322_195047.json
+2026-03-22 19:55:00,888 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 19:55:08,806 [INFO]   [Rappi] address selected via keyboard
+2026-03-22 19:55:45,336 [WARNING]   [Rappi] failed to type/search for McDonalds on selector input[data-qa="input"]
+2026-03-22 19:55:49,284 [INFO]   screenshot: MX_CDMX_01_rappi_search_195548.png
+2026-03-22 19:58:00,891 [INFO]   partial_no_store [rappi     ] eta=Nonem fee=None products=0 total=None
+2026-03-22 19:58:03,437 [ERROR] Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("a[href*=\\"mcdonalds\\"], a[href*=\\"McDonald\\"]").first\n    - locator resolved to <a data-qa="link" target="_self" color="graya100" data-testid="link" class="sc-dcJsrY fAPPNb sc-dAbbOL geMcug sc-lcIPJg jOrZkk" href="https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds">Mc Donald\'s</a>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("a[href*=\"mcdonalds\"], a[href*=\"McDonald\"]").first
+    - locator resolved to <a data-qa="link" target="_self" color="graya100" data-testid="link" class="sc-dcJsrY fAPPNb sc-dAbbOL geMcug sc-lcIPJg jOrZkk" href="https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds">Mc Donald's</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    - waiting for element to be visible, enabled and stable
+
+2026-03-22 19:58:15,703 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 19:58:23,866 [INFO]   [Rappi] address selected via keyboard
+2026-03-22 19:59:01,539 [WARNING]   [Rappi] failed to type/search for McDonalds on selector input[data-qa="input"]
+2026-03-22 19:59:06,102 [INFO]   screenshot: MX_CDMX_01_rappi_search_195905.png
+2026-03-22 20:00:38,151 [WARNING] [Rappi] MX_CDMX_01 Exception: Locator.all: Connection closed while reading from the driver
+2026-03-22 20:00:38,151 [INFO]   FAIL     [rappi     ] eta=Nonem fee=None products=0 total=None
+2026-03-22 20:00:40,706 [ERROR] Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("a[href*=\\"mcdonalds\\"], a[href*=\\"McDonald\\"]").first\n    - locator resolved to <a data-qa="link" target="_self" color="graya100" data-testid="link" class="sc-dcJsrY fAPPNb sc-dAbbOL geMcug sc-lcIPJg jOrZkk" href="https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds">Mc Donald\'s</a>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    50 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("a[href*=\"mcdonalds\"], a[href*=\"McDonald\"]").first
+    - locator resolved to <a data-qa="link" target="_self" color="graya100" data-testid="link" class="sc-dcJsrY fAPPNb sc-dAbbOL geMcug sc-lcIPJg jOrZkk" href="https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds">Mc Donald's</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    50 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="SearchResultsstyles__ShadowBoxing-sc-1jf8jju-7 edCNzY"></div> from <div id="rappi-web-container">…</div> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+2026-03-22 20:01:15,271 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:01:22,029 [INFO]   [Rappi] address selected via keyboard
+2026-03-22 20:01:58,220 [WARNING]   [Rappi] unexpected error during search typing for selector input[data-qa="input"]
+2026-03-22 20:02:03,621 [INFO]   screenshot: MX_CDMX_01_rappi_search_200202.png
+2026-03-22 20:02:09,466 [WARNING] [Rappi] MX_CDMX_01 TargetClosedError: Locator.all: Target page, context or browser has been closed
+2026-03-22 20:02:09,493 [INFO]   FAIL     [rappi     ] eta=Nonem fee=None products=0 total=None
+2026-03-22 20:18:59,071 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:19:09,071 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:19:11,779 [INFO]   suggestion selected via keyboard
+2026-03-22 20:19:19,416 [INFO]   typed into input[data-qa="input"]
+2026-03-22 20:19:22,791 [INFO]   [Rappi] search results found
+2026-03-22 20:19:23,288 [INFO]   screenshot: MX_CDMX_01_rappi_search_201922.png
+2026-03-22 20:19:23,572 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:19:29,511 [INFO]   screenshot: MX_CDMX_01_rappi_store_201929.png
+2026-03-22 20:19:44,393 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 20:19:44,563 [INFO]   screenshot: MX_CDMX_01_rappi_final_201944.png
+2026-03-22 20:19:44,640 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=410.3
+2026-03-22 20:19:56,415 [INFO]   typed into #location-typeahead-home-input
+2026-03-22 20:19:59,908 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-22 20:19:59,908 [INFO]   [Uber] address set
+2026-03-22 20:20:03,242 [INFO]   [Uber] navigating to search URL
+2026-03-22 20:20:25,310 [WARNING]   [Uber] no store links in search results
+2026-03-22 20:20:25,624 [INFO]   screenshot: MX_CDMX_01_ubereats_search_202025.png
+2026-03-22 20:20:25,672 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-22 20:20:33,494 [INFO]   screenshot: MX_CDMX_01_ubereats_store_202033.png
+2026-03-22 20:20:53,588 [INFO]   [Uber] products=3 fee=None eta=10 promo=44.0%
+2026-03-22 20:20:53,824 [INFO]   screenshot: MX_CDMX_01_ubereats_final_202053.png
+2026-03-22 20:20:53,878 [INFO]   OK       [ubereats  ] eta=10m fee=None products=3 total=371.45
+2026-03-22 20:21:02,752 [WARNING]   [DiDi] domain parking detected at https://www.didifood.com/mx
+2026-03-22 20:21:03,060 [WARNING]   [DiDi] failed to load https://food.didiglobal.com/mx: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://food.didiglobal.com/mx
+Call log:
+  - navigating to "https://food.didiglobal.com/mx", waiting until "domcontentloaded"
+
+2026-03-22 20:21:03,284 [WARNING]   [DiDi] failed to load https://web.didiglobal.com/mx/food/: Page.goto: Navigation to "https://web.didiglobal.com/mx/food/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://web.didiglobal.com/mx/food/", waiting until "domcontentloaded"
+
+2026-03-22 20:21:03,382 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 20:21:05,876 [INFO] CSV: data\competitive_data_20260322_201857.csv (3 rows)
+2026-03-22 20:21:05,876 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-22 20:21:05,877 [INFO] Output: data\competitive_data_20260322_201857.json
+2026-03-22 20:28:17,060 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:28:27,758 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:28:30,801 [INFO]   suggestion selected via keyboard
+2026-03-22 20:28:38,567 [INFO]   typed into input[data-qa="input"]
+2026-03-22 20:28:42,409 [INFO]   [Rappi] search results found
+2026-03-22 20:28:42,928 [INFO]   screenshot: MX_CDMX_01_rappi_search_202842.png
+2026-03-22 20:28:43,046 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:28:48,820 [INFO]   screenshot: MX_CDMX_01_rappi_store_202848.png
+2026-03-22 20:29:02,097 [INFO]   scroll_and_collect: 338 unique lines, 338 chars approx
+2026-03-22 20:29:02,114 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12283 chars)
+2026-03-22 20:29:02,114 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:29:02,115 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:29:02,115 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:29:02,115 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:29:02,115 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:29:02,126 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 20:29:02,271 [INFO]   screenshot: MX_CDMX_01_rappi_final_202902.png
+2026-03-22 20:29:02,350 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=339.9
+2026-03-22 20:29:04,878 [INFO] CSV: data\competitive_data_20260322_202815.csv (1 rows)
+2026-03-22 20:29:04,878 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 20:29:04,878 [INFO] Output: data\competitive_data_20260322_202815.json
+2026-03-22 20:34:57,749 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:35:09,233 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:35:12,383 [INFO]   suggestion selected via keyboard
+2026-03-22 20:35:22,188 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-22 20:35:28,605 [INFO]   [Rappi] search results found
+2026-03-22 20:35:30,521 [INFO]   screenshot: MX_CDMX_01_rappi_search_203528.png
+2026-03-22 20:35:32,549 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:35:42,631 [INFO]   screenshot: MX_CDMX_01_rappi_store_203538.png
+2026-03-22 20:35:57,037 [INFO]   scroll_and_collect: 338 unique lines, 338 chars approx
+2026-03-22 20:35:57,045 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12283 chars)
+2026-03-22 20:35:57,046 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:35:57,046 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:35:57,046 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:35:57,047 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:35:57,047 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:35:57,048 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=119.0 %=31.6
+2026-03-22 20:35:57,049 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=59.0 %=14.5
+2026-03-22 20:35:57,050 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 20:35:57,058 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 20:35:57,301 [INFO]   screenshot: MX_CDMX_01_rappi_final_203557.png
+2026-03-22 20:35:57,509 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=256.3
+2026-03-22 20:36:01,423 [INFO] CSV: data\competitive_data_20260322_203455.csv (1 rows)
+2026-03-22 20:36:01,424 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 20:36:01,424 [INFO] Output: data\competitive_data_20260322_203455.json
+2026-03-22 20:39:23,365 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:39:33,860 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:39:36,898 [INFO]   suggestion selected via keyboard
+2026-03-22 20:39:43,060 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-22 20:39:46,552 [INFO]   [Rappi] search results found
+2026-03-22 20:39:47,103 [INFO]   screenshot: MX_CDMX_01_rappi_search_203946.png
+2026-03-22 20:39:47,174 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:39:52,071 [INFO]   screenshot: MX_CDMX_01_rappi_store_203951.png
+2026-03-22 20:40:05,268 [INFO]   scroll_and_collect: 338 unique lines, 338 chars approx
+2026-03-22 20:40:05,273 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12283 chars)
+2026-03-22 20:40:05,273 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:40:05,274 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:40:05,274 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:40:05,274 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:40:05,274 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:40:05,276 [INFO]   product FOUND: Combo Big Mac mediano orig=305.26 disc=174.0 %=43.0
+2026-03-22 20:40:05,276 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=59.0 %=14.5
+2026-03-22 20:40:05,278 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-22 20:40:05,285 [INFO]   [Rappi] products=2 fee=0.0 eta=19 promo=51.0%
+2026-03-22 20:40:05,417 [INFO]   screenshot: MX_CDMX_01_rappi_final_204005.png
+2026-03-22 20:40:05,493 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=2 total=256.3
+2026-03-22 20:40:09,376 [INFO] CSV: data\competitive_data_20260322_203921.csv (1 rows)
+2026-03-22 20:40:09,376 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 20:40:09,376 [INFO] Output: data\competitive_data_20260322_203921.json
+2026-03-22 20:40:58,773 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:41:09,358 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:41:12,594 [INFO]   suggestion selected via keyboard
+2026-03-22 20:41:19,788 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-22 20:41:23,401 [INFO]   [Rappi] search results found
+2026-03-22 20:41:23,925 [INFO]   screenshot: MX_CDMX_01_rappi_search_204123.png
+2026-03-22 20:41:24,091 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:41:30,201 [INFO]   screenshot: MX_CDMX_01_rappi_store_204129.png
+2026-03-22 20:41:43,487 [INFO]   scroll_and_collect: 338 unique lines, 338 chars approx
+2026-03-22 20:41:43,489 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12283 chars)
+2026-03-22 20:41:43,490 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:41:43,490 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:41:43,491 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:41:43,491 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:41:43,491 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:41:43,492 [INFO]   product FOUND: Combo Big Mac mediano orig=305.26 disc=174.0 %=43.0
+2026-03-22 20:41:43,493 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 20:41:43,494 [INFO]   product FOUND (no visible price): Coca-Cola mediana
+2026-03-22 20:41:43,501 [INFO]   [Rappi] products=3 fee=0.0 eta=20 promo=51.0%
+2026-03-22 20:41:43,634 [INFO]   screenshot: MX_CDMX_01_rappi_final_204143.png
+2026-03-22 20:41:43,715 [INFO]   OK       [rappi     ] eta=20m fee=0.0 products=3 total=267.3
+2026-03-22 20:41:48,278 [INFO] CSV: data\competitive_data_20260322_204057.csv (1 rows)
+2026-03-22 20:41:48,278 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 20:41:48,278 [INFO] Output: data\competitive_data_20260322_204057.json
+2026-03-22 20:43:39,500 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:43:47,604 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:43:50,289 [INFO]   suggestion selected via keyboard
+2026-03-22 20:43:57,905 [INFO]   typed into input[data-qa="input"]
+2026-03-22 20:44:02,346 [INFO]   [Rappi] search results found
+2026-03-22 20:44:02,895 [INFO]   screenshot: MX_CDMX_01_rappi_search_204402.png
+2026-03-22 20:44:03,030 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:44:08,323 [INFO]   screenshot: MX_CDMX_01_rappi_store_204407.png
+2026-03-22 20:44:21,561 [INFO]   scroll_and_collect: 338 unique lines, 338 chars approx
+2026-03-22 20:44:21,568 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12283 chars)
+2026-03-22 20:44:21,568 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:44:21,569 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:44:21,569 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:44:21,569 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:44:21,569 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:44:21,571 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.18 %=43.0
+2026-03-22 20:44:21,571 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 20:44:21,571 [INFO]   product FOUND (no visible price): Coca-Cola mediana
+2026-03-22 20:44:21,575 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 20:44:21,709 [INFO]   screenshot: MX_CDMX_01_rappi_final_204421.png
+2026-03-22 20:44:21,788 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=185.0
+2026-03-22 20:44:25,289 [INFO] CSV: data\competitive_data_20260322_204337.csv (1 rows)
+2026-03-22 20:44:25,290 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 20:44:25,290 [INFO] Output: data\competitive_data_20260322_204337.json
+2026-03-22 20:47:31,824 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:47:40,654 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:47:43,320 [INFO]   suggestion selected via keyboard
+2026-03-22 20:47:50,937 [INFO]   typed into input[data-qa="input"]
+2026-03-22 20:47:55,531 [INFO]   [Rappi] search results found
+2026-03-22 20:47:56,001 [INFO]   screenshot: MX_CDMX_01_rappi_search_204755.png
+2026-03-22 20:47:56,276 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:48:02,565 [INFO]   screenshot: MX_CDMX_01_rappi_store_204801.png
+2026-03-22 20:48:02,599 [INFO]   scroll: internal container found = True
+2026-03-22 20:48:15,596 [INFO]   scroll: done after scrolling, 427 lines captured
+2026-03-22 20:48:15,600 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (13769 chars)
+2026-03-22 20:48:15,600 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:48:15,600 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:48:15,600 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:48:15,600 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:48:15,600 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:48:15,600 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-22 20:48:15,601 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 20:48:15,601 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 20:48:15,604 [INFO]   [Rappi] products=3 fee=0.0 eta=29 promo=51.0%
+2026-03-22 20:48:15,760 [INFO]   screenshot: MX_CDMX_01_rappi_final_204815.png
+2026-03-22 20:48:15,875 [INFO]   OK       [rappi     ] eta=29m fee=0.0 products=3 total=245.3
+2026-03-22 20:48:18,662 [INFO] CSV: data\competitive_data_20260322_204730.csv (1 rows)
+2026-03-22 20:48:18,662 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-22 20:48:18,662 [INFO] Output: data\competitive_data_20260322_204730.json
+2026-03-22 20:50:22,146 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 20:50:30,439 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 20:50:33,340 [INFO]   suggestion selected via keyboard
+2026-03-22 20:50:39,874 [INFO]   typed into input[data-qa="input"]
+2026-03-22 20:50:43,117 [INFO]   [Rappi] search results found
+2026-03-22 20:50:43,445 [INFO]   screenshot: MX_CDMX_01_rappi_search_205043.png
+2026-03-22 20:50:43,506 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 20:50:48,028 [INFO]   screenshot: MX_CDMX_01_rappi_store_205047.png
+2026-03-22 20:50:48,037 [INFO]   scroll: internal container found = True
+2026-03-22 20:51:01,059 [INFO]   scroll: done after scrolling, 427 lines captured
+2026-03-22 20:51:01,062 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (13769 chars)
+2026-03-22 20:51:01,063 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 20:51:01,063 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 20:51:01,064 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 20:51:01,064 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 20:51:01,065 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 20:51:01,066 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-22 20:51:01,067 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 20:51:01,068 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 20:51:01,073 [INFO]   [Rappi] products=3 fee=0.0 eta=19 promo=51.0%
+2026-03-22 20:51:01,195 [INFO]   screenshot: MX_CDMX_01_rappi_final_205101.png
+2026-03-22 20:51:01,249 [INFO]   OK       [rappi     ] eta=19m fee=0.0 products=3 total=245.3
+2026-03-22 20:51:12,152 [INFO]   typed into #location-typeahead-home-input
+2026-03-22 20:51:15,397 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-22 20:51:15,398 [INFO]   [Uber] address set
+2026-03-22 20:51:18,605 [INFO]   [Uber] navigating to search URL
+2026-03-22 20:51:39,770 [WARNING]   [Uber] no store links in search results
+2026-03-22 20:51:39,997 [INFO]   screenshot: MX_CDMX_01_ubereats_search_205139.png
+2026-03-22 20:51:40,016 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-22 20:51:45,109 [INFO]   screenshot: MX_CDMX_01_ubereats_store_205144.png
+2026-03-22 20:52:05,055 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-22 20:52:05,056 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=59.0 %=14.5
+2026-03-22 20:52:05,058 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 20:52:05,067 [INFO]   [Uber] products=3 fee=None eta=14 promo=44.0%
+2026-03-22 20:52:05,214 [INFO]   screenshot: MX_CDMX_01_ubereats_final_205205.png
+2026-03-22 20:52:05,256 [INFO]   OK       [ubereats  ] eta=14m fee=None products=3 total=244.95
+2026-03-22 20:52:14,584 [WARNING]   [DiDi] domain parking detected at https://www.didifood.com/mx
+2026-03-22 20:52:14,773 [WARNING]   [DiDi] failed to load https://food.didiglobal.com/mx: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://food.didiglobal.com/mx
+Call log:
+  - navigating to "https://food.didiglobal.com/mx", waiting until "domcontentloaded"
+
+2026-03-22 20:52:14,994 [WARNING]   [DiDi] failed to load https://web.didiglobal.com/mx/food/: Page.goto: Navigation to "https://web.didiglobal.com/mx/food/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://web.didiglobal.com/mx/food/", waiting until "domcontentloaded"
+
+2026-03-22 20:52:15,051 [INFO]   FAIL     [didifood  ] eta=Nonem fee=None products=0 total=None
+2026-03-22 20:52:19,038 [INFO] CSV: data\competitive_data_20260322_205021.csv (3 rows)
+2026-03-22 20:52:19,038 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-22 20:52:19,039 [INFO] Output: data\competitive_data_20260322_205021.json
+2026-03-22 21:00:19,215 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-22 21:00:27,649 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-22 21:00:30,210 [INFO]   suggestion selected via keyboard
+2026-03-22 21:00:37,530 [INFO]   typed into input[data-qa="input"]
+2026-03-22 21:00:41,024 [INFO]   [Rappi] search results found
+2026-03-22 21:00:41,345 [INFO]   screenshot: MX_CDMX_01_rappi_search_210041.png
+2026-03-22 21:00:41,404 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-22 21:00:47,872 [INFO]   screenshot: MX_CDMX_01_rappi_store_210047.png
+2026-03-22 21:00:47,892 [INFO]   scroll: internal container found = True
+2026-03-22 21:00:55,321 [INFO]   scroll: done after scrolling, 393 lines captured
+2026-03-22 21:00:55,326 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (13743 chars)
+2026-03-22 21:00:55,327 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-22 21:00:55,327 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-22 21:00:55,327 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-22 21:00:55,327 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-22 21:00:55,328 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-22 21:00:55,329 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=None %=None
+2026-03-22 21:00:55,330 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=None %=None
+2026-03-22 21:00:55,330 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 21:00:55,334 [INFO]   [Rappi] products=3 fee=0.0 eta=20 promo=51.0%
+2026-03-22 21:00:55,425 [INFO]   screenshot: MX_CDMX_01_rappi_final_210055.png
+2026-03-22 21:00:55,469 [INFO]   OK       [rappi     ] eta=20m fee=0.0 products=3 total=327.8
+2026-03-22 21:01:07,570 [INFO]   typed into #location-typeahead-home-input
+2026-03-22 21:01:11,004 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-22 21:01:11,005 [INFO]   [Uber] address set
+2026-03-22 21:01:14,888 [INFO]   [Uber] navigating to search URL
+2026-03-22 21:01:34,770 [WARNING]   [Uber] no store links in search results
+2026-03-22 21:01:34,966 [INFO]   screenshot: MX_CDMX_01_ubereats_search_210134.png
+2026-03-22 21:01:35,001 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-22 21:01:42,202 [INFO]   screenshot: MX_CDMX_01_ubereats_store_210142.png
+2026-03-22 21:01:42,217 [INFO]   scroll: internal container found = True
+2026-03-22 21:01:55,877 [INFO]   scroll: done after scrolling, 522 lines captured
+2026-03-22 21:01:55,879 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (14263 chars)
+2026-03-22 21:01:55,879 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-22 21:01:55,879 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-22 21:01:55,879 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-22 21:01:55,880 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-22 21:01:55,880 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-22 21:01:55,880 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-22 21:01:55,881 [INFO]   product FOUND: Hamburguesa doble con queso orig=69.0 disc=59.0 %=14.5
+2026-03-22 21:01:55,881 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-22 21:01:55,885 [INFO]   [Uber] products=3 fee=None eta=15 promo=44.0%
+2026-03-22 21:01:55,986 [INFO]   screenshot: MX_CDMX_01_ubereats_final_210155.png
+2026-03-22 21:01:56,024 [INFO]   OK       [ubereats  ] eta=15m fee=None products=3 total=244.95
+2026-03-22 21:01:59,940 [INFO] CSV: data\competitive_data_20260322_210017.csv (2 rows)
+2026-03-22 21:01:59,940 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-22 21:01:59,940 [INFO] Output: data\competitive_data_20260322_210017.json

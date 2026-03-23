@@ -1,0 +1,3 @@
+scraped_at,address_id,city,zone,zone_type,platform,status,restaurant_available,rating,eta_min,delivery_fee_mxn,promo_general_pct,bm_price_orig,bm_price_disc,bm_disc_pct,hdq_price_orig,hdq_price_disc,hdq_disc_pct,cc_price_orig,cc_price_disc,cc_disc_pct,subtotal_mxn,service_fee_mxn,total_estimated_mxn,error
+2026-03-22T21:00:19.216559,MX_CDMX_01,Ciudad de Mexico,Polanco,Wealthy,rappi,success,True,3.9,20,0.0,51.0,174.0,,,69.0,,,55.0,,,298.0,29.8,327.8,
+2026-03-22T21:00:19.216559,MX_CDMX_01,Ciudad de Mexico,Polanco,Wealthy,ubereats,success,True,4.5,15,,44.0,174.0,99.0,43.1,69.0,59.0,14.5,55.0,,,213.0,31.95,244.95,
