@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rappi · Competitive Intelligence Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:       #f5f6fa;
+  --s1:       #ffffff;
+  --s2:       #f0f1f6;
+  --s3:       #e8eaf0;
+  --border:   #dce0eb;
+  --border2:  #c8cdd9;
+  --text:     #1a1a2e;
+  --muted:    #6b7294;
+  --muted2:   #5a5f7d;
+  --rappi:    #FF441F;
+  --rappi2:   rgba(255,68,31,.12);
+  --uber:     #06C167;
+  --uber2:    rgba(6,193,103,.12);
+  --didi:     #F5A623;
+  --didi2:    rgba(245,166,35,.12);
+  --accent:   #5B8EF0;
+  --accent2:  rgba(91,142,240,.10);
+  --success:  #1a9e6e;
+  --warn:     #c78a1a;
+  --danger:   #d44040;
+  --r:        10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+#upload-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+  gap: 32px;
+}
+.upload-card {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 48px;
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.logo-pill {
+  display: inline-block;
+  background: var(--rappi);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 6px;
+  letter-spacing: .5px;
+}
+.upload-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.upload-sub { color: var(--muted2); font-size: 13px; margin-bottom: 32px; line-height: 1.6; }
+
+.drop-zone {
+  border: 2px dashed var(--border2);
+  border-radius: 12px;
+  padding: 36px;
+  cursor: pointer;
+  transition: all .2s;
+  position: relative;
+  margin-bottom: 20px;
+  background: var(--s2);
+}
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent2);
+}
+.drop-icon { font-size: 32px; margin-bottom: 10px; }
+.drop-text { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.drop-sub { font-size: 11px; color: var(--muted); }
+#file-input { display: none; }
+
+.btn-primary {
+  background: var(--rappi);
+  color: #fff;
+  border: none;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .15s;
+  width: 100%;
+}
+.btn-primary:hover { opacity: .88; }
+
+.upload-hint {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: left;
+  line-height: 1.7;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.upload-hint strong { color: var(--muted2); }
+
+#dashboard { display: none; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 56px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+.hdr-left { display: flex; align-items: center; gap: 14px; }
+.hdr-title { font-size: 14px; font-weight: 600; }
+.hdr-sub { font-size: 10px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+.hdr-right { display: flex; align-items: center; gap: 14px; }
+.hdr-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+.hdr-badge b { color: var(--success); }
+.reload-btn {
+  background: var(--s2);
+  border: 1px solid var(--border);
+  color: var(--muted2);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: 'IBM Plex Sans', sans-serif;
+  transition: all .15s;
+}
+.reload-btn:hover { border-color: var(--accent); color: var(--text); }
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 28px;
+  background: var(--s1);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.filter-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.flabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-right: 2px;
+}
+.fsep { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
+.fbtn {
+  padding: 4px 13px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted2);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.fbtn:hover { border-color: var(--border2); color: var(--text); }
+.fbtn.active { font-weight: 600; }
+.fbtn.f-rappi.active  { background: var(--rappi2); border-color: var(--rappi); color: var(--rappi); }
+.fbtn.f-uber.active   { background: var(--uber2); border-color: var(--uber); color: var(--uber); }
+.fbtn.f-didi.active   { background: var(--didi2); border-color: var(--didi); color: var(--didi); }
+.fbtn.f-all.active    { background: var(--accent2); border-color: var(--accent); color: var(--accent); }
+.fbtn:disabled        { opacity: .35; cursor: not-allowed; }
+
+main { padding: 22px 28px; max-width: 1600px; margin: 0 auto; }
+
+.dnote {
+  background: rgba(91,142,240,.06);
+  border: 1px solid rgba(91,142,240,.18);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 11px;
+  color: var(--muted2);
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+.dnote strong { color: var(--accent); }
+
+.glossary-box {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted2);
+  columns: 2;
+  column-gap: 28px;
+}
+.glossary-box b { color: var(--text); }
+
+.section-hd {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-hd span { color: var(--muted); font-weight: 400; font-size: 9px; }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.kpi {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03);
+}
+.kpi::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.kpi.rappi::after  { background: var(--rappi); }
+.kpi.uber::after   { background: var(--uber); }
+.kpi.didi::after   { background: var(--didi); }
+.kpi.generic::after{ background: var(--accent); }
+.kpi-plat { font-size: 9px; font-weight: 700; letter-spacing: .9px; text-transform: uppercase; margin-bottom: 10px; }
+.kpi-plat.rappi { color: var(--rappi); }
+.kpi-plat.uber  { color: var(--uber); }
+.kpi-plat.didi  { color: var(--didi); }
+.kpi-metric { margin-bottom: 8px; }
+.kpi-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
+.kpi-val { font-size: 21px; font-weight: 700; line-height: 1.1; font-family: 'IBM Plex Mono', monospace; color: var(--text); }
+.kpi-val.good { color: var(--success); }
+.kpi-val.warn { color: var(--warn); }
+.kpi-val.bad  { color: var(--danger); }
+
+.chart-row { display: grid; gap: 16px; margin-bottom: 20px; }
+.r2  { grid-template-columns: 1fr 1fr; }
+.r21 { grid-template-columns: 2fr 1fr; }
+.r12 { grid-template-columns: 1fr 2fr; }
+.r3  { grid-template-columns: 1fr 1fr 1fr; }
+.r1  { grid-template-columns: 1fr; }
+
+.cc {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03);
+}
+.cc-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; color: var(--text); }
+.cc-sub   { font-size: 11px; color: var(--muted); margin-bottom: 16px; line-height: 1.45; }
+.cc-explain {
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--muted2);
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+.cc-explain strong { color: var(--accent); }
+
+.plat-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; }
+.pl { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted2); }
+.pl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+.heatmap-scroll { overflow-x: auto; }
+.heatmap-tbl { border-collapse: collapse; width: 100%; font-size: 11px; }
+.heatmap-tbl th {
+  padding: 7px 12px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: var(--muted);
+  background: var(--s2);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  text-align: center;
+}
+.heatmap-tbl td {
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+}
+.heatmap-tbl td.zone-name { text-align: left; font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; color: var(--text); font-size: 12px; }
+.hm-advantage    { background: rgba(26,158,110,.12); color: var(--success); }
+.hm-disadvantage { background: rgba(212,64,64,.08);  color: var(--danger); }
+.hm-neutral      { background: transparent; color: var(--muted2); }
+.hm-nodata       { background: var(--s2); color: var(--muted); font-style: italic; font-size: 10px; font-weight: 400; }
+
+.tbl-wrap {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: auto;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03);
+}
+.dtbl { width: 100%; border-collapse: collapse; font-size: 11px; }
+.dtbl thead th {
+  padding: 9px 12px;
+  background: var(--s2);
+  border-bottom: 1px solid var(--border);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .7px;
+  color: var(--muted);
+  white-space: nowrap;
+  text-align: left;
+}
+.dtbl tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.dtbl tbody tr:hover td { background: var(--s2); }
+
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+}
+.pill-rappi   { background: var(--rappi2); color: var(--rappi); }
+.pill-ubereats{ background: var(--uber2);  color: var(--uber);  }
+.pill-didi    { background: var(--didi2);  color: var(--didi);  }
+.pill-success { background: rgba(26,158,110,.1); color: var(--success); }
+.pill-partial { background: rgba(199,138,26,.1); color: var(--warn); }
+.pill-fail    { background: rgba(212,64,64,.1);  color: var(--danger); }
+.pill-wealthy   { background: var(--accent2); color: var(--accent); }
+.pill-nonwealthy{ background: var(--s3); color: var(--muted2); }
+
+footer {
+  padding: 16px 28px;
+  border-top: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--s1);
+}
+
+.no-data {
+  text-align: center;
+  padding: 32px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 860px) {
+  .r2, .r21, .r12, .r3 { grid-template-columns: 1fr; }
+  header { padding: 0 14px; }
+  main   { padding: 14px; }
+  .filters { padding: 8px 14px; }
+  .glossary-box { columns: 1; }
+}
+</style>
+</head>
+<body>
+
+<div id="upload-screen">
+  <div class="upload-card">
+    <div class="upload-logo"><span class="logo-pill">RAPPI</span></div>
+    <div class="upload-title">Competitive Intelligence Dashboard</div>
+    <div class="upload-sub">
+      Carga tu CSV del scraper (ej. <code>data/competitive_data_with_didi.csv</code>) para activar el análisis comparativo. El layout detecta automáticamente qué plataformas están presentes.
+    </div>
+
+    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+      <div class="drop-icon">📂</div>
+      <div class="drop-text">Arrastrá el CSV acá o hacé click</div>
+      <div class="drop-sub">Columnas mínimas: platform · zone · eta_min · promo_general_pct · bm_price_orig/disc · subtotal_mxn · service_fee_mxn</div>
+    </div>
+    <input type="file" id="file-input" accept=".csv">
+
+    <button class="btn-primary" onclick="document.getElementById('file-input').click()">
+      Seleccionar archivo CSV
+    </button>
+
+    <div style="margin-top:20px">
+      <div class="upload-hint">
+        <strong>Tips:</strong><br>
+        • Las métricas ignoran filas con <em>restaurant_available = False</em> para no sesgar promedios.<br>
+        • Service fee ≈ subtotal × tasa fija (Rappi 10 %, Uber Eats 15 %, DiDi 8 %).<br>
+        • Puedes exportar el dashboard como PDF desde el navegador.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dashboard">
+
+<header>
+  <div class="hdr-left">
+    <span class="logo-pill">RAPPI</span>
+    <div>
+      <div class="hdr-title">Competitive Intelligence</div>
+      <div class="hdr-sub" id="hdr-sub">—</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-badge" id="hdr-badge">Zonas: <b id="b-zones">—</b> · Registros: <b id="b-recs">—</b> · Scrapeado: <b id="b-date">—</b></div>
+    <button class="reload-btn" onclick="resetDashboard()">↩ Cambiar CSV</button>
+  </div>
+</header>
+
+<div class="filters" id="filters-bar">
+  <span class="flabel">Plataforma</span>
+  <div class="fsep"></div>
+  <span class="flabel">Ciudad</span>
+  <div class="filter-group" id="city-filter-group">
+    <button class="fbtn f-all f-city active" id="city-all" onclick="setCity('all',this)">Todas</button>
+  </div>
+  <div class="fsep"></div>
+  <span class="flabel">Zona</span>
+  <div class="filter-group" id="zone-filter-group">
+    <button class="fbtn f-all f-zone active" id="zone-all" onclick="setZoneType('all',this)">Todas</button>
+  </div>
+</div>
+
+<main>
+  <div class="dnote" id="data-note">
+    <strong>Dashboard adaptativo:</strong> excluye registros con <code>status ≠ success</code> o <code>restaurant_available=false</code> al calcular KPIs. Service fee estimado = subtotal × tasa fija (R 10 %, U 15 %, D 8 %).
+  </div>
+
+  <div class="glossary-box">
+    <b>ETA:</b> Estimated Time of Arrival — minutos de entrega prometidos en la app.<br>
+    <b>SLA:</b> Service Level Agreement — objetivo interno de 30 min.<br>
+    <b>Promo Hook:</b> % descuento visible en la tarjeta del restaurante en el feed.<br>
+    <b>BM:</b> Combo Big Mac Mediano (producto benchmark).<br>
+    <b>HDQ:</b> Hamburguesa Doble con Queso (segundo producto de referencia).<br>
+    <b>CC:</b> Coca-Cola Mediana (tercer producto de referencia).<br>
+    <b>Delivery Fee:</b> Costo de envío cobrado al usuario.<br>
+    <b>Service Fee:</b> Comisión de la app sobre el subtotal (R 10%, U 15%, D 8%).<br>
+    <b>Total Estimado:</b> Subtotal + Delivery Fee + Service Fee = lo que paga el usuario.<br>
+    <b>Wealthy / Non Wealthy:</b> Clasificación socioeconómica de la zona de entrega.
+  </div>
+
+  <div class="section-hd">Resumen ejecutivo <span>· Promedios sobre zonas disponibles</span></div>
+  <div class="kpi-grid" id="kpi-grid"></div>
+
+  <div class="section-hd">Operacional <span>· ETA vs SLA 30' y calificaciones</span></div>
+  <div class="chart-row r2">
+    <div class="cc">
+      <div class="cc-title">Tiempo de Entrega Estimado (ETA) por Zona</div>
+      <div class="cc-sub">ETA = minutos prometidos en la app al usuario. SLA = objetivo interno de 30 min. Solo se grafican pedidos con status=success y restaurant_available=true.</div>
+      <canvas id="etaChart" height="260"></canvas>
+      <div class="plat-legend" id="eta-legend"></div>
+      <div class="cc-explain" id="eta-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Rating Promedio de McDonald's por Ciudad</div>
+      <div class="cc-sub">Calificación del restaurante en cada plataforma (escala 3-5). Un rating bajo puede indicar problemas de empaque, tiempos o atención al cliente en esa app.</div>
+      <canvas id="ratingChart" height="260"></canvas>
+      <div class="cc-explain" id="rating-explain"></div>
+    </div>
+  </div>
+
+  <div class="section-hd">Estrategia Promocional <span>· Hooks y profundidad de descuento</span></div>
+  <div class="chart-row r2">
+    <div class="cc">
+      <div class="cc-title">Promo Hook por Zona (%)</div>
+      <div class="cc-sub">Promo hook = % de descuento visible en la tarjeta de McDonald's en el feed. Es el primer gancho que ve el usuario y el driver #1 de CTR (Click-Through Rate). Compara la agresividad promocional comunicada por cada plataforma.</div>
+      <canvas id="promoChart" height="280"></canvas>
+      <div class="plat-legend" id="promo-legend"></div>
+      <div class="cc-explain" id="promo-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Distribución de Promo % (Boxplot)</div>
+      <div class="cc-sub">Cada caja resume mínimo-mediana-máximo del promo hook por plataforma. Una mediana alta con rango estrecho = estrategia consistente. Rango amplio = promociones variables por zona.</div>
+      <canvas id="promoDistChart" height="280"></canvas>
+      <div class="cc-explain" id="promo-dist-explain"></div>
+    </div>
+  </div>
+
+  <div class="section-hd">Posicionamiento de Precios <span>· 3 Productos Benchmark</span></div>
+  <div class="chart-row r2">
+    <div class="cc">
+      <div class="cc-title">Combo Big Mac Mediano — Original vs Con Promoción</div>
+      <div class="cc-sub">Promedio por plataforma del precio base vs precio con descuento aplicado. El Big Mac es el benchmark universal de precios en QSR. Si Rappi es más caro, el usuario lo percibe y migra.</div>
+      <canvas id="bmChart" height="270"></canvas>
+      <div class="cc-explain" id="bm-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Descuento aplicado en Big Mac por Zona (%)</div>
+      <div class="cc-sub">Porcentaje de rebaja sobre el precio original del Big Mac en cada zona. Permite ver dónde cada plataforma subsidia más agresivamente este producto anchor.</div>
+      <canvas id="bmDiscChart" height="270"></canvas>
+      <div class="cc-explain" id="bm-disc-explain"></div>
+    </div>
+  </div>
+
+  <div class="chart-row r2">
+    <div class="cc">
+      <div class="cc-title">Hamburguesa Doble con Queso — Comparativa por Plataforma</div>
+      <div class="cc-sub">Precio base vs precio con promo de la HDQ por plataforma. Si alguna plataforma subsidia la HDQ pero no el Big Mac (o viceversa), indica estrategia de anchor pricing selectiva.</div>
+      <canvas id="hdqBarChart" height="270"></canvas>
+      <div class="cc-explain" id="hdq-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Coca-Cola Mediana — Precio por Zona</div>
+      <div class="cc-sub">Precio de la Coca-Cola en cada zona por plataforma. Producto de alto volumen y baja diferenciación — la dispersión de precios indica oportunidades de arbitraje.</div>
+      <canvas id="cokeChart" height="270"></canvas>
+      <div class="plat-legend" id="coke-legend"></div>
+      <div class="cc-explain" id="coke-explain"></div>
+    </div>
+  </div>
+
+  <div class="section-hd">Costos al Usuario <span>· Desglose de lo que paga el usuario final</span></div>
+  <div class="chart-row r3">
+    <div class="cc">
+      <div class="cc-title">Desglose del Costo Total (MXN)</div>
+      <div class="cc-sub">Subtotal de productos + delivery fee + service fee = ticket final. Muestra qué proporción del costo corresponde a cada concepto por plataforma.</div>
+      <canvas id="breakdownChart" height="280"></canvas>
+      <div class="cc-explain" id="breakdown-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Delivery Fee por Zona (MXN)</div>
+      <div class="cc-sub">Cuánto cobra cada app por envío en cada zona. El delivery fee es visible y sensible para el usuario. Fees altos en zonas periféricas = pérdida de competitividad en zonas de expansión.</div>
+      <canvas id="deliveryFeeChart" height="280"></canvas>
+      <div class="cc-explain" id="delivery-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Service Fee por Zona (MXN)</div>
+      <div class="cc-sub">Service fee estimado = subtotal × tasa fija (Rappi 10%, Uber Eats 15%, DiDi Food 8%). Componente oculto pero que impacta el ticket final.</div>
+      <canvas id="sfeeChart" height="280"></canvas>
+      <div class="cc-explain" id="service-explain"></div>
+    </div>
+  </div>
+
+  <div class="chart-row r2">
+    <div class="cc">
+      <div class="cc-title">Total Estimado del Pedido por Zona (MXN)</div>
+      <div class="cc-sub">Subtotal + delivery + service fee. Es lo que ve el usuario en checkout. El precio total percibido define la elección de plataforma — una brecha >5% desplaza market share.</div>
+      <canvas id="totalChart" height="260"></canvas>
+      <div class="cc-explain" id="total-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Variabilidad Geográfica: Wealthy vs Non Wealthy</div>
+      <div class="cc-sub">Compara el total estimado promedio entre zonas de alto (Polanco, Condesa, etc.) y bajo (Iztapalapa, Ecatepec, etc.) nivel socioeconómico. Si la competitividad varía, se requieren estrategias diferenciadas.</div>
+      <canvas id="wealthyChart" height="260"></canvas>
+      <div class="cc-explain" id="wealthy-explain"></div>
+    </div>
+  </div>
+
+  <div class="section-hd">Heatmap de ETA <span>· Verde = más rápido, Rojo = más lento</span></div>
+  <div class="cc" style="margin-bottom:20px">
+    <div class="cc-title">ETA por Zona y Plataforma (minutos)</div>
+    <div class="cc-sub">Matriz de calor que muestra el ETA promedio. Verde = entrega más rápida. Solo incluye status=success. Filas grises = sin dato disponible. Permite identificar de un vistazo dónde Rappi es más lento.</div>
+    <div class="heatmap-scroll" id="eta-heatmap"></div>
+    <div class="cc-explain" id="eta-heatmap-explain"></div>
+  </div>
+
+  <div class="section-hd">Análisis cruzado <span>· Correlaciones y disponibilidad</span></div>
+  <div class="chart-row r2">
+    <div class="cc">
+      <div class="cc-title">Scatter: ¿Las plataformas compensan tardanza con descuento?</div>
+      <div class="cc-sub">Cada punto = una observación zona-plataforma. Eje X = ETA (minutos de entrega). Eje Y = Promo hook (% descuento visible). Si un punto tiene ETA alto + promo alta, la plataforma compensa con precio. ETA alto sin promo = debilidad explotable.</div>
+      <canvas id="scatterChart" height="270"></canvas>
+      <div class="cc-explain" id="scatter-explain"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">Disponibilidad por Tipo de Zona (% de éxito)</div>
+      <div class="cc-sub">% de zonas donde el restaurante apareció disponible y se logró obtener datos exitosamente. Compara cobertura en zonas Wealthy (alto NSE) vs Non Wealthy (bajo NSE) por plataforma.</div>
+      <canvas id="availChart" height="270"></canvas>
+      <div class="cc-explain" id="avail-explain"></div>
+    </div>
+  </div>
+
+  <div class="section-hd">Heatmap de precios Big Mac <span>· Verde = más barato</span></div>
+  <div class="cc" style="margin-bottom:20px">
+    <div class="cc-title">Precio Big Mac con descuento por Zona (MXN)</div>
+    <div class="cc-sub">Precio efectivo (con descuento aplicado) del Combo Big Mac por zona y plataforma. Verde = precio más bajo (ventaja). Rojo = precio más alto. Las celdas rojas para Rappi son prioridad de ajuste para Pricing.</div>
+    <div class="heatmap-scroll" id="price-heatmap"></div>
+    <div class="cc-explain" id="price-heatmap-explain"></div>
+  </div>
+
+  <div class="section-hd">Tabla detallada <span>· Todos los datos crudos del scraping</span></div>
+  <div class="tbl-wrap">
+    <table class="dtbl">
+      <thead>
+        <tr>
+          <th>Zona</th>
+          <th>Ciudad</th>
+          <th>Tipo Zona</th>
+          <th>Plataforma</th>
+          <th>Status</th>
+          <th>Rating</th>
+          <th>ETA (min)</th>
+          <th>Promo Hook %</th>
+          <th>BM Orig $</th>
+          <th>BM Promo $</th>
+          <th>BM Desc %</th>
+          <th>HDQ Orig $</th>
+          <th>HDQ Promo $</th>
+          <th>CC Orig $</th>
+          <th>Delivery Fee $</th>
+          <th>Service Fee $</th>
+          <th>Total $</th>
+        </tr>
+      </thead>
+      <tbody id="detail-tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <span id="footer-left">Rappi · Competitive Intelligence · México</span>
+  <span>Dashboard adaptativo — detecta plataformas automáticamente del CSV</span>
+</footer>
+
+</div>
+
+<script>
+let RAW_DATA = [];
+let PLATFORMS = [];
+let activeFilters = { platforms: new Set(), city: 'all', zone_type: 'all' };
+
+const PLAT_CONFIG = {
+  rappi:    { label: 'Rappi',      color: '#FF441F', bg: 'rgba(255,68,31,.18)',    css: 'rappi'  },
+  ubereats: { label: 'Uber Eats',  color: '#06C167', bg: 'rgba(6,193,103,.18)',    css: 'uber'   },
+  uber:     { label: 'Uber Eats',  color: '#06C167', bg: 'rgba(6,193,103,.18)',    css: 'uber'   },
+  didi:     { label: 'DiDi Food',  color: '#F5A623', bg: 'rgba(245,166,35,.18)',   css: 'didi'   },
+  didifood: { label: 'DiDi Food',  color: '#F5A623', bg: 'rgba(245,166,35,.18)',   css: 'didi'   },
+};
+const SERVICE_FEE_RATES = { rappi: 0.10, ubereats: 0.15, uber: 0.15, didi: 0.08, didifood: 0.08 };
+const CHART_INSTANCES = {};
+
+const boxplotLinesPlugin = {
+  id: 'boxplotLines',
+  afterDatasetsDraw(chart) {
+    const stats = chart.options.boxStats;
+    if (!stats) return;
+    const meta = chart.getDatasetMeta(0);
+    if (!meta?.data) return;
+    const ctx = chart.ctx;
+    meta.data.forEach((bar, idx) => {
+      const stat = stats[idx];
+      if (!stat || stat.min == null || stat.max == null) return;
+      const x = bar.x;
+      const yScale = chart.scales.y;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(90,95,125,.7)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x, yScale.getPixelForValue(stat.min));
+      ctx.lineTo(x, yScale.getPixelForValue(stat.max));
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(90,95,125,.8)';
+      const medianY = yScale.getPixelForValue(stat.median);
+      ctx.fillRect(x - 5, medianY - 1, 10, 2);
+      ctx.restore();
+    });
+  }
+};
+if (window.Chart) {
+  Chart.register(boxplotLinesPlugin);
+} else {
+  window.addEventListener('load', () => {
+    if (window.Chart) Chart.register(boxplotLinesPlugin);
+  });
+}
+
+const CHART_DEFAULTS = {
+  color: '#1a1a2e',
+  borderColor: '#dce0eb',
+};
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g,''));
+  return lines.slice(1).map(line => {
+    const vals = splitCSVLine(line);
+    const obj = {};
+    headers.forEach((h, i) => {
+      let v = (vals[i] || '').trim().replace(/^"|"$/g,'');
+      if (v === '' || v === 'NaN' || v === 'null' || v === 'None') v = null;
+      else if (!isNaN(v)) v = parseFloat(v);
+      else if (v === 'True' || v === 'true') v = true;
+      else if (v === 'False' || v === 'false') v = false;
+      obj[h] = v;
+    });
+    if (obj.platform) obj.platform = obj.platform.toLowerCase();
+    ['bm_disc_pct','hdq_disc_pct','cc_disc_pct','promo_general_pct'].forEach(col => {
+      if (col in obj && (obj[col] === null || obj[col] === undefined)) obj[col] = 0;
+    });
+    if ((obj.service_fee_mxn === null || obj.service_fee_mxn === undefined) && (obj.subtotal_mxn !== null && obj.subtotal_mxn !== undefined)) {
+      const rate = SERVICE_FEE_RATES[obj.platform] ?? 0.10;
+      obj.service_fee_mxn = obj.subtotal_mxn * rate;
+    }
+    if (obj.total_estimated_mxn === null || obj.total_estimated_mxn === undefined) {
+      const subtotal = typeof obj.subtotal_mxn === 'number' ? obj.subtotal_mxn : 0;
+      const serviceFee = typeof obj.service_fee_mxn === 'number' ? obj.service_fee_mxn : 0;
+      const delivery = typeof obj.delivery_fee_mxn === 'number' ? obj.delivery_fee_mxn : (typeof obj.delivery_fee === 'number' ? obj.delivery_fee : 0);
+      const computedTotal = subtotal + serviceFee + delivery;
+      if (computedTotal > 0) obj.total_estimated_mxn = computedTotal;
+    }
+    return obj;
+  }).filter(r => r.platform);
+}
+
+function splitCSVLine(line) {
+  const result = []; let cur = ''; let inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') { inQ = !inQ; }
+    else if (c === ',' && !inQ) { result.push(cur); cur = ''; }
+    else { cur += c; }
+  }
+  result.push(cur);
+  return result;
+}
+
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) loadFile(file);
+});
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      RAW_DATA = parseCSV(e.target.result);
+      initDashboard();
+    } catch(err) {
+      alert('Error al leer el CSV: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function resetDashboard() {
+  document.getElementById('upload-screen').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+  fileInput.value = '';
+  Object.values(CHART_INSTANCES).forEach(c => c && c.destroy && c.destroy());
+}
+
+function initDashboard() {
+  PLATFORMS = [...new Set(RAW_DATA.map(r => r.platform))];
+  activeFilters.platforms = new Set(PLATFORMS);
+  buildPlatformFilters();
+  buildCityFilters();
+  buildZoneFilters();
+  const date = RAW_DATA[0]?.scraped_at ? RAW_DATA[0].scraped_at.slice(0,10) : '—';
+  document.getElementById('b-zones').textContent = [...new Set(RAW_DATA.map(r=>r.zone))].length;
+  document.getElementById('b-recs').textContent  = RAW_DATA.length;
+  document.getElementById('b-date').textContent  = date;
+  document.getElementById('hdr-sub').textContent = [...new Set(RAW_DATA.map(r=>r.city).filter(Boolean))].join(' · ');
+  document.getElementById('footer-left').textContent = `Rappi · CI Dashboard · Scrapeado ${date}`;
+  document.getElementById('upload-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+
+  // Set Chart.js defaults for white-bg theme
+  if (window.Chart) {
+    Chart.defaults.color = '#1a1a2e';
+    Chart.defaults.borderColor = '#dce0eb';
+    Chart.defaults.plugins.legend.labels.color = '#1a1a2e';
+  }
+
+  render();
+}
+
+function buildPlatformFilters() {
+  const bar = document.getElementById('filters-bar');
+  bar.querySelectorAll('.plat-fb').forEach(b => b.remove());
+  const sep = bar.querySelector('.fsep');
+  PLATFORMS.forEach(p => {
+    const cfg = PLAT_CONFIG[p] || { label: p, color: '#888', css: 'generic' };
+    const btn = document.createElement('button');
+    btn.className = `fbtn f-${cfg.css} plat-fb active`;
+    btn.textContent = cfg.label;
+    btn.dataset.plat = p;
+    btn.onclick = () => togglePlatform(p, btn);
+    bar.insertBefore(btn, sep);
+  });
+}
+
+function buildCityFilters() {
+  const wrap = document.getElementById('city-filter-group');
+  const base = document.getElementById('city-all');
+  wrap.querySelectorAll('.f-city').forEach(btn => { if (btn !== base) btn.remove(); });
+  base.classList.add('active');
+  const cities = [...new Set(RAW_DATA.map(r => r.city).filter(Boolean))].sort();
+  cities.forEach(city => {
+    const btn = document.createElement('button');
+    btn.className = 'fbtn f-city';
+    btn.textContent = city;
+    btn.onclick = () => setCity(city, btn);
+    wrap.appendChild(btn);
+  });
+}
+
+function buildZoneFilters() {
+  const wrap = document.getElementById('zone-filter-group');
+  const base = document.getElementById('zone-all');
+  wrap.querySelectorAll('.f-zone').forEach(btn => { if (btn !== base) btn.remove(); });
+  base.classList.add('active');
+  const zones = [...new Set(RAW_DATA.map(r => r.zone_type || 'N/A'))].sort((a,b) => a.localeCompare(b,'es', { sensitivity: 'base' }));
+  zones.forEach(zone => {
+    const btn = document.createElement('button');
+    btn.className = 'fbtn f-zone';
+    btn.textContent = zone;
+    btn.onclick = () => setZoneType(zone, btn);
+    wrap.appendChild(btn);
+  });
+}
+
+function togglePlatform(p, btn) {
+  if (activeFilters.platforms.has(p)) {
+    if (activeFilters.platforms.size === 1) return;
+    activeFilters.platforms.delete(p);
+    btn.classList.remove('active');
+  } else {
+    activeFilters.platforms.add(p);
+    btn.classList.add('active');
+  }
+  render();
+}
+
+function setCity(city, btn) {
+  activeFilters.city = city;
+  document.querySelectorAll('.f-city').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function setZoneType(zt, btn) {
+  activeFilters.zone_type = zt;
+  document.querySelectorAll('.f-zone').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function getFiltered() {
+  return RAW_DATA.filter(r => {
+    if (!activeFilters.platforms.has(r.platform)) return false;
+    if (activeFilters.city !== 'all' && r.city !== activeFilters.city) return false;
+    if (activeFilters.zone_type !== 'all') {
+      if (activeFilters.zone_type === 'N/A') {
+        if (r.zone_type) return false;
+      } else if (r.zone_type !== activeFilters.zone_type) return false;
+    }
+    return true;
+  });
+}
+
+function getSuccess(data) {
+  return data.filter(r => r.status === 'success' && r.restaurant_available !== false);
+}
+
+function activePlats() {
+  return PLATFORMS.filter(p => activeFilters.platforms.has(p));
+}
+
+function platCfg(p) {
+  return PLAT_CONFIG[p] || { label: p, color: '#5B8EF0', bg: 'rgba(91,142,240,.18)', css: 'generic' };
+}
+
+function avg(arr, key) {
+  const vals = arr.map(r => r[key]).filter(v => v !== null && v !== undefined && !isNaN(v));
+  return vals.length ? vals.reduce((a,b) => a+b, 0) / vals.length : null;
+}
+
+function fmt(v, dec=0, prefix='') {
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  return prefix + (+v).toFixed(dec);
+}
+
+function fmtPercent(v, dec=0) {
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  return (+v).toFixed(dec) + '%';
+}
+
+function fmtCurrency(v, dec=0) {
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  return '$' + (+v).toFixed(dec);
+}
+
+function setExplain(id, html) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = html || '<span style="color:var(--muted)">Sin datos suficientes para generar interpretación.</span>';
+}
+
+function labelForPlatform(p) {
+  return platCfg(p).label;
+}
+
+function render() {
+  const filtered = getFiltered();
+  const success  = getSuccess(filtered);
+  const plats    = activePlats();
+  const zoneList = [...new Set(success.map(r => r.zone).filter(Boolean))].sort((a,b) => a.localeCompare(b, 'es', { sensitivity: 'base', numeric: true }));
+
+  renderKPIs(success, plats);
+  renderETA(success, plats, zoneList);
+  renderRating(success, plats);
+  renderPromo(success, plats, zoneList);
+  renderPromoDistribution(success, plats);
+  renderBigMac(success, plats);
+  renderBigMacDiscount(success, plats, zoneList);
+  renderHDQComparison(success, plats);
+  renderCokePrice(success, plats, zoneList);
+  renderCostBreakdown(success, plats);
+  renderDeliveryFee(success, plats, zoneList);
+  renderServiceFee(success, plats, zoneList);
+  renderTotal(success, plats, zoneList);
+  renderWealthyComparison(success, plats);
+  renderETAHeatmap(success, plats, zoneList);
+  renderScatter(success, plats);
+  renderAvailability(filtered, plats);
+  renderPriceHeatmap(success, plats, zoneList);
+  renderTable(filtered);
+}
+
+function renderKPIs(data, plats) {
+  const grid = document.getElementById('kpi-grid');
+  grid.innerHTML = '';
+  plats.forEach(p => {
+    const sub = data.filter(r => r.platform === p);
+    const cfg = platCfg(p);
+    const eta = avg(sub, 'eta_min');
+    const rating = avg(sub, 'rating');
+    const promo = avg(sub, 'promo_general_pct');
+    const total = avg(sub, 'total_estimated_mxn');
+    const bm = avg(sub, 'bm_price_disc') || avg(sub, 'bm_price_orig');
+    const hdq = avg(sub, 'hdq_price_disc') || avg(sub, 'hdq_price_orig');
+    const cc = avg(sub, 'cc_price_orig');
+    const delFee = avg(sub, 'delivery_fee_mxn');
+    grid.innerHTML += `
+    <div class="kpi ${cfg.css}">
+      <div class="kpi-plat ${cfg.css}">${cfg.label}</div>
+      <div class="kpi-metric">
+        <div class="kpi-label">ETA Promedio</div>
+        <div class="kpi-val">${eta !== null ? eta.toFixed(0)+'<small style="font-size:13px;font-weight:400"> min</small>' : '—'}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div class="kpi-metric">
+          <div class="kpi-label">Rating</div>
+          <div class="kpi-val ${rating !== null ? (rating < 4 ? 'warn' : 'good') : ''}" style="font-size:16px">${rating !== null ? rating.toFixed(1) : '—'}</div>
+        </div>
+        <div class="kpi-metric">
+          <div class="kpi-label">Promo Hook</div>
+          <div class="kpi-val" style="font-size:16px">${promo !== null ? promo.toFixed(0)+'%' : '—'}</div>
+        </div>
+        <div class="kpi-metric">
+          <div class="kpi-label">Big Mac</div>
+          <div class="kpi-val" style="font-size:14px">${bm !== null ? '$'+bm.toFixed(0) : '—'}</div>
+        </div>
+        <div class="kpi-metric">
+          <div class="kpi-label">HDQ</div>
+          <div class="kpi-val" style="font-size:14px">${hdq !== null ? '$'+hdq.toFixed(0) : '—'}</div>
+        </div>
+        <div class="kpi-metric">
+          <div class="kpi-label">Coca-Cola</div>
+          <div class="kpi-val" style="font-size:14px">${cc !== null ? '$'+cc.toFixed(0) : '—'}</div>
+        </div>
+        <div class="kpi-metric">
+          <div class="kpi-label">Delivery Fee</div>
+          <div class="kpi-val" style="font-size:14px">${delFee !== null ? '$'+delFee.toFixed(0) : '—'}</div>
+        </div>
+        <div class="kpi-metric" style="grid-column: span 2">
+          <div class="kpi-label">Total estimado</div>
+          <div class="kpi-val" style="font-size:16px">${total !== null ? '$'+total.toFixed(0) : '—'}</div>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
+function updateLegend(containerId, plats) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  if (!plats.length) {
+    container.innerHTML = '<span class="no-data">Sin datos</span>';
+    return;
+  }
+  container.innerHTML = plats.map(p => {
+    const cfg = platCfg(p);
+    return `<div class="pl"><span class="pl-dot" style="background:${cfg.color}"></span>${cfg.label}</div>`;
+  }).join('');
+}
+
+function ensureChart(id, config) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+  if (CHART_INSTANCES[id]) {
+    CHART_INSTANCES[id].destroy();
+    delete CHART_INSTANCES[id];
+  }
+  const ctx = canvas.getContext('2d');
+  CHART_INSTANCES[id] = new Chart(ctx, config);
+}
+
+function clearChart(id) {
+  if (CHART_INSTANCES[id]) {
+    CHART_INSTANCES[id].destroy();
+    delete CHART_INSTANCES[id];
+  }
+}
+
+function zoneMetric(data, zone, platform, key) {
+  const rows = data.filter(r => r.zone === zone && r.platform === platform);
+  return rows.length ? avg(rows, key) : null;
+}
+
+function renderETA(data, plats, zones) {
+  updateLegend('eta-legend', plats);
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('etaChart');
+    setExplain('eta-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    return {
+      label: cfg.label,
+      data: zones.map(z => zoneMetric(data, z, p, 'eta_min')),
+      borderColor: cfg.color,
+      backgroundColor: cfg.bg,
+      tension: 0.3,
+      spanGaps: true,
+      pointRadius: 3,
+      pointHoverRadius: 4,
+      fill: false
+    };
+  });
+  datasets.push({
+    type: 'line',
+    label: 'SLA 30 min',
+    data: zones.map(() => 30),
+    borderColor: '#d44040',
+    borderDash: [6,4],
+    borderWidth: 1.5,
+    pointRadius: 0,
+    fill: false
+  });
+  ensureChart('etaChart', {
+    type: 'line',
+    data: { labels: zones, datasets },
+    options: {
+      responsive: true,
+      interaction: { intersect: false, mode: 'nearest' },
+      plugins: { legend: { display: false } },
+      scales: {
+        y: {
+          title: { display: true, text: 'Minutos' },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const etaByPlat = plats.map(p => {
+    const rows = data.filter(r => r.platform === p);
+    return { platform: p, eta: avg(rows, 'eta_min') };
+  }).filter(row => row.eta !== null && !isNaN(row.eta));
+  if (!etaByPlat.length) {
+    setExplain('eta-explain', null);
+  } else {
+    etaByPlat.sort((a,b) => a.eta - b.eta);
+    const best = etaByPlat[0];
+    const worst = etaByPlat[etaByPlat.length - 1];
+    const delta = (worst.eta - best.eta).toFixed(1);
+    const slaGap = best.eta <= 30 ? `${(30 - best.eta).toFixed(0)} min bajo SLA` : `${(best.eta - 30).toFixed(0)} min sobre SLA`;
+    const text = `<strong>Interpretación:</strong> ${labelForPlatform(best.platform)} lidera con ${best.eta.toFixed(0)} min promedio (${slaGap}). ${labelForPlatform(worst.platform)} tarda +${delta} min más. <strong>Para Operations:</strong> las zonas donde Rappi supera el SLA de 30 min requieren refuerzo de flota.`;
+    setExplain('eta-explain', text);
+  }
+}
+
+function renderRating(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('ratingChart');
+    setExplain('rating-explain', null);
+    return;
+  }
+  const labels = [...new Set(data.map(r => r.city || 'N/A'))].sort((a,b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    return {
+      label: cfg.label,
+      backgroundColor: cfg.bg,
+      borderColor: cfg.color,
+      borderWidth: 1,
+      data: labels.map(city => {
+        const rows = data.filter(r => r.platform === p && (city === 'N/A' ? !r.city : r.city === city));
+        return avg(rows, 'rating');
+      })
+    };
+  });
+  ensureChart('ratingChart', {
+    type: 'bar',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      scales: { y: { suggestedMin: 3, suggestedMax: 5, title: { display: true, text: 'Rating (3-5)' } } }
+    }
+  });
+
+  const ratingByPlat = plats.map(p => ({
+    platform: p, rating: avg(data.filter(r => r.platform === p), 'rating')
+  })).filter(r => r.rating !== null);
+  if (ratingByPlat.length) {
+    ratingByPlat.sort((a,b) => b.rating - a.rating);
+    const best = ratingByPlat[0];
+    const worst = ratingByPlat[ratingByPlat.length - 1];
+    setExplain('rating-explain', `<strong>Interpretación:</strong> ${labelForPlatform(best.platform)} tiene el rating más alto (${best.rating.toFixed(1)}) vs ${labelForPlatform(worst.platform)} (${worst.rating.toFixed(1)}). <strong>Para Quality:</strong> un rating bajo puede indicar problemas de empaque, entrega o atención. Investigar ciudades con mayor brecha.`);
+  } else {
+    setExplain('rating-explain', null);
+  }
+}
+
+function renderPromo(data, plats, zones) {
+  updateLegend('promo-legend', plats);
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('promoChart');
+    setExplain('promo-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    return {
+      label: cfg.label,
+      backgroundColor: cfg.bg,
+      borderColor: cfg.color,
+      borderWidth: 1,
+      data: zones.map(z => zoneMetric(data, z, p, 'promo_general_pct'))
+    };
+  });
+  ensureChart('promoChart', {
+    type: 'bar',
+    data: { labels: zones, datasets },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, title: { display: true, text: '% Descuento visible' } } }
+    }
+  });
+
+  const hookAvg = plats.map(p => {
+    const rows = data.filter(r => r.platform === p);
+    return { platform: p, value: avg(rows, 'promo_general_pct') };
+  }).filter(r => r.value !== null && !isNaN(r.value));
+  if (!hookAvg.length) {
+    setExplain('promo-explain', null);
+  } else {
+    hookAvg.sort((a,b) => b.value - a.value);
+    const leader = hookAvg[0];
+    const trailer = hookAvg[hookAvg.length - 1];
+    const text = `<strong>Interpretación:</strong> ${labelForPlatform(leader.platform)} comunica hooks de ${leader.value.toFixed(0)}% en promedio — la más agresiva. ${labelForPlatform(trailer.platform)} solo muestra ${trailer.value.toFixed(0)}%. <strong>Para Pricing:</strong> menor agresividad = menor CTR en el feed, lo que reduce el share del restaurante.`;
+    setExplain('promo-explain', text);
+  }
+}
+
+function renderPromoDistribution(data, plats) {
+  const stats = plats.map(p => {
+    const values = data.filter(r => r.platform === p && typeof r.promo_general_pct === 'number')
+      .map(r => r.promo_general_pct)
+      .sort((a,b) => a-b);
+    if (!values.length) return null;
+    const median = values.length % 2 ? values[(values.length-1)/2] : (values[values.length/2-1] + values[values.length/2]) / 2;
+    return {
+      platform: p,
+      label: platCfg(p).label,
+      min: values[0],
+      median,
+      max: values[values.length - 1]
+    };
+  }).filter(Boolean);
+  if (!stats.length) {
+    clearChart('promoDistChart');
+    setExplain('promo-dist-explain', null);
+    return;
+  }
+  const labels = stats.map(s => s.label);
+  const medianData = stats.map(s => s.median);
+  ensureChart('promoDistChart', {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Mediana promo %',
+        data: medianData,
+        backgroundColor: 'rgba(91,142,240,.25)',
+        borderColor: 'rgba(91,142,240,.8)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      boxStats: stats,
+      scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' } } },
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  const summary = stats.map(s => `${s.label}: ${s.min.toFixed(0)}%–${s.max.toFixed(0)}% (mediana ${s.median.toFixed(0)}%)`).join(' · ');
+  setExplain('promo-dist-explain', `<strong>Rango por plataforma:</strong> ${summary}. Las líneas verticales indican mínimo y máximo; la barra muestra la mediana.`);
+}
+
+function renderBigMac(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('bmChart');
+    setExplain('bm-explain', null);
+    return;
+  }
+  const stats = plats.map(p => {
+    const rows = data.filter(r => r.platform === p);
+    const original = avg(rows, 'bm_price_orig');
+    const discounted = avg(rows, 'bm_price_disc');
+    return { platform: p, original, discounted };
+  }).filter(s => (s.original !== null && !isNaN(s.original)) || (s.discounted !== null && !isNaN(s.discounted)));
+
+  if (!stats.length) {
+    clearChart('bmChart');
+    setExplain('bm-explain', null);
+    return;
+  }
+
+  const labels = stats.map(s => labelForPlatform(s.platform));
+  ensureChart('bmChart', {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'Precio base', backgroundColor: 'rgba(204,211,230,.5)', borderColor: '#9aa3c4', borderWidth: 1, data: stats.map(s => s.original) },
+      { label: 'Precio con promo', backgroundColor: 'rgba(91,142,240,.3)', borderColor: '#5B8EF0', borderWidth: 1, data: stats.map(s => s.discounted) }
+    ]},
+    options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN' } } } }
+  });
+
+  const sorted = stats.filter(s => s.discounted !== null).sort((a,b) => a.discounted - b.discounted);
+  if (sorted.length >= 2) {
+    const cheapest = sorted[0];
+    const priciest = sorted[sorted.length - 1];
+    const gap = priciest.discounted - cheapest.discounted;
+    const gapPct = ((gap / cheapest.discounted) * 100).toFixed(0);
+    setExplain('bm-explain', `<strong>Interpretación:</strong> ${labelForPlatform(cheapest.platform)} ofrece el Big Mac más barato (${fmtCurrency(cheapest.discounted)}), ${fmtCurrency(gap)} menos que ${labelForPlatform(priciest.platform)} (${gapPct}% de brecha). <strong>Para Pricing:</strong> si Rappi no es el más barato, evaluar subsidios o bundles para cerrar la brecha.`);
+  } else {
+    setExplain('bm-explain', null);
+  }
+}
+
+function renderBigMacDiscount(data, plats, zones) {
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('bmDiscChart');
+    setExplain('bm-disc-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    return {
+      label: cfg.label,
+      backgroundColor: cfg.bg,
+      borderColor: cfg.color,
+      borderWidth: 1,
+      data: zones.map(z => zoneMetric(data, z, p, 'bm_disc_pct'))
+    };
+  });
+  ensureChart('bmDiscChart', {
+    type: 'bar',
+    data: { labels: zones, datasets },
+    options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' }, title: { display: true, text: '% Descuento' } } } }
+  });
+
+  const discByPlat = plats.map(p => ({
+    platform: p, value: avg(data.filter(r => r.platform === p), 'bm_disc_pct')
+  })).filter(x => x.value !== null && !isNaN(x.value));
+  if (discByPlat.length >= 2) {
+    discByPlat.sort((a,b) => b.value - a.value);
+    const lead = discByPlat[0];
+    const lag = discByPlat[discByPlat.length - 1];
+    setExplain('bm-disc-explain', `<strong>Interpretación:</strong> ${labelForPlatform(lead.platform)} aplica ${lead.value.toFixed(0)}% de descuento promedio en Big Mac vs ${lag.value.toFixed(0)}% de ${labelForPlatform(lag.platform)}. <strong>Para Pricing:</strong> la profundidad del descuento real determina si el hook del feed se traduce en precio efectivo competitivo.`);
+  } else {
+    setExplain('bm-disc-explain', null);
+  }
+}
+
+function renderHDQComparison(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('hdqBarChart');
+    setExplain('hdq-explain', null);
+    return;
+  }
+  const stats = plats.map(p => {
+    const rows = data.filter(r => r.platform === p);
+    return {
+      platform: p,
+      original: avg(rows, 'hdq_price_orig'),
+      discounted: avg(rows, 'hdq_price_disc')
+    };
+  }).filter(s => (s.original !== null && !isNaN(s.original)) || (s.discounted !== null && !isNaN(s.discounted)));
+
+  if (!stats.length) {
+    clearChart('hdqBarChart');
+    setExplain('hdq-explain', null);
+    return;
+  }
+
+  const labels = stats.map(s => labelForPlatform(s.platform));
+  ensureChart('hdqBarChart', {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'Precio base', backgroundColor: 'rgba(204,211,230,.5)', borderColor: '#9aa3c4', borderWidth: 1, data: stats.map(s => s.original) },
+      { label: 'Precio con promo', backgroundColor: 'rgba(245,166,35,.3)', borderColor: '#F5A623', borderWidth: 1, data: stats.map(s => s.discounted) }
+    ]},
+    options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN' } } } }
+  });
+
+  const sorted = stats.filter(s => s.discounted !== null || s.original !== null)
+    .map(s => ({ ...s, price: s.discounted ?? s.original }))
+    .sort((a,b) => a.price - b.price);
+  if (sorted.length >= 2) {
+    const cheapest = sorted[0];
+    const priciest = sorted[sorted.length - 1];
+    setExplain('hdq-explain', `<strong>Interpretación:</strong> ${labelForPlatform(cheapest.platform)} ofrece la HDQ más barata (${fmtCurrency(cheapest.price)}), ${fmtCurrency(priciest.price - cheapest.price)} menos que ${labelForPlatform(priciest.platform)}. <strong>Para Strategy:</strong> si una plataforma subsidia la HDQ pero no el Big Mac, puede ser una estrategia de anchor pricing.`);
+  } else {
+    setExplain('hdq-explain', null);
+  }
+}
+
+function renderCokePrice(data, plats, zones) {
+  updateLegend('coke-legend', plats);
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('cokeChart');
+    setExplain('coke-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    return {
+      label: cfg.label,
+      borderColor: cfg.color,
+      backgroundColor: cfg.bg,
+      tension: 0.25,
+      fill: false,
+      spanGaps: true,
+      data: zones.map(z => {
+        const base = zoneMetric(data, z, p, 'cc_price_orig');
+        if (base !== null && base !== undefined) return base;
+        return zoneMetric(data, z, p, 'cc_price_disc');
+      })
+    };
+  });
+  ensureChart('cokeChart', {
+    type: 'line',
+    data: { labels: zones, datasets },
+    options: {
+      responsive: true,
+      interaction: { intersect: false, mode: 'nearest' },
+      scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN' } } }
+    }
+  });
+
+  const cokeByPlat = plats.map(p => ({
+    platform: p, price: avg(data.filter(r => r.platform === p), 'cc_price_orig')
+  })).filter(x => x.price !== null);
+  if (cokeByPlat.length >= 2) {
+    cokeByPlat.sort((a,b) => a.price - b.price);
+    const cheapest = cokeByPlat[0];
+    const priciest = cokeByPlat[cokeByPlat.length - 1];
+    setExplain('coke-explain', `<strong>Interpretación:</strong> La Coca-Cola varía entre ${fmtCurrency(cheapest.price)} (${labelForPlatform(cheapest.platform)}) y ${fmtCurrency(priciest.price)} (${labelForPlatform(priciest.platform)}). <strong>Para Pricing:</strong> en productos de alto volumen y baja diferenciación, la brecha de precio es directamente share.`);
+  } else {
+    setExplain('coke-explain', null);
+  }
+}
+
+function renderCostBreakdown(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('breakdownChart');
+    setExplain('breakdown-explain', null);
+    return;
+  }
+  const labels = plats.map(p => platCfg(p).label);
+  const subtotals = plats.map(p => avg(data.filter(r => r.platform === p), 'subtotal_mxn') || 0);
+  const delFees = plats.map(p => avg(data.filter(r => r.platform === p), 'delivery_fee_mxn') || 0);
+  const svcFees = plats.map(p => avg(data.filter(r => r.platform === p), 'service_fee_mxn') || 0);
+
+  ensureChart('breakdownChart', {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'Subtotal (productos)', backgroundColor: 'rgba(91,142,240,.35)', borderColor: '#5B8EF0', borderWidth: 1, data: subtotals },
+      { label: 'Delivery Fee', backgroundColor: 'rgba(245,166,35,.35)', borderColor: '#F5A623', borderWidth: 1, data: delFees },
+      { label: 'Service Fee', backgroundColor: 'rgba(255,68,31,.25)', borderColor: '#FF441F', borderWidth: 1, data: svcFees }
+    ]},
+    options: {
+      responsive: true,
+      scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true, title: { display: true, text: 'MXN' } } }
+    }
+  });
+
+  const totals = plats.map((p, i) => ({
+    platform: p, total: subtotals[i] + delFees[i] + svcFees[i],
+    subtotal: subtotals[i], delivery: delFees[i], service: svcFees[i]
+  })).filter(t => t.total > 0);
+  if (totals.length >= 2) {
+    totals.sort((a,b) => a.total - b.total);
+    const cheapest = totals[0];
+    const priciest = totals[totals.length - 1];
+    const deliveryDiff = priciest.delivery - cheapest.delivery;
+    const serviceDiff = priciest.service - cheapest.service;
+    const mainDriver = deliveryDiff > serviceDiff ? 'delivery fee' : 'service fee';
+    setExplain('breakdown-explain', `<strong>Interpretación:</strong> ${labelForPlatform(cheapest.platform)} tiene el ticket total más bajo (${fmtCurrency(cheapest.total)}). La diferencia principal vs ${labelForPlatform(priciest.platform)} viene del ${mainDriver}. <strong>Para Strategy:</strong> cada componente del costo requiere una palanca distinta — subsidiar delivery fee vs negociar tasa de service fee.`);
+  } else {
+    setExplain('breakdown-explain', null);
+  }
+}
+
+function renderDeliveryFee(data, plats, zones) {
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('deliveryFeeChart');
+    setExplain('delivery-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => ({
+    label: platCfg(p).label,
+    backgroundColor: platCfg(p).bg,
+    borderColor: platCfg(p).color,
+    borderWidth: 1,
+    data: zones.map(z => zoneMetric(data, z, p, 'delivery_fee_mxn'))
+  }));
+  ensureChart('deliveryFeeChart', {
+    type: 'bar',
+    data: { labels: zones, datasets },
+    options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN' } } } }
+  });
+
+  const feeByPlat = plats.map(p => ({
+    platform: p, fee: avg(data.filter(r => r.platform === p), 'delivery_fee_mxn')
+  })).filter(x => x.fee !== null);
+  if (feeByPlat.length >= 2) {
+    feeByPlat.sort((a,b) => a.fee - b.fee);
+    const cheapest = feeByPlat[0];
+    const priciest = feeByPlat[feeByPlat.length - 1];
+    setExplain('delivery-explain', `<strong>Interpretación:</strong> ${labelForPlatform(cheapest.platform)} cobra el menor delivery fee promedio (${fmtCurrency(cheapest.fee)}), ${fmtCurrency(priciest.fee - cheapest.fee)} menos que ${labelForPlatform(priciest.platform)}. <strong>Para Pricing:</strong> en zonas periféricas/Non Wealthy donde el delivery fee es más alto, considerar subsidios selectivos para no perder competitividad.`);
+  } else {
+    setExplain('delivery-explain', null);
+  }
+}
+
+function renderServiceFee(data, plats, zones) {
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('sfeeChart');
+    setExplain('service-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => ({
+    label: platCfg(p).label,
+    backgroundColor: platCfg(p).bg,
+    borderColor: platCfg(p).color,
+    fill: false,
+    tension: 0.25,
+    spanGaps: true,
+    data: zones.map(z => zoneMetric(data, z, p, 'service_fee_mxn'))
+  }));
+  ensureChart('sfeeChart', {
+    type: 'line',
+    data: { labels: zones, datasets },
+    options: { responsive: true, interaction: { intersect: false, mode: 'nearest' }, scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN' } } } }
+  });
+
+  const sfByPlat = plats.map(p => ({
+    platform: p, fee: avg(data.filter(r => r.platform === p), 'service_fee_mxn')
+  })).filter(x => x.fee !== null);
+  if (sfByPlat.length >= 2) {
+    sfByPlat.sort((a,b) => a.fee - b.fee);
+    const cheapest = sfByPlat[0];
+    const priciest = sfByPlat[sfByPlat.length - 1];
+    setExplain('service-explain', `<strong>Interpretación:</strong> ${labelForPlatform(cheapest.platform)} tiene el service fee más bajo (${fmtCurrency(cheapest.fee)}) debido a su tasa menor sobre el subtotal. ${labelForPlatform(priciest.platform)} cobra ${fmtCurrency(priciest.fee)} en promedio. <strong>Para Strategy:</strong> el service fee es el componente que más varía entre plataformas por diseño de negocio.`);
+  } else {
+    setExplain('service-explain', null);
+  }
+}
+
+function renderTotal(data, plats, zones) {
+  if (!zones.length || !plats.length || !data.length) {
+    clearChart('totalChart');
+    setExplain('total-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => ({
+    label: platCfg(p).label,
+    backgroundColor: platCfg(p).bg,
+    borderColor: platCfg(p).color,
+    borderWidth: 1,
+    data: zones.map(z => zoneMetric(data, z, p, 'total_estimated_mxn'))
+  }));
+  ensureChart('totalChart', {
+    type: 'bar',
+    data: { labels: zones, datasets },
+    options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'MXN' } } } }
+  });
+
+  let cheapest = null;
+  let priciest = null;
+  zones.forEach(zone => {
+    plats.forEach(p => {
+      const value = zoneMetric(data, zone, p, 'total_estimated_mxn');
+      if (value === null || value === undefined || isNaN(value)) return;
+      const descriptor = { zone, platform: p, value };
+      if (!cheapest || value < cheapest.value) cheapest = descriptor;
+      if (!priciest || value > priciest.value) priciest = descriptor;
+    });
+  });
+  if (cheapest && priciest) {
+    const gap = priciest.value - cheapest.value;
+    const gapPct = ((gap / cheapest.value) * 100).toFixed(0);
+    setExplain('total-explain', `<strong>Interpretación:</strong> ${labelForPlatform(cheapest.platform)} en ${cheapest.zone} tiene el ticket más bajo (${fmtCurrency(cheapest.value)}). ${labelForPlatform(priciest.platform)} en ${priciest.zone} queda ${fmtCurrency(gap)} arriba (${gapPct}%). <strong>Para Strategy:</strong> una brecha >5% en el total percibido desplaza market share hacia el más barato.`);
+  } else {
+    setExplain('total-explain', null);
+  }
+}
+
+function renderWealthyComparison(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('wealthyChart');
+    setExplain('wealthy-explain', null);
+    return;
+  }
+
+  const labels = plats.map(p => platCfg(p).label);
+  const wealthyTotals = plats.map(p => avg(data.filter(r => r.platform === p && r.zone_type === 'Wealthy'), 'total_estimated_mxn'));
+  const nonWealthyTotals = plats.map(p => avg(data.filter(r => r.platform === p && r.zone_type === 'Non Wealthy'), 'total_estimated_mxn'));
+
+  ensureChart('wealthyChart', {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'Wealthy (alto NSE)', backgroundColor: 'rgba(91,142,240,.3)', borderColor: '#5B8EF0', borderWidth: 1, data: wealthyTotals },
+      { label: 'Non Wealthy (bajo NSE)', backgroundColor: 'rgba(245,166,35,.3)', borderColor: '#F5A623', borderWidth: 1, data: nonWealthyTotals }
+    ]},
+    options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'Total estimado MXN' } } } }
+  });
+
+  const diffs = plats.map((p, i) => ({
+    platform: p,
+    wealthy: wealthyTotals[i],
+    nonWealthy: nonWealthyTotals[i],
+    diff: (nonWealthyTotals[i] || 0) - (wealthyTotals[i] || 0)
+  })).filter(d => d.wealthy !== null && d.nonWealthy !== null);
+
+  if (diffs.length) {
+    const largest = diffs.reduce((a, b) => Math.abs(a.diff) > Math.abs(b.diff) ? a : b);
+    const direction = largest.diff > 0 ? 'más caro en Non Wealthy' : 'más caro en Wealthy';
+    setExplain('wealthy-explain', `<strong>Interpretación:</strong> ${labelForPlatform(largest.platform)} es ${fmtCurrency(Math.abs(largest.diff))} ${direction} — la mayor brecha geográfica. <strong>Para Growth:</strong> si las zonas Non Wealthy pagan más, la elasticidad juega en contra y se cede share justo donde hay potencial de expansión. Considerar estrategias diferenciadas de pricing por tipo de zona.`);
+  } else {
+    setExplain('wealthy-explain', null);
+  }
+}
+
+function buildHeatmap(containerId, data, plats, zones, field, preferLower = false, formatter = null) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  if (!zones.length || !plats.length) {
+    container.innerHTML = '<div class="no-data">Sin datos suficientes</div>';
+    return;
+  }
+  let html = '<table class="heatmap-tbl"><thead><tr><th>Zona</th>';
+  plats.forEach(p => { html += `<th>${platCfg(p).label}</th>`; });
+  html += '</tr></thead><tbody>';
+  zones.forEach(zone => {
+    html += `<tr><td class="zone-name">${zone}</td>`;
+    const values = plats.map(p => zoneMetric(data, zone, p, field));
+    const filteredVals = values.filter(v => v !== null && v !== undefined);
+    const targetVal = filteredVals.length ? (preferLower ? Math.min(...filteredVals) : Math.max(...filteredVals)) : null;
+    plats.forEach((p, idx) => {
+      const val = values[idx];
+      if (val === null || val === undefined || isNaN(val)) {
+        html += '<td class="hm-nodata">s/d</td>';
+        return;
+      }
+      let cls = 'hm-neutral';
+      if (targetVal !== null) {
+        if (val === targetVal) cls = 'hm-advantage';
+        else cls = 'hm-disadvantage';
+      }
+      let display;
+      if (typeof formatter === 'function') display = formatter(val);
+      else if (field.includes('pct')) display = `${val.toFixed(0)}%`;
+      else display = `$${val.toFixed(0)}`;
+      html += `<td class="${cls}">${display}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+function renderETAHeatmap(data, plats, zones) {
+  buildHeatmap('eta-heatmap', data, plats, zones, 'eta_min', true, val => `${val.toFixed(0)} min`);
+  if (!zones.length || !plats.length || !data.length) {
+    setExplain('eta-heatmap-explain', null);
+    return;
+  }
+  let fastest = null;
+  let slowest = null;
+  zones.forEach(zone => {
+    plats.forEach(p => {
+      const eta = zoneMetric(data, zone, p, 'eta_min');
+      if (eta === null || eta === undefined || isNaN(eta)) return;
+      const entry = { zone, platform: p, eta };
+      if (!fastest || eta < fastest.eta) fastest = entry;
+      if (!slowest || eta > slowest.eta) slowest = entry;
+    });
+  });
+  if (fastest && slowest) {
+    setExplain('eta-heatmap-explain', `<strong>Interpretación:</strong> Entrega más rápida: ${labelForPlatform(fastest.platform)} en ${fastest.zone} (${fastest.eta.toFixed(0)} min). Más lenta: ${labelForPlatform(slowest.platform)} en ${slowest.zone} (${slowest.eta.toFixed(0)} min). <strong>Para Operations:</strong> las celdas rojas de Rappi son zonas prioritarias para refuerzo de flota.`);
+  } else {
+    setExplain('eta-heatmap-explain', null);
+  }
+}
+
+function renderPriceHeatmap(data, plats, zones) {
+  const container = document.getElementById('price-heatmap');
+  if (!container) return;
+  if (!zones.length || !plats.length || !data.length) {
+    container.innerHTML = '<div class="no-data">Sin datos suficientes</div>';
+    setExplain('price-heatmap-explain', null);
+    return;
+  }
+  let html = '<table class="heatmap-tbl"><thead><tr><th>Zona</th>';
+  plats.forEach(p => { html += `<th>${platCfg(p).label}</th>`; });
+  html += '</tr></thead><tbody>';
+  zones.forEach(zone => {
+    html += `<tr><td class="zone-name">${zone}</td>`;
+    const values = plats.map(p => {
+      const rows = data.filter(r => r.zone === zone && r.platform === p);
+      return avg(rows, 'bm_price_disc') ?? avg(rows, 'bm_price_orig');
+    });
+    const filtered = values.filter(v => v !== null && v !== undefined);
+    const minVal = filtered.length ? Math.min(...filtered) : null;
+    plats.forEach((p, idx) => {
+      const val = values[idx];
+      if (val == null || isNaN(val)) {
+        html += '<td class="hm-nodata">s/d</td>';
+        return;
+      }
+      const cls = minVal !== null && val === minVal ? 'hm-advantage' : 'hm-disadvantage';
+      html += `<td class="${cls}">$${val.toFixed(0)}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  container.innerHTML = html;
+
+  const wins = {};
+  zones.forEach(zone => {
+    let best = null;
+    plats.forEach(p => {
+      const price = avg(data.filter(r => r.zone === zone && r.platform === p), 'bm_price_disc') ?? avg(data.filter(r => r.zone === zone && r.platform === p), 'bm_price_orig');
+      if (price === null || price === undefined || isNaN(price)) return;
+      if (!best || price < best.price) best = { platform: p, price };
+    });
+    if (best) wins[best.platform] = (wins[best.platform] || 0) + 1;
+  });
+  const entries = Object.entries(wins).sort((a,b) => b[1] - a[1]);
+  if (entries.length) {
+    const leader = entries[0];
+    const summary = entries.map(([p, count]) => `${labelForPlatform(p)}: ${count}`).join(', ');
+    setExplain('price-heatmap-explain', `<strong>Interpretación:</strong> ${labelForPlatform(leader[0])} gana en precio Big Mac en ${leader[1]} de ${zones.length} zonas. Desglose: ${summary}. <strong>Para Pricing:</strong> las zonas donde Rappi NO gana son oportunidades de ajuste de precio o promoción.`);
+  } else {
+    setExplain('price-heatmap-explain', null);
+  }
+}
+
+function renderScatter(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('scatterChart');
+    setExplain('scatter-explain', null);
+    return;
+  }
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    const pts = data.filter(r => r.platform === p && typeof r.eta_min === 'number' && typeof r.promo_general_pct === 'number')
+      .map(r => ({ x: r.eta_min, y: r.promo_general_pct, zone: r.zone }));
+    return {
+      label: cfg.label,
+      data: pts,
+      backgroundColor: cfg.bg,
+      borderColor: cfg.color,
+      pointRadius: 5
+    };
+  });
+  ensureChart('scatterChart', {
+    type: 'scatter',
+    data: { datasets },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const zone = ctx.raw.zone || 'Zona sin nombre';
+              return `${ctx.dataset.label}: ${ctx.parsed.x} min · ${ctx.parsed.y}% (${zone})`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { title: { display: true, text: 'ETA (minutos de entrega)' } },
+        y: { title: { display: true, text: 'Promo Hook (% descuento visible)' } }
+      }
+    }
+  });
+
+  // Find interesting patterns
+  const allPts = data.filter(r => typeof r.eta_min === 'number' && typeof r.promo_general_pct === 'number');
+  const highEtaLowPromo = allPts.filter(r => r.eta_min > 25 && r.promo_general_pct < 42);
+  if (highEtaLowPromo.length) {
+    const example = highEtaLowPromo[0];
+    setExplain('scatter-explain', `<strong>Interpretación:</strong> ${highEtaLowPromo.length} observaciones tienen ETA alto (>25 min) sin promo compensatoria (<42%) — son debilidades explotables. Ejemplo: ${labelForPlatform(example.platform)} en ${example.zone} (${example.eta_min} min, ${example.promo_general_pct}%). <strong>Para Strategy:</strong> en zonas donde la competencia tiene ETA alto sin promo, Rappi puede ganar share con velocidad o descuentos.`);
+  } else {
+    setExplain('scatter-explain', `<strong>Interpretación:</strong> La mayoría de las plataformas mantienen una relación equilibrada entre ETA y promo. Puntos en el cuadrante superior-derecho (ETA alto + promo alta) compensan tardanza con descuento.`);
+  }
+}
+
+function renderAvailability(data, plats) {
+  if (!data.length || !plats.length) {
+    clearChart('availChart');
+    setExplain('avail-explain', null);
+    return;
+  }
+  const zoneTypes = [...new Set(data.map(r => r.zone_type || 'N/A'))].sort((a,b) => a.localeCompare(b,'es',{sensitivity:'base'}));
+  const labels = zoneTypes.length ? zoneTypes : ['N/A'];
+  const datasets = plats.map(p => {
+    const cfg = platCfg(p);
+    return {
+      label: cfg.label,
+      backgroundColor: cfg.bg,
+      borderColor: cfg.color,
+      borderWidth: 1,
+      data: labels.map(zt => {
+        const subset = data.filter(r => r.platform === p && (zt === 'N/A' ? !r.zone_type : r.zone_type === zt));
+        if (!subset.length) return 0;
+        const success = subset.filter(r => r.status === 'success' && r.restaurant_available !== false).length;
+        return +(success / subset.length * 100).toFixed(1);
+      })
+    };
+  });
+  ensureChart('availChart', {
+    type: 'bar',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' }, title: { display: true, text: '% Disponibilidad' } } }
+    }
+  });
+
+  const availByPlat = plats.map(p => {
+    const subset = data.filter(r => r.platform === p);
+    const success = subset.filter(r => r.status === 'success' && r.restaurant_available !== false).length;
+    return { platform: p, pct: subset.length ? (success / subset.length * 100) : 0 };
+  });
+  const worst = availByPlat.reduce((a, b) => a.pct < b.pct ? a : b);
+  if (worst.pct < 100) {
+    setExplain('avail-explain', `<strong>Interpretación:</strong> ${labelForPlatform(worst.platform)} tiene la menor cobertura (${worst.pct.toFixed(0)}%). Sin cobertura, el usuario asume que McDonald's no existe en esa app. <strong>Para Operations:</strong> auditar el flujo de disponibilidad en zonas con gaps — puede ser ausencia real o bloqueo técnico.`);
+  } else {
+    setExplain('avail-explain', `<strong>Interpretación:</strong> Todas las plataformas logran cobertura completa en los filtros actuales.`);
+  }
+}
+
+function platformPill(platform) {
+  const cfg = platCfg(platform);
+  const clsMap = {
+    rappi: 'pill-rappi',
+    ubereats: 'pill-ubereats',
+    uber: 'pill-ubereats',
+    didi: 'pill-didi',
+    didifood: 'pill-didi'
+  };
+  const cls = clsMap[platform] || 'pill-success';
+  return `<span class="pill ${cls}">${cfg.label}</span>`;
+}
+
+function statusPill(status) {
+  const map = {
+    success: 'pill-success',
+    partial: 'pill-partial',
+    fail: 'pill-fail'
+  };
+  const key = typeof status === 'string' ? status.toLowerCase() : status;
+  const cls = map[key] || 'pill-partial';
+  const label = status ? status : 'n/d';
+  return `<span class="pill ${cls}">${label}</span>`;
+}
+
+function zoneTypePill(zt) {
+  if (!zt) return '<span class="pill pill-nonwealthy">N/A</span>';
+  const cls = zt.toLowerCase().includes('wealth') ? 'pill-wealthy' : 'pill-nonwealthy';
+  return `<span class="pill ${cls}">${zt}</span>`;
+}
+
+function renderTable(rows) {
+  const tbody = document.getElementById('detail-tbody');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="17" class="no-data">No hay registros con los filtros actuales</td></tr>';
+    return;
+  }
+  const html = rows.map(r => `
+    <tr>
+      <td>${r.zone || 'N/A'}</td>
+      <td>${r.city || 'N/A'}</td>
+      <td>${zoneTypePill(r.zone_type)}</td>
+      <td>${platformPill(r.platform)}</td>
+      <td>${statusPill(r.status)}</td>
+      <td>${fmt(r.rating, 1)}</td>
+      <td>${fmt(r.eta_min, 0)}</td>
+      <td>${fmtPercent(r.promo_general_pct, 0)}</td>
+      <td>${fmt(r.bm_price_orig, 0, '$')}</td>
+      <td>${fmt(r.bm_price_disc, 0, '$')}</td>
+      <td>${fmtPercent(r.bm_disc_pct, 0)}</td>
+      <td>${fmt(r.hdq_price_orig, 0, '$')}</td>
+      <td>${fmt(r.hdq_price_disc, 0, '$')}</td>
+      <td>${fmt(r.cc_price_orig, 0, '$')}</td>
+      <td>${fmt(r.delivery_fee_mxn, 0, '$')}</td>
+      <td>${fmt(r.service_fee_mxn, 0, '$')}</td>
+      <td>${fmt(r.total_estimated_mxn, 0, '$')}</td>
+    </tr>`).join('');
+  tbody.innerHTML = html;
+}
+</script>
+</body>
+</html>

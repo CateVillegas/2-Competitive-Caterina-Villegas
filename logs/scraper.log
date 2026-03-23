@@ -1767,3 +1767,115 @@ Done: 1 addresses | 0 successful platform scrapes
 2026-03-23 15:06:30,546 [INFO] 
 Done: 1 addresses | 0 successful platform scrapes
 2026-03-23 15:06:30,546 [INFO] Output: data\competitive_data_20260323_150325.json
+2026-03-23 17:25:58,224 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 17:26:19,611 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 17:26:28,223 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-23 17:26:30,872 [INFO]   suggestion selected via keyboard
+2026-03-23 17:26:37,932 [INFO]   typed into input[data-qa="input"]
+2026-03-23 17:26:42,713 [INFO]   [Rappi] search results found
+2026-03-23 17:26:43,049 [INFO]   screenshot: MX_CDMX_01_rappi_search_172642.png
+2026-03-23 17:26:43,121 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-23 17:26:50,123 [INFO]   screenshot: MX_CDMX_01_rappi_store_172649.png
+2026-03-23 17:26:50,135 [INFO]   scroll: internal container found = True
+2026-03-23 17:27:03,133 [INFO]   scroll: done after scrolling, 431 lines captured
+2026-03-23 17:27:03,139 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (13893 chars)
+2026-03-23 17:27:03,139 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-23 17:27:03,140 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-23 17:27:03,140 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-23 17:27:03,141 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-23 17:27:03,141 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-23 17:27:03,144 [INFO]   product FOUND: Combo Big Mac mediano orig=173.85 disc=113.0 %=35.0
+2026-03-23 17:27:03,145 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 17:27:03,146 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 17:27:03,156 [INFO]   [Rappi] products=3 fee=0.0 eta=30 promo=50.0%
+2026-03-23 17:27:03,260 [INFO]   screenshot: MX_CDMX_01_rappi_final_172703.png
+2026-03-23 17:27:03,378 [INFO]   OK       [rappi     ] eta=30m fee=15.0 products=3 total=407.7
+2026-03-23 17:27:16,815 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 17:27:19,472 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 17:27:19,472 [INFO]   [Uber] address set
+2026-03-23 17:27:24,055 [INFO]   [Uber] navigating to search URL
+2026-03-23 17:27:44,762 [WARNING]   [Uber] no store links in search results
+2026-03-23 17:27:44,984 [INFO]   screenshot: MX_CDMX_01_ubereats_search_172744.png
+2026-03-23 17:27:45,019 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-plaza-galerias/oIEI4FlNTJ6ioOOpC-lxsQ
+2026-03-23 17:27:50,679 [INFO]   [Uber] restaurant name from h1: McDonald's (Plaza Galerías)
+2026-03-23 17:27:50,872 [INFO]   screenshot: MX_CDMX_01_ubereats_store_172750.png
+2026-03-23 17:27:50,883 [INFO]   scroll: internal container found = True
+2026-03-23 17:28:04,514 [INFO]   scroll: done after scrolling, 550 lines captured
+2026-03-23 17:28:04,517 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (14608 chars)
+2026-03-23 17:28:04,518 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 17:28:04,519 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 17:28:04,520 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 17:28:04,520 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 17:28:04,521 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 17:28:04,522 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 17:28:04,524 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 17:28:04,526 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 17:28:04,535 [INFO]   [Uber] products=3 fee=0.0 eta=10 promo=44.0%
+2026-03-23 17:28:04,687 [INFO]   screenshot: MX_CDMX_01_ubereats_final_172804.png
+2026-03-23 17:28:04,746 [INFO]   OK       [ubereats  ] eta=10m fee=15.0 products=3 total=374.95
+2026-03-23 17:28:13,160 [INFO]   [DiDi] loaded: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 17:28:19,754 [INFO]   [DiDi] código telefónico seleccionado: +54
+2026-03-23 17:28:21,568 [INFO]   typed into input[type="tel"]
+2026-03-23 17:28:22,401 [INFO]   [DiDi] tapped terms circle at (27, 292)
+2026-03-23 17:28:22,886 [INFO]   [DiDi] términos aceptados con tap al círculo
+2026-03-23 17:28:22,887 [INFO]   [DiDi] terminos y condiciones aceptados
+2026-03-23 17:28:23,425 [INFO]   [DiDi] tapped siguiente via coordinates (195, 422)
+2026-03-23 17:28:25,766 [INFO]   [DiDi] sesión guardada en sessions\didi_state.json
+2026-03-23 17:28:25,802 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:25,803 [INFO]   [DiDi] *** PASO MANUAL: Ingresa el codigo de verificacion en el navegador ***
+2026-03-23 17:28:25,804 [INFO]   [DiDi] Esperando hasta 120s para que ingreses el codigo...
+2026-03-23 17:28:28,842 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:28,879 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:31,932 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:31,966 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:35,013 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:35,042 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:38,073 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:38,109 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:41,139 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:41,153 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:44,199 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:44,230 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:47,279 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:47,332 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:50,381 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:50,424 [WARNING]   [DiDi] OTP input detected
+2026-03-23 17:28:53,496 [INFO]   [DiDi] OTP completado, continuando...
+2026-03-23 17:28:59,002 [INFO]   [DiDi] url after landing: https://www.didi-food.com/es-MX/food/feed/?pl=eyJwb2lJZCI6IjExMTc3NjY4NDczMTIxNjY5MTIiLCJkaXNwbGF5TmFtZSI6IlRlcnJhemEgUm9tYSIsImFkZHJlc3MiOiJBdmVuaWRhIE9heGFjYSA5MCwgUm9tYSBOdGUuLCBDdWF1aHTDqW1vYywgMDY3MDAgQ2l1ZGFkIGRlIE3DqXhpY28sIENETVgsIE3DqXhpY28iLCJsYXQiOjE5LjQxODY5OTY4LCJsbmciOi05OS4xNjcyNTU5LCJzcmNUYWciOiJuZXdlcyIsInBvaVNyY1RhZyI6Im1hbnVhbF9zdWciLCJjb29yZGluYXRlVHlwZSI6Indnczg0IiwiY2l0eUlkIjo1MjA5MDEwMCwiY2l0eSI6IkNpdWRhZCBkZSBNw6l4aWNvIiwic2VhcmNoSWQiOiIwYTkzMzE3ZDY5YzA0NmJlMjc3ZjFkOTMzZjY5ZTQwMiIsImFkZHJlc3NBbGwiOiJUZXJyYXphIFJvbWEsIEF2ZW5pZGEgT2F4YWNhIDkwLCBSb21hIE50ZS4sIEN1YXVodMOpbW9jLCAwNjcwMCBDaXVkYWQgZGUgTcOpeGljbywgQ0RNWCwgTcOpeGljbyIsImFkZHJlc3NBbGxEaXNwbGF5IjoiQXZlbmlkYSBPYXhhY2EgOTAsIFJvbWEgTnRlLiwgQ3VhdWh0w6ltb2MsIDA2NzAwIENpdWRhZCBkZSBNw6l4aWNvLCBDRE1YLCBNw6l4aWNvIiwiY291bnRyeUNvZGUiOiJNWCIsImNvdW50cnlJZCI6NTIsImRpc3RTdHIiOiIyLjBrbSIsImRpc3QiOjE5NjAsInBvaVR5cGUiOiJOaWdodGxpZmUtRW50ZXJ0YWlubWVudDtDb2NrdGFpbCBMb3VuZ2U7TmlnaHQgQ2x1YjtEYW5jaW5nO1Jlc3RhdXJhbnQ7QmFyIG9yIFB1YiIsImNvdW50eUlkIjo1MjA5MDExNCwiY291bnR5R3JvdXBJZCI6NTIwOTAxMDAwMDAxLCJhaWQiOiIifQ%3D%3D
+2026-03-23 17:28:59,003 [INFO]   [DiDi] forzando reapertura del modal de dirección
+2026-03-23 17:29:03,318 [INFO]   [DiDi] address input already visible via input[type="text"]:not([hidden])
+2026-03-23 17:30:12,781 [INFO]   typed into input[type="text"]:not([hidden])
+2026-03-23 17:30:15,109 [INFO]   suggestion selected via keyboard
+2026-03-23 17:30:23,884 [INFO]   [DiDi] feed con restaurantes visible — direccion ya esta seteada
+2026-03-23 17:30:23,885 [INFO]   [DiDi] dirección confirmada en el header
+2026-03-23 17:30:24,146 [INFO]   screenshot: MX_CDMX_01_didifood_feed_173023.png
+2026-03-23 17:34:03,494 [INFO]   typed into input[placeholder*="restaurante" i]
+2026-03-23 17:34:03,494 [INFO]   [DiDi] query 'McDonalds' escrita en el buscador
+2026-03-23 17:34:06,561 [INFO]   [DiDi] found McDonald's card: McDonald's (Sears Insurgentes)
+
+4.2
+20 MinMX$11
+
+Descuentos de hasta MX$369
+2026-03-23 17:34:10,283 [INFO]   screenshot: MX_CDMX_01_didifood_store_173409.png
+2026-03-23 17:34:12,347 [INFO]   [DiDi] found 4 category tabs: ['Recomendados', 'Todas las categorías', 'Filtros', 'Más']
+2026-03-23 17:34:16,949 [INFO]   [DiDi] collected text from tab 'Recomendados' (1432 chars)
+2026-03-23 17:34:23,003 [INFO]   [DiDi] collected text from tab 'Todas las categorías' (1432 chars)
+2026-03-23 17:34:28,092 [INFO]   [DiDi] collected text from tab 'Filtros' (1432 chars)
+2026-03-23 17:34:33,173 [INFO]   [DiDi] collected text from tab 'Más' (1432 chars)
+2026-03-23 17:34:33,491 [INFO]   [DiDi] keyword 'home office' found: False
+2026-03-23 17:34:33,492 [INFO]   [DiDi] keyword 'big mac' found: False
+2026-03-23 17:34:33,493 [INFO]   [DiDi] keyword 'hamburguesa doble' found: False
+2026-03-23 17:34:33,494 [INFO]   [DiDi] keyword 'coca-cola' found: False
+2026-03-23 17:34:33,494 [INFO]   [DiDi] keyword 'coca cola' found: False
+2026-03-23 17:34:33,497 [INFO]   product not found in text: Combo Big Mac mediano
+2026-03-23 17:34:33,498 [INFO]   product not found in text: Hamburguesa doble con queso
+2026-03-23 17:34:33,500 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-23 17:34:33,506 [INFO]   [DiDi] products=0 fee=None eta=20 promo=65.0%
+2026-03-23 17:34:35,548 [INFO]   screenshot: MX_CDMX_01_didifood_final_173433.png
+2026-03-23 17:34:35,605 [INFO]   PARTIAL  [didifood  ] eta=20m fee=None products=0 total=None
+2026-03-23 17:34:38,308 [INFO] CSV: data\competitive_data_20260323_172558.csv (3 rows)
+2026-03-23 17:34:38,309 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-23 17:34:38,309 [INFO] Output: data\competitive_data_20260323_172558.json
