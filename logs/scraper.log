@@ -1045,3 +1045,780 @@ Done: 1 addresses | 0 successful platform scrapes
 2026-03-23 00:59:51,129 [INFO] 
 Done: 1 addresses | 0 successful platform scrapes
 2026-03-23 00:59:51,129 [INFO] Output: data\competitive_data_20260323_005815.json
+2026-03-23 01:59:06,634 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 01:59:08,755 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 01:59:20,165 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-23 01:59:23,532 [INFO]   suggestion selected via keyboard
+2026-03-23 01:59:31,126 [INFO]   typed into input[data-qa="input"]
+2026-03-23 01:59:34,875 [INFO]   [Rappi] search results found
+2026-03-23 01:59:35,421 [INFO]   screenshot: MX_CDMX_01_rappi_search_015934.png
+2026-03-23 01:59:35,611 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-23 01:59:42,231 [INFO]   screenshot: MX_CDMX_01_rappi_store_015941.png
+2026-03-23 01:59:42,257 [INFO]   scroll: internal container found = True
+2026-03-23 01:59:54,690 [INFO]   scroll: done after scrolling, 388 lines captured
+2026-03-23 01:59:54,694 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12528 chars)
+2026-03-23 01:59:54,695 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-23 01:59:54,695 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-23 01:59:54,695 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-23 01:59:54,695 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-23 01:59:54,695 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-23 01:59:54,697 [INFO]   product FOUND: Combo Big Mac mediano orig=173.68 disc=99.0 %=43.0
+2026-03-23 01:59:54,698 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 01:59:54,699 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 01:59:54,708 [INFO]   [Rappi] products=3 fee=0.0 eta=13 promo=51.0%
+2026-03-23 01:59:54,856 [INFO]   screenshot: MX_CDMX_01_rappi_final_015954.png
+2026-03-23 01:59:54,856 [INFO]   [rappi] Starting super vertical...
+2026-03-23 01:59:54,857 [INFO]   [Rappi] --- Vertical: SUPER ---
+2026-03-23 02:00:32,006 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:00:37,181 [INFO]   screenshot: MX_CDMX_01_rappi_super_botella de_020036.png
+2026-03-23 02:00:37,198 [INFO]   [Rappi][super] botella de agua 1.5L -> $20.0 (Ingreso)
+2026-03-23 02:01:16,081 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:01:20,842 [INFO]   screenshot: MX_CDMX_01_rappi_super_leche 1 li_020120.png
+2026-03-23 02:01:20,886 [INFO]   [Rappi][super] leche 1 litro -> $34.0 (Avenida Presidente Masaryk 111, Polanco...)
+2026-03-23 02:01:22,024 [INFO]   [rappi] Super done: 2 products
+2026-03-23 02:01:24,691 [INFO]   [rappi] Starting farmacia vertical...
+2026-03-23 02:01:24,691 [INFO]   [Rappi] --- Vertical: FARMACIA ---
+2026-03-23 02:02:00,558 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:02:04,508 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_curitas_020204.png
+2026-03-23 02:02:04,533 [INFO]   [Rappi][farmacia] curitas -> $61.3 (Avenida Presidente Masaryk 111, Polanco...)
+2026-03-23 02:02:43,650 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:02:47,996 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_paracetamo_020247.png
+2026-03-23 02:02:48,163 [INFO]   [Rappi][farmacia] paracetamol -> $41.79 (Avenida Presidente Masaryk 111, Polanco...)
+2026-03-23 02:02:49,460 [INFO]   [rappi] Farmacia done: 2 products
+2026-03-23 02:02:49,526 [INFO]   OK       [rappi     ] eta=13m fee=0.0 products=3 total=377.3
+2026-03-23 02:03:02,200 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:03:05,569 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:03:05,569 [INFO]   [Uber] address set
+2026-03-23 02:03:09,690 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:03:31,205 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:03:31,475 [INFO]   screenshot: MX_CDMX_01_ubereats_search_020331.png
+2026-03-23 02:03:31,510 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 02:03:37,416 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 02:03:37,835 [INFO]   screenshot: MX_CDMX_01_ubereats_store_020337.png
+2026-03-23 02:03:37,858 [INFO]   scroll: internal container found = True
+2026-03-23 02:03:50,383 [INFO]   scroll: done after scrolling, 493 lines captured
+2026-03-23 02:03:50,388 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13566 chars)
+2026-03-23 02:03:50,389 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:03:50,389 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:03:50,389 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:03:50,389 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:03:50,389 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:03:50,391 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:03:50,391 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 02:03:50,392 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:03:50,396 [INFO]   [Uber] products=3 fee=0.0 eta=14 promo=47.0%
+2026-03-23 02:03:50,553 [INFO]   screenshot: MX_CDMX_01_ubereats_final_020350.png
+2026-03-23 02:03:50,553 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:03:50,553 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:03:57,469 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_020357.png
+2026-03-23 02:04:06,492 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:04:09,957 [INFO]   [Uber] found price $399.0 at 
+2026-03-23 02:04:17,613 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_020417.png
+2026-03-23 02:04:25,371 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:04:28,263 [INFO]   [Uber] found price $399.0 at 
+2026-03-23 02:04:29,885 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 02:04:32,888 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 02:04:32,890 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 02:04:38,013 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:04:43,674 [INFO]   [Uber] clicked sidebar category: Farmacia
+2026-03-23 02:04:50,768 [INFO]   [Uber] entered pharmacy: farmacias guadalajara
+2026-03-23 02:04:52,173 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_curitas_020451.png
+2026-03-23 02:04:52,190 [INFO]   [Uber][farmacia] curitas -> $21.02
+2026-03-23 02:04:59,615 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_paracetamol_020459.png
+2026-03-23 02:04:59,629 [INFO]   [Uber][farmacia] paracetamol -> $99.74
+2026-03-23 02:05:02,898 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 02:05:02,963 [INFO]   OK       [ubereats  ] eta=14m fee=0.0 products=3 total=359.95
+2026-03-23 02:05:07,600 [INFO] CSV: data\competitive_data_20260323_015906.csv (2 rows)
+2026-03-23 02:05:07,601 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-23 02:05:07,601 [INFO] Output: data\competitive_data_20260323_015906.json
+2026-03-23 02:10:18,478 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:10:20,422 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:10:30,594 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-23 02:10:33,930 [INFO]   suggestion selected via keyboard
+2026-03-23 02:10:41,430 [INFO]   typed into input[data-qa="input"]
+2026-03-23 02:10:44,801 [INFO]   [Rappi] search results found
+2026-03-23 02:10:45,363 [INFO]   screenshot: MX_CDMX_01_rappi_search_021044.png
+2026-03-23 02:10:45,511 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-23 02:10:50,895 [INFO]   screenshot: MX_CDMX_01_rappi_store_021050.png
+2026-03-23 02:10:50,917 [INFO]   scroll: internal container found = True
+2026-03-23 02:11:03,304 [INFO]   scroll: done after scrolling, 388 lines captured
+2026-03-23 02:11:03,309 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12528 chars)
+2026-03-23 02:11:03,310 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-23 02:11:03,310 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-23 02:11:03,310 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-23 02:11:03,310 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-23 02:11:03,310 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-23 02:11:03,312 [INFO]   product FOUND: Combo Big Mac mediano orig=173.68 disc=99.0 %=43.0
+2026-03-23 02:11:03,312 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 02:11:03,313 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:11:03,318 [INFO]   [Rappi] products=3 fee=0.0 eta=12 promo=51.0%
+2026-03-23 02:11:03,452 [INFO]   screenshot: MX_CDMX_01_rappi_final_021103.png
+2026-03-23 02:11:03,453 [INFO]   [rappi] Starting super vertical...
+2026-03-23 02:11:03,453 [INFO]   [Rappi] --- Vertical: SUPER ---
+2026-03-23 02:11:41,100 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:11:47,104 [INFO]   screenshot: MX_CDMX_01_rappi_super_botella de_021144.png
+2026-03-23 02:11:48,195 [INFO]   [Rappi][super] botella de agua 1.5L -> $20.0 (Avenida Presidente Masaryk 111, Polanco...)
+2026-03-23 02:12:26,008 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:12:31,205 [INFO]   screenshot: MX_CDMX_01_rappi_super_leche 1 li_021230.png
+2026-03-23 02:12:31,230 [INFO]   [Rappi][super] leche 1 litro -> $34.0 (Ingreso)
+2026-03-23 02:12:32,459 [INFO]   [rappi] Super done: 2 products
+2026-03-23 02:12:35,037 [INFO]   [rappi] Starting farmacia vertical...
+2026-03-23 02:12:35,037 [INFO]   [Rappi] --- Vertical: FARMACIA ---
+2026-03-23 02:13:11,426 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:13:15,286 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_curitas_021314.png
+2026-03-23 02:13:15,291 [WARNING]   [Rappi][farmacia] curitas -> no price found
+2026-03-23 02:13:53,491 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:13:58,597 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_paracetamo_021356.png
+2026-03-23 02:13:58,726 [INFO]   [Rappi][farmacia] paracetamol -> $41.79 (Avenida Presidente Masaryk 111, Polanco...)
+2026-03-23 02:14:00,706 [INFO]   [rappi] Farmacia done: 2 products
+2026-03-23 02:14:00,808 [INFO]   OK       [rappi     ] eta=12m fee=0.0 products=3 total=377.3
+2026-03-23 02:14:14,146 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:14:16,875 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:14:16,876 [INFO]   [Uber] address set
+2026-03-23 02:14:20,055 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:14:40,182 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:14:40,372 [INFO]   screenshot: MX_CDMX_01_ubereats_search_021440.png
+2026-03-23 02:14:40,398 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 02:14:45,503 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 02:14:45,679 [INFO]   screenshot: MX_CDMX_01_ubereats_store_021445.png
+2026-03-23 02:14:45,691 [INFO]   scroll: internal container found = True
+2026-03-23 02:14:58,064 [INFO]   scroll: done after scrolling, 493 lines captured
+2026-03-23 02:14:58,067 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13566 chars)
+2026-03-23 02:14:58,068 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:14:58,068 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:14:58,069 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:14:58,069 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:14:58,069 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:14:58,070 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:14:58,070 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 02:14:58,071 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:14:58,077 [INFO]   [Uber] products=3 fee=0.0 eta=13 promo=47.0%
+2026-03-23 02:14:58,216 [INFO]   screenshot: MX_CDMX_01_ubereats_final_021458.png
+2026-03-23 02:14:58,216 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:14:58,216 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:15:04,070 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_021503.png
+2026-03-23 02:15:13,278 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:15:16,048 [INFO]   [Uber] no price at , trying next...
+2026-03-23 02:15:25,161 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:15:27,697 [INFO]   [Uber] no price at Información, trying next...
+2026-03-23 02:15:38,872 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:15:41,798 [INFO]   [Uber] found price $56.0 at #1 de tus favoritos
+Taco / Gaona' s
+$100.00 •  94% (406)
+2026-03-23 02:15:48,728 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_021548.png
+2026-03-23 02:15:54,996 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:15:57,797 [INFO]   [Uber] no price at , trying next...
+2026-03-23 02:16:06,057 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:16:08,407 [INFO]   [Uber] no price at Información, trying next...
+2026-03-23 02:16:16,778 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:16:19,250 [INFO]   [Uber] no price at Individual
+$90.00
+500 gm. Aprox. Nachos, queso amarillo, raj, trying next...
+2026-03-23 02:16:26,987 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:16:29,236 [INFO]   [Uber] no price at Medianos
+$150.00
+1 Kilo gm. Aprox. Nachos, queso amarillo, r, trying next...
+2026-03-23 02:16:39,982 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:16:42,973 [INFO]   [Uber] no price at Carne Jumbo
+$200.00
+1 Kilo y 1/2 gm. Aprox. Nachos, queso am, trying next...
+2026-03-23 02:16:53,046 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:16:56,100 [INFO]   [Uber] no price at Información, trying next...
+2026-03-23 02:17:06,406 [INFO]   [Uber] no price at Pedido grupal, trying next...
+2026-03-23 02:17:17,570 [INFO]   [Uber] no price at , trying next...
+2026-03-23 02:17:25,881 [INFO]   [Uber] no price at Condiciones, trying next...
+2026-03-23 02:17:38,308 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:18:42,887 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:18:43,949 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:18:53,795 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-23 02:18:56,370 [INFO]   suggestion selected via keyboard
+2026-03-23 02:19:04,135 [INFO]   typed into input[data-qa="input"]
+2026-03-23 02:19:08,320 [INFO]   [Rappi] search results found
+2026-03-23 02:19:09,368 [INFO]   screenshot: MX_CDMX_01_rappi_search_021908.png
+2026-03-23 02:19:09,553 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-23 02:19:15,939 [INFO]   screenshot: MX_CDMX_01_rappi_store_021915.png
+2026-03-23 02:19:16,051 [INFO]   scroll: internal container found = True
+2026-03-23 02:19:28,478 [INFO]   scroll: done after scrolling, 388 lines captured
+2026-03-23 02:19:28,481 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12528 chars)
+2026-03-23 02:19:28,482 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-23 02:19:28,483 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-23 02:19:28,483 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-23 02:19:28,484 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-23 02:19:28,484 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-23 02:19:28,486 [INFO]   product FOUND: Combo Big Mac mediano orig=173.68 disc=99.0 %=43.0
+2026-03-23 02:19:28,487 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 02:19:28,488 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:19:28,491 [INFO]   [Rappi] products=3 fee=0.0 eta=12 promo=51.0%
+2026-03-23 02:19:28,647 [INFO]   screenshot: MX_CDMX_01_rappi_final_021928.png
+2026-03-23 02:19:28,648 [INFO]   [rappi] Starting super vertical...
+2026-03-23 02:19:28,648 [INFO]   [Rappi] --- Vertical: SUPER ---
+2026-03-23 02:20:06,994 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:20:18,037 [INFO]   [Rappi] clicked category tab: Tiendas
+2026-03-23 02:20:18,242 [INFO]   screenshot: MX_CDMX_01_rappi_super_botella de_022018.png
+2026-03-23 02:20:18,251 [WARNING]   [Rappi][super] botella de agua 1.5L -> no price found
+2026-03-23 02:20:55,951 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:21:05,162 [INFO]   [Rappi] clicked category tab: Tiendas
+2026-03-23 02:21:05,314 [INFO]   screenshot: MX_CDMX_01_rappi_super_leche 1 li_022105.png
+2026-03-23 02:21:05,324 [WARNING]   [Rappi][super] leche 1 litro -> no price found
+2026-03-23 02:21:06,607 [INFO]   [rappi] Super done: 2 products
+2026-03-23 02:21:08,402 [INFO]   [rappi] Starting farmacia vertical...
+2026-03-23 02:21:08,403 [INFO]   [Rappi] --- Vertical: FARMACIA ---
+2026-03-23 02:21:44,872 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:21:53,606 [INFO]   [Rappi] clicked category tab: Farmacias
+2026-03-23 02:21:54,116 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_curitas_022153.png
+2026-03-23 02:21:54,161 [INFO]   [Rappi][farmacia] curitas -> $49.8 (Avenida Presidente Masaryk 111, Polanco...)
+2026-03-23 02:22:31,232 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 02:22:42,596 [INFO]   [Rappi] clicked category tab: Farmacia
+2026-03-23 02:22:42,914 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_paracetamo_022242.png
+2026-03-23 02:22:42,944 [INFO]   [Rappi][farmacia] paracetamol -> $25.0 (Ingreso)
+2026-03-23 02:22:44,460 [INFO]   [rappi] Farmacia done: 2 products
+2026-03-23 02:22:44,607 [INFO]   OK       [rappi     ] eta=12m fee=0.0 products=3 total=377.3
+2026-03-23 02:22:56,702 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:22:59,015 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:22:59,016 [INFO]   [Uber] address set
+2026-03-23 02:23:03,635 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:23:24,468 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:23:24,704 [INFO]   screenshot: MX_CDMX_01_ubereats_search_022324.png
+2026-03-23 02:23:24,737 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 02:23:30,754 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 02:23:31,508 [INFO]   screenshot: MX_CDMX_01_ubereats_store_022330.png
+2026-03-23 02:23:31,558 [INFO]   scroll: internal container found = True
+2026-03-23 02:23:44,568 [INFO]   scroll: done after scrolling, 493 lines captured
+2026-03-23 02:23:44,570 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13566 chars)
+2026-03-23 02:23:44,570 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:23:44,570 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:23:44,571 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:23:44,571 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:23:44,571 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:23:44,572 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:23:44,572 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 02:23:44,573 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:23:44,577 [INFO]   [Uber] products=3 fee=0.0 eta=10 promo=47.0%
+2026-03-23 02:23:44,763 [INFO]   screenshot: MX_CDMX_01_ubereats_final_022344.png
+2026-03-23 02:23:44,763 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:23:44,763 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:23:49,690 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_022349.png
+2026-03-23 02:23:59,667 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:24:02,529 [INFO]   [Uber] no price at , trying next...
+2026-03-23 02:24:10,763 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:24:13,684 [INFO]   [Uber] no price at Información, trying next...
+2026-03-23 02:24:23,537 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:24:25,937 [INFO]   [Uber] found price $56.0 at #1 de tus favoritos
+Taco / Gaona' s
+$100.00 •  94% (406)
+2026-03-23 02:24:32,371 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_022432.png
+2026-03-23 02:24:38,615 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:24:41,702 [INFO]   [Uber] no price at , trying next...
+2026-03-23 02:24:54,511 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:24:57,344 [INFO]   [Uber] no price at Información, trying next...
+2026-03-23 02:25:09,870 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:25:12,199 [INFO]   [Uber] no price at Individual
+$90.00
+500 gm. Aprox. Nachos, queso amarillo, raj, trying next...
+2026-03-23 02:25:22,980 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:25:25,906 [INFO]   [Uber] no price at Medianos
+$150.00
+1 Kilo gm. Aprox. Nachos, queso amarillo, r, trying next...
+2026-03-23 02:25:35,957 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:25:38,545 [INFO]   [Uber] no price at Carne Jumbo
+$200.00
+1 Kilo y 1/2 gm. Aprox. Nachos, queso am, trying next...
+2026-03-23 02:25:46,527 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:25:48,682 [INFO]   [Uber] no price at Información, trying next...
+2026-03-23 02:29:53,716 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:29:54,824 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:30:04,735 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:30:07,429 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:30:07,429 [INFO]   [Uber] address set
+2026-03-23 02:30:11,393 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:30:33,381 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:30:33,882 [INFO]   screenshot: MX_CDMX_01_ubereats_search_023033.png
+2026-03-23 02:30:33,923 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 02:30:41,342 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 02:30:42,332 [INFO]   screenshot: MX_CDMX_01_ubereats_store_023041.png
+2026-03-23 02:30:42,400 [INFO]   scroll: internal container found = True
+2026-03-23 02:30:56,127 [INFO]   scroll: done after scrolling, 493 lines captured
+2026-03-23 02:30:56,131 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13566 chars)
+2026-03-23 02:30:56,132 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:30:56,132 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:30:56,132 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:30:56,132 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:30:56,132 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:30:56,133 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:30:56,134 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 02:30:56,135 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:30:56,142 [INFO]   [Uber] products=3 fee=0.0 eta=13 promo=47.0%
+2026-03-23 02:30:56,318 [INFO]   screenshot: MX_CDMX_01_ubereats_final_023056.png
+2026-03-23 02:30:56,319 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:30:56,319 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:31:02,993 [INFO]   [Uber] clicked tab (fallback): Súper
+2026-03-23 02:31:10,458 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_023108.png
+2026-03-23 02:31:19,721 [INFO]   [Uber] no price at 3 por $90
+$39.50
+Chobani · Yogurt griego con 20 g de proteín, trying next...
+2026-03-23 02:31:40,818 [INFO]   [Uber] no price at MX$99.00
+Pantene · Mascarilla intensiva pro-v restauración (, trying next...
+2026-03-23 02:32:00,204 [INFO]   [Uber] no price at 5 for MX$55
+MX$13.50
+Maizena · Atole, vainilla (47 g)
+47 g, trying next...
+2026-03-23 02:32:20,001 [INFO]   [Uber] no price at 5 for MX$55
+MX$13.50
+Maizena · Atole, fresa (47 g)
+47 g, trying next...
+2026-03-23 02:32:45,678 [INFO]   [Uber] no price at MX$28.50
+Oikos · Pro yoghurt griego con 15 g proteína sin az, trying next...
+2026-03-23 02:33:06,844 [INFO]   [Uber] found price $20.0 at Save MX$45 on MX$299+
+2026-03-23 02:33:18,133 [INFO]   [Uber] clicked tab (fallback): Súper
+2026-03-23 02:33:21,259 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_023319.png
+2026-03-23 02:33:28,347 [INFO]   [Uber] found price $40.0 at 3 por $90
+$39.50
+Chobani · Yogurt griego con 20 g de proteín
+2026-03-23 02:33:29,878 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 02:33:31,202 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 02:33:31,202 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 02:33:37,894 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:34:09,294 [INFO]   [Uber] clicked sidebar category: Farmacia
+2026-03-23 02:34:13,413 [INFO]   [Uber] entered pharmacy: farmacias guadalajara
+2026-03-23 02:34:13,607 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_curitas_023413.png
+2026-03-23 02:34:13,616 [WARNING]   [Uber][farmacia] curitas -> not found
+2026-03-23 02:34:19,188 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_paracetamol_023418.png
+2026-03-23 02:34:19,199 [INFO]   [Uber][farmacia] paracetamol -> $99.74
+2026-03-23 02:34:22,942 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 02:34:23,346 [INFO]   OK       [ubereats  ] eta=13m fee=0.0 products=3 total=359.95
+2026-03-23 02:34:26,291 [INFO] CSV: data\competitive_data_20260323_022953.csv (1 rows)
+2026-03-23 02:34:26,291 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-23 02:34:26,291 [INFO] Output: data\competitive_data_20260323_022953.json
+2026-03-23 02:39:23,016 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:39:24,197 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:39:32,263 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:39:35,811 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:39:35,812 [INFO]   [Uber] address set
+2026-03-23 02:39:40,046 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:40:01,534 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:40:02,032 [INFO]   screenshot: MX_CDMX_01_ubereats_search_024001.png
+2026-03-23 02:40:02,076 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 02:40:06,048 [INFO]   [Uber] restaurant name from h1: Un paso más
+2026-03-23 02:40:06,170 [INFO]   screenshot: MX_CDMX_01_ubereats_store_024006.png
+2026-03-23 02:40:06,175 [INFO]   scroll: internal container found = False
+2026-03-23 02:40:08,662 [INFO]   scroll: done after scrolling, 3 lines captured
+2026-03-23 02:40:08,666 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (64 chars)
+2026-03-23 02:40:08,666 [INFO]   [Uber] keyword 'home office' found: False
+2026-03-23 02:40:08,667 [INFO]   [Uber] keyword 'big mac' found: False
+2026-03-23 02:40:08,667 [INFO]   [Uber] keyword 'hamburguesa doble' found: False
+2026-03-23 02:40:08,667 [INFO]   [Uber] keyword 'coca-cola' found: False
+2026-03-23 02:40:08,668 [INFO]   [Uber] keyword 'coca cola' found: False
+2026-03-23 02:40:08,668 [INFO]   product not found in text: Combo Big Mac mediano
+2026-03-23 02:40:08,668 [INFO]   product not found in text: Hamburguesa doble con queso
+2026-03-23 02:40:08,668 [INFO]   product not found in text: Coca-Cola mediana
+2026-03-23 02:40:08,681 [INFO]   [Uber] products=0 fee=None eta=None promo=None%
+2026-03-23 02:40:08,789 [INFO]   screenshot: MX_CDMX_01_ubereats_final_024008.png
+2026-03-23 02:40:08,789 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:40:08,789 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:40:15,668 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:40:21,310 [INFO]   [Uber] clicked tab (fallback): Súper
+2026-03-23 02:40:24,795 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_024021.png
+2026-03-23 02:40:31,147 [INFO]   [Uber] entered store: 3 por $90
+2026-03-23 02:40:31,252 [WARNING]   [Uber] could not find store search bar for: botella de agua 1.5L
+2026-03-23 02:40:31,252 [WARNING]   [Uber][super] botella de agua 1.5L -> not found in 3 por $90
+2026-03-23 02:40:39,648 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:40:47,692 [INFO]   [Uber] clicked tab (fallback): Súper
+2026-03-23 02:40:49,725 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_024047.png
+2026-03-23 02:40:55,167 [INFO]   [Uber] entered store: 3 por $90
+2026-03-23 02:40:55,272 [WARNING]   [Uber] could not find store search bar for: leche 1 litro
+2026-03-23 02:40:55,273 [WARNING]   [Uber][super] leche 1 litro -> not found in 3 por $90
+2026-03-23 02:40:56,715 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 02:40:58,820 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 02:40:58,821 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 02:41:11,336 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:41:41,388 [WARNING]   [Uber] could not open category: Farmacia
+2026-03-23 02:41:50,300 [INFO]   [Uber] entered store: 
+2026-03-23 02:41:50,300 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 02:41:50,367 [INFO]   PARTIAL  [ubereats  ] eta=Nonem fee=None products=0 total=None
+2026-03-23 02:41:53,926 [INFO] CSV: data\competitive_data_20260323_023923.csv (1 rows)
+2026-03-23 02:41:53,926 [INFO] 
+Done: 1 addresses | 0 successful platform scrapes
+2026-03-23 02:41:53,926 [INFO] Output: data\competitive_data_20260323_023923.json
+2026-03-23 02:43:26,036 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:43:27,079 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:43:34,847 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:43:37,832 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:43:37,832 [INFO]   [Uber] address set
+2026-03-23 02:43:42,807 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:44:06,230 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:44:06,466 [INFO]   screenshot: MX_CDMX_01_ubereats_search_024406.png
+2026-03-23 02:44:06,490 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 02:44:12,464 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 02:44:12,666 [INFO]   screenshot: MX_CDMX_01_ubereats_store_024412.png
+2026-03-23 02:44:12,681 [INFO]   scroll: internal container found = True
+2026-03-23 02:44:25,258 [INFO]   scroll: done after scrolling, 494 lines captured
+2026-03-23 02:44:25,263 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13710 chars)
+2026-03-23 02:44:25,264 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:44:25,264 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:44:25,264 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:44:25,264 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:44:25,265 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:44:25,266 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:44:25,267 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 02:44:25,268 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:44:25,282 [INFO]   [Uber] products=3 fee=0.0 eta=None promo=47.0%
+2026-03-23 02:44:25,442 [INFO]   screenshot: MX_CDMX_01_ubereats_final_024425.png
+2026-03-23 02:44:25,442 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:44:25,442 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:44:32,381 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:45:07,210 [WARNING]   [Uber] could not find tab: Súper
+2026-03-23 02:45:07,385 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_024507.png
+2026-03-23 02:45:11,834 [INFO]   [Uber] entered store: Pari
+2026-03-23 02:45:13,908 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:45:17,720 [INFO]   [Uber] searched inside store: botella de agua 1.5L
+2026-03-23 02:45:17,731 [WARNING]   [Uber][super] botella de agua 1.5L -> not found in Pari
+2026-03-23 02:45:25,344 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:45:59,861 [WARNING]   [Uber] could not find tab: Súper
+2026-03-23 02:46:00,034 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_024559.png
+2026-03-23 02:46:04,703 [INFO]   [Uber] entered store: Postres de Litro sucursal Romero Rubio (Mexico City)
+2026-03-23 02:46:06,541 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:46:08,950 [INFO]   [Uber] searched inside store: leche 1 litro
+2026-03-23 02:46:08,967 [WARNING]   [Uber][super] leche 1 litro -> not found in Postres de Litro sucursal Romero Rubio (Mexico City)
+2026-03-23 02:46:10,401 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 02:46:12,359 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 02:46:12,359 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 02:46:18,670 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:46:48,748 [WARNING]   [Uber] could not open category: Farmacia
+2026-03-23 02:46:57,092 [INFO]   [Uber] entered store: Uber Eats: Comida a Domicilio
+2026-03-23 02:46:57,173 [WARNING]   [Uber] could not find store search bar for: curitas
+2026-03-23 02:46:57,611 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_curitas_024657.png
+2026-03-23 02:46:57,611 [WARNING]   [Uber][farmacia] curitas -> not found in Uber Eats: Comida a Domicilio
+2026-03-23 02:47:04,388 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:47:07,442 [INFO]   [Uber] searched inside store: paracetamol
+2026-03-23 02:47:14,999 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_paracetamol_024713.png
+2026-03-23 02:47:14,999 [INFO]   [Uber][farmacia] paracetamol -> $62.0 (Uber Eats: Comida a Domicilio)
+2026-03-23 02:47:17,652 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 02:47:18,214 [INFO]   OK       [ubereats  ] eta=Nonem fee=0.0 products=3 total=359.95
+2026-03-23 02:47:21,699 [INFO] CSV: data\competitive_data_20260323_024326.csv (1 rows)
+2026-03-23 02:47:21,699 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-23 02:47:21,699 [INFO] Output: data\competitive_data_20260323_024326.json
+2026-03-23 02:49:05,513 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:49:06,511 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:49:16,149 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:49:19,164 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:49:19,165 [INFO]   [Uber] address set
+2026-03-23 02:49:23,282 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:49:44,931 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:49:45,364 [INFO]   screenshot: MX_CDMX_01_ubereats_search_024944.png
+2026-03-23 02:49:45,417 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-zona-rosa/8sqiuGSzTS6rGChzhlWTlw
+2026-03-23 02:49:50,983 [INFO]   [Uber] restaurant name from h1: McDonald's Zona Rosa
+2026-03-23 02:49:51,200 [INFO]   screenshot: MX_CDMX_01_ubereats_store_024950.png
+2026-03-23 02:49:51,220 [INFO]   scroll: internal container found = True
+2026-03-23 02:50:04,943 [INFO]   scroll: done after scrolling, 564 lines captured
+2026-03-23 02:50:04,947 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (14975 chars)
+2026-03-23 02:50:04,948 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:50:04,949 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:50:04,949 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:50:04,950 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:50:04,950 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:50:04,951 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:50:04,952 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 02:50:04,953 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:50:04,962 [INFO]   [Uber] products=3 fee=0.0 eta=14 promo=47.0%
+2026-03-23 02:50:05,133 [INFO]   screenshot: MX_CDMX_01_ubereats_final_025004.png
+2026-03-23 02:50:05,133 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:50:05,134 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:50:11,899 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:50:45,932 [WARNING]   [Uber] could not find tab: Súper
+2026-03-23 02:50:46,072 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_025045.png
+2026-03-23 02:50:51,032 [INFO]   [Uber] entered store: El Califa Masaryk Express ⏰
+2026-03-23 02:50:53,381 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:50:55,805 [INFO]   [Uber] searched inside store: botella de agua 1.5L
+2026-03-23 02:50:55,939 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_025055.png
+2026-03-23 02:50:55,939 [WARNING]   [Uber][super] botella de agua 1.5L -> not found in El Califa Masaryk Express ⏰
+2026-03-23 02:51:00,440 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:51:02,850 [INFO]   [Uber] searched inside store: leche 1 litro
+2026-03-23 02:51:02,963 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_025102.png
+2026-03-23 02:51:02,964 [WARNING]   [Uber][super] leche 1 litro -> not found in El Califa Masaryk Express ⏰
+2026-03-23 02:51:06,040 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 02:51:07,665 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 02:51:07,666 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 02:51:15,329 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:51:18,931 [INFO]   [Uber] clicked sidebar category: Farmacia
+2026-03-23 02:51:18,936 [WARNING]   [Uber][farmacia] general error: Page.evaluate: Target page, context or browser has been closed
+2026-03-23 02:51:18,937 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 02:51:18,965 [INFO]   OK       [ubereats  ] eta=14m fee=0.0 products=3 total=394.45
+2026-03-23 02:51:23,287 [INFO] CSV: data\competitive_data_20260323_024905.csv (1 rows)
+2026-03-23 02:51:23,287 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-23 02:51:23,287 [INFO] Output: data\competitive_data_20260323_024905.json
+2026-03-23 02:53:34,970 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:53:35,911 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:53:44,288 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 02:53:46,814 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 02:53:46,815 [INFO]   [Uber] address set
+2026-03-23 02:53:50,031 [INFO]   [Uber] navigating to search URL
+2026-03-23 02:54:11,103 [WARNING]   [Uber] no store links in search results
+2026-03-23 02:54:11,484 [INFO]   screenshot: MX_CDMX_01_ubereats_search_025411.png
+2026-03-23 02:54:11,515 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-zona-rosa/8sqiuGSzTS6rGChzhlWTlw
+2026-03-23 02:54:19,980 [INFO]   [Uber] restaurant name from h1: McDonald's Zona Rosa
+2026-03-23 02:54:21,116 [INFO]   screenshot: MX_CDMX_01_ubereats_store_025419.png
+2026-03-23 02:54:21,156 [INFO]   scroll: internal container found = True
+2026-03-23 02:54:36,203 [INFO]   scroll: done after scrolling, 537 lines captured
+2026-03-23 02:54:36,208 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (14653 chars)
+2026-03-23 02:54:36,209 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 02:54:36,209 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 02:54:36,209 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 02:54:36,209 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 02:54:36,209 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 02:54:36,210 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 02:54:36,211 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 02:54:36,212 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:54:36,218 [INFO]   [Uber] products=3 fee=0.0 eta=5 promo=47.0%
+2026-03-23 02:54:36,414 [INFO]   screenshot: MX_CDMX_01_ubereats_final_025436.png
+2026-03-23 02:54:36,415 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 02:54:36,415 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 02:54:46,213 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:54:48,892 [INFO]   [Uber] clicked sidebar category: Súper
+2026-03-23 02:54:56,691 [INFO]   [Uber] entered store: Chedraui Supercito Selecto 🛒
+2026-03-23 02:54:58,910 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:55:02,167 [INFO]   [Uber] searched inside store: botella de agua 1.5L
+2026-03-23 02:55:02,331 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_025502.png
+2026-03-23 02:55:02,333 [INFO]   [Uber][super] botella de agua 1.5L -> $20.0 (Chedraui Supercito Selecto 🛒)
+2026-03-23 02:55:06,433 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 02:55:10,090 [INFO]   [Uber] searched inside store: leche 1 litro
+2026-03-23 02:55:10,312 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_025510.png
+2026-03-23 02:55:10,313 [INFO]   [Uber][super] leche 1 litro -> $34.5 (Chedraui Supercito Selecto 🛒)
+2026-03-23 02:55:13,517 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 02:55:15,095 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 02:55:15,096 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 02:55:21,949 [INFO]   [Uber] opened sidebar via header button:first-child
+2026-03-23 02:55:32,059 [INFO]   [Uber] clicked sidebar category (fallback): Farmacia
+2026-03-23 02:55:38,664 [INFO]   [Uber] entered store: Farmacias Guadalajara 🛒💊(AV HOMERO MEXICO D.F.)
+2026-03-23 02:55:39,957 [INFO]   typed into input[placeholder*="Search" i]
+2026-03-23 02:55:44,526 [INFO]   [Uber] searched inside store: curitas
+2026-03-23 02:55:44,793 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_curitas_025544.png
+2026-03-23 02:55:44,793 [INFO]   [Uber][farmacia] curitas -> $34.8 (Farmacias Guadalajara 🛒💊(AV HOMERO MEXICO D.F.))
+2026-03-23 02:55:48,935 [INFO]   typed into input[placeholder*="Search" i]
+2026-03-23 02:55:51,840 [INFO]   [Uber] searched inside store: paracetamol
+2026-03-23 02:55:56,850 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_paracetamol_025553.png
+2026-03-23 02:55:56,851 [INFO]   [Uber][farmacia] paracetamol -> $90.44 (Farmacias Guadalajara 🛒💊(AV HOMERO MEXICO D.F.))
+2026-03-23 02:56:00,845 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 02:56:01,390 [INFO]   OK       [ubereats  ] eta=5m fee=0.0 products=3 total=394.45
+2026-03-23 02:56:04,951 [INFO] CSV: data\competitive_data_20260323_025334.csv (1 rows)
+2026-03-23 02:56:04,951 [INFO] 
+Done: 1 addresses | 1 successful platform scrapes
+2026-03-23 02:56:04,951 [INFO] Output: data\competitive_data_20260323_025334.json
+2026-03-23 02:58:52,746 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 02:58:53,668 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 02:59:03,456 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-23 02:59:06,008 [INFO]   suggestion selected via keyboard
+2026-03-23 02:59:12,971 [INFO]   typed into input[data-qa="input"]
+2026-03-23 02:59:16,289 [INFO]   [Rappi] search results found
+2026-03-23 02:59:16,595 [INFO]   screenshot: MX_CDMX_01_rappi_search_025916.png
+2026-03-23 02:59:16,657 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-23 02:59:22,790 [INFO]   screenshot: MX_CDMX_01_rappi_store_025922.png
+2026-03-23 02:59:22,801 [INFO]   scroll: internal container found = True
+2026-03-23 02:59:34,500 [INFO]   scroll: done after scrolling, 391 lines captured
+2026-03-23 02:59:34,503 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12388 chars)
+2026-03-23 02:59:34,504 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-23 02:59:34,504 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-23 02:59:34,504 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-23 02:59:34,504 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-23 02:59:34,505 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-23 02:59:34,506 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=None %=None
+2026-03-23 02:59:34,507 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 02:59:34,507 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 02:59:34,518 [INFO]   [Rappi] products=3 fee=0.0 eta=None promo=None%
+2026-03-23 02:59:34,630 [INFO]   screenshot: MX_CDMX_01_rappi_final_025934.png
+2026-03-23 02:59:34,630 [INFO]   [rappi] Starting super vertical...
+2026-03-23 02:59:34,632 [INFO]   [Rappi] --- Vertical: SUPER ---
+2026-03-23 03:00:11,715 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 03:00:21,047 [INFO]   [Rappi] clicked category tab: Súper
+2026-03-23 03:00:21,184 [INFO]   screenshot: MX_CDMX_01_rappi_super_botella de_030021.png
+2026-03-23 03:00:21,192 [WARNING]   [Rappi][super] botella de agua 1.5L -> no price found
+2026-03-23 03:00:59,239 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 03:01:08,354 [INFO]   [Rappi] clicked category tab: Súper
+2026-03-23 03:01:08,488 [INFO]   screenshot: MX_CDMX_01_rappi_super_leche 1 li_030108.png
+2026-03-23 03:01:08,499 [WARNING]   [Rappi][super] leche 1 litro -> no price found
+2026-03-23 03:01:10,072 [INFO]   [rappi] Super done: 2 products
+2026-03-23 03:01:11,180 [INFO]   [rappi] Starting farmacia vertical...
+2026-03-23 03:01:11,180 [INFO]   [Rappi] --- Vertical: FARMACIA ---
+2026-03-23 03:01:48,499 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 03:01:55,862 [INFO]   [Rappi] clicked category tab: Farmacia
+2026-03-23 03:01:56,268 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_curitas_030155.png
+2026-03-23 03:01:56,278 [WARNING]   [Rappi][farmacia] curitas -> no price found
+2026-03-23 03:02:33,963 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 03:02:40,963 [INFO]   [Rappi] clicked category tab: Farmacia
+2026-03-23 03:02:41,121 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_paracetamo_030240.png
+2026-03-23 03:02:41,130 [WARNING]   [Rappi][farmacia] paracetamol -> no price found
+2026-03-23 03:02:42,363 [INFO]   [rappi] Farmacia done: 2 products
+2026-03-23 03:02:42,465 [INFO]   OK       [rappi     ] eta=Nonem fee=0.0 products=3 total=459.8
+2026-03-23 03:02:53,030 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 03:02:56,433 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 03:02:56,433 [INFO]   [Uber] address set
+2026-03-23 03:03:01,161 [INFO]   [Uber] navigating to search URL
+2026-03-23 03:03:24,792 [WARNING]   [Uber] no store links in search results
+2026-03-23 03:03:25,242 [INFO]   screenshot: MX_CDMX_01_ubereats_search_030324.png
+2026-03-23 03:03:25,269 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 03:03:32,346 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 03:03:33,487 [INFO]   screenshot: MX_CDMX_01_ubereats_store_030332.png
+2026-03-23 03:03:33,536 [INFO]   scroll: internal container found = True
+2026-03-23 03:03:48,034 [INFO]   scroll: done after scrolling, 520 lines captured
+2026-03-23 03:03:48,035 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13977 chars)
+2026-03-23 03:03:48,035 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 03:03:48,035 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 03:03:48,035 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 03:03:48,036 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 03:03:48,036 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 03:03:48,036 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 03:03:48,037 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 03:03:48,037 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 03:03:48,041 [INFO]   [Uber] products=3 fee=0.0 eta=10 promo=47.0%
+2026-03-23 03:03:48,300 [INFO]   screenshot: MX_CDMX_01_ubereats_final_030348.png
+2026-03-23 03:03:48,301 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 03:03:48,301 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 03:04:00,054 [INFO]   [Uber] clicked sidebar category: Súper
+2026-03-23 03:04:08,037 [INFO]   [Uber] entered store: Super Costras D (Mexico City)
+2026-03-23 03:04:11,141 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 03:04:14,052 [INFO]   [Uber] searched inside store: botella de agua 1.5L
+2026-03-23 03:04:14,394 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_030414.png
+2026-03-23 03:04:14,395 [WARNING]   [Uber][super] botella de agua 1.5L -> not found in Super Costras D (Mexico City)
+2026-03-23 03:04:19,219 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 03:04:22,252 [INFO]   [Uber] searched inside store: leche 1 litro
+2026-03-23 03:04:22,464 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_030422.png
+2026-03-23 03:04:22,464 [WARNING]   [Uber][super] leche 1 litro -> not found in Super Costras D (Mexico City)
+2026-03-23 03:04:24,627 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 03:04:27,137 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 03:04:27,137 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 03:04:39,346 [INFO]   [Uber] opened menu via header button:first-child
+2026-03-23 03:04:39,362 [INFO]   [Uber] login overlay detected, dismissing...
+2026-03-23 03:04:43,368 [INFO]   [Uber] opened category via direct URL: Farmacia
+2026-03-23 03:04:48,724 [INFO]   [Uber] entered store: Uber Eats: Comida a Domicilio
+2026-03-23 03:04:48,822 [WARNING]   [Uber] could not find store search bar for: curitas
+2026-03-23 03:04:49,099 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_curitas_030448.png
+2026-03-23 03:04:49,099 [WARNING]   [Uber][farmacia] curitas -> not found in Uber Eats: Comida a Domicilio
+2026-03-23 03:04:54,763 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 03:04:57,585 [INFO]   [Uber] searched inside store: paracetamol
+2026-03-23 03:05:04,406 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_paracetamol_030502.png
+2026-03-23 03:05:04,406 [INFO]   [Uber][farmacia] paracetamol -> $29.5 (Uber Eats: Comida a Domicilio)
+2026-03-23 03:05:07,281 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 03:05:07,867 [INFO]   OK       [ubereats  ] eta=10m fee=0.0 products=3 total=359.95
+2026-03-23 03:05:10,581 [INFO] CSV: data\competitive_data_20260323_025852.csv (2 rows)
+2026-03-23 03:05:10,581 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-23 03:05:10,581 [INFO] Output: data\competitive_data_20260323_025852.json
+2026-03-23 03:07:56,020 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json
+2026-03-23 03:07:56,993 [INFO] 
+[1/1] MX_CDMX_01 — Polanco (Wealthy)
+2026-03-23 03:08:07,894 [INFO]   typed into input[placeholder*="recibir" i]
+2026-03-23 03:08:10,606 [INFO]   suggestion selected via keyboard
+2026-03-23 03:08:17,457 [INFO]   typed into input[data-qa="input"]
+2026-03-23 03:08:20,798 [INFO]   [Rappi] search results found
+2026-03-23 03:08:21,040 [INFO]   screenshot: MX_CDMX_01_rappi_search_030820.png
+2026-03-23 03:08:21,071 [INFO]   [Rappi] navigating to store: https://www.rappi.com.mx/restaurantes/delivery/706-mcdonalds
+2026-03-23 03:08:27,085 [INFO]   screenshot: MX_CDMX_01_rappi_store_030826.png
+2026-03-23 03:08:27,096 [INFO]   scroll: internal container found = True
+2026-03-23 03:08:39,524 [INFO]   scroll: done after scrolling, 390 lines captured
+2026-03-23 03:08:39,529 [INFO]   [Rappi] text dump: MX_CDMX_01_rappi_text_dump.txt (12542 chars)
+2026-03-23 03:08:39,530 [INFO]   [Rappi] keyword 'home office' found: True
+2026-03-23 03:08:39,530 [INFO]   [Rappi] keyword 'big mac' found: True
+2026-03-23 03:08:39,530 [INFO]   [Rappi] keyword 'hamburguesa doble' found: True
+2026-03-23 03:08:39,531 [INFO]   [Rappi] keyword 'coca-cola' found: True
+2026-03-23 03:08:39,531 [INFO]   [Rappi] keyword 'coca cola' found: True
+2026-03-23 03:08:39,533 [INFO]   product FOUND: Combo Big Mac mediano orig=173.85 disc=113.0 %=35.0
+2026-03-23 03:08:39,533 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=None %=None
+2026-03-23 03:08:39,534 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 03:08:39,542 [INFO]   [Rappi] products=3 fee=0.0 eta=13 promo=50.0%
+2026-03-23 03:08:39,648 [INFO]   screenshot: MX_CDMX_01_rappi_final_030839.png
+2026-03-23 03:08:39,648 [INFO]   [rappi] Starting super vertical...
+2026-03-23 03:08:39,648 [INFO]   [Rappi] --- Vertical: SUPER ---
+2026-03-23 03:09:16,757 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 03:09:21,525 [WARNING]   [Rappi] could not find category tab for super
+2026-03-23 03:09:27,725 [INFO]   [Rappi] entered store: Turbo Fresh-Carso
+2026-03-23 03:09:59,627 [INFO]   typed into input[placeholder*="Busca" i]
+2026-03-23 03:10:02,898 [INFO]   [Rappi] searched inside store: botella de agua 1.5L
+2026-03-23 03:10:03,429 [INFO]   screenshot: MX_CDMX_01_rappi_super_botella de_031002.png
+2026-03-23 03:10:03,429 [INFO]   [Rappi][super] botella de agua 1.5L -> $14.0 (Turbo Fresh-Carso)
+2026-03-23 03:10:37,117 [INFO]   typed into input[placeholder*="Busca" i]
+2026-03-23 03:10:41,547 [INFO]   [Rappi] searched inside store: leche 1 litro
+2026-03-23 03:10:41,815 [INFO]   screenshot: MX_CDMX_01_rappi_super_leche 1 li_031041.png
+2026-03-23 03:10:41,815 [INFO]   [Rappi][super] leche 1 litro -> $68.0 (Turbo Fresh-Carso)
+2026-03-23 03:10:45,174 [INFO]   [rappi] Super done: 2 products
+2026-03-23 03:10:46,879 [INFO]   [rappi] Starting farmacia vertical...
+2026-03-23 03:10:46,880 [INFO]   [Rappi] --- Vertical: FARMACIA ---
+2026-03-23 03:11:23,230 [INFO]   typed into input[placeholder*="Comida" i]
+2026-03-23 03:11:28,262 [WARNING]   [Rappi] could not find category tab for farmacia
+2026-03-23 03:11:32,190 [INFO]   [Rappi] entered store: Turbo Fresh-Carso
+2026-03-23 03:11:33,244 [INFO]   typed into input[placeholder*="Busca" i]
+2026-03-23 03:11:38,156 [INFO]   [Rappi] searched inside store: curitas
+2026-03-23 03:11:42,144 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_curitas_031141.png
+2026-03-23 03:11:42,144 [WARNING]   [Rappi][farmacia] curitas -> not found in Turbo Fresh-Carso
+2026-03-23 03:12:22,116 [INFO]   typed into input[placeholder*="producto" i]
+2026-03-23 03:12:26,310 [INFO]   [Rappi] searched inside store: paracetamol
+2026-03-23 03:12:26,634 [INFO]   screenshot: MX_CDMX_01_rappi_farmacia_paracetamo_031226.png
+2026-03-23 03:12:26,634 [INFO]   [Rappi][farmacia] paracetamol -> $41.79 (Turbo Fresh-Carso)
+2026-03-23 03:12:34,172 [INFO]   [rappi] Farmacia done: 2 products
+2026-03-23 03:12:34,240 [INFO]   OK       [rappi     ] eta=13m fee=0.0 products=3 total=392.7
+2026-03-23 03:12:44,566 [INFO]   typed into #location-typeahead-home-input
+2026-03-23 03:12:48,035 [INFO]   suggestion clicked: ul[role="listbox"] li:first-child
+2026-03-23 03:12:48,035 [INFO]   [Uber] address set
+2026-03-23 03:12:51,793 [INFO]   [Uber] navigating to search URL
+2026-03-23 03:13:14,549 [WARNING]   [Uber] no store links in search results
+2026-03-23 03:13:14,836 [INFO]   screenshot: MX_CDMX_01_ubereats_search_031314.png
+2026-03-23 03:13:14,858 [INFO]   [Uber] store URL: https://www.ubereats.com/mx/store/mcdonalds-marina-nacional/OKyxUiDJQSKhqFBtFWY_OA
+2026-03-23 03:13:21,373 [INFO]   [Uber] restaurant name from h1: McDonald's Marina Nacional
+2026-03-23 03:13:22,447 [INFO]   screenshot: MX_CDMX_01_ubereats_store_031321.png
+2026-03-23 03:13:22,537 [INFO]   scroll: internal container found = True
+2026-03-23 03:13:35,947 [INFO]   scroll: done after scrolling, 519 lines captured
+2026-03-23 03:13:35,948 [INFO]   [Uber] text dump: MX_CDMX_01_ubereats_text_dump.txt (13958 chars)
+2026-03-23 03:13:35,949 [INFO]   [Uber] keyword 'home office' found: True
+2026-03-23 03:13:35,949 [INFO]   [Uber] keyword 'big mac' found: True
+2026-03-23 03:13:35,949 [INFO]   [Uber] keyword 'hamburguesa doble' found: True
+2026-03-23 03:13:35,949 [INFO]   [Uber] keyword 'coca-cola' found: True
+2026-03-23 03:13:35,949 [INFO]   [Uber] keyword 'coca cola' found: True
+2026-03-23 03:13:35,950 [INFO]   product FOUND: Combo Big Mac mediano orig=174.0 disc=99.0 %=43.1
+2026-03-23 03:13:35,950 [INFO]   product FOUND: Hamburguesa doble con queso orig=189.0 disc=159.0 %=15.9
+2026-03-23 03:13:35,951 [INFO]   product FOUND: Coca-Cola mediana orig=55.0 disc=None %=None
+2026-03-23 03:13:35,956 [INFO]   [Uber] products=3 fee=0.0 eta=13 promo=47.0%
+2026-03-23 03:13:36,245 [INFO]   screenshot: MX_CDMX_01_ubereats_final_031335.png
+2026-03-23 03:13:36,245 [INFO]   [ubereats] Starting super vertical...
+2026-03-23 03:13:36,245 [INFO]   [Uber] --- Vertical: SUPER ---
+2026-03-23 03:13:48,303 [INFO]   [Uber] clicked sidebar category: Súper
+2026-03-23 03:13:56,728 [INFO]   [Uber] entered store: Super Costras D (Mexico City)
+2026-03-23 03:13:58,701 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 03:14:01,241 [INFO]   [Uber] searched inside store: botella de agua 1.5L
+2026-03-23 03:14:01,371 [INFO]   screenshot: MX_CDMX_01_ubereats_super_botella de_031401.png
+2026-03-23 03:14:01,371 [WARNING]   [Uber][super] botella de agua 1.5L -> not found in Super Costras D (Mexico City)
+2026-03-23 03:14:05,594 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 03:14:08,553 [INFO]   [Uber] searched inside store: leche 1 litro
+2026-03-23 03:14:08,683 [INFO]   screenshot: MX_CDMX_01_ubereats_super_leche 1 li_031408.png
+2026-03-23 03:14:08,683 [WARNING]   [Uber][super] leche 1 litro -> not found in Super Costras D (Mexico City)
+2026-03-23 03:14:11,109 [INFO]   [ubereats] Super done: 2 products
+2026-03-23 03:14:12,538 [INFO]   [ubereats] Starting farmacia vertical...
+2026-03-23 03:14:12,538 [INFO]   [Uber] --- Vertical: FARMACIA ---
+2026-03-23 03:14:20,253 [INFO]   [Uber] opened menu via header button:first-child
+2026-03-23 03:14:20,261 [INFO]   [Uber] login overlay detected, dismissing...
+2026-03-23 03:14:23,757 [INFO]   [Uber] opened category via direct URL: Farmacia
+2026-03-23 03:14:28,790 [INFO]   [Uber] entered store: Uber Eats: Comida a Domicilio
+2026-03-23 03:14:28,839 [WARNING]   [Uber] could not find store search bar for: curitas
+2026-03-23 03:14:28,984 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_curitas_031428.png
+2026-03-23 03:14:28,984 [WARNING]   [Uber][farmacia] curitas -> not found in Uber Eats: Comida a Domicilio
+2026-03-23 03:14:34,047 [INFO]   typed into input[placeholder*="Buscar" i]
+2026-03-23 03:14:37,024 [INFO]   [Uber] searched inside store: paracetamol
+2026-03-23 03:14:38,866 [INFO]   screenshot: MX_CDMX_01_ubereats_farmacia_paracetamol_031438.png
+2026-03-23 03:14:38,866 [INFO]   [Uber][farmacia] paracetamol -> $26.9 (Uber Eats: Comida a Domicilio)
+2026-03-23 03:14:41,806 [INFO]   [ubereats] Farmacia done: 2 products
+2026-03-23 03:14:41,903 [INFO]   OK       [ubereats  ] eta=13m fee=0.0 products=3 total=359.95
+2026-03-23 03:14:46,358 [INFO] CSV: data\competitive_data_20260323_030756.csv (2 rows)
+2026-03-23 03:14:46,359 [INFO] 
+Done: 1 addresses | 2 successful platform scrapes
+2026-03-23 03:14:46,359 [INFO] Output: data\competitive_data_20260323_030756.json
+2026-03-23 12:47:52,476 [INFO]   [DiDi] cargando sesión persistida desde sessions\didi_state.json

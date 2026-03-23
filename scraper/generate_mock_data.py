@@ -130,6 +130,34 @@ MODELS = {
 }
 
 PLATFORMS = ["rappi", "ubereats", "didifood"]
+
+# Vertical product models (super + farmacia) — only Rappi and Uber Eats
+VERTICAL_MODELS = {
+    "rappi": {
+        "super": {
+            "botella de agua 1.5L": {"mean": 18, "std": 3},
+            "leche 1 litro":        {"mean": 28, "std": 4},
+        },
+        "farmacia": {
+            "curitas":      {"mean": 35, "std": 8},
+            "paracetamol":  {"mean": 45, "std": 10},
+        },
+        "store_names_super": ["Rappi Turbo", "La Comer", "Soriana", "Chedraui"],
+        "store_names_farmacia": ["Farmacia San Pablo", "Farmacias Guadalajara", "Farmacia del Ahorro"],
+    },
+    "ubereats": {
+        "super": {
+            "botella de agua 1.5L": {"mean": 20, "std": 3},
+            "leche 1 litro":        {"mean": 30, "std": 5},
+        },
+        "farmacia": {
+            "curitas":      {"mean": 38, "std": 8},
+            "paracetamol":  {"mean": 50, "std": 12},
+        },
+        "store_names_super": ["Uber Eats Market", "Walmart Express", "7-Eleven", "OXXO"],
+        "store_names_farmacia": ["Farmacia Benavides", "Farmacias Guadalajara", "Farmacia del Ahorro"],
+    },
+}
 RESTAURANT_NAMES = {
     "rappi":    ["Mc Donald's", "McDonald's", "McDonald's Delivery"],
     "ubereats": ["McDonald's (Plaza Galerias)", "McDonald's (Insurgentes)", "McDonald's (Sears)", "McDonald's (Santa Fe)"],
@@ -152,6 +180,39 @@ def gen_product(m, name, base_price, var_key, disc_prob_key, disc_pct_key):
         "price_discounted": price_disc,
         "discount_pct":     disc_pct,
     }
+
+
+def gen_vertical_products(platform, vertical):
+    """Generate mock vertical product data for super or farmacia."""
+    if platform not in VERTICAL_MODELS:
+        return []
+    vm = VERTICAL_MODELS[platform]
+    products_model = vm.get(vertical, {})
+    store_key = f"store_names_{vertical}"
+    store_names = vm.get(store_key, ["Tienda"])
+    results = []
+    for product_query, price_model in products_model.items():
+        # 85% chance of finding the product
+        if random.random() < 0.85:
+            price = round(max(5, np.random.normal(price_model["mean"], price_model["std"])), 2)
+            results.append({
+                "vertical": vertical,
+                "product_query": product_query,
+                "price": price,
+                "store_name": random.choice(store_names),
+                "status": "success",
+                "error_detail": "",
+            })
+        else:
+            results.append({
+                "vertical": vertical,
+                "product_query": product_query,
+                "price": None,
+                "store_name": "",
+                "status": "not_found",
+                "error_detail": "Product not visible in search results",
+            })
+    return results
 
 
 def gen_platform(platform, zone_type):
@@ -190,6 +251,10 @@ def gen_platform(platform, zone_type):
     rc = m["review_count"]
     review_count = max(10, int(np.random.normal(rc["mean"], rc["std"])))
 
+    # Vertical products (only for rappi and ubereats)
+    super_products = gen_vertical_products(platform, "super")
+    farmacia_products = gen_vertical_products(platform, "farmacia")
+
     return {
         "platform":               platform,
         "status":                 "success",
@@ -206,6 +271,8 @@ def gen_platform(platform, zone_type):
         "total_estimated":        total,
         "screenshot_path":        f"screenshots/mock/{platform}_mcdo.png",
         "error_detail":           "",
+        "super_products":         super_products,
+        "farmacia_products":      farmacia_products,
     }
 
 
@@ -236,6 +303,14 @@ def generate():
             combo = prods.get("Combo Big Mac mediano", {})
             hdq   = prods.get("Hamburguesa doble con queso", {})
             coke  = prods.get("Coca-Cola mediana", {})
+            # Vertical product helpers
+            sp = p.get("super_products", [])
+            fp = p.get("farmacia_products", [])
+            def _find_vp(lst, q):
+                for v in lst:
+                    if q.lower() in v.get("product_query", "").lower():
+                        return v
+                return {}
             csv_rows.append({
                 "scraped_at":                   r["scraped_at"],
                 "address_id":                   r["address_id"],
@@ -266,6 +341,16 @@ def generate():
                 "service_fee_estimated_mxn":    p["service_fee_estimated"],
                 "total_estimated_mxn":          p["total_estimated"],
                 "error_detail":                 "",
+                # Vertical: Super
+                "super_agua_price":             _find_vp(sp, "agua").get("price"),
+                "super_agua_store":             _find_vp(sp, "agua").get("store_name", ""),
+                "super_leche_price":            _find_vp(sp, "leche").get("price"),
+                "super_leche_store":            _find_vp(sp, "leche").get("store_name", ""),
+                # Vertical: Farmacia
+                "farmacia_curitas_price":        _find_vp(fp, "curitas").get("price"),
+                "farmacia_curitas_store":        _find_vp(fp, "curitas").get("store_name", ""),
+                "farmacia_paracetamol_price":    _find_vp(fp, "paracetamol").get("price"),
+                "farmacia_paracetamol_store":    _find_vp(fp, "paracetamol").get("store_name", ""),
             })
 
     keys = list(csv_rows[0].keys())

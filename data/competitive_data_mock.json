@@ -1,6 +1,6 @@
 [
   {
-    "scraped_at": "2026-03-22T23:42:28.076794",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_01",
     "city": "Ciudad de Mexico",
     "zone": "Polanco",
@@ -10,7 +10,7 @@
     "rappi": {
       "platform": "rappi",
       "status": "success",
-      "restaurant_name": "McDonald's Delivery",
+      "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
       "rating": 4.1,
       "review_count": 612,
@@ -41,83 +41,157 @@
       "service_fee_estimated": 24.46,
       "total_estimated": 295.99,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 19.63,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 26.15,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 31.27,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 47.42,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_name": "McDonald's (Sears)",
       "restaurant_available": true,
       "rating": 4.4,
-      "review_count": 4938,
-      "eta_min": 17,
-      "delivery_fee": 18.8,
-      "promo_general_pct": 42.0,
+      "review_count": 19328,
+      "eta_min": 12,
+      "delivery_fee": 1.61,
+      "promo_general_pct": 30.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 169,
-          "price_discounted": 133.85,
-          "discount_pct": 20.8
+          "price_original": 174.94,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 67.88,
-          "price_discounted": 59.8,
-          "discount_pct": 11.9
+          "price_original": 67.18,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.31,
-          "price_discounted": 50.66,
-          "discount_pct": 8.4
+          "price_original": 53.59,
+          "price_discounted": null,
+          "discount_pct": null
         }
       ],
-      "subtotal": 244.31,
-      "service_fee_estimated": 36.65,
-      "total_estimated": 299.76,
+      "subtotal": 295.71,
+      "service_fee_estimated": 44.36,
+      "total_estimated": 341.68,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 19.32,
+          "store_name": "Uber Eats Market",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 30.34,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 26.6,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 43.47,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
       "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 4.1,
-      "review_count": 179,
-      "eta_min": 26,
-      "delivery_fee": 29.73,
-      "promo_general_pct": 34.0,
+      "rating": 3.8,
+      "review_count": 464,
+      "eta_min": 28,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 52.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 171.82,
-          "price_discounted": 100.86,
-          "discount_pct": 41.3
+          "price_original": 171.6,
+          "price_discounted": 108.97,
+          "discount_pct": 36.5
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 65.55,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 67.19,
+          "price_discounted": 40.45,
+          "discount_pct": 39.8
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.75,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 54.97,
+          "price_discounted": 47.99,
+          "discount_pct": 12.7
         }
       ],
-      "subtotal": 222.16,
-      "service_fee_estimated": 17.77,
-      "total_estimated": 269.66,
+      "subtotal": 197.41,
+      "service_fee_estimated": 15.79,
+      "total_estimated": 213.2,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.076794",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_02",
     "city": "Ciudad de Mexico",
     "zone": "Condesa",
@@ -127,114 +201,188 @@
     "rappi": {
       "platform": "rappi",
       "status": "success",
-      "restaurant_name": "McDonald's",
+      "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
-      "rating": 4.4,
-      "review_count": 883,
-      "eta_min": 18,
-      "delivery_fee": 19.08,
-      "promo_general_pct": 42.0,
+      "rating": 3.4,
+      "review_count": 753,
+      "eta_min": 23,
+      "delivery_fee": 9.79,
+      "promo_general_pct": 26.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 170.83,
+          "price_original": 174.59,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.65,
+          "price_original": 70.48,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.78,
+          "price_original": 55.17,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 295.26,
-      "service_fee_estimated": 29.53,
-      "total_estimated": 343.87,
+      "subtotal": 300.24,
+      "service_fee_estimated": 30.02,
+      "total_estimated": 340.05,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.1,
+          "store_name": "Soriana",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 22.09,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 29.24,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 40.39,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
+      "restaurant_name": "McDonald's (Insurgentes)",
       "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 8400,
-      "eta_min": 12,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 42.0,
+      "rating": 4.2,
+      "review_count": 16656,
+      "eta_min": 20,
+      "delivery_fee": 22.4,
+      "promo_general_pct": 43.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 176.22,
+          "price_original": 172.84,
+          "price_discounted": 118.91,
+          "discount_pct": 31.2
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.22,
           "price_discounted": null,
           "discount_pct": null
         },
         {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 69.34,
-          "price_discounted": 57.34,
-          "discount_pct": 17.3
-        },
-        {
           "name": "Coca-Cola mediana",
-          "price_original": 54.7,
-          "price_discounted": 51.36,
-          "discount_pct": 6.1
+          "price_original": 56.03,
+          "price_discounted": null,
+          "discount_pct": null
         }
       ],
-      "subtotal": 284.92,
-      "service_fee_estimated": 42.74,
-      "total_estimated": 327.66,
+      "subtotal": 245.16,
+      "service_fee_estimated": 36.77,
+      "total_estimated": 304.33,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.48,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 28.45,
+          "store_name": "Uber Eats Market",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 40.65,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 61.71,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's",
+      "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 4.2,
-      "review_count": 486,
-      "eta_min": 34,
-      "delivery_fee": 14.31,
-      "promo_general_pct": 30.0,
+      "rating": 3.8,
+      "review_count": 372,
+      "eta_min": 26,
+      "delivery_fee": 14.17,
+      "promo_general_pct": 36.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 175.3,
-          "price_discounted": 113.24,
-          "discount_pct": 35.4
+          "price_original": 177.25,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 66.97,
-          "price_discounted": 46.95,
-          "discount_pct": 29.9
+          "price_original": 73.07,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 57.06,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 54.86,
+          "price_discounted": 42.24,
+          "discount_pct": 23.0
         }
       ],
-      "subtotal": 217.25,
-      "service_fee_estimated": 17.38,
-      "total_estimated": 248.94,
+      "subtotal": 292.56,
+      "service_fee_estimated": 23.4,
+      "total_estimated": 330.13,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.076794",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_03",
     "city": "Ciudad de Mexico",
     "zone": "Roma Norte",
@@ -246,112 +394,186 @@
       "status": "success",
       "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 321,
-      "eta_min": 20,
-      "delivery_fee": 13.61,
-      "promo_general_pct": 54.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 172.56,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 68.63,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 53.89,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 295.08,
-      "service_fee_estimated": 29.51,
-      "total_estimated": 338.2,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
-      "restaurant_available": true,
-      "rating": 4.5,
-      "review_count": 19823,
-      "eta_min": 24,
-      "delivery_fee": 20.69,
-      "promo_general_pct": 50.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.08,
-          "price_discounted": 119.93,
-          "discount_pct": 31.5
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 69.72,
-          "price_discounted": 50.76,
-          "discount_pct": 27.2
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.96,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 225.65,
-      "service_fee_estimated": 33.85,
-      "total_estimated": 280.19,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's",
-      "restaurant_available": true,
-      "rating": 4.1,
-      "review_count": 595,
-      "eta_min": 32,
-      "delivery_fee": 0,
+      "rating": 4.3,
+      "review_count": 680,
+      "eta_min": 23,
+      "delivery_fee": 15.55,
       "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 172.8,
-          "price_discounted": 101.78,
-          "discount_pct": 41.1
+          "price_original": 173.89,
+          "price_discounted": 85.9,
+          "discount_pct": 50.6
         },
         {
           "name": "Hamburguesa doble con queso",
           "price_original": 64,
-          "price_discounted": 49.15,
-          "discount_pct": 23.2
+          "price_discounted": 51.78,
+          "discount_pct": 19.1
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.71,
+          "price_original": 55.09,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 206.64,
-      "service_fee_estimated": 16.53,
-      "total_estimated": 223.17,
+      "subtotal": 192.77,
+      "service_fee_estimated": 19.28,
+      "total_estimated": 227.6,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 18.28,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 19.1,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 42.8,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_available": true,
+      "rating": 4.4,
+      "review_count": 14566,
+      "eta_min": 24,
+      "delivery_fee": 17.5,
+      "promo_general_pct": null,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 171.57,
+          "price_discounted": 114.95,
+          "discount_pct": 33.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.83,
+          "price_discounted": 56.66,
+          "discount_pct": 20.0
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.47,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 226.08,
+      "service_fee_estimated": 33.91,
+      "total_estimated": 277.49,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 20.29,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 34.84,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 41.58,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Express",
+      "restaurant_available": true,
+      "rating": 3.7,
+      "review_count": 231,
+      "eta_min": 25,
+      "delivery_fee": 15.38,
+      "promo_general_pct": 51.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 175.04,
+          "price_discounted": 104.85,
+          "discount_pct": 40.1
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 68.3,
+          "price_discounted": 58.94,
+          "discount_pct": 13.7
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.16,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 217.95,
+      "service_fee_estimated": 17.44,
+      "total_estimated": 250.77,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.076794",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_04",
     "city": "Ciudad de Mexico",
     "zone": "Santa Fe",
@@ -361,114 +583,188 @@
     "rappi": {
       "platform": "rappi",
       "status": "success",
-      "restaurant_name": "McDonald's Delivery",
+      "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 3.8,
-      "review_count": 1187,
-      "eta_min": 17,
-      "delivery_fee": 16.82,
-      "promo_general_pct": 53.0,
+      "rating": 4.0,
+      "review_count": 789,
+      "eta_min": 21,
+      "delivery_fee": 13.98,
+      "promo_general_pct": 65.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 174.99,
-          "price_discounted": 123.02,
-          "discount_pct": 29.7
+          "price_original": 174.52,
+          "price_discounted": 108.9,
+          "discount_pct": 37.6
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.03,
+          "price_original": 68.85,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.1,
+          "price_original": 53.08,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 248.15,
-      "service_fee_estimated": 24.82,
-      "total_estimated": 289.79,
+      "subtotal": 230.83,
+      "service_fee_estimated": 23.08,
+      "total_estimated": 267.89,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 35.48,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 69.63,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_name": "McDonald's (Sears)",
       "restaurant_available": true,
-      "rating": 4.4,
-      "review_count": 4923,
-      "eta_min": 17,
-      "delivery_fee": 10.09,
-      "promo_general_pct": 25.0,
+      "rating": 4.5,
+      "review_count": 14934,
+      "eta_min": 20,
+      "delivery_fee": 13.65,
+      "promo_general_pct": 28.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 174.89,
-          "price_discounted": 103.88,
-          "discount_pct": 40.6
+          "price_original": 177.43,
+          "price_discounted": 96.7,
+          "discount_pct": 45.5
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.01,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 70.58,
+          "price_discounted": 61.76,
+          "discount_pct": 12.5
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.77,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 56.4,
+          "price_discounted": 52.79,
+          "discount_pct": 6.4
         }
       ],
-      "subtotal": 227.66,
-      "service_fee_estimated": 34.15,
-      "total_estimated": 271.9,
+      "subtotal": 211.25,
+      "service_fee_estimated": 31.69,
+      "total_estimated": 256.59,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 26.57,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 30.08,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's Delivery",
+      "restaurant_name": "McDonald's Express",
       "restaurant_available": true,
-      "rating": 3.9,
-      "review_count": 10,
-      "eta_min": 25,
-      "delivery_fee": 14.63,
-      "promo_general_pct": 46.0,
+      "rating": 4.0,
+      "review_count": 235,
+      "eta_min": 28,
+      "delivery_fee": 13.47,
+      "promo_general_pct": 32.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 175.62,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 174.27,
+          "price_discounted": 126.69,
+          "discount_pct": 27.3
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 74.66,
-          "price_discounted": 54.95,
-          "discount_pct": 26.4
+          "price_original": 70.42,
+          "price_discounted": 58.03,
+          "discount_pct": 17.6
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.52,
-          "price_discounted": 45.75,
-          "discount_pct": 17.6
+          "price_original": 58.1,
+          "price_discounted": 49.91,
+          "discount_pct": 14.1
         }
       ],
-      "subtotal": 276.32,
-      "service_fee_estimated": 22.11,
-      "total_estimated": 313.06,
+      "subtotal": 234.63,
+      "service_fee_estimated": 18.77,
+      "total_estimated": 266.87,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_05",
     "city": "Ciudad de Mexico",
     "zone": "Del Valle",
@@ -480,36 +776,72 @@
       "status": "success",
       "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
-      "rating": 4.5,
-      "review_count": 1257,
-      "eta_min": 22,
-      "delivery_fee": 21.73,
-      "promo_general_pct": 40.0,
+      "rating": 4.0,
+      "review_count": 271,
+      "eta_min": 15,
+      "delivery_fee": 30.14,
+      "promo_general_pct": 58.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 174.9,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 169.18,
+          "price_discounted": 106.92,
+          "discount_pct": 36.8
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 68.93,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 69.52,
+          "price_discounted": 56.38,
+          "discount_pct": 18.9
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.83,
+          "price_original": 53.76,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 297.66,
-      "service_fee_estimated": 29.77,
-      "total_estimated": 349.16,
+      "subtotal": 217.06,
+      "service_fee_estimated": 21.71,
+      "total_estimated": 268.91,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 30.09,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 37.38,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
@@ -517,131 +849,14 @@
       "restaurant_name": "McDonald's (Insurgentes)",
       "restaurant_available": true,
       "rating": 4.4,
-      "review_count": 7047,
-      "eta_min": 22,
-      "delivery_fee": 20.26,
-      "promo_general_pct": 54.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 169.79,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.17,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 57.19,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 297.15,
-      "service_fee_estimated": 44.57,
-      "total_estimated": 361.98,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 609,
-      "eta_min": 28,
-      "delivery_fee": 13.47,
-      "promo_general_pct": 32.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 174.27,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 65.81,
-          "price_discounted": 46.86,
-          "discount_pct": 28.8
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 53.16,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 274.29,
-      "service_fee_estimated": 21.94,
-      "total_estimated": 309.7,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.077795",
-    "address_id": "MX_CDMX_06",
-    "city": "Ciudad de Mexico",
-    "zone": "Iztapalapa",
-    "zone_type": "Non Wealthy",
-    "address": "Ermita Iztapalapa 3200, Iztapalapa",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "Mc Donald's",
-      "restaurant_available": true,
-      "rating": 3.8,
-      "review_count": 903,
-      "eta_min": 28,
-      "delivery_fee": 0.0,
+      "review_count": 14369,
+      "eta_min": 20,
+      "delivery_fee": 16.75,
       "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 176.44,
-          "price_discounted": 136.39,
-          "discount_pct": 22.7
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 69.45,
-          "price_discounted": 54.52,
-          "discount_pct": 21.5
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 53.39,
-          "price_discounted": 47.73,
-          "discount_pct": 10.6
-        }
-      ],
-      "subtotal": 238.64,
-      "service_fee_estimated": 23.86,
-      "total_estimated": 262.5,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Santa Fe)",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 13732,
-      "eta_min": 32,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 27.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.57,
+          "price_original": 174.7,
           "price_discounted": null,
           "discount_pct": null
         },
@@ -653,16 +868,243 @@
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.25,
+          "price_original": 54.29,
+          "price_discounted": 43.7,
+          "discount_pct": 19.5
+        }
+      ],
+      "subtotal": 287.99,
+      "service_fee_estimated": 43.2,
+      "total_estimated": 347.94,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 16.43,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 33.28,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 4.4,
+      "review_count": 149,
+      "eta_min": 32,
+      "delivery_fee": 10.2,
+      "promo_general_pct": 40.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 177.85,
+          "price_discounted": 97.82,
+          "discount_pct": 45.0
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 71.47,
+          "price_discounted": 42.74,
+          "discount_pct": 40.2
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.51,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 300.41,
-      "service_fee_estimated": 45.06,
-      "total_estimated": 345.47,
+      "subtotal": 195.07,
+      "service_fee_estimated": 15.61,
+      "total_estimated": 220.88,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.255645",
+    "address_id": "MX_CDMX_06",
+    "city": "Ciudad de Mexico",
+    "zone": "Iztapalapa",
+    "zone_type": "Non Wealthy",
+    "address": "Ermita Iztapalapa 3200, Iztapalapa",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.7,
+      "review_count": 1381,
+      "eta_min": 27,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 41.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 175.02,
+          "price_discounted": 108.86,
+          "discount_pct": 37.8
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.65,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.01,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 234.52,
+      "service_fee_estimated": 23.45,
+      "total_estimated": 257.97,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.21,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 38.88,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 40.01,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Santa Fe)",
+      "restaurant_available": true,
+      "rating": 4.6,
+      "review_count": 4425,
+      "eta_min": 21,
+      "delivery_fee": 17.29,
+      "promo_general_pct": 38.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 176.14,
+          "price_discounted": 100.93,
+          "discount_pct": 42.7
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 68.85,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.15,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 223.93,
+      "service_fee_estimated": 33.59,
+      "total_estimated": 274.81,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 27.77,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 44.85,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 52.57,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
@@ -670,39 +1112,41 @@
       "restaurant_name": "McDonald's Express",
       "restaurant_available": true,
       "rating": 4.2,
-      "review_count": 431,
-      "eta_min": 42,
-      "delivery_fee": 25.2,
-      "promo_general_pct": null,
+      "review_count": 412,
+      "eta_min": 41,
+      "delivery_fee": 19.54,
+      "promo_general_pct": 39.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 171.14,
+          "price_original": 174.61,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 74.6,
-          "price_discounted": 53.12,
-          "discount_pct": 28.8
+          "price_original": 69.17,
+          "price_discounted": 58.17,
+          "discount_pct": 15.9
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 52.62,
+          "price_original": 55.72,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 276.88,
-      "service_fee_estimated": 22.15,
-      "total_estimated": 324.23,
+      "subtotal": 288.5,
+      "service_fee_estimated": 23.08,
+      "total_estimated": 331.12,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_07",
     "city": "Ciudad de Mexico",
     "zone": "Ecatepec",
@@ -715,111 +1159,185 @@
       "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
       "rating": 4.2,
-      "review_count": 1128,
-      "eta_min": 41,
-      "delivery_fee": 33.3,
-      "promo_general_pct": null,
+      "review_count": 2341,
+      "eta_min": 43,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 25.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 171.54,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 171.19,
+          "price_discounted": 102.37,
+          "discount_pct": 40.2
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.93,
+          "price_original": 70.03,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.41,
+          "price_original": 55.52,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 297.88,
-      "service_fee_estimated": 29.79,
-      "total_estimated": 360.97,
+      "subtotal": 227.92,
+      "service_fee_estimated": 22.79,
+      "total_estimated": 250.71,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 19.71,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 32.54,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 42.63,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
       "restaurant_name": "McDonald's (Insurgentes)",
       "restaurant_available": true,
-      "rating": 4.4,
-      "review_count": 13383,
+      "rating": 4.6,
+      "review_count": 2663,
       "eta_min": 26,
-      "delivery_fee": 42.07,
+      "delivery_fee": 30.86,
       "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 171.33,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 171.68,
+          "price_discounted": 110.56,
+          "discount_pct": 35.6
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 67.37,
-          "price_discounted": 55.58,
-          "discount_pct": 17.5
+          "price_original": 68.03,
+          "price_discounted": 55.44,
+          "discount_pct": 18.5
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.34,
+          "price_original": 57.31,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 282.25,
-      "service_fee_estimated": 42.34,
-      "total_estimated": 366.66,
+      "subtotal": 223.31,
+      "service_fee_estimated": 33.5,
+      "total_estimated": 287.67,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 22.06,
+          "store_name": "Uber Eats Market",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 25.1,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 44.34,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's",
+      "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 4.5,
-      "review_count": 396,
+      "rating": 3.8,
+      "review_count": 169,
       "eta_min": 40,
-      "delivery_fee": 40.27,
-      "promo_general_pct": 45.0,
+      "delivery_fee": 42.89,
+      "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 184.88,
-          "price_discounted": 97.06,
-          "discount_pct": 47.5
+          "price_original": 171.14,
+          "price_discounted": 88.65,
+          "discount_pct": 48.2
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 66.43,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 66.81,
+          "price_discounted": 48.97,
+          "discount_pct": 26.7
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 52.86,
+          "price_original": 55.09,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 216.35,
-      "service_fee_estimated": 17.31,
-      "total_estimated": 273.93,
+      "subtotal": 192.71,
+      "service_fee_estimated": 15.42,
+      "total_estimated": 251.02,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.255645",
     "address_id": "MX_CDMX_08",
     "city": "Ciudad de Mexico",
     "zone": "Tepito",
@@ -832,111 +1350,185 @@
       "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
       "rating": 4.1,
-      "review_count": 621,
-      "eta_min": 33,
+      "review_count": 482,
+      "eta_min": 52,
       "delivery_fee": 0.0,
-      "promo_general_pct": null,
+      "promo_general_pct": 18.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 175.42,
-          "price_discounted": 115.25,
-          "discount_pct": 34.3
+          "price_original": 174.56,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 67.31,
+          "price_original": 67.68,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.49,
+          "price_original": 55.85,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 236.05,
-      "service_fee_estimated": 23.61,
-      "total_estimated": 259.66,
+      "subtotal": 298.09,
+      "service_fee_estimated": 29.81,
+      "total_estimated": 327.9,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.66,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 30.02,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 41.93,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 33.0,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Sears)",
+      "restaurant_name": "McDonald's (Insurgentes)",
       "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 6285,
-      "eta_min": 29,
-      "delivery_fee": 32.71,
-      "promo_general_pct": 42.0,
+      "rating": 4.4,
+      "review_count": 22610,
+      "eta_min": 25,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 33.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 175.16,
-          "price_discounted": 124.01,
-          "discount_pct": 29.2
+          "price_original": 179.3,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.31,
+          "price_original": 69.81,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.06,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 53.74,
+          "price_discounted": 45.3,
+          "discount_pct": 15.7
         }
       ],
-      "subtotal": 248.38,
-      "service_fee_estimated": 37.26,
-      "total_estimated": 318.35,
+      "subtotal": 294.41,
+      "service_fee_estimated": 44.16,
+      "total_estimated": 338.57,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 23.1,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 22.4,
+          "store_name": "Uber Eats Market",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 34.13,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 65.2,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's",
+      "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 4.2,
-      "review_count": 403,
+      "rating": 4.3,
+      "review_count": 50,
       "eta_min": 43,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 59.0,
+      "delivery_fee": 24.92,
+      "promo_general_pct": 39.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 178.22,
-          "price_discounted": 136.34,
-          "discount_pct": 23.5
+          "price_original": 173.76,
+          "price_discounted": 165.07,
+          "discount_pct": 5
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 66.19,
-          "price_discounted": 46.93,
-          "discount_pct": 29.1
+          "price_original": 65.93,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 56.03,
+          "price_original": 54.49,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 239.3,
-      "service_fee_estimated": 19.14,
-      "total_estimated": 258.44,
+      "subtotal": 285.49,
+      "service_fee_estimated": 22.84,
+      "total_estimated": 333.25,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_CDMX_09",
     "city": "Ciudad de Mexico",
     "zone": "Tlalpan",
@@ -948,112 +1540,186 @@
       "status": "success",
       "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
-      "rating": 4.2,
-      "review_count": 705,
-      "eta_min": 39,
-      "delivery_fee": 91.23,
-      "promo_general_pct": 53.0,
+      "rating": 3.8,
+      "review_count": 804,
+      "eta_min": 23,
+      "delivery_fee": 64.59,
+      "promo_general_pct": 44.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 175.95,
-          "price_discounted": 120.0,
-          "discount_pct": 31.8
+          "price_original": 178.32,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.52,
+          "price_original": 66.13,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.23,
+          "price_original": 56.16,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 244.75,
-      "service_fee_estimated": 24.48,
-      "total_estimated": 360.46,
+      "subtotal": 300.61,
+      "service_fee_estimated": 30.06,
+      "total_estimated": 395.26,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 15.06,
+          "store_name": "Soriana",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 29.85,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 36.59,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_name": "McDonald's (Plaza Galerias)",
       "restaurant_available": true,
       "rating": 4.5,
-      "review_count": 17444,
-      "eta_min": 25,
+      "review_count": 22665,
+      "eta_min": 24,
       "delivery_fee": 0.0,
-      "promo_general_pct": null,
+      "promo_general_pct": 36.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 180.94,
-          "price_discounted": 146.02,
-          "discount_pct": 19.3
+          "price_original": 174.34,
+          "price_discounted": 96.58,
+          "discount_pct": 44.6
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.37,
-          "price_discounted": 64.53,
-          "discount_pct": 8.3
+          "price_original": 72.17,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.53,
+          "price_original": 53.76,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 265.08,
-      "service_fee_estimated": 39.76,
-      "total_estimated": 304.84,
+      "subtotal": 222.51,
+      "service_fee_estimated": 33.38,
+      "total_estimated": 255.89,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 20.24,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 36.79,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 57.06,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
       "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 3.9,
-      "review_count": 426,
-      "eta_min": 30,
-      "delivery_fee": 32.64,
-      "promo_general_pct": 55.0,
+      "rating": 4.0,
+      "review_count": 479,
+      "eta_min": 34,
+      "delivery_fee": 34.81,
+      "promo_general_pct": 43.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 171.08,
-          "price_discounted": 98.2,
-          "discount_pct": 42.6
+          "price_original": 171.64,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.14,
-          "price_discounted": 55.45,
-          "discount_pct": 19.8
+          "price_original": 71.55,
+          "price_discounted": 51.59,
+          "discount_pct": 27.9
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 59.29,
+          "price_original": 53.61,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 212.94,
-      "service_fee_estimated": 17.04,
-      "total_estimated": 262.62,
+      "subtotal": 276.84,
+      "service_fee_estimated": 22.15,
+      "total_estimated": 333.8,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_GDL_01",
     "city": "Guadalajara",
     "zone": "Providencia",
@@ -1065,112 +1731,186 @@
       "status": "success",
       "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
-      "rating": 3.9,
-      "review_count": 1146,
-      "eta_min": 12,
+      "rating": 4.1,
+      "review_count": 1044,
+      "eta_min": 23,
       "delivery_fee": 0.0,
-      "promo_general_pct": 34.0,
+      "promo_general_pct": 50.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 176.56,
-          "price_discounted": 128.71,
-          "discount_pct": 27.1
+          "price_original": 171.51,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 68.77,
+          "price_original": 67.88,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.5,
+          "price_original": 55.75,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 252.98,
-      "service_fee_estimated": 25.3,
-      "total_estimated": 278.28,
+      "subtotal": 295.14,
+      "service_fee_estimated": 29.51,
+      "total_estimated": 324.65,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.94,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 28.47,
+          "store_name": "Soriana",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 45.22,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Sears)",
+      "restaurant_name": "McDonald's (Plaza Galerias)",
       "restaurant_available": true,
-      "rating": 4.4,
-      "review_count": 17162,
-      "eta_min": 14,
+      "rating": 4.6,
+      "review_count": 12105,
+      "eta_min": 16,
       "delivery_fee": 0.0,
-      "promo_general_pct": 35.0,
+      "promo_general_pct": 38.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 172.04,
-          "price_discounted": 76.21,
-          "discount_pct": 55.7
+          "price_original": 173.35,
+          "price_discounted": 88.41,
+          "discount_pct": 49.0
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.81,
-          "price_discounted": 62.55,
-          "discount_pct": 10.4
+          "price_original": 70.65,
+          "price_discounted": 54.47,
+          "discount_pct": 22.9
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.92,
-          "price_discounted": 44.46,
-          "discount_pct": 20.5
+          "price_original": 56.31,
+          "price_discounted": null,
+          "discount_pct": null
         }
       ],
-      "subtotal": 183.22,
-      "service_fee_estimated": 27.48,
-      "total_estimated": 210.7,
+      "subtotal": 199.19,
+      "service_fee_estimated": 29.88,
+      "total_estimated": 229.07,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 22.05,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 28.45,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 40.59,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 48.44,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
       "restaurant_name": "McDonald's Express",
       "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 95,
-      "eta_min": 18,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 61.0,
+      "rating": 3.9,
+      "review_count": 425,
+      "eta_min": 31,
+      "delivery_fee": 18.78,
+      "promo_general_pct": 65,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 171.17,
-          "price_discounted": 93.63,
-          "discount_pct": 45.3
+          "price_original": 169.98,
+          "price_discounted": 126.81,
+          "discount_pct": 25.4
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 71.32,
-          "price_discounted": 58.77,
-          "discount_pct": 17.6
+          "price_original": 72.47,
+          "price_discounted": 49.79,
+          "discount_pct": 31.3
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.88,
-          "price_discounted": 52.14,
-          "discount_pct": 5
+          "price_original": 56.25,
+          "price_discounted": null,
+          "discount_pct": null
         }
       ],
-      "subtotal": 204.54,
-      "service_fee_estimated": 16.36,
-      "total_estimated": 220.9,
+      "subtotal": 232.85,
+      "service_fee_estimated": 18.63,
+      "total_estimated": 270.26,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_GDL_02",
     "city": "Guadalajara",
     "zone": "Chapalita",
@@ -1182,112 +1922,186 @@
       "status": "success",
       "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 804,
-      "eta_min": 15,
-      "delivery_fee": 19.47,
-      "promo_general_pct": 25.0,
+      "rating": 3.7,
+      "review_count": 671,
+      "eta_min": 21,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 43.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 172.68,
-          "price_discounted": 110.0,
-          "discount_pct": 36.3
+          "price_original": 171.97,
+          "price_discounted": 94.93,
+          "discount_pct": 44.8
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 71.88,
+          "price_original": 68.71,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.56,
-          "price_discounted": 46.33,
-          "discount_pct": 13.5
+          "price_original": 54.17,
+          "price_discounted": null,
+          "discount_pct": null
         }
       ],
-      "subtotal": 228.21,
-      "service_fee_estimated": 22.82,
-      "total_estimated": 270.5,
+      "subtotal": 217.81,
+      "service_fee_estimated": 21.78,
+      "total_estimated": 239.59,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 38.3,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 39.36,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
+      "restaurant_name": "McDonald's (Sears)",
       "restaurant_available": true,
       "rating": 4.5,
-      "review_count": 19930,
-      "eta_min": 20,
-      "delivery_fee": 8.13,
-      "promo_general_pct": 34.0,
+      "review_count": 10932,
+      "eta_min": 19,
+      "delivery_fee": 9.24,
+      "promo_general_pct": 35.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 174.21,
-          "price_discounted": 114.8,
-          "discount_pct": 34.1
+          "price_original": 172.59,
+          "price_discounted": 103.04,
+          "discount_pct": 40.3
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.23,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 66.1,
+          "price_discounted": 59.75,
+          "discount_pct": 9.6
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.66,
+          "price_original": 54.28,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 239.69,
-      "service_fee_estimated": 35.95,
-      "total_estimated": 283.77,
+      "subtotal": 217.07,
+      "service_fee_estimated": 32.56,
+      "total_estimated": 258.87,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 40.49,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 67.7,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's Express",
+      "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 4.6,
-      "review_count": 201,
-      "eta_min": 20,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 28.0,
+      "rating": 4.1,
+      "review_count": 606,
+      "eta_min": 27,
+      "delivery_fee": 24.86,
+      "promo_general_pct": 38.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 173.39,
+          "price_original": 173.93,
+          "price_discounted": 110.45,
+          "discount_pct": 36.5
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.97,
           "price_discounted": null,
           "discount_pct": null
         },
         {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.76,
-          "price_discounted": 51.51,
-          "discount_pct": 27.2
-        },
-        {
           "name": "Coca-Cola mediana",
-          "price_original": 53.75,
-          "price_discounted": 44.61,
-          "discount_pct": 17.0
+          "price_original": 53.35,
+          "price_discounted": 42.36,
+          "discount_pct": 20.6
         }
       ],
-      "subtotal": 269.51,
-      "service_fee_estimated": 21.56,
-      "total_estimated": 291.07,
+      "subtotal": 222.78,
+      "service_fee_estimated": 17.82,
+      "total_estimated": 265.46,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_GDL_03",
     "city": "Guadalajara",
     "zone": "Zapopan Centro",
@@ -1299,36 +2113,72 @@
       "status": "success",
       "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 468,
-      "eta_min": 26,
-      "delivery_fee": 16.11,
-      "promo_general_pct": 34.0,
+      "rating": 4.1,
+      "review_count": 490,
+      "eta_min": 24,
+      "delivery_fee": 20.91,
+      "promo_general_pct": 37.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 176.7,
-          "price_discounted": 109.38,
-          "discount_pct": 38.1
+          "price_original": 174.67,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.63,
+          "price_original": 69.03,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.63,
+          "price_original": 55.1,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 235.64,
-      "service_fee_estimated": 23.56,
-      "total_estimated": 275.31,
+      "subtotal": 298.8,
+      "service_fee_estimated": 29.88,
+      "total_estimated": 349.59,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 18.07,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 29.99,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 46.61,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 54.59,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
@@ -1336,403 +2186,88 @@
       "restaurant_name": "McDonald's (Plaza Galerias)",
       "restaurant_available": true,
       "rating": 4.6,
-      "review_count": 14735,
-      "eta_min": 21,
-      "delivery_fee": 11.08,
+      "review_count": 9003,
+      "eta_min": 15,
+      "delivery_fee": 30.07,
       "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 173.94,
-          "price_discounted": 105.76,
-          "discount_pct": 39.2
+          "price_original": 174.55,
+          "price_discounted": 69.99,
+          "discount_pct": 59.9
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 71.56,
+          "price_original": 67.38,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.41,
+          "price_original": 54.16,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 231.73,
-      "service_fee_estimated": 34.76,
-      "total_estimated": 277.57,
+      "subtotal": 191.53,
+      "service_fee_estimated": 28.73,
+      "total_estimated": 250.33,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's",
-      "restaurant_available": true,
-      "rating": 4.4,
-      "review_count": 436,
-      "eta_min": 26,
-      "delivery_fee": 16.38,
-      "promo_general_pct": null,
-      "products": [
+      "error_detail": "",
+      "super_products": [
         {
-          "name": "Combo Big Mac mediano",
-          "price_original": 177.3,
-          "price_discounted": null,
-          "discount_pct": null
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
         },
         {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 71.44,
-          "price_discounted": 46.15,
-          "discount_pct": 35.4
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 55.04,
-          "price_discounted": null,
-          "discount_pct": null
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 19.38,
+          "store_name": "Uber Eats Market",
+          "status": "success",
+          "error_detail": ""
         }
       ],
-      "subtotal": 278.49,
-      "service_fee_estimated": 22.28,
-      "total_estimated": 317.15,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.077795",
-    "address_id": "MX_GDL_04",
-    "city": "Guadalajara",
-    "zone": "Andares",
-    "zone_type": "Wealthy",
-    "address": "Blvd. Puerta de Hierro 4965, Zapopan",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "McDonald's",
-      "restaurant_available": true,
-      "rating": 3.9,
-      "review_count": 314,
-      "eta_min": 23,
-      "delivery_fee": 18.9,
-      "promo_general_pct": null,
-      "products": [
+      "farmacia_products": [
         {
-          "name": "Combo Big Mac mediano",
-          "price_original": 174.29,
-          "price_discounted": 102.83,
-          "discount_pct": 41.0
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 33.79,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
         },
         {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 67.36,
-          "price_discounted": 50.18,
-          "discount_pct": 25.5
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 53.99,
-          "price_discounted": null,
-          "discount_pct": null
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 40.89,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
         }
-      ],
-      "subtotal": 207.0,
-      "service_fee_estimated": 20.7,
-      "total_estimated": 246.6,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Santa Fe)",
-      "restaurant_available": true,
-      "rating": 4.6,
-      "review_count": 12379,
-      "eta_min": 23,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 46.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.89,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 68.98,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.1,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 298.97,
-      "service_fee_estimated": 44.85,
-      "total_estimated": 343.82,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
       "restaurant_name": "McDonald's Express",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 187,
-      "eta_min": 23,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 47.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 170.7,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 68.04,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 55.83,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 294.57,
-      "service_fee_estimated": 23.57,
-      "total_estimated": 318.14,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.077795",
-    "address_id": "MX_GDL_05",
-    "city": "Guadalajara",
-    "zone": "Oblatos",
-    "zone_type": "Non Wealthy",
-    "address": "Calzada Independencia Norte 3200, Oblatos",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "Mc Donald's",
-      "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 512,
-      "eta_min": 36,
-      "delivery_fee": 35.13,
-      "promo_general_pct": 36.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 172.59,
-          "price_discounted": 108.21,
-          "discount_pct": 37.3
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 66.1,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 53.59,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 227.9,
-      "service_fee_estimated": 22.79,
-      "total_estimated": 285.82,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
-      "restaurant_available": true,
-      "rating": 4.7,
-      "review_count": 10556,
-      "eta_min": 29,
-      "delivery_fee": 23.08,
-      "promo_general_pct": 49.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 173.52,
-          "price_discounted": 107.93,
-          "discount_pct": 37.8
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 66.99,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.98,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 229.9,
-      "service_fee_estimated": 34.48,
-      "total_estimated": 287.46,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's",
       "restaurant_available": true,
       "rating": 4.2,
-      "review_count": 344,
-      "eta_min": 32,
-      "delivery_fee": 35.23,
-      "promo_general_pct": null,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 180.13,
-          "price_discounted": 110.42,
-          "discount_pct": 38.7
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.21,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 56.38,
-          "price_discounted": 47.36,
-          "discount_pct": 16.0
-        }
-      ],
-      "subtotal": 227.99,
-      "service_fee_estimated": 18.24,
-      "total_estimated": 281.46,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.077795",
-    "address_id": "MX_GDL_06",
-    "city": "Guadalajara",
-    "zone": "Las Juntas",
-    "zone_type": "Non Wealthy",
-    "address": "Av. Aviacion 1200, Las Juntas, Tlaquepaque",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 3.7,
-      "review_count": 493,
-      "eta_min": 35,
-      "delivery_fee": 45.15,
-      "promo_general_pct": 42.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.49,
-          "price_discounted": 88.62,
-          "discount_pct": 49.5
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.92,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 57.15,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 216.69,
-      "service_fee_estimated": 21.67,
-      "total_estimated": 283.51,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
-      "restaurant_available": true,
-      "rating": 4.5,
-      "review_count": 9371,
-      "eta_min": 33,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 62.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 171.58,
-          "price_discounted": 120.79,
-          "discount_pct": 29.6
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 67.8,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 52.88,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 241.47,
-      "service_fee_estimated": 36.22,
-      "total_estimated": 277.69,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's Express",
-      "restaurant_available": true,
-      "rating": 4.1,
       "review_count": 35,
-      "eta_min": 33,
+      "eta_min": 28,
       "delivery_fee": 0.0,
-      "promo_general_pct": 51.0,
+      "promo_general_pct": 65,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 181.5,
-          "price_discounted": 88.21,
-          "discount_pct": 51.4
+          "price_original": 177.8,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
@@ -1747,15 +2282,590 @@
           "discount_pct": null
         }
       ],
-      "subtotal": 199.49,
-      "service_fee_estimated": 15.96,
-      "total_estimated": 215.45,
+      "subtotal": 289.08,
+      "service_fee_estimated": 23.13,
+      "total_estimated": 312.21,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
+    "address_id": "MX_GDL_04",
+    "city": "Guadalajara",
+    "zone": "Andares",
+    "zone_type": "Wealthy",
+    "address": "Blvd. Puerta de Hierro 4965, Zapopan",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 162,
+      "eta_min": 31,
+      "delivery_fee": 0.0,
+      "promo_general_pct": null,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 172.59,
+          "price_discounted": 141.7,
+          "discount_pct": 17.9
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 71.71,
+          "price_discounted": 61.38,
+          "discount_pct": 14.4
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 56.24,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 259.32,
+      "service_fee_estimated": 25.93,
+      "total_estimated": 285.25,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 16.2,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 28.02,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_available": true,
+      "rating": 4.4,
+      "review_count": 14572,
+      "eta_min": 19,
+      "delivery_fee": 0.0,
+      "promo_general_pct": null,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 175.87,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 66.86,
+          "price_discounted": 55.43,
+          "discount_pct": 17.1
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.12,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 286.42,
+      "service_fee_estimated": 42.96,
+      "total_estimated": 329.38,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 22.13,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 24.38,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 25.73,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 494,
+      "eta_min": 29,
+      "delivery_fee": 28.22,
+      "promo_general_pct": 64.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.46,
+          "price_discounted": 79.9,
+          "discount_pct": 54.2
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.2,
+          "price_discounted": 40.48,
+          "discount_pct": 41.5
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 58.51,
+          "price_discounted": 48.68,
+          "discount_pct": 16.8
+        }
+      ],
+      "subtotal": 169.06,
+      "service_fee_estimated": 13.52,
+      "total_estimated": 210.8,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.256643",
+    "address_id": "MX_GDL_05",
+    "city": "Guadalajara",
+    "zone": "Oblatos",
+    "zone_type": "Non Wealthy",
+    "address": "Calzada Independencia Norte 3200, Oblatos",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.7,
+      "review_count": 692,
+      "eta_min": 45,
+      "delivery_fee": 52.74,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 177.18,
+          "price_discounted": 146.35,
+          "discount_pct": 17.4
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 66.63,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 52.96,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 265.94,
+      "service_fee_estimated": 26.59,
+      "total_estimated": 345.27,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 20.15,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 34.01,
+          "store_name": "Soriana",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 35.59,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 61.29,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 13832,
+      "eta_min": 17,
+      "delivery_fee": 12.58,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.9,
+          "price_discounted": 143.82,
+          "discount_pct": 17.3
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 68.82,
+          "price_discounted": 61.8,
+          "discount_pct": 10.2
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.67,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 261.29,
+      "service_fee_estimated": 39.19,
+      "total_estimated": 313.06,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.18,
+          "store_name": "Uber Eats Market",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 27.43,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 29.53,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 49.25,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 60,
+      "eta_min": 31,
+      "delivery_fee": 41.55,
+      "promo_general_pct": 43.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 170.83,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 68.68,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 52.93,
+          "price_discounted": 44.88,
+          "discount_pct": 15.2
+        }
+      ],
+      "subtotal": 284.39,
+      "service_fee_estimated": 22.75,
+      "total_estimated": 348.69,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.256643",
+    "address_id": "MX_GDL_06",
+    "city": "Guadalajara",
+    "zone": "Las Juntas",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Aviacion 1200, Las Juntas, Tlaquepaque",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 711,
+      "eta_min": 50,
+      "delivery_fee": 0.0,
+      "promo_general_pct": null,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 171.9,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.43,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.89,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 296.22,
+      "service_fee_estimated": 29.62,
+      "total_estimated": 325.84,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 30.46,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 41.06,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 39.69,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Sears)",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 14882,
+      "eta_min": 24,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 17.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 169.45,
+          "price_discounted": 81.84,
+          "discount_pct": 51.7
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 72.29,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.75,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 208.88,
+      "service_fee_estimated": 31.33,
+      "total_estimated": 240.21,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 20.93,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 62.63,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 63.43,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 3.7,
+      "review_count": 298,
+      "eta_min": 31,
+      "delivery_fee": 30.72,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 170.97,
+          "price_discounted": 131.82,
+          "discount_pct": 22.9
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 67.06,
+          "price_discounted": 56.13,
+          "discount_pct": 16.3
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 58.37,
+          "price_discounted": 45.3,
+          "discount_pct": 22.4
+        }
+      ],
+      "subtotal": 233.25,
+      "service_fee_estimated": 18.66,
+      "total_estimated": 282.63,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_GDL_07",
     "city": "Guadalajara",
     "zone": "Tonala",
@@ -1767,72 +2877,144 @@
       "status": "success",
       "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
-      "rating": 4.2,
-      "review_count": 754,
-      "eta_min": 49,
+      "rating": 3.9,
+      "review_count": 449,
+      "eta_min": 46,
       "delivery_fee": 0.0,
-      "promo_general_pct": null,
+      "promo_general_pct": 32.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 172.59,
+          "price_original": 178.57,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 65.57,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 70.08,
+          "price_discounted": 63.21,
+          "discount_pct": 9.8
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 56.35,
+          "price_original": 54.81,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 294.51,
-      "service_fee_estimated": 29.45,
-      "total_estimated": 323.96,
+      "subtotal": 296.59,
+      "service_fee_estimated": 29.66,
+      "total_estimated": 326.25,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 13.85,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 31.7,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 50.28,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 31.01,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
+      "restaurant_name": "McDonald's (Santa Fe)",
       "restaurant_available": true,
       "rating": 4.4,
-      "review_count": 11288,
-      "eta_min": 18,
-      "delivery_fee": 36.14,
-      "promo_general_pct": 40.0,
+      "review_count": 7845,
+      "eta_min": 31,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 35.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 174.14,
-          "price_discounted": 115.8,
-          "discount_pct": 33.5
+          "price_original": 172.22,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 70.25,
+          "price_original": 67.27,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.93,
+          "price_original": 55.05,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 239.98,
-      "service_fee_estimated": 36.0,
-      "total_estimated": 312.12,
+      "subtotal": 294.54,
+      "service_fee_estimated": 44.18,
+      "total_estimated": 338.72,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 31.35,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 37.6,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 47.13,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
@@ -1840,39 +3022,41 @@
       "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
       "rating": 4.3,
-      "review_count": 610,
-      "eta_min": 44,
-      "delivery_fee": 33.2,
-      "promo_general_pct": 37.0,
+      "review_count": 10,
+      "eta_min": 34,
+      "delivery_fee": 22.92,
+      "promo_general_pct": 53.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 169,
+          "price_original": 170.09,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 72.83,
-          "price_discounted": 52.66,
-          "discount_pct": 27.7
+          "price_original": 69.3,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.5,
+          "price_original": 56.5,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 275.16,
-      "service_fee_estimated": 22.01,
-      "total_estimated": 330.37,
+      "subtotal": 295.89,
+      "service_fee_estimated": 23.67,
+      "total_estimated": 342.48,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_MTY_01",
     "city": "Monterrey",
     "zone": "San Pedro",
@@ -1884,112 +3068,186 @@
       "status": "success",
       "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 4.2,
-      "review_count": 1188,
-      "eta_min": 22,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 43.0,
+      "rating": 4.0,
+      "review_count": 438,
+      "eta_min": 18,
+      "delivery_fee": 27.43,
+      "promo_general_pct": 33.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 180.18,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 169,
+          "price_discounted": 137.4,
+          "discount_pct": 18.7
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 72.51,
+          "price_original": 69.1,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.75,
+          "price_original": 55.26,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 307.44,
-      "service_fee_estimated": 30.74,
-      "total_estimated": 338.18,
+      "subtotal": 261.76,
+      "service_fee_estimated": 26.18,
+      "total_estimated": 315.37,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 19.92,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 28.38,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
+      "restaurant_name": "McDonald's (Sears)",
       "restaurant_available": true,
-      "rating": 4.7,
-      "review_count": 6083,
-      "eta_min": 21,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 30.0,
+      "rating": 4.4,
+      "review_count": 6351,
+      "eta_min": 14,
+      "delivery_fee": 14.54,
+      "promo_general_pct": 40.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 176.06,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 171.42,
+          "price_discounted": 112.79,
+          "discount_pct": 34.2
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 71.12,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 71.01,
+          "price_discounted": 60.71,
+          "discount_pct": 14.5
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.24,
+          "price_original": 55.84,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 300.42,
-      "service_fee_estimated": 45.06,
-      "total_estimated": 345.48,
+      "subtotal": 229.34,
+      "service_fee_estimated": 34.4,
+      "total_estimated": 278.28,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 21.59,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 37.21,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 18.23,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 40.44,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's Express",
+      "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 288,
-      "eta_min": 15,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 55.0,
+      "rating": 4.2,
+      "review_count": 367,
+      "eta_min": 26,
+      "delivery_fee": 22.62,
+      "promo_general_pct": 42.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 180.01,
-          "price_discounted": 106.39,
-          "discount_pct": 40.9
+          "price_original": 174.35,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 73.89,
-          "price_discounted": 63.55,
-          "discount_pct": 14.0
+          "price_original": 68.53,
+          "price_discounted": 45.02,
+          "discount_pct": 34.3
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 51.59,
+          "price_original": 55.51,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 221.53,
-      "service_fee_estimated": 17.72,
-      "total_estimated": 239.25,
+      "subtotal": 274.88,
+      "service_fee_estimated": 21.99,
+      "total_estimated": 319.49,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.077795",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_MTY_02",
     "city": "Monterrey",
     "zone": "Valle",
@@ -1999,114 +3257,188 @@
     "rappi": {
       "platform": "rappi",
       "status": "success",
-      "restaurant_name": "Mc Donald's",
+      "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 3.4,
-      "review_count": 594,
-      "eta_min": 21,
-      "delivery_fee": 25.84,
-      "promo_general_pct": 41.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 170.09,
-          "price_discounted": 99.16,
-          "discount_pct": 41.7
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 69.73,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.06,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 222.95,
-      "service_fee_estimated": 22.3,
-      "total_estimated": 271.09,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
-      "restaurant_available": true,
-      "rating": 4.5,
-      "review_count": 9348,
-      "eta_min": 14,
-      "delivery_fee": 0.0,
+      "rating": 3.8,
+      "review_count": 1630,
+      "eta_min": 19,
+      "delivery_fee": 17.88,
       "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 176.87,
+          "price_original": 175.18,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 67.03,
+          "price_original": 68.16,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 55.5,
+          "price_original": 55.29,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 299.4,
-      "service_fee_estimated": 44.91,
-      "total_estimated": 344.31,
+      "subtotal": 298.63,
+      "service_fee_estimated": 29.86,
+      "total_estimated": 346.37,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 20.61,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 26.7,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 44.61,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 40.92,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Santa Fe)",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 16147,
+      "eta_min": 14,
+      "delivery_fee": 0.73,
+      "promo_general_pct": 36.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.06,
+          "price_discounted": 78.68,
+          "discount_pct": 54.8
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.65,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.78,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 203.11,
+      "service_fee_estimated": 30.47,
+      "total_estimated": 234.31,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 13.37,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 39.88,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
       "restaurant_name": "McDonald's",
       "restaurant_available": true,
-      "rating": 3.8,
-      "review_count": 342,
-      "eta_min": 27,
-      "delivery_fee": 11.66,
-      "promo_general_pct": 42.0,
+      "rating": 4.4,
+      "review_count": 349,
+      "eta_min": 19,
+      "delivery_fee": 24.17,
+      "promo_general_pct": 51.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 169.21,
-          "price_discounted": 67.68,
-          "discount_pct": 60
+          "price_original": 172.34,
+          "price_discounted": 90.31,
+          "discount_pct": 47.6
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.11,
+          "price_original": 75.81,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.6,
+          "price_original": 55.36,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 190.39,
-      "service_fee_estimated": 15.23,
-      "total_estimated": 217.28,
+      "subtotal": 221.48,
+      "service_fee_estimated": 17.72,
+      "total_estimated": 263.37,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.078791",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_MTY_03",
     "city": "Monterrey",
     "zone": "Cumbres",
@@ -2116,114 +3448,188 @@
     "rappi": {
       "platform": "rappi",
       "status": "success",
-      "restaurant_name": "McDonald's",
+      "restaurant_name": "Mc Donald's",
       "restaurant_available": true,
       "rating": 4.1,
-      "review_count": 1346,
-      "eta_min": 20,
-      "delivery_fee": 20.88,
-      "promo_general_pct": 51.0,
+      "review_count": 933,
+      "eta_min": 17,
+      "delivery_fee": 17.41,
+      "promo_general_pct": 32.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 172.41,
-          "price_discounted": 122.07,
-          "discount_pct": 29.2
+          "price_original": 174.21,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 68.45,
-          "price_discounted": 65.03,
-          "discount_pct": 5
+          "price_original": 68.04,
+          "price_discounted": null,
+          "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 53.48,
+          "price_original": 55.48,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 240.58,
-      "service_fee_estimated": 24.06,
-      "total_estimated": 285.52,
+      "subtotal": 297.73,
+      "service_fee_estimated": 29.77,
+      "total_estimated": 344.91,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 21.11,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 25.96,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 32.84,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 35.21,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_name": "McDonald's (Santa Fe)",
       "restaurant_available": true,
       "rating": 4.6,
-      "review_count": 3967,
-      "eta_min": 18,
-      "delivery_fee": 26.51,
-      "promo_general_pct": 43.0,
+      "review_count": 21383,
+      "eta_min": 20,
+      "delivery_fee": 11.89,
+      "promo_general_pct": null,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 183.24,
+          "price_original": 171.23,
+          "price_discounted": 91.27,
+          "discount_pct": 46.7
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 71.71,
           "price_discounted": null,
           "discount_pct": null
         },
         {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 71.24,
-          "price_discounted": 58.99,
-          "discount_pct": 17.2
-        },
-        {
           "name": "Coca-Cola mediana",
-          "price_original": 54.04,
+          "price_original": 55.41,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 296.27,
-      "service_fee_estimated": 44.44,
-      "total_estimated": 367.22,
+      "subtotal": 218.39,
+      "service_fee_estimated": 32.76,
+      "total_estimated": 263.04,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.68,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 23.78,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 23.77,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 67.95,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
-      "restaurant_name": "McDonald's Express",
+      "restaurant_name": "McDonald's Delivery",
       "restaurant_available": true,
-      "rating": 3.7,
-      "review_count": 595,
-      "eta_min": 23,
-      "delivery_fee": 19.63,
-      "promo_general_pct": 42.0,
+      "rating": 4.2,
+      "review_count": 344,
+      "eta_min": 27,
+      "delivery_fee": 23.23,
+      "promo_general_pct": 37.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 169.67,
-          "price_discounted": null,
-          "discount_pct": null
+          "price_original": 183.78,
+          "price_discounted": 107.33,
+          "discount_pct": 41.6
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 74.06,
-          "price_discounted": 50.29,
-          "discount_pct": 32.1
+          "price_original": 69.33,
+          "price_discounted": 47.98,
+          "discount_pct": 30.8
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.98,
+          "price_original": 55.96,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 274.94,
-      "service_fee_estimated": 22.0,
-      "total_estimated": 316.57,
+      "subtotal": 211.27,
+      "service_fee_estimated": 16.9,
+      "total_estimated": 251.4,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   },
   {
-    "scraped_at": "2026-03-22T23:42:28.078791",
+    "scraped_at": "2026-03-23T01:57:20.256643",
     "address_id": "MX_MTY_04",
     "city": "Monterrey",
     "zone": "Tecnologico",
@@ -2233,633 +3639,84 @@
     "rappi": {
       "platform": "rappi",
       "status": "success",
-      "restaurant_name": "Mc Donald's",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 246,
-      "eta_min": 17,
-      "delivery_fee": 22.77,
-      "promo_general_pct": null,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.62,
-          "price_discounted": 132.42,
-          "discount_pct": 24.6
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 68.62,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.12,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 255.16,
-      "service_fee_estimated": 25.52,
-      "total_estimated": 303.45,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 7680,
-      "eta_min": 26,
-      "delivery_fee": 21.48,
-      "promo_general_pct": 46.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 172.05,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 68.03,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.41,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 294.49,
-      "service_fee_estimated": 44.17,
-      "total_estimated": 360.14,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
       "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 3.9,
-      "review_count": 104,
-      "eta_min": 28,
-      "delivery_fee": 0.0,
-      "promo_general_pct": 51.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 173.8,
-          "price_discounted": 109.32,
-          "discount_pct": 37.1
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 66.28,
-          "price_discounted": 52.76,
-          "discount_pct": 20.4
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 56.51,
-          "price_discounted": 44.93,
-          "discount_pct": 20.5
-        }
-      ],
-      "subtotal": 207.01,
-      "service_fee_estimated": 16.56,
-      "total_estimated": 223.57,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.078791",
-    "address_id": "MX_MTY_05",
-    "city": "Monterrey",
-    "zone": "Centrito Valle",
-    "zone_type": "Wealthy",
-    "address": "Av. Diego Rivera 500, Valle Oriente, San Pedro",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "Mc Donald's",
-      "restaurant_available": true,
-      "rating": 3.5,
-      "review_count": 78,
-      "eta_min": 25,
-      "delivery_fee": 22.99,
-      "promo_general_pct": 49.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 172.01,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.14,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.24,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 296.39,
-      "service_fee_estimated": 29.64,
-      "total_estimated": 349.02,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
-      "restaurant_available": true,
-      "rating": 4.5,
-      "review_count": 11669,
-      "eta_min": 12,
-      "delivery_fee": 0.0,
-      "promo_general_pct": null,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 174.78,
-          "price_discounted": 124.09,
-          "discount_pct": 29.0
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.28,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 53.34,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 247.71,
-      "service_fee_estimated": 37.16,
-      "total_estimated": 284.87,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's",
-      "restaurant_available": true,
-      "rating": 4.1,
-      "review_count": 74,
-      "eta_min": 24,
-      "delivery_fee": 8.31,
-      "promo_general_pct": 39.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 172.46,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 72.02,
-          "price_discounted": 57.33,
-          "discount_pct": 20.4
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 56.67,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 286.46,
-      "service_fee_estimated": 22.92,
-      "total_estimated": 317.69,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.078791",
-    "address_id": "MX_MTY_06",
-    "city": "Monterrey",
-    "zone": "Independencia",
-    "zone_type": "Non Wealthy",
-    "address": "Av. Aztlan 100, Col. Independencia, Monterrey",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 3.3,
-      "review_count": 737,
-      "eta_min": 46,
-      "delivery_fee": 51.36,
-      "promo_general_pct": 32.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.73,
-          "price_discounted": 117.74,
-          "discount_pct": 33.0
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 69.74,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.4,
-          "price_discounted": 48.8,
-          "discount_pct": 10.3
-        }
-      ],
-      "subtotal": 236.28,
-      "service_fee_estimated": 23.63,
-      "total_estimated": 311.27,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Sears)",
-      "restaurant_available": true,
-      "rating": 4.6,
-      "review_count": 9895,
-      "eta_min": 29,
-      "delivery_fee": 35.51,
-      "promo_general_pct": null,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 172.76,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 68.02,
-          "price_discounted": 57.54,
-          "discount_pct": 15.4
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 55.39,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 285.69,
-      "service_fee_estimated": 42.85,
-      "total_estimated": 364.05,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's Express",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 10,
-      "eta_min": 58,
-      "delivery_fee": 34.9,
-      "promo_general_pct": 45.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 178.8,
-          "price_discounted": 116.04,
-          "discount_pct": 35.1
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 64,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 52.98,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 233.02,
-      "service_fee_estimated": 18.64,
-      "total_estimated": 286.56,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.078791",
-    "address_id": "MX_MTY_07",
-    "city": "Monterrey",
-    "zone": "Apodaca",
-    "zone_type": "Non Wealthy",
-    "address": "Blvd. Zenon Fernandez 800, Apodaca",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "McDonald's",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 208,
-      "eta_min": 35,
-      "delivery_fee": 40.78,
-      "promo_general_pct": 46.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 173.34,
-          "price_discounted": 98.28,
-          "discount_pct": 43.3
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 64.58,
-          "price_discounted": 54.12,
-          "discount_pct": 16.2
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 55.77,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 208.17,
-      "service_fee_estimated": 20.82,
-      "total_estimated": 269.77,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
       "restaurant_available": true,
       "rating": 4.4,
-      "review_count": 7750,
-      "eta_min": 30,
-      "delivery_fee": 35.29,
-      "promo_general_pct": null,
+      "review_count": 822,
+      "eta_min": 24,
+      "delivery_fee": 14.1,
+      "promo_general_pct": 58.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 175.9,
-          "price_discounted": 70.36,
-          "discount_pct": 60
+          "price_original": 178.78,
+          "price_discounted": 125.32,
+          "discount_pct": 29.9
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 69.36,
-          "price_discounted": 55.83,
-          "discount_pct": 19.5
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.54,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 180.73,
-      "service_fee_estimated": 27.11,
-      "total_estimated": 243.13,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 4.1,
-      "review_count": 197,
-      "eta_min": 32,
-      "delivery_fee": 40.3,
-      "promo_general_pct": 43.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.92,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.0,
+          "price_original": 67.02,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 57.08,
+          "price_original": 54.87,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 303.0,
-      "service_fee_estimated": 24.24,
-      "total_estimated": 367.54,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.078791",
-    "address_id": "MX_MTY_08",
-    "city": "Monterrey",
-    "zone": "Escobedo",
-    "zone_type": "Non Wealthy",
-    "address": "Av. Raul Salinas 1500, Escobedo",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "Mc Donald's",
-      "restaurant_available": true,
-      "rating": 3.8,
-      "review_count": 965,
-      "eta_min": 27,
-      "delivery_fee": 41.76,
-      "promo_general_pct": 47.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 176.27,
-          "price_discounted": 130.79,
-          "discount_pct": 25.8
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.74,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 56.36,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 257.89,
-      "service_fee_estimated": 25.79,
-      "total_estimated": 325.44,
+      "subtotal": 247.21,
+      "service_fee_estimated": 24.72,
+      "total_estimated": 286.03,
       "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 21.28,
+          "store_name": "Soriana",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 21.23,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 47.24,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 43.42,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
     },
     "ubereats": {
       "platform": "ubereats",
       "status": "success",
-      "restaurant_name": "McDonald's (Insurgentes)",
-      "restaurant_available": true,
-      "rating": 4.3,
-      "review_count": 6372,
-      "eta_min": 23,
-      "delivery_fee": 41.89,
-      "promo_general_pct": 22.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 178.49,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 70.31,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 54.94,
-          "price_discounted": 47.74,
-          "discount_pct": 13.1
-        }
-      ],
-      "subtotal": 296.54,
-      "service_fee_estimated": 44.48,
-      "total_estimated": 382.91,
-      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
-    },
-    "didifood": {
-      "platform": "didifood",
-      "status": "success",
-      "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 4.1,
-      "review_count": 618,
-      "eta_min": 41,
-      "delivery_fee": 56.46,
-      "promo_general_pct": 55.0,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 175.92,
-          "price_discounted": 100.8,
-          "discount_pct": 42.7
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 66.63,
-          "price_discounted": 47.44,
-          "discount_pct": 28.8
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 58.76,
-          "price_discounted": 44.25,
-          "discount_pct": 24.7
-        }
-      ],
-      "subtotal": 192.49,
-      "service_fee_estimated": 15.4,
-      "total_estimated": 264.35,
-      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
-    }
-  },
-  {
-    "scraped_at": "2026-03-22T23:42:28.078791",
-    "address_id": "MX_MTY_09",
-    "city": "Monterrey",
-    "zone": "Guadalupe",
-    "zone_type": "Non Wealthy",
-    "address": "Av. Pablo Livas 3200, Guadalupe",
-    "restaurant_compared": "McDonald's",
-    "rappi": {
-      "platform": "rappi",
-      "status": "success",
-      "restaurant_name": "McDonald's Delivery",
-      "restaurant_available": true,
-      "rating": 3.9,
-      "review_count": 736,
-      "eta_min": 27,
-      "delivery_fee": 38.87,
-      "promo_general_pct": null,
-      "products": [
-        {
-          "name": "Combo Big Mac mediano",
-          "price_original": 174.17,
-          "price_discounted": 94.23,
-          "discount_pct": 45.9
-        },
-        {
-          "name": "Hamburguesa doble con queso",
-          "price_original": 65.62,
-          "price_discounted": null,
-          "discount_pct": null
-        },
-        {
-          "name": "Coca-Cola mediana",
-          "price_original": 56.53,
-          "price_discounted": null,
-          "discount_pct": null
-        }
-      ],
-      "subtotal": 216.38,
-      "service_fee_estimated": 21.64,
-      "total_estimated": 276.89,
-      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
-      "error_detail": ""
-    },
-    "ubereats": {
-      "platform": "ubereats",
-      "status": "success",
-      "restaurant_name": "McDonald's (Plaza Galerias)",
+      "restaurant_name": "McDonald's (Santa Fe)",
       "restaurant_available": true,
       "rating": 4.3,
       "review_count": 10702,
-      "eta_min": 21,
-      "delivery_fee": 21.16,
+      "eta_min": 14,
+      "delivery_fee": 12.01,
       "promo_general_pct": 48.0,
       "products": [
         {
@@ -2871,57 +3728,1050 @@
         {
           "name": "Hamburguesa doble con queso",
           "price_original": 66.41,
+          "price_discounted": 55.78,
+          "discount_pct": 16.0
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 56.67,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 242.94,
+      "service_fee_estimated": 36.44,
+      "total_estimated": 291.39,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 15.49,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 28.77,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 35.82,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 17.64,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 4.3,
+      "review_count": 302,
+      "eta_min": 26,
+      "delivery_fee": 17.57,
+      "promo_general_pct": 65,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 178.51,
+          "price_discounted": 112.82,
+          "discount_pct": 36.8
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 65.68,
+          "price_discounted": 35.73,
+          "discount_pct": 45.6
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.12,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 203.67,
+      "service_fee_estimated": 16.29,
+      "total_estimated": 237.53,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.257652",
+    "address_id": "MX_MTY_05",
+    "city": "Monterrey",
+    "zone": "Centrito Valle",
+    "zone_type": "Wealthy",
+    "address": "Av. Diego Rivera 500, Valle Oriente, San Pedro",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 3.9,
+      "review_count": 842,
+      "eta_min": 22,
+      "delivery_fee": 21.76,
+      "promo_general_pct": 35.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 172.36,
+          "price_discounted": 112.55,
+          "discount_pct": 34.7
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 67.91,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 54.66,
-          "price_discounted": 44.44,
-          "discount_pct": 18.7
+          "price_original": 54.29,
+          "price_discounted": null,
+          "discount_pct": null
         }
       ],
-      "subtotal": 241.34,
-      "service_fee_estimated": 36.2,
-      "total_estimated": 298.7,
+      "subtotal": 234.75,
+      "service_fee_estimated": 23.48,
+      "total_estimated": 279.99,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 17.24,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 34.02,
+          "store_name": "La Comer",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 13.79,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 55.92,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_available": true,
+      "rating": 4.4,
+      "review_count": 18357,
+      "eta_min": 12,
+      "delivery_fee": 23.72,
+      "promo_general_pct": 36.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 169.78,
+          "price_discounted": 118.51,
+          "discount_pct": 30.2
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 66.78,
+          "price_discounted": 47.75,
+          "discount_pct": 28.5
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.94,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 222.2,
+      "service_fee_estimated": 33.33,
+      "total_estimated": 279.25,
       "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 22.17,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 24.35,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 33.8,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 55.87,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 4.0,
+      "review_count": 418,
+      "eta_min": 32,
+      "delivery_fee": 8.22,
+      "promo_general_pct": 44.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 176.84,
+          "price_discounted": 96.73,
+          "discount_pct": 45.3
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 67.92,
+          "price_discounted": 44.62,
+          "discount_pct": 34.3
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 52.84,
+          "price_discounted": 41.69,
+          "discount_pct": 21.1
+        }
+      ],
+      "subtotal": 183.04,
+      "service_fee_estimated": 14.64,
+      "total_estimated": 205.9,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.257652",
+    "address_id": "MX_MTY_06",
+    "city": "Monterrey",
+    "zone": "Independencia",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Aztlan 100, Col. Independencia, Monterrey",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.6,
+      "review_count": 236,
+      "eta_min": 37,
+      "delivery_fee": 41.29,
+      "promo_general_pct": 53.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.45,
+          "price_discounted": 121.76,
+          "discount_pct": 29.8
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 71.1,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.3,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 247.16,
+      "service_fee_estimated": 24.72,
+      "total_estimated": 313.17,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 13.33,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 30.42,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 24.76,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Sears)",
+      "restaurant_available": true,
+      "rating": 4.8,
+      "review_count": 11811,
+      "eta_min": 15,
+      "delivery_fee": 40.79,
+      "promo_general_pct": 42.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.71,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 67.91,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.4,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 297.02,
+      "service_fee_estimated": 44.55,
+      "total_estimated": 382.36,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 23.31,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 30.57,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 39.2,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ]
     },
     "didifood": {
       "platform": "didifood",
       "status": "success",
       "restaurant_name": "McDonald's Express",
       "restaurant_available": true,
-      "rating": 4.0,
-      "review_count": 669,
-      "eta_min": 37,
-      "delivery_fee": 16.97,
-      "promo_general_pct": 21.0,
+      "rating": 4.2,
+      "review_count": 303,
+      "eta_min": 39,
+      "delivery_fee": 28.36,
+      "promo_general_pct": 31.0,
       "products": [
         {
           "name": "Combo Big Mac mediano",
-          "price_original": 173.78,
+          "price_original": 169,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Hamburguesa doble con queso",
-          "price_original": 68.31,
+          "price_original": 71.23,
+          "price_discounted": 52.43,
+          "discount_pct": 26.4
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.63,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 276.06,
+      "service_fee_estimated": 22.08,
+      "total_estimated": 326.5,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.257652",
+    "address_id": "MX_MTY_07",
+    "city": "Monterrey",
+    "zone": "Apodaca",
+    "zone_type": "Non Wealthy",
+    "address": "Blvd. Zenon Fernandez 800, Apodaca",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 3.8,
+      "review_count": 902,
+      "eta_min": 37,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 33.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.59,
+          "price_discounted": 130.59,
+          "discount_pct": 25.2
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.82,
+          "price_discounted": 65.28,
+          "discount_pct": 6.5
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 56.03,
+          "price_discounted": 49.64,
+          "discount_pct": 11.4
+        }
+      ],
+      "subtotal": 245.51,
+      "service_fee_estimated": 24.55,
+      "total_estimated": 270.06,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 20.95,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 34.66,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 43.11,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 26.59,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Plaza Galerias)",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 7383,
+      "eta_min": 24,
+      "delivery_fee": 13.48,
+      "promo_general_pct": 45.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 171.82,
+          "price_discounted": 103.26,
+          "discount_pct": 39.9
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 67.49,
+          "price_discounted": 57.84,
+          "discount_pct": 14.3
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 53.59,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 214.69,
+      "service_fee_estimated": 32.2,
+      "total_estimated": 260.37,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 15.94,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 25.12,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 46.43,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 38.61,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's",
+      "restaurant_available": true,
+      "rating": 4.2,
+      "review_count": 812,
+      "eta_min": 63,
+      "delivery_fee": 0.0,
+      "promo_general_pct": 50.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 170.57,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 71.1,
           "price_discounted": null,
           "discount_pct": null
         },
         {
           "name": "Coca-Cola mediana",
-          "price_original": 56.39,
+          "price_original": 53.85,
+          "price_discounted": 43.83,
+          "discount_pct": 18.6
+        }
+      ],
+      "subtotal": 285.5,
+      "service_fee_estimated": 22.84,
+      "total_estimated": 308.34,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.257652",
+    "address_id": "MX_MTY_08",
+    "city": "Monterrey",
+    "zone": "Escobedo",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Raul Salinas 1500, Escobedo",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "Mc Donald's",
+      "restaurant_available": true,
+      "rating": 3.7,
+      "review_count": 575,
+      "eta_min": 44,
+      "delivery_fee": 43.85,
+      "promo_general_pct": 42.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 179.31,
+          "price_discounted": 127.85,
+          "discount_pct": 28.7
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 72.62,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.71,
           "price_discounted": null,
           "discount_pct": null
         }
       ],
-      "subtotal": 298.48,
-      "service_fee_estimated": 23.88,
-      "total_estimated": 339.33,
+      "subtotal": 256.18,
+      "service_fee_estimated": 25.62,
+      "total_estimated": 325.65,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 19.9,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": null,
+          "store_name": "",
+          "status": "not_found",
+          "error_detail": "Product not visible in search results"
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 42.78,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 51.22,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 13900,
+      "eta_min": 23,
+      "delivery_fee": 10.87,
+      "promo_general_pct": null,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.78,
+          "price_discounted": 96.97,
+          "discount_pct": 44.2
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.36,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 53.66,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 219.99,
+      "service_fee_estimated": 33.0,
+      "total_estimated": 263.86,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 21.83,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 32.8,
+          "store_name": "Walmart Express",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 46.65,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 60.01,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Delivery",
+      "restaurant_available": true,
+      "rating": 3.7,
+      "review_count": 83,
+      "eta_min": 39,
+      "delivery_fee": 36.59,
+      "promo_general_pct": 52.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.83,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 69.81,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 52.45,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 297.09,
+      "service_fee_estimated": 23.77,
+      "total_estimated": 357.45,
       "screenshot_path": "screenshots/mock/didifood_mcdo.png",
-      "error_detail": ""
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
+    }
+  },
+  {
+    "scraped_at": "2026-03-23T01:57:20.257652",
+    "address_id": "MX_MTY_09",
+    "city": "Monterrey",
+    "zone": "Guadalupe",
+    "zone_type": "Non Wealthy",
+    "address": "Av. Pablo Livas 3200, Guadalupe",
+    "restaurant_compared": "McDonald's",
+    "rappi": {
+      "platform": "rappi",
+      "status": "success",
+      "restaurant_name": "McDonald's",
+      "restaurant_available": true,
+      "rating": 4.1,
+      "review_count": 838,
+      "eta_min": 34,
+      "delivery_fee": 57.64,
+      "promo_general_pct": 42.0,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 174.09,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 70.88,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 54.48,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 299.45,
+      "service_fee_estimated": 29.95,
+      "total_estimated": 387.04,
+      "screenshot_path": "screenshots/mock/rappi_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 16.61,
+          "store_name": "Chedraui",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 26.26,
+          "store_name": "Rappi Turbo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 32.53,
+          "store_name": "Farmacias Guadalajara",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 47.22,
+          "store_name": "Farmacia San Pablo",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "ubereats": {
+      "platform": "ubereats",
+      "status": "success",
+      "restaurant_name": "McDonald's (Insurgentes)",
+      "restaurant_available": true,
+      "rating": 4.4,
+      "review_count": 17159,
+      "eta_min": 35,
+      "delivery_fee": 20.69,
+      "promo_general_pct": null,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 173.44,
+          "price_discounted": 115.16,
+          "discount_pct": 33.6
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 71.89,
+          "price_discounted": null,
+          "discount_pct": null
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 55.2,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 242.25,
+      "service_fee_estimated": 36.34,
+      "total_estimated": 299.28,
+      "screenshot_path": "screenshots/mock/ubereats_mcdo.png",
+      "error_detail": "",
+      "super_products": [
+        {
+          "vertical": "super",
+          "product_query": "botella de agua 1.5L",
+          "price": 15.54,
+          "store_name": "7-Eleven",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "super",
+          "product_query": "leche 1 litro",
+          "price": 31.34,
+          "store_name": "OXXO",
+          "status": "success",
+          "error_detail": ""
+        }
+      ],
+      "farmacia_products": [
+        {
+          "vertical": "farmacia",
+          "product_query": "curitas",
+          "price": 45.12,
+          "store_name": "Farmacia Benavides",
+          "status": "success",
+          "error_detail": ""
+        },
+        {
+          "vertical": "farmacia",
+          "product_query": "paracetamol",
+          "price": 50.99,
+          "store_name": "Farmacia del Ahorro",
+          "status": "success",
+          "error_detail": ""
+        }
+      ]
+    },
+    "didifood": {
+      "platform": "didifood",
+      "status": "success",
+      "restaurant_name": "McDonald's Express",
+      "restaurant_available": true,
+      "rating": 4.5,
+      "review_count": 215,
+      "eta_min": 35,
+      "delivery_fee": 42.65,
+      "promo_general_pct": 65,
+      "products": [
+        {
+          "name": "Combo Big Mac mediano",
+          "price_original": 172.55,
+          "price_discounted": 112.68,
+          "discount_pct": 34.7
+        },
+        {
+          "name": "Hamburguesa doble con queso",
+          "price_original": 73.36,
+          "price_discounted": 45.78,
+          "discount_pct": 37.6
+        },
+        {
+          "name": "Coca-Cola mediana",
+          "price_original": 53.95,
+          "price_discounted": null,
+          "discount_pct": null
+        }
+      ],
+      "subtotal": 212.41,
+      "service_fee_estimated": 16.99,
+      "total_estimated": 272.05,
+      "screenshot_path": "screenshots/mock/didifood_mcdo.png",
+      "error_detail": "",
+      "super_products": [],
+      "farmacia_products": []
     }
   }
 ]

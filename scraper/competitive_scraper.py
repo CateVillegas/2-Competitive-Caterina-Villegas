@@ -126,6 +126,16 @@ class ProductData:
     discount_pct: Optional[float]     = None
 
 @dataclass
+class VerticalProductResult:
+    """A single product result from a non-restaurant vertical (super/farmacia)."""
+    vertical: str            # "super" or "farmacia"
+    product_query: str       # e.g. "botella de agua 1.5L"
+    price: Optional[float] = None
+    store_name: str = ""
+    status: str = "pending"  # success / not_found / error
+    error_detail: str = ""
+
+@dataclass
 class PlatformResult:
     platform: str
     status: str = "pending"
@@ -142,6 +152,8 @@ class PlatformResult:
     total_estimated: Optional[float] = None
     screenshot_path: str = ""
     error_detail: str = ""
+    super_products: list = field(default_factory=list)
+    farmacia_products: list = field(default_factory=list)
 
     def compute_financials(self, platform):
         prices = [
@@ -350,6 +362,52 @@ TARGET_PRODUCTS = [
         "price_range": (25, 100),
     },
 ]
+
+# ── Vertical products (super + farmacia) ─────────────────────────────────────
+# Each product: (query, min_price, max_price) — bounds filter out noise
+SUPER_PRODUCTS  = [
+    ("botella de agua 1.5L", 8, 60),
+    ("leche 1 litro",        15, 70),
+]
+FARMACIA_PRODUCTS = [
+    ("curitas",      15, 150),
+    ("paracetamol",  15, 200),
+]
+
+
+def extract_first_price(text: str, min_price=3, max_price=500) -> Optional[float]:
+    """Extract the first visible price ($XX.XX) from page text.
+    Used for vertical products where we just need the first price found."""
+    for m in re.finditer(r'\$\s*([\d,]+\.?\d*)', text):
+        v = float(m.group(1).replace(",", ""))
+        if min_price <= v <= max_price:
+            return v
+    # Fallback: MX$ format
+    for m in re.finditer(r'MX\$\s*([\d,]+\.?\d*)', text):
+        v = float(m.group(1).replace(",", ""))
+        if min_price <= v <= max_price:
+            return v
+    return None
+
+
+def extract_first_price_near_query(text: str, query: str, min_price=3, max_price=500) -> Optional[float]:
+    """Extract the first price that appears near a product name in the text."""
+    lines = [l.strip() for l in text.split("\n") if l.strip()]
+    query_lower = query.lower()
+    # Find lines containing query keywords
+    query_words = [w for w in query_lower.split() if len(w) > 2]
+
+    for i, line in enumerate(lines):
+        ll = line.lower()
+        if not any(w in ll for w in query_words):
+            continue
+        # Look at this line + next 3 lines for a price
+        window = " ".join(lines[i:i+4])
+        price = extract_first_price(window, min_price, max_price)
+        if price:
+            return price
+    return None
+
 
 def extract_products_from_text(full_text: str) -> list:
     """
@@ -885,6 +943,222 @@ class RappiScraper:
 
         return r
 
+    # ── Vertical scraping (super + farmacia) ─────────────────────────────
+
+    # Selectors for the search bar INSIDE a Rappi store
+    STORE_SEARCH_SELS = [
+        'input[placeholder*="Busca" i]',
+        'input[placeholder*="Search" i]',
+        'input[placeholder*="producto" i]',
+        'input[data-qa="input"]',
+        'input[type="search"]',
+    ]
+
+    async def _rappi_enter_first_store(self, page: Page) -> str:
+        """Enter the first store on a Rappi category page. Returns store name."""
+        # Store cards are usually links with store hrefs
+        link_sels = ['a[href*="/tiendas/"]', 'a[href*="/store/"]', 'a[href*="/restaurantes/"]']
+        for sel in link_sels:
+            try:
+                links = await page.locator(sel).all()
+                for link in links[:5]:
+                    href = await link.get_attribute("href") or ""
+                    if not href or "mcdonald" in href.lower():
+                        continue
+                    store_url = href if href.startswith("http") else f"https://www.rappi.com.mx{href}"
+                    await page.goto(store_url, wait_until="domcontentloaded", timeout=20000)
+                    await delay(2, 3)
+                    # Get name from page
+                    name = ""
+                    try:
+                        h1 = page.locator("h1").first
+                        if await h1.count() > 0:
+                            name = (await h1.inner_text()).strip()
+                    except Exception:
+                        pass
+                    if not name:
+                        name = href.split("/")[-1].replace("-", " ").title()[:50]
+                    log.info(f"  [Rappi] entered store: {name}")
+                    return name
+            except Exception:
+                continue
+
+        # Fallback: click the first visible card-like element
+        try:
+            cards = await page.locator('[class*="card" i] a, [class*="store" i] a').all()
+            if cards:
+                await cards[0].click()
+                await delay(2, 3)
+                try:
+                    h1 = page.locator("h1").first
+                    name = (await h1.inner_text()).strip() if await h1.count() > 0 else "Store"
+                except Exception:
+                    name = "Store"
+                log.info(f"  [Rappi] entered store (card fallback): {name}")
+                return name
+        except Exception:
+            pass
+
+        return ""
+
+    async def _rappi_search_inside_store(self, page: Page, query: str,
+                                          min_price: float, max_price: float) -> Optional[float]:
+        """Search for a product inside a Rappi store and return the price."""
+        # Try the store's internal search bar
+        typed = await find_and_fill_input(page, self.STORE_SEARCH_SELS, query, use_keyboard=True)
+        if typed:
+            await page.keyboard.press("Enter")
+            await delay(3, 5)
+            log.info(f"  [Rappi] searched inside store: {query}")
+        else:
+            # Fallback: try using the main search bar
+            for sel in self.SEARCH_CONTAINER_SELS:
+                try:
+                    el = page.locator(sel).first
+                    if await el.count() > 0:
+                        await el.click(force=True)
+                        await asyncio.sleep(0.5)
+                        break
+                except Exception:
+                    continue
+            typed = await find_and_fill_input(page, self.SEARCH_INPUT_SELS, query, use_keyboard=True)
+            if typed:
+                await page.keyboard.press("Enter")
+                await delay(3, 5)
+                log.info(f"  [Rappi] searched via main bar: {query}")
+            else:
+                log.warning(f"  [Rappi] could not find search bar for: {query}")
+                return None
+
+        text = await page.evaluate("() => document.body.innerText")
+        price = extract_first_price_near_query(text, query, min_price, max_price)
+
+        # If no price found, scroll a bit and retry (Rappi sometimes shows
+        # "no encontramos" but loads results after a small scroll)
+        if price is None:
+            await page.evaluate("window.scrollBy(0, 300)")
+            await delay(3, 4)
+            text = await page.evaluate("() => document.body.innerText")
+            price = extract_first_price_near_query(text, query, min_price, max_price)
+            if price:
+                log.info(f"  [Rappi] found price after scroll retry: ${price}")
+
+        return price
+
+    async def _rappi_vertical_scrape(self, page: Page, vertical: str, products: list,
+                                      addr: dict, sdir: Path, take_shots: bool) -> list:
+        """Scrape products from a Rappi vertical (super or farmacia).
+        Flow: home -> search first product -> click category tab -> enter first store ->
+              search all products inside the store."""
+        log.info(f"  [Rappi] --- Vertical: {vertical.upper()} ---")
+        results = []
+        tab_keywords = {
+            "super":    ["Súper", "Super"],
+            "farmacia": ["Farmacia", "Farmacias"],
+        }
+
+        try:
+            # 1. Navigate to home and search the first product
+            await page.goto("https://www.rappi.com.mx", wait_until="domcontentloaded", timeout=20000)
+            await delay(2, 3)
+
+            first_query = products[0][0]
+            for sel in self.SEARCH_CONTAINER_SELS:
+                try:
+                    el = page.locator(sel).first
+                    if await el.count() > 0:
+                        await el.click(force=True)
+                        await asyncio.sleep(0.8)
+                        break
+                except Exception:
+                    continue
+
+            typed = await find_and_fill_input(page, self.SEARCH_INPUT_SELS, first_query, use_keyboard=True)
+            if typed:
+                await page.keyboard.press("Enter")
+                await delay(3, 5)
+
+            # 2. Click the category tab (Súper or Farmacia)
+            tab_clicked = False
+            for kw in tab_keywords.get(vertical, []):
+                try:
+                    clicked = await page.evaluate("""(text) => {
+                        const els = document.querySelectorAll('a, button, [role="tab"]');
+                        for (const el of els) {
+                            if (el.textContent.trim() === text) { el.click(); return true; }
+                        }
+                        return false;
+                    }""", kw)
+                    if clicked:
+                        await delay(2, 3)
+                        log.info(f"  [Rappi] clicked category tab: {kw}")
+                        tab_clicked = True
+                        break
+                except Exception:
+                    continue
+
+            if not tab_clicked:
+                log.warning(f"  [Rappi] could not find category tab for {vertical}")
+
+            # 3. Enter the first store
+            store_name = await self._rappi_enter_first_store(page)
+            if not store_name:
+                log.warning(f"  [Rappi][{vertical}] no store found")
+                for query, _, _ in products:
+                    results.append({"vertical": vertical, "product_query": query,
+                                    "price": None, "store_name": "", "status": "not_found",
+                                    "error_detail": "No store found"})
+                return results
+
+            # 4. Search ALL products inside this store
+            for query, lo, hi in products:
+                result = {"vertical": vertical, "product_query": query,
+                          "price": None, "store_name": store_name, "status": "pending",
+                          "error_detail": ""}
+                try:
+                    price = await self._rappi_search_inside_store(page, query, lo, hi)
+
+                    if take_shots:
+                        await shot(page, addr["id"], self.PLATFORM, f"{vertical}_{query[:10]}", sdir)
+
+                    if price:
+                        result["price"] = price
+                        result["status"] = "success"
+                        log.info(f"  [Rappi][{vertical}] {query} -> ${price} ({store_name})")
+                    else:
+                        result["status"] = "not_found"
+                        log.warning(f"  [Rappi][{vertical}] {query} -> not found in {store_name}")
+
+                    # Go back to store main page for next product
+                    try:
+                        await page.go_back()
+                        await delay(1, 2)
+                    except Exception:
+                        pass
+
+                except Exception as e:
+                    result["status"] = "error"
+                    result["error_detail"] = str(e)[:200]
+
+                results.append(result)
+                await delay(1, 2)
+
+        except Exception as e:
+            log.warning(f"  [Rappi][{vertical}] general error: {e}")
+            for query, _, _ in products:
+                if not any(r.get("product_query") == query for r in results):
+                    results.append({"vertical": vertical, "product_query": query,
+                                    "price": None, "store_name": "", "status": "error",
+                                    "error_detail": str(e)[:200]})
+
+        return results
+
+    async def scrape_super(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> list:
+        return await self._rappi_vertical_scrape(page, "super", SUPER_PRODUCTS, addr, sdir, take_shots)
+
+    async def scrape_farmacia(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> list:
+        return await self._rappi_vertical_scrape(page, "farmacia", FARMACIA_PRODUCTS, addr, sdir, take_shots)
+
 
 # ── UBER EATS ─────────────────────────────────────────────────────────────────
 
@@ -1061,6 +1335,383 @@ class UberEatsScraper:
             log.warning(f"[Uber] {addr['id']} {type(e).__name__}: {str(e)[:100]}")
 
         return r
+
+    # ── Vertical scraping (super + farmacia) ─────────────────────────────
+
+    # ── Shared helpers for vertical scraping ──────────────────────────────
+
+    # Selectors for the search bar INSIDE a store
+    # Can say "Busca en [store]", "Search [store]", or just "Buscar"
+    STORE_SEARCH_SELS = [
+        'input[placeholder*="Search" i]',
+        'input[placeholder*="Busca en" i]',
+        'input[placeholder*="Buscar" i]',
+        'input[aria-label*="Search" i]',
+        'input[aria-label*="Busca" i]',
+        'input[type="search"]',
+    ]
+
+    async def _go_home(self, page: Page):
+        """Navigate back to Uber Eats home."""
+        await page.goto("https://www.ubereats.com/mx", wait_until="domcontentloaded", timeout=20000)
+        await delay(2, 3)
+
+    async def _click_search_tab(self, page: Page, tab_name: str) -> bool:
+        """Click a filter tab (Súper, Restaurantes, etc.) in search results.
+        These tabs appear right below the search bar as a horizontal list."""
+        variants = [tab_name]
+        if tab_name == "Súper":
+            variants = ["Súper", "Super"]
+
+        for variant in variants:
+            # Strategy 1: JavaScript — find any clickable element whose trimmed text
+            # is exactly the variant (most reliable, ignores framework attrs)
+            try:
+                clicked = await page.evaluate("""(text) => {
+                    const els = document.querySelectorAll('a, button, [role="tab"], [role="link"]');
+                    for (const el of els) {
+                        if (el.textContent.trim() === text) {
+                            el.click();
+                            return true;
+                        }
+                    }
+                    return false;
+                }""", variant)
+                if clicked:
+                    await delay(2, 3)
+                    log.info(f"  [Uber] clicked tab (JS): {variant}")
+                    return True
+            except Exception:
+                pass
+
+            # Strategy 2: Playwright get_by_role
+            try:
+                tab = page.get_by_role("tab", name=variant)
+                if await tab.count() > 0:
+                    await tab.click()
+                    await delay(2, 3)
+                    log.info(f"  [Uber] clicked tab (role): {variant}")
+                    return True
+            except Exception:
+                continue
+
+        log.warning(f"  [Uber] could not find tab: {tab_name}")
+        return False
+
+    async def _enter_first_store(self, page: Page, scroll_first: bool = True) -> str:
+        """Click the first store link on the current page. Returns store name."""
+        if scroll_first:
+            await page.evaluate("window.scrollBy(0, 300)")
+            await delay(1, 2)
+
+        links = await page.locator('a[href*="/store/"]').all()
+        for link in links[:10]:
+            try:
+                href = await link.get_attribute("href") or ""
+                if not href:
+                    continue
+                store_url = href if href.startswith("http") else f"https://www.ubereats.com{href}"
+                await page.goto(store_url, wait_until="domcontentloaded", timeout=20000)
+                await delay(2, 3)
+
+                # Get store name from h1 on the store page (most reliable)
+                name = ""
+                try:
+                    h1 = page.locator("h1").first
+                    if await h1.count() > 0:
+                        name = (await h1.inner_text()).strip()
+                except Exception:
+                    pass
+                if not name:
+                    name = href.split("/store/")[-1].split("/")[0].replace("-", " ").title()
+
+                log.info(f"  [Uber] entered store: {name}")
+                return name
+            except Exception:
+                continue
+        return ""
+
+    async def _search_inside_store(self, page: Page, query: str,
+                                    min_price: float, max_price: float) -> Optional[float]:
+        """Search for a product inside an Uber Eats store and return the price."""
+        typed = await find_and_fill_input(page, self.STORE_SEARCH_SELS, query, use_keyboard=True)
+        if typed:
+            await page.keyboard.press("Enter")
+            await delay(2, 3)
+            log.info(f"  [Uber] searched inside store: {query}")
+        else:
+            log.warning(f"  [Uber] could not find store search bar for: {query}")
+            return None
+
+        text = await page.evaluate("() => document.body.innerText")
+        return extract_first_price_near_query(text, query, min_price, max_price)
+
+    async def _dismiss_login_overlay(self, page: Page):
+        """Close any login/register overlay that might block the page."""
+        # Close with X button, Escape, or clicking outside
+        for sel in ['button[aria-label*="close" i]', 'button[aria-label*="cerrar" i]',
+                     '[data-testid="close-button"]']:
+            try:
+                btn = page.locator(sel).first
+                if await btn.count() > 0:
+                    await btn.click()
+                    await delay(0.5, 1)
+                    log.info(f"  [Uber] dismissed overlay via {sel}")
+                    return
+            except Exception:
+                continue
+        # Try pressing Escape
+        try:
+            await page.keyboard.press("Escape")
+            await delay(0.5, 1)
+        except Exception:
+            pass
+
+    async def _open_sidebar_category(self, page: Page, category: str) -> bool:
+        """Navigate to a category (Súper, Farmacia, etc.) from Uber Eats home.
+        The category links are in the left sidebar which is part of the feed page."""
+
+        # First dismiss any login overlay that might block
+        await self._dismiss_login_overlay(page)
+
+        # The category sidebar is already visible on the feed page (left nav).
+        # No need to click hamburger — just find the category link directly.
+
+        # Strategy 1: JS click on exact text match in any link/button
+        try:
+            clicked = await page.evaluate("""(cat) => {
+                const els = document.querySelectorAll('a, button, [role="link"], [role="menuitem"]');
+                for (const el of els) {
+                    const text = el.textContent.trim();
+                    if (text === cat) {
+                        el.click();
+                        return true;
+                    }
+                }
+                return false;
+            }""", category)
+            if clicked:
+                try:
+                    await page.wait_for_load_state("domcontentloaded", timeout=10000)
+                except Exception:
+                    pass
+                await delay(2, 3)
+                log.info(f"  [Uber] clicked sidebar category: {category}")
+                return True
+        except Exception:
+            pass
+
+        # Strategy 2: If sidebar is not visible, try hamburger menu to reveal it
+        hamburger_sels = [
+            'button[aria-label*="menu" i]',
+            'header button:first-child',
+        ]
+        for sel in hamburger_sels:
+            try:
+                el = page.locator(sel).first
+                if await el.count() > 0:
+                    await el.click()
+                    await delay(2, 3)
+                    log.info(f"  [Uber] opened menu via {sel}")
+
+                    # Check if the login overlay appeared and dismiss it
+                    body_text = await page.evaluate("() => document.body.innerText")
+                    if "Regístrate" in body_text or "Iniciar sesión" in body_text:
+                        log.info("  [Uber] login overlay detected, dismissing...")
+                        await self._dismiss_login_overlay(page)
+                        continue  # try next selector
+
+                    # Try clicking category again
+                    clicked = await page.evaluate("""(cat) => {
+                        const els = document.querySelectorAll('a, button, [role="link"]');
+                        for (const el of els) {
+                            if (el.textContent.trim() === cat) { el.click(); return true; }
+                        }
+                        return false;
+                    }""", category)
+                    if clicked:
+                        try:
+                            await page.wait_for_load_state("domcontentloaded", timeout=10000)
+                        except Exception:
+                            pass
+                        await delay(2, 3)
+                        log.info(f"  [Uber] clicked category after menu: {category}")
+                        return True
+            except Exception:
+                continue
+
+        # Strategy 3: Direct URL fallback
+        url_map = {
+            "Súper": "https://www.ubereats.com/mx/category/grocery",
+            "Super": "https://www.ubereats.com/mx/category/grocery",
+            "Farmacia": "https://www.ubereats.com/mx/category/pharmacy",
+        }
+        if category in url_map:
+            try:
+                await page.goto(url_map[category], wait_until="domcontentloaded", timeout=20000)
+                await delay(2, 3)
+                log.info(f"  [Uber] opened category via direct URL: {category}")
+                return True
+            except Exception:
+                pass
+
+        log.warning(f"  [Uber] could not open category: {category}")
+        return False
+
+    # ── Super vertical ─────────────────────────────────────────────────
+
+    async def scrape_super(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> list:
+        """Scrape retail/super products from Uber Eats.
+        Flow: home -> sidebar Súper -> enter first store -> search products inside."""
+        log.info("  [Uber] --- Vertical: SUPER ---")
+        results = []
+
+        try:
+            # 1. Go home, open sidebar, click Súper
+            await self._go_home(page)
+            opened = await self._open_sidebar_category(page, "Súper")
+            if not opened:
+                # Fallback: try without accent
+                await self._go_home(page)
+                opened = await self._open_sidebar_category(page, "Super")
+
+            if not opened:
+                log.warning("  [Uber][super] could not open Súper category")
+                for query, _, _ in SUPER_PRODUCTS:
+                    results.append({"vertical": "super", "product_query": query,
+                                    "price": None, "store_name": "", "status": "error",
+                                    "error_detail": "Could not open Súper category"})
+                return results
+
+            # 2. Scroll to load stores
+            await page.evaluate("window.scrollBy(0, 400)")
+            await delay(1, 2)
+
+            # 3. Enter the first super store
+            store_name = await self._enter_first_store(page)
+            if not store_name:
+                log.warning("  [Uber][super] no store found")
+                for query, _, _ in SUPER_PRODUCTS:
+                    results.append({"vertical": "super", "product_query": query,
+                                    "price": None, "store_name": "", "status": "not_found",
+                                    "error_detail": "No super stores found"})
+                return results
+
+            # 4. Search ALL products inside this same store
+            for query, lo, hi in SUPER_PRODUCTS:
+                result = {"vertical": "super", "product_query": query,
+                          "price": None, "store_name": store_name, "status": "pending",
+                          "error_detail": ""}
+                try:
+                    price = await self._search_inside_store(page, query, lo, hi)
+
+                    if take_shots:
+                        await shot(page, addr["id"], self.PLATFORM, f"super_{query[:10]}", sdir)
+
+                    if price:
+                        result["price"] = price
+                        result["status"] = "success"
+                        log.info(f"  [Uber][super] {query} -> ${price} ({store_name})")
+                    else:
+                        result["status"] = "not_found"
+                        log.warning(f"  [Uber][super] {query} -> not found in {store_name}")
+
+                    # Go back to store main page for next product search
+                    try:
+                        await page.go_back()
+                        await delay(1, 2)
+                    except Exception:
+                        pass
+
+                except Exception as e:
+                    result["status"] = "error"
+                    result["error_detail"] = str(e)[:200]
+
+                results.append(result)
+                await delay(1, 2)
+
+        except Exception as e:
+            log.warning(f"  [Uber][super] general error: {e}")
+            for query, _, _ in SUPER_PRODUCTS:
+                if not any(r.get("product_query") == query for r in results):
+                    results.append({"vertical": "super", "product_query": query,
+                                    "price": None, "store_name": "", "status": "error",
+                                    "error_detail": str(e)[:200]})
+
+        return results
+
+    # ── Farmacia vertical ──────────────────────────────────────────────
+
+    async def scrape_farmacia(self, page: Page, addr: dict, sdir: Path, take_shots: bool) -> list:
+        """Scrape pharmacy products from Uber Eats.
+        Flow: sidebar -> Farmacia -> enter first pharmacy -> search products inside."""
+        log.info("  [Uber] --- Vertical: FARMACIA ---")
+        results = []
+
+        try:
+            # 1. Go home, open sidebar, click Farmacia
+            await self._go_home(page)
+            opened = await self._open_sidebar_category(page, "Farmacia")
+            if not opened:
+                await page.goto("https://www.ubereats.com/mx/category/pharmacy",
+                                wait_until="domcontentloaded", timeout=20000)
+                await delay(2, 3)
+
+            # 2. Scroll down a bit to load stores
+            await page.evaluate("window.scrollBy(0, 400)")
+            await delay(1, 2)
+
+            # 3. Enter the first pharmacy
+            store_name = await self._enter_first_store(page)
+            if not store_name:
+                for query, _, _ in FARMACIA_PRODUCTS:
+                    results.append({"vertical": "farmacia", "product_query": query,
+                                    "price": None, "store_name": "", "status": "error",
+                                    "error_detail": "No pharmacy found"})
+                return results
+
+            # 4. Search each product inside the pharmacy
+            for query, lo, hi in FARMACIA_PRODUCTS:
+                result = {"vertical": "farmacia", "product_query": query,
+                          "price": None, "store_name": store_name, "status": "pending",
+                          "error_detail": ""}
+                try:
+                    price = await self._search_inside_store(page, query, lo, hi)
+
+                    if take_shots:
+                        await shot(page, addr["id"], self.PLATFORM, f"farmacia_{query}", sdir)
+
+                    if price:
+                        result["price"] = price
+                        result["status"] = "success"
+                        log.info(f"  [Uber][farmacia] {query} -> ${price} ({store_name})")
+                    else:
+                        result["status"] = "not_found"
+                        log.warning(f"  [Uber][farmacia] {query} -> not found in {store_name}")
+
+                    # Clear search: go back to store main page for next product
+                    try:
+                        await page.go_back()
+                        await delay(1, 2)
+                    except Exception:
+                        pass
+
+                except Exception as e:
+                    result["status"] = "error"
+                    result["error_detail"] = str(e)[:200]
+
+                results.append(result)
+                await delay(1, 2)
+
+        except Exception as e:
+            log.warning(f"  [Uber][farmacia] general error: {e}")
+            for query, _, _ in FARMACIA_PRODUCTS:
+                if not any(r.get("product_query") == query for r in results):
+                    results.append({"vertical": "farmacia", "product_query": query,
+                                    "price": None, "store_name": "", "status": "error",
+                                    "error_detail": str(e)[:200]})
+
+        return results
 
 
 # ── DIDI FOOD ─────────────────────────────────────────────────────────────────
@@ -2183,7 +2834,23 @@ def _to_dict(r: PlatformResult) -> dict:
         "subtotal": r.subtotal, "service_fee_estimated": r.service_fee_estimated,
         "total_estimated": r.total_estimated,
         "screenshot_path": r.screenshot_path, "error_detail": r.error_detail,
+        "super_products": r.super_products,
+        "farmacia_products": r.farmacia_products,
     }
+
+def _vp(products, query_prefix):
+    """Helper: find a vertical product by query prefix and return its price."""
+    for vp in (products or []):
+        if query_prefix.lower() in vp.get("product_query", "").lower():
+            return vp.get("price")
+    return None
+
+def _vs(products, query_prefix):
+    """Helper: find a vertical product store name."""
+    for vp in (products or []):
+        if query_prefix.lower() in vp.get("product_query", "").lower():
+            return vp.get("store_name", "")
+    return ""
 
 def _csv(results, path):
     rows = []
@@ -2195,6 +2862,8 @@ def _csv(results, path):
             bm  = prods.get("Combo Big Mac mediano",{})
             hdq = prods.get("Hamburguesa doble con queso",{})
             cc  = prods.get("Coca-Cola mediana",{})
+            sp = p.get("super_products", [])
+            fp = p.get("farmacia_products", [])
             rows.append({
                 "scraped_at":rec.get("scraped_at"), "address_id":rec.get("address_id"),
                 "city":rec.get("city"), "zone":rec.get("zone"), "zone_type":rec.get("zone_type"),
@@ -2208,6 +2877,16 @@ def _csv(results, path):
                 "cc_price_orig":cc.get("price_original"), "cc_price_disc":cc.get("price_discounted"), "cc_disc_pct":cc.get("discount_pct"),
                 "subtotal_mxn":p.get("subtotal"), "service_fee_mxn":p.get("service_fee_estimated"),
                 "total_estimated_mxn":p.get("total_estimated"), "error":p.get("error_detail",""),
+                # Vertical: Super
+                "super_agua_price": _vp(sp, "agua"),
+                "super_agua_store": _vs(sp, "agua"),
+                "super_leche_price": _vp(sp, "leche"),
+                "super_leche_store": _vs(sp, "leche"),
+                # Vertical: Farmacia
+                "farmacia_curitas_price": _vp(fp, "curitas"),
+                "farmacia_curitas_store": _vs(fp, "curitas"),
+                "farmacia_paracetamol_price": _vp(fp, "paracetamol"),
+                "farmacia_paracetamol_store": _vs(fp, "paracetamol"),
             })
     if not rows: return
     with open(path,"w",newline="",encoding="utf-8") as f:
@@ -2246,6 +2925,23 @@ async def run_scraper(addresses=None, max_addresses=25, headless=True, platforms
                 page = await ctx.new_page()
                 try:
                     pr = await scrapers[plat].scrape(page, addr, sdir, take_shots)
+                    # Vertical scraping (super + farmacia) — only Rappi and Uber Eats
+                    if plat in ("rappi", "ubereats"):
+                        try:
+                            log.info(f"  [{plat}] Starting super vertical...")
+                            pr.super_products = await scrapers[plat].scrape_super(page, addr, sdir, take_shots)
+                            log.info(f"  [{plat}] Super done: {len(pr.super_products)} products")
+                        except Exception as e:
+                            log.warning(f"  [{plat}] Super vertical failed: {e}")
+                            pr.super_products = []
+                        await delay(1, 3)
+                        try:
+                            log.info(f"  [{plat}] Starting farmacia vertical...")
+                            pr.farmacia_products = await scrapers[plat].scrape_farmacia(page, addr, sdir, take_shots)
+                            log.info(f"  [{plat}] Farmacia done: {len(pr.farmacia_products)} products")
+                        except Exception as e:
+                            log.warning(f"  [{plat}] Farmacia vertical failed: {e}")
+                            pr.farmacia_products = []
                 except Exception as e:
                     pr = PlatformResult(platform=plat, status="error", error_detail=str(e)[:200])
                 finally:
