@@ -45,14 +45,6 @@ python -m http.server 9000
 ```
 
 En la pantalla inicial, cargar el CSV `data/competitive_data_with_didi.csv`. El dashboard genera automaticamente todos los graficos y metricas.
-
-### Estado del scraping y decisiones tomadas
-
-- ✅ **Rappi / Uber Eats**: scraping 100 % automatizado desde desktop usando Playwright, con manejo de overlays, scrolling custom y extracción basada en texto para evitar ofuscación CSS.
-- ⚠️ **DiDi Food**: la versión desktop no muestra precios sin login y la versión mobile exige OTP en cada sesión. Logré automatizar el flujo mobile hasta el buscador, pero debido al OTP y a cambios UI por dirección, opté por capturar manualmente las 25 direcciones para no frenar el análisis. Los datos manuales están integrados en `data/competitive_data_with_didi.csv` y marcados en los campos `platform=didifood`.
-- 📸 **Evidencia**: cada corrida guarda screenshots por dirección/plataforma y logs en `screenshots/` y `logs/`.
-- 🔁 **Próximos pasos DiDi**: con más tiempo, planeo persistir la sesión mobile, automatizar el input del OTP mediante un servicio externo y robustecer los selectores adaptativos por ciudad.
-
 ---
 
 ## Estructura del repositorio
@@ -60,7 +52,7 @@ En la pantalla inicial, cargar el CSV `data/competitive_data_with_didi.csv`. El 
 ```
 ci_rappi/
 ├── main.py                          # Punto de entrada unificado del pipeline
-├── Informe de Inteligencia Competitiva_ Ecosistema Delivery México.pdf
+├── Documentacion.pdf
 ├── requirements.txt                 # Dependencias Python
 │
 ├── scraper/
@@ -128,12 +120,6 @@ Contiene las **3 plataformas** (Rappi, Uber Eats, DiDi Food) en las 25 direccion
 | `total_estimated_mxn` | Subtotal + delivery fee + service fee |
 | `error` | Mensaje de error si hubo fallo |
 
-### Supuestos financieros y calculo del total estimado
-
-- **Service fee**: sin login las apps no muestran el cargo final. `PlatformResult.compute_financials()` estima el service fee multiplicando el subtotal por una tasa fija por plataforma (`Rappi 10 %`, `Uber Eats 15 %`, `DiDi 8 %`). Para DiDi, cuando existe el valor real capturado manualmente, se usa ese número.
-- **Delivery fee**: el primer envío suele aparecer gratis, por lo que homogenizamos el cálculo usando `delivery_fee_mxn` cuando existe o un valor estándar de `15 MXN` para estimar el costo final.
-- **Total estimado**: `total_estimated_mxn = subtotal_mxn + (delivery_fee_mxn or 0) + service_fee_mxn`, redondeado a 2 decimales. Esto mantiene comparabilidad aun sin estar logueados.
-
 ## Ejecucion del scraper
 
 ```bash
@@ -177,15 +163,6 @@ reportlab>=4.0       # Generacion de PDF
 openpyxl>=3.1        # Export Excel
 ```
 
----
-
-## Consideraciones eticas
-
-- Rate limiting: 2-8 segundos aleatorios entre requests
-- User-agents reales (sin fingerprints de automatizacion)
-- Anti-webdriver detection (oculta `navigator.webdriver`)
-- Solo datos publicos visibles sin autenticacion (excepto DiDi que requiere login)
-- Para produccion: validar con Legal antes de automatizar scraping sistematico
 ---
 
 ## Branch adicional
