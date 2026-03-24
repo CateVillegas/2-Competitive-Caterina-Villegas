@@ -2,7 +2,7 @@
 
 **Caso Tecnico: AI Engineer · Rappi**
 
-Sistema automatizado que recolecta precios, fees, ETAs y promociones de **Rappi, Uber Eats y DiDi Food** en 25 direcciones representativas de Mexico (CDMX, Guadalajara, Monterrey), comparando el mismo restaurante (McDonald's) en las 3 plataformas. Incluye analisis visual con 14 graficos, PDF ejecutivo con insights accionables y dashboard interactivo.
+Sistema automatizado que recolecta precios, fees, ETAs y promociones de **Rappi, Uber Eats y DiDi Food** en 25 direcciones representativas de Mexico (CDMX, Guadalajara, Monterrey), comparando el mismo restaurante (McDonald's) en las 3 plataformas. Incluye analisis visual con graficos, PDF ejecutivo con insights accionables y dashboard interactivo.
 
 ---
 
@@ -31,7 +31,7 @@ Esto deja artefactos actualizados en `output/`:
 1. `scraper/competitive_scraper.py` (Playwright) recorre las 25 direcciones estratégicas y genera los CSV/JSON en `data/` junto con screenshots de evidencia.
 2. `analysis/generate_analysis.py` consume cualquier CSV/JSON (por defecto usamos `data/competitive_data_with_didi.csv`), calcula KPIs, insights y renderiza 14 visualizaciones estaticas.
 3. `analysis/generate_report_pdf.py` usa los payloads anteriores para redactar el informe ejecutivo (`Competitive_Intelligence_Rappi_MX.pdf`).
-4. `dashboard/ci_dashboard.html` permite explorar el dataset cargando manualmente el CSV oficial desde el navegador y genera 15+ charts interactivos con interpretaciones automáticas.
+4. `dashboard/ci_dashboard.html` permite explorar el dataset cargando manualmente el CSV oficial desde el navegador y genera charts interactivos con interpretaciones automáticas.
 
 > Nota: Todo el pipeline se ejecuta desde la raíz del repo y los archivos producto quedan centralizados en `output/`.
 
@@ -60,6 +60,7 @@ En la pantalla inicial, cargar el CSV `data/competitive_data_with_didi.csv`. El 
 ```
 ci_rappi/
 ├── main.py                          # Punto de entrada unificado del pipeline
+├── Informe de Inteligencia Competitiva_ Ecosistema Delivery México.pdf
 ├── requirements.txt                 # Dependencias Python
 │
 ├── scraper/
@@ -133,39 +134,6 @@ Contiene las **3 plataformas** (Rappi, Uber Eats, DiDi Food) en las 25 direccion
 - **Delivery fee**: el primer envío suele aparecer gratis, por lo que homogenizamos el cálculo usando `delivery_fee_mxn` cuando existe o un valor estándar de `15 MXN` para estimar el costo final.
 - **Total estimado**: `total_estimated_mxn = subtotal_mxn + (delivery_fee_mxn or 0) + service_fee_mxn`, redondeado a 2 decimales. Esto mantiene comparabilidad aun sin estar logueados.
 
----
-
-## Entregables
-
-### 2.1 Sistema de Scraping Competitivo (70%)
-
-| Requisito | Estado | Detalle |
-|---|---|---|
-| Rappi scraper | Funcional | Automatizado con Playwright |
-| Uber Eats scraper | Funcional | Automatizado con Playwright |
-| DiDi Food scraper | Parcial | Requiere login manual (OTP por SMS). Datos recolectados manualmente |
-| 3 productos comparables | Completo | Combo Big Mac Mediano, Hamburguesa Doble con Queso, Coca-Cola Mediana |
-| Delivery fee | Capturado | Por plataforma y zona |
-| Service fee | Estimado | Rappi 10%, Uber Eats 15%, DiDi 8% (no visible sin login) |
-| ETA | Capturado | Tiempo estimado de entrega en minutos |
-| Descuentos activos | Capturado | % promo general + descuento por producto |
-| Precio final total | Calculado | Subtotal + delivery + service fee |
-| Cobertura geografica | 25 direcciones | 9 CDMX + 7 GDL + 9 MTY (Wealthy + Non Wealthy) |
-| Automatizacion | Un comando | `python main.py --real` |
-| Output | CSV + JSON + screenshots | Evidencia automatica en screenshots/ |
-
-### 2.2 Informe de Insights Competitivos (30%)
-
-| Requisito | Estado | Detalle |
-|---|---|---|
-| Analisis comparativo | 5 dimensiones | Precios, operacional, fees, promos, geografia |
-| Top 5 Insights accionables | Generados automaticamente | Finding + Impacto + Recomendacion |
-| Visualizaciones | 14 graficos | Barras, heatmaps, scatter, stacked, lineas |
-| PDF ejecutivo | Completo | Con glosario, tablas, insights, 14 graficos con interpretaciones |
-| Dashboard interactivo | Completo | HTML + Chart.js con filtros, glosario, interpretaciones automaticas |
-
----
-
 ## Ejecucion del scraper
 
 ```bash
@@ -196,67 +164,6 @@ python generate_report_pdf.py
 
 ---
 
-## Estrategia tecnica del scraper
-
-### Rappi
-- Navega a home, ingresa direccion, busca "McDonalds"
-- Extrae href del resultado y navega con `page.goto()` (evita overlay bloqueante)
-- Detecta y scrollea contenedores internos (el menu de Rappi no usa `window.scrollBy`)
-- Extraccion basada en texto (`document.body.innerText`) — inmune a ofuscacion CSS
-- Ventana forward-only de 4 lineas para evitar contaminacion de precios adyacentes
-
-### Uber Eats
-- Navega a home, ingresa direccion, va a `/mx/search?q=McDonalds`
-- Encuentra link del store y navega directo
-- Delivery fee: soporta formato "Costo de envio a MXN0"
-- Misma logica de extraccion de texto que Rappi
-
-### DiDi Food
-- Emulacion mobile iPhone (390x844) — DiDi requiere user-agent mobile
-- Login obligatorio con verificacion SMS (codigo OTP manual)
-- Entry URL con direccion pre-cargada via parametro `pl=` (Base64)
-- Busca McDonald's en la barra de busqueda
-- Captura promo hook ("Hasta X% dto.") desde los resultados de busqueda
-
----
-
-## Dashboard interactivo
-
-El dashboard es un archivo HTML autocontenido (`dashboard/ci_dashboard.html`) que usa Chart.js para visualizacion. No requiere servidor backend.
-
-**Para usarlo:**
-1. Abrir el archivo HTML directamente en el navegador (o servir con `python -m http.server 9000`)
-2. Cargar el CSV `data/competitive_data_with_didi.csv`
-3. El dashboard genera automaticamente:
-   - KPIs por plataforma (ETA, rating, precios de 3 productos, delivery fee, total)
-   - 15+ graficos interactivos con filtros por ciudad, zona y plataforma
-   - Interpretaciones automaticas debajo de cada grafico
-   - Glosario de terminos y abreviaciones (ETA, SLA, BM, HDQ, CC, etc.)
-   - Heatmaps de ETA y precios
-   - Comparacion Wealthy vs Non Wealthy
-   - Tabla detallada con todos los datos crudos
-
----
-
-## Analisis generado (PDF y dashboard)
-
-Ambos productos (PDF y dashboard) incluyen las mismas dimensiones de analisis:
-
-1. **Posicionamiento de precios** — Comparativa de los 3 productos por plataforma (precio base vs con promo)
-2. **Ventaja operacional** — ETA por zona, rating por ciudad, cumplimiento de SLA 30 min
-3. **Estructura de fees** — Delivery fee y service fee por zona, desglose del costo total (stacked)
-4. **Estrategia promocional** — Promo hook por zona, distribucion (boxplot), descuentos reales en productos
-5. **Variabilidad geografica** — Comparacion Wealthy vs Non Wealthy (total, ETA, delivery fee, promos)
-6. **Heatmaps** — ETA y precio Big Mac por zona/plataforma
-7. **Analisis cruzado** — Scatter ETA vs promo hook, disponibilidad por tipo de zona
-
-Cada grafico incluye:
-- Titulo descriptivo
-- Explicacion de que muestra y que variables usa
-- Interpretacion automatica con relevancia para los equipos de Strategy y Pricing
-
----
-
 ## Dependencias
 
 ```
@@ -279,28 +186,8 @@ openpyxl>=3.1        # Export Excel
 - Anti-webdriver detection (oculta `navigator.webdriver`)
 - Solo datos publicos visibles sin autenticacion (excepto DiDi que requiere login)
 - Para produccion: validar con Legal antes de automatizar scraping sistematico
-
----
-
-## Limitaciones conocidas
-
-1. **Snapshot temporal** — precios y ETAs varian por hora/dia; los datos representan un momento especifico
-2. **Service fee estimado** — no es visible sin estar logueado en la app, se estima con tasas fijas (Rappi 10%, Uber Eats 15%, DiDi 8%)
-3. **Delivery fee no representativo** — el primer envio suele ser gratis; se usa $15 MXN estandar para estimaciones mas realistas
-4. **DiDi Food requiere sesion activa** — verificacion por SMS (OTP) cada vez que se ejecuta; no automatizable
-5. **DiDi Food version desktop** — no muestra restaurantes ni precios sin login; el scraper usa emulacion mobile
-6. **Uber Eats Cloudflare** — puede requerir proxy residencial para uso intensivo
-7. **Descuentos Rappi** — aparecen inconsistentemente dependiendo de la sesion
-
 ---
 
 ## Branch adicional
 
 La branch `feature/verticales-wip` contiene un intento de expansion del scraper a verticales adicionales (farmacia y supermercado). Para Rappi funciona; Uber Eats requiere iteracion adicional. Se dejo pendiente por restricciones de tiempo y priorizacion del entregable principal.
-
-## Futuras mejoras
-
-- Persistir sesiones mobile de DiDi Food y automatizar la resolución del OTP para habilitar scraping 100 % automatizado de esa plataforma.
-- Capturar y almacenar el conteo de reviews junto al rating para ponderar engagement y detectar apps donde un restaurante tiene más interacción.
-- Extender el pipeline a nuevas verticales (farmacia/super) retomando lo avanzado en `feature/verticales-wip`.
-- Añadir análisis de texto de reviews para identificar patrones de servicio diferenciados por plataforma.
